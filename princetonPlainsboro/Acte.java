@@ -37,6 +37,15 @@ class Acte {
     public String toString() {
         return code.toString() + ", coefficient : " + coef;
     }
+    
+    public String afficherActe() {
+        String s = "Nom : " + this.toString();
+        if (!obs.isEmpty())
+            s+="Observations : "+obs;
+        
+        return s;
+    }
+       
 
     public double cout() {
         return code.calculerCout(coef);
