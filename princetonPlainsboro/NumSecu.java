@@ -33,6 +33,15 @@ public class NumSecu {
         return numero + " " + cle;
     }
 
+    public boolean equals(Object o) {
+                if (o instanceof NumSecu) {
+            NumSecu ns = (NumSecu)o;
+                    return (numero == ns.numero) && (cle == ns.cle) ; 
+                } 
+        else 
+            return false;
+    }
+        
     public boolean numCorrect(){
         if(this.sexe<1 || this.sexe>2){ //le sexe doit etre egal a 1 ou 2
             System.out.println("sexe");
