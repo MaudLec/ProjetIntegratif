@@ -11,12 +11,13 @@ package princetonPlainsboro;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.FileInputStream;
-import java.util.List;
-import java.util.Vector;
+import java.util.ArrayList;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+import princetonPlainsboro.Acte.Type;
+import princetonPlainsboro.Personne.Sexe;
 
 /**
  * Lecture d'un document XML et transformation en instances Java.
@@ -38,13 +39,20 @@ public class LectureXML {
         Date date = null;
         Medecin medecinCourant = null;
         Patient patientCourant= null;
-        List<Acte> actes = new Vector<Acte>();
+        Secretaire secretaireCourant = null;
+        ArrayList<Acte> actes = new ArrayList<Acte>();
         String donneesCourantes = "";
         String nomCourant = "";
         String prenomCourant = "";
-        String specialiteCourante = "";
+        Specialite specialiteCourante = Specialite.autre;
         Code codeCourant = null;
         int coefCourant = 0;
+        Type type=Type.diagnostique;
+        int numid=0;
+        ArrayList<Integer> numtel = new ArrayList<Integer>();
+        NumSecu numsecu = null;
+        String adresse=null;
+        Sexe sexe=null;
         
         // analyser le fichier par StAX
         try {
@@ -64,7 +72,7 @@ public class LectureXML {
                         break;
                     case XMLStreamConstants.END_ELEMENT:
                         if (parser.getLocalName().equals("acte")) {
-                            actes.add(new Acte(codeCourant, coefCourant));
+                            actes.add(new Acte(codeCourant, nomCourant, patientCourant, medecinCourant, date, type, coefCourant));
                         }                        
                         if (parser.getLocalName().equals("code")) {
                             codeCourant = getCode(donneesCourantes);
@@ -93,21 +101,22 @@ public class LectureXML {
                             // ajouter la fiche de soin au dossiers
                             dossierCourant.ajouterFiche(f);
                         }
+                        if (parser.getLocalName().equals("secretaire")) {
+                            secretaireCourant = new Secretaire(nomCourant, prenomCourant, sexe, date, numid);
+                        }
                         if (parser.getLocalName().equals("medecin")) {
-                            medecinCourant = new Medecin(nomCourant, prenomCourant, specialiteCourante);
+                            medecinCourant = new Medecin(nomCourant, prenomCourant, sexe, date, numid, specialiteCourante, numtel);
                         }
                         if (parser.getLocalName().equals("nom")) {
                             nomCourant = donneesCourantes;
                         }
                         if (parser.getLocalName().equals("patient")) {
-                            patientCourant = new Patient(nomCourant, prenomCourant);
+                            patientCourant = new Patient(nomCourant, prenomCourant, sexe, date, numid, numsecu, adresse);
                         }
                         if (parser.getLocalName().equals("prenom")) {
                             prenomCourant = donneesCourantes;
                         }
-                        if (parser.getLocalName().equals("specialite")) {
-                            specialiteCourante = donneesCourantes;
-                        }
+
                         break;
                     case XMLStreamConstants.CHARACTERS:
                         donneesCourantes = parser.getText();
@@ -153,3 +162,4 @@ public class LectureXML {
         return null;            
     }
 }
+
