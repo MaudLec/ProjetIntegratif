@@ -38,12 +38,11 @@ class Patient {
     }   
     
     public String toString() {
-        String s = prenom + " " + nom + ", ";
-        if (sexe == Sexe.F) {
-            s += "femme";
-        } else {
-            s += "homme";
-        }
+        String s "";
+        if (sexe == Sexe.F) 
+        { s+="Mme "; }
+        else { s+= "M. ;}
+            s+= nom.toUpperCase() + " " + prenom + " Numéro SS : " + numSecu.toString();
         return s;
     }
     
