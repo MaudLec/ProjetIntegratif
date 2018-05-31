@@ -136,8 +136,13 @@ class DossierMedical {
     
      //partie à compléter
     public ArrayList<Medecin> getMedecins() {
-        //renvoyer tous les médecins présents dans le dossier médical
-        return new ArrayList<Medecin>();//a modifier
+        ArrayList<Medecin> medecins = new ArrayList<>();
+        for (int i = 0; i<fiches.size(); i++){
+            if(!medecins.contains(fiches.get(i).getMedecin())){
+                medecins.add(fiches.get(i).getMedecin());
+            }
+        }
+        return medecins;
     }
 
     public ArrayList<SecretaireMed> getSecretairesMed() {
@@ -150,8 +155,13 @@ class DossierMedical {
         return new ArrayList<SecretaireAdmin>();//a modifier
     }
         public ArrayList<Patient> getPatients() {
-        //renvoyer tous patients présents dans le dossier médical    
-        return new ArrayList<Patient>();//a modifier
+        ArrayList<Patient> patients = new ArrayList<>();
+        for (int i = 0; i < fiches.size(); i++) {
+            if (!patients.contains(fiches.get(i).getPatient())) {
+                patients.add(fiches.get(i).getPatient());
+            }
+        }
+        return patients;
     }
 }
 
