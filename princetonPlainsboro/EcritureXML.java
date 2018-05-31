@@ -2,7 +2,6 @@ package princetonPlainsboro;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
@@ -36,7 +35,7 @@ public class EcritureXML {
                 writer.writeEndElement();
 
                 writer.writeStartElement("specialite");
-                writer.writeCharacters(dm.getMedecins().get(i).getSpecialite());
+                writer.writeCharacters(dm.getMedecins().get(i).getSpecialite().toString());
                 writer.writeEndElement();
 
                 writer.writeStartElement("numtel");
@@ -65,80 +64,80 @@ public class EcritureXML {
     }
 //Editer la liste des Serétaires médicales
 
-    public void editerSecretairesMed() {
-        XMLOutputFactory factory = XMLOutputFactory.newInstance();
-        try {
-            XMLStreamWriter writer = factory.createXMLStreamWriter(new FileWriter("src/donnees/" + nomFichier));
-            writer.writeStartDocument();
-            writer.writeStartElement("secretairesmed");
-            for (int i = 0; i < dm.getSecretairesMed().size(); i++) {
-                writer.writeStartElement("secretairemed");
-                writer.writeStartElement("nom");
-                writer.writeCharacters(dm.getSecretairesMed().get(i).getNom());
-                writer.writeEndElement();
-
-                writer.writeStartElement("prenom");
-                writer.writeCharacters(dm.getSecretairesMed().get(i).getPrenom());
-                writer.writeEndElement();
-
-                writer.writeStartElement("identifiant");
-                writer.writeCharacters(dm.getSecretairesMed().get(i).getId());
-                writer.writeEndElement();
-
-                writer.writeStartElement("mdp");
-                writer.writeCharacters(dm.getSecretairesMed().get(i).getMdp());
-
-                writer.writeEndElement();
-
-            }
-            writer.writeEndElement();
-            writer.writeEndDocument();
-            writer.flush();
-            writer.close();
-        } catch (XMLStreamException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-//Editer la liste des Secrétaires afministratives
-
-    public void editerSecretairesAdmin() {
-        XMLOutputFactory factory = XMLOutputFactory.newInstance();
-        try {
-            XMLStreamWriter writer = factory.createXMLStreamWriter(new FileWriter("src/donnees/" + nomFichier));
-            writer.writeStartDocument();
-            writer.writeStartElement("secretairesadmin");
-            for (int i = 0; i < dm.getSecretairesAdmin().size(); i++) {
-                writer.writeStartElement("secretaireadmin");
-                writer.writeStartElement("nom");
-                writer.writeCharacters(dm.getSecretairesAdmin().get(i).getNom());
-                writer.writeEndElement();
-
-                writer.writeStartElement("prenom");
-                writer.writeCharacters(dm.getSecretairesAdmin().get(i).getPrenom());
-                writer.writeEndElement();
-
-                writer.writeStartElement("identifiant");
-                writer.writeCharacters(dm.getSecretairesAdmin().get(i).getId());
-                writer.writeEndElement();
-
-                writer.writeStartElement("mdp");
-                writer.writeCharacters(dm.getSecretairesAdmin().get(i).getMdp());
-
-                writer.writeEndElement();
-
-            }
-            writer.writeEndElement();
-            writer.writeEndDocument();
-            writer.flush();
-            writer.close();
-        } catch (XMLStreamException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void editerSecretairesMed() {
+//        XMLOutputFactory factory = XMLOutputFactory.newInstance();
+//        try {
+//            XMLStreamWriter writer = factory.createXMLStreamWriter(new FileWriter("src/donnees/" + nomFichier));
+//            writer.writeStartDocument();
+//            writer.writeStartElement("secretairesmed");
+//            for (int i = 0; i < dm.getSecretairesMed().size(); i++) {
+//                writer.writeStartElement("secretairemed");
+//                writer.writeStartElement("nom");
+//                writer.writeCharacters(dm.getSecretairesMed().get(i).getNom());
+//                writer.writeEndElement();
+//
+//                writer.writeStartElement("prenom");
+//                writer.writeCharacters(dm.getSecretairesMed().get(i).getPrenom());
+//                writer.writeEndElement();
+//
+//                writer.writeStartElement("identifiant");
+//                writer.writeCharacters(dm.getSecretairesMed().get(i).getId());
+//                writer.writeEndElement();
+//
+//                writer.writeStartElement("mdp");
+//                writer.writeCharacters(dm.getSecretairesMed().get(i).getMdp());
+//
+//                writer.writeEndElement();
+//
+//            }
+//            writer.writeEndElement();
+//            writer.writeEndDocument();
+//            writer.flush();
+//            writer.close();
+//        } catch (XMLStreamException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+////Editer la liste des Secrétaires afministratives
+//
+//    public void editerSecretairesAdmin() {
+//        XMLOutputFactory factory = XMLOutputFactory.newInstance();
+//        try {
+//            XMLStreamWriter writer = factory.createXMLStreamWriter(new FileWriter("src/donnees/" + nomFichier));
+//            writer.writeStartDocument();
+//            writer.writeStartElement("secretairesadmin");
+//            for (int i = 0; i < dm.getSecretairesAdmin().size(); i++) {
+//                writer.writeStartElement("secretaireadmin");
+//                writer.writeStartElement("nom");
+//                writer.writeCharacters(dm.getSecretairesAdmin().get(i).getNom());
+//                writer.writeEndElement();
+//
+//                writer.writeStartElement("prenom");
+//                writer.writeCharacters(dm.getSecretairesAdmin().get(i).getPrenom());
+//                writer.writeEndElement();
+//
+//                writer.writeStartElement("identifiant");
+//                writer.writeCharacters(dm.getSecretairesAdmin().get(i).getId());
+//                writer.writeEndElement();
+//
+//                writer.writeStartElement("mdp");
+//                writer.writeCharacters(dm.getSecretairesAdmin().get(i).getMdp());
+//
+//                writer.writeEndElement();
+//
+//            }
+//            writer.writeEndElement();
+//            writer.writeEndDocument();
+//            writer.flush();
+//            writer.close();
+//        } catch (XMLStreamException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 //Editer la liste des patients
 
     public void editerPatients() {
@@ -158,7 +157,7 @@ public class EcritureXML {
                 writer.writeEndElement();
 
                 writer.writeStartElement("numsecu");
-                writer.writeCharacters(dm.getPatients().get(i).getNumSecu());
+                writer.writeCharacters(dm.getPatients().get(i).getNumSecu()+"");
                 writer.writeEndElement();
 
                 writer.writeStartElement("adresse");
@@ -166,7 +165,7 @@ public class EcritureXML {
                 writer.writeEndElement();
 
                 writer.writeStartElement("naissance");
-                writer.writeCharacters(dm.getPatients().get(i).getNaissance());
+                writer.writeCharacters(dm.getPatients().get(i).getNaissance()+"");
                 writer.writeEndElement();
 
                 writer.writeEndElement();
@@ -195,7 +194,7 @@ public class EcritureXML {
 
                 //date
                 writer.writeStartElement("date");
-                writer.writeCharacters(dm.getFiches(i).getDate());
+                writer.writeCharacters(dm.getFiches(i).getDate().toString());
                 writer.writeEndElement();
 
                 //medecin
@@ -209,7 +208,7 @@ public class EcritureXML {
                 writer.writeEndElement();
 
                 writer.writeStartElement("specialite");
-                writer.writeCharacters(dm.getFiches(i).getMedecin().getSpecialite());
+                writer.writeCharacters(dm.getFiches(i).getMedecin().getSpecialite().toString());
                 writer.writeEndElement();
 
                 writer.writeStartElement("numtel");
@@ -229,7 +228,7 @@ public class EcritureXML {
                 writer.writeEndElement();
 
                 writer.writeStartElement("numsecu");
-                writer.writeCharacters(dm.getFiches(i).getPatient().getNumSecu());
+                writer.writeCharacters(dm.getFiches(i).getPatient().getNumSecu()+"");
                 writer.writeEndElement();
 
                 writer.writeStartElement("adresse");
@@ -237,7 +236,7 @@ public class EcritureXML {
                 writer.writeEndElement();
 
                 writer.writeStartElement("naissance");
-                writer.writeCharacters(dm.getFiches(i).getPatient().getNaissance());
+                writer.writeCharacters(dm.getFiches(i).getPatient().getNaissance()+"");
                 writer.writeEndElement();
 
                 writer.writeEndElement();
@@ -246,19 +245,19 @@ public class EcritureXML {
                 for (int j = 0; j < dm.getFiches(i).getActes().size(); j++) {
                 writer.writeStartElement("acte");
                 writer.writeStartElement("code");
-                writer.writeCharacters(dm.getFiches(i).getActes(j).getCode());
+                writer.writeCharacters(dm.getFiches(i).getActe(j).getCode()+"");
                 writer.writeEndElement();
 
                 writer.writeStartElement("coef");
-                writer.writeCharacters(dm.getFiches(i).getActes(j).getCoeff());
+                writer.writeCharacters(dm.getFiches(i).getActe(j).getCoef()+"");
                 writer.writeEndElement();
                 
                 writer.writeStartElement("cout");
-                writer.writeCharacters(dm.getFiches(i).getActes(j).cout());
+                writer.writeCharacters(dm.getFiches(i).getActe(j).cout()+"");
                 writer.writeEndElement();
                     
                 writer.writeStartElement("observation");
-                writer.writeCharacters(dm.getFiches(i).getActes(j).getObs());
+                writer.writeCharacters(dm.getFiches(i).getActe(j).getObs());
                 writer.writeEndElement();
                     
                 writer.writeEndElement();
@@ -267,7 +266,7 @@ public class EcritureXML {
                 
                 //cout
                 writer.writeStartElement("cout");
-                writer.writeCharacters(dm.getFiches(i).coutTotal());
+                writer.writeCharacters(dm.getFiches(i).coutTotal()+"");
                 writer.writeEndElement();
                 
                 
