@@ -256,6 +256,11 @@ public class EcritureXML {
                 writer.writeStartElement("cout");
                 writer.writeCharacters(dm.getFiches(i).getActes(j).cout());
                 writer.writeEndElement();
+                    
+                writer.writeStartElement("observation");
+                writer.writeCharacters(dm.getFiches(i).getActes(j).getObs());
+                writer.writeEndElement();
+                    
                 writer.writeEndElement();
                 
                 }
