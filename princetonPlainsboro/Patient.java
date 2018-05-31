@@ -5,15 +5,15 @@ class Patient {
     private String prenom;
     private NumSecu numSecu; 
     private String adresse; 
-    private String Naissance;
+    private String naissance;
     private Sexe sexe;
     
-    public Patient(String nom, String prenom, NumSecu numSecu, String adresse, String Naissance, Sexe sexe) {
+    public Patient(String nom, String prenom, NumSecu numSecu, String adresse, String naissance, Sexe sexe) {
         this.nom = nom;
         this.prenom = prenom;
         this.numSecu = numSecu;
         this.adresse = adresse;
-        this.Naissance = Naissance;
+        this.naissance = naissance;
         this.sexe = sexe;
         }
     
@@ -34,7 +34,7 @@ class Patient {
         return numSecu;
     }
     public String getNaissance() {
-        return Naissance;
+        return naissance;
     }   
     
     public String toString() {
