@@ -149,5 +149,9 @@ class DossierMedical {
         //renvoyer toutes les secrétaires administratives présentes dans le dossier médical    
         return new ArrayList<SecretaireAdmin>();//a modifier
     }
+        public ArrayList<Patient> getPatients() {
+        //renvoyer tous patients présents dans le dossier médical    
+        return new ArrayList<Patient>();//a modifier
+    }
 }
 
