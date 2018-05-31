@@ -25,6 +25,9 @@ class Patient {
         return prenom;
     }
 
+    public Sexe getSexe() {
+        return sexe;
+    }
 
     public String getAdresse() {
         return adresse;
@@ -41,7 +44,9 @@ class Patient {
         String s "";
         if (sexe == Sexe.F) 
         { s+="Mme "; }
-        else { s+= "M. ;}
+        else {        if (sexe == Sexe.M) 
+        { s+="M."; } }
+
             s+= nom.toUpperCase() + " " + prenom + " Numéro SS : " + numSecu.toString();
         return s;
     }
