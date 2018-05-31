@@ -3,7 +3,7 @@ package princetonPlainsboro;
 import java.util.ArrayList;
 
 class FicheDeSoins {
-    
+
     private Patient patient;
     private Medecin medecin;
     private Date date;
@@ -15,39 +15,68 @@ class FicheDeSoins {
         this.date = date;
         actes = new ArrayList<Acte>();   // liste vide
     }
-    
+
     public Patient getPatient() {
         return patient;
     }
-    
+
     public Medecin getMedecin() {
         return medecin;
     }
-    
+
     public Date getDate() {
         return date;
     }
-    
+
+    public ArrayList<Acte> getActes() {
+        return actes;
+    }
+
+    public Acte getActe(int i) {
+        return actes.get(i);
+    }
+
     public void ajouterActe(Acte acte) {
         actes.add(acte);
     }
-    
-    public void ajouterActe(Code code, String nom, Acte.Type type, int coefficient) {
-        Acte acte = new Acte(code, nom, patient, medecin, date, type, coefficient);
+
+    public void ajouterActe(Code code, int coef, TypeActe typeacte, String obs) {
+        Acte acte = new Acte(code, coef, typeacte, obs);
         actes.add(acte);
     }
-    
-    public void afficher() {
-        System.out.println("Fiche de soins du " + date.toString());
-        System.out.println("- medecin : " + medecin.toString());
-        System.out.println("- patient : " + patient.toString());
-        System.out.println("- actes medicaux :");
-        for (int i = 0; i < actes.size(); i++) {
-            Acte a = actes.get(i);
-            System.out.println("    > " + a.toString());
+
+    public void ajouterListeActe(ArrayList<Acte> listeActe) {
+        for (int i = 0; i < listeActe.size(); i++) {
+            this.actes.add(listeActe.get(i));
         }
     }
-    
+
+    public String afficher() {
+        String s = "Fiche de soins du " + date.toString() + "\n"
+                + "- medecin : " + medecin.toString() + "\n"
+                + "- patient : " + patient.toString() + "\n"
+                + "- actes medicaux :" + "\n";
+        for (int i = 0; i < actes.size(); i++) {
+            Acte a = actes.get(i);
+            s += "    > " + a.toString() + "\n";
+        }
+        return s;
+    }
+
+    public String afficherCout() {
+        String s = "Fiche de soin de : " + patient.toString()
+                + ", fait par : " + medecin.toString()
+                + ", le : " + date.afficherDate() + "/n";
+        s += "Liste des actes : " + "/n";
+        for (int i = 0; i < actes.size(); i++) {
+            s += actes.get(i).afficherActe() + "/n";
+        }
+        
+        s+="Cout total : "+this.coutTotal();
+
+        return s;
+    }
+
     public double coutTotal() {
         double total = 0;
         for (int i = 0; i < actes.size(); i++) {
@@ -56,19 +85,6 @@ class FicheDeSoins {
         }
         return total;
     }
-    
-    public double coutParPatient() {
-        double total = 0;
-        for (int i = 0; i < actes.size(); i++) {
-            Acte a = actes.get(i);
-            if (a.getPat().getNom().equals(getPatient().getNom())) {
-                total += a.cout();
-            }
-        }
-        return total;
-        
-    }
-    
     
 }
 
