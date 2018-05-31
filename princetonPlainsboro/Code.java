@@ -35,7 +35,7 @@ enum Code {
     SF("Actes pratiqués par la sage-femme", 2.80),
     FI("Soins infirmiers pratiqués par la sage-femme", 2.18),
     AMS("Actes de rééducation des affections orthopédiques et rhumatologiques effectué par le masseur-kinésithérapeute", 2.15),
-    AMK("Actes pratiqués par le masseur-kinésithérapeute au cabinet ou au domicile du malade, à l'exception des actes effectués dans un cabinet installé au sein d'un établissement d'hospitalisation privé au profit d'un malade hospitalisé.", 200),
+    AMK("Actes pratiqués par le masseur-kinésithérapeute au cabinet ou au domicile du malade, à l'exception des actes effectués dans un cabinet installé au sein d'un établissement d'hospitalisation privé au profit d'un malade hospitalisé.", 2.15),
     AMC("Actes pratiqués par le masseur-kinésithérapeute dans une structure de soins ou un établissement, y compris lorsque le malade y a élu domicile, autre que ceux qui donnent lieu à application de la lettre clé AMK", 2.15),
     AMI("Actes pratiqués par l’infirmier ou l'infirmière, à l'exception des actes infirmiers de soins qui donnent lieu à application de la lettre clé AIS.", 3.15),
     AIS("Actes infirmiers de soins. La lettre clé AIS est applicable aux séances de soins infirmiers et aux gardes au domicile des malades.", 2.65),
