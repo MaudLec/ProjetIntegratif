@@ -4,15 +4,31 @@ class Date implements Comparable {
     private int jour;
     private int mois;
     private int annee;
-    
+    private int heure;
+    private int minute;
+        
+        public Date(int jour, int mois, int annee, int heure, int minute) {
+        this.jour = jour;
+        this.mois = mois;
+        this.annee = annee;
+        this.heure=heure;
+        this.minute=minute;
+        }
+        
     public Date(int jour, int mois, int annee) {
         this.jour = jour;
         this.mois = mois;
         this.annee = annee;
+        this.heure=0;
+        this.minute=0;
         }
     
+    public String afficherDate() {
+        return jour+ "/" + mois+ "/" + annee;
+    }
+    
     public String toString() {
-        return jour + "/" + mois + "/" + annee;
+        return jour + "/" + mois + "/" + annee + ", " + heure + ":" + minute;
         }
     
     public boolean equals(Object o) {
@@ -35,5 +51,6 @@ class Date implements Comparable {
         // ici on a forcement annee == d.annee et mois == d.mois :
         return jour - d.jour;
         }
+ 
     
     }
