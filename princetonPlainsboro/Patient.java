@@ -57,7 +57,7 @@ class Patient {
     public boolean equals(Object o) {
         if (o instanceof Patient) {
             Patient p = (Patient)o;
-            return getNom().equals(p.getNom()) && getPrenom().equals(p.getPrenom());
+            return getNumSecu().equals(p.getNumSecu());
             }
         else
             return false;
