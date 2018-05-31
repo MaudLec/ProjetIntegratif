@@ -133,5 +133,21 @@ class DossierMedical {
             copieFiches.remove(imin);
         }
     }
+    
+     //partie à compléter
+    public ArrayList<Medecin> getMedecins() {
+        //renvoyer tous les médecins présents dans le dossier médical
+        return new ArrayList<Medecin>();//a modifier
+    }
+
+    public ArrayList<SecretaireMed> getSecretairesMed() {
+        //renvoyer toutes les secrétaires médicales présentes dans le dossier médical
+        return new ArrayList<SecretaireMed>();//a modifier
+    }
+
+    public ArrayList<SecretaireAdmin> getSecretairesAdmin() {
+        //renvoyer toutes les secrétaires administratives présentes dans le dossier médical    
+        return new ArrayList<SecretaireAdmin>();//a modifier
+    }
 }
 
