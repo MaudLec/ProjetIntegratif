@@ -1,25 +1,45 @@
 package princetonPlainsboro;
 
-import java.util.ArrayList;
+class Medecin {
 
-class Medecin extends Personne {
+    private String nom;
+    private String prenom;
+    private String specialite;
+    private int telephone;
+    private int id;
+    private int mdp;
 
-    private Specialite specialite;
-    private ArrayList<Integer> numtel;
-
-    public Medecin(String nom, String prenom, Sexe sexe, Date naissance, int numid, Specialite specialite, ArrayList<Integer> numtel) {
-        super(nom, prenom, sexe, naissance, numid);
+    public Medecin(String nom, String prenom, String specialite, int telephone, int id, int mdp) {
+        this.nom = nom;
+        this.prenom = prenom;
         this.specialite = specialite;
-        if (numtel.size()==10) this.numtel=new ArrayList<Integer>();
-        
+        this.telephone = telephone;
+        this.id = id;
+        this.mdp = mdp;
     }
-    
+
+    public String getSpecialite() {
+        return this.specialite;
+    }
+
     public String getNom() {
         return this.nom;
     }
 
-    public Specialite getSpecialite() {
-        return specialite;
+    public String getPrenom() {
+        return this.prenom;
+    }
+
+    public int getTelephone() {
+        return telephone; //int could not be converted to string, so I had to create a string
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getMdp() {
+        return mdp;
     }
 
     public String toString() {
@@ -29,12 +49,9 @@ class Medecin extends Personne {
     public boolean equals(Object o) {
         if (o instanceof Medecin) {
             Medecin p = (Medecin) o;
-            return nom.equals(p.nom) && prenom.equals(p.prenom);
+            return this.getNom().equals(p.nom) && prenom.equals(p.prenom);
         } else {
             return false;
         }
     }
-    
 }
-
-
