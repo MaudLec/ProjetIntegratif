@@ -2,14 +2,12 @@ package princetonPlainsboro;
 
 public class SecretaireMed {
 
-    class Patient {
-
         private String nom;
         private String prenom;
         private int id;
         private String mdp;
 
-        public Patient(String nom, String prenom, int id, String mdp){
+        public SecretaireMed(String nom, String prenom, int id, String mdp){
             this.nom = nom;
             this.prenom = prenom;
             this.id = id;
@@ -32,6 +30,5 @@ public class SecretaireMed {
             return mdp;
         }
 
-    }
 
 }
