@@ -1,22 +1,49 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
+ * @author Julie Dubois, Suzanne Guegaden, Maud Leclerc, Vaea Tesan
  */
 package princetonPlainsboro;
 
 public enum Specialite {
-    autre,
-    anesthésiologie,
-    cardiologie,
-    dermatologie,
-    généraliste,
-    gérontologie,
-    gynécologie,
-    hématologie,
-    neurologie,
-    pédiatrie,
-    radiologie,
-    urologie,
-    oncologie;
+    Autre,
+    Anatomopathologie,
+    Anesthésiologie,
+    Bactériologie,
+    Biochimie,
+    Cardiologie,
+    Chirurgie,
+    Cytogénétique,
+    Dermatologie,
+    Endocrinologie,
+    Généraliste,
+    Gérontologie,
+    Gynécologie,
+    Hématologie,
+    Hémodialyse,
+    Hépatogastroentérologie,
+    Immunologie,
+    Mycologie,
+    Néonatologie,
+    Néphrologie,
+    Neurochirurgie,
+    Neurologie,
+    Nutrition,
+    Odontologie,
+    Oncologie,
+    Ophtalmologie,
+    ORL,
+    Orthopédie,
+    Pédiatrie,
+    Pédopsychiatrie,
+    Pharmacologie,
+    Pneumologie,
+    Psychiatrie,
+    Radiologie,
+    Réanimation,
+    Rhumatologie,
+    Sport,
+    Toxicologie,
+    Traumatologie,
+    Urologie,
+    Virologie;
 }
