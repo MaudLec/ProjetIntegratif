@@ -5,10 +5,10 @@ class Patient {
     private String prenom;
     private NumSecu numSecu; 
     private String adresse; 
-    private String naissance;
+    private Date naissance;
     private Sexe sexe;
     
-    public Patient(String nom, String prenom, NumSecu numSecu, String adresse, String naissance, Sexe sexe) {
+    public Patient(String nom, String prenom, NumSecu numSecu, String adresse, Date naissance, Sexe sexe) {
         this.nom = nom;
         this.prenom = prenom;
         this.numSecu = numSecu;
@@ -36,7 +36,7 @@ class Patient {
     public NumSecu getNumSecu(){
         return numSecu;
     }
-    public String getNaissance() {
+    public Date getNaissance() {
         return naissance;
     }   
     

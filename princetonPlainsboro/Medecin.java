@@ -4,12 +4,12 @@ class Medecin {
 
     private String nom;
     private String prenom;
-    private String specialite;
-    private int telephone;
-    private int id;
-    private int mdp;
+    private Specialite specialite;
+    private String telephone;
+    private String id;
+    private String mdp;
 
-    public Medecin(String nom, String prenom, String specialite, int telephone, int id, int mdp) {
+    public Medecin(String nom, String prenom, Specialite specialite, String telephone, String id, String mdp) {
         this.nom = nom;
         this.prenom = prenom;
         this.specialite = specialite;
@@ -18,7 +18,7 @@ class Medecin {
         this.mdp = mdp;
     }
 
-    public String getSpecialite() {
+    public Specialite getSpecialite() {
         return this.specialite;
     }
 
@@ -30,20 +30,20 @@ class Medecin {
         return this.prenom;
     }
 
-    public int getTelephone() {
+    public String getTelephone() {
         return telephone; //int could not be converted to string, so I had to create a string
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public int getMdp() {
+    public String getMdp() {
         return mdp;
     }
 
     public String toString() {
-        return "Dr " + prenom + " " + nom + ", " + specialite;
+        return "Dr " + prenom + " " + nom + ", " + specialite.toString();
     }
 
     public boolean equals(Object o) {

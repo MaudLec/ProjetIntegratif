@@ -4,10 +4,10 @@ public class SecretaireMed {
 
         private String nom;
         private String prenom;
-        private int id;
+        private String id;
         private String mdp;
 
-        public SecretaireMed(String nom, String prenom, int id, String mdp){
+        public SecretaireMed(String nom, String prenom, String id, String mdp){
             this.nom = nom;
             this.prenom = prenom;
             this.id = id;
@@ -22,7 +22,7 @@ public class SecretaireMed {
             return prenom;
         }
 
-        public int getId() {
+        public String getId() {
             return id;
         }
 
