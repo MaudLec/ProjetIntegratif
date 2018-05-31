@@ -1,16 +1,12 @@
-﻿/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
+ * @author Julie Dubois, Suzanne Guegaden, Maud Leclerc, Vaea Tesan
  */
 package princetonPlainsboro;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author maudl
- */
+
 public class NumSecu {
 //    private ArrayList<Integer> numSecu;
     private int sexe;
