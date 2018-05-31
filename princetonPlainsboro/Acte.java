@@ -29,6 +29,10 @@ class Acte {
     public String getObs() {
         return obs;
     }
+    
+    public void setObs(String observation) {
+        this.obs=observation;
+    }
 
     public String toString() {
         return code.toString() + ", coefficient : " + coef;
