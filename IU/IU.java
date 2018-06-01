@@ -1,9 +1,11 @@
-
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import princetonPlainsboro.Specialite;
 
 public class IU extends javax.swing.JFrame {
 
@@ -35,13 +37,17 @@ public class IU extends javax.swing.JFrame {
         Identifiant = new javax.swing.JLabel();
         DeconnexionButton = new javax.swing.JButton();
         Recherche = new javax.swing.JTextField();
-        Logo = new javax.swing.JPanel();
+        Logo = new javax.swing.JPanel()
+        ;
+        jLabel1 = new JLabel(icon)
+        ;
         jMenuBar = new javax.swing.JMenuBar();
         File = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
-        jMenu8 = new javax.swing.JMenu();
-        jMenu9 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         Edit = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
         NewFicheSoins = new javax.swing.JDialog();
         DateLabel = new javax.swing.JLabel();
         DateField = new javax.swing.JTextField();
@@ -63,6 +69,13 @@ public class IU extends javax.swing.JFrame {
         PrenomM = new javax.swing.JLabel();
         SpecialiteM = new javax.swing.JLabel();
         ChoixSpe = new javax.swing.JComboBox<>();
+        int i=0;
+        Specialite[] spe= Specialite.values();
+        while(i<spe.length){
+            ChoixSpe.addItem(spe[i].toString());
+            i++;
+        }
+        ;
         jSeparator5 = new javax.swing.JSeparator();
         AddActeButton = new javax.swing.JButton();
         ActeLabel = new javax.swing.JLabel();
@@ -110,23 +123,23 @@ public class IU extends javax.swing.JFrame {
         NonButtonD = new javax.swing.JButton();
         FichedeSoins = new javax.swing.JFrame();
         FSDate = new javax.swing.JLabel();
-        DateXML = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
         PatientLabel1 = new javax.swing.JLabel();
         FSSexe = new javax.swing.JLabel();
         FSNomP = new javax.swing.JLabel();
         FSPrenomP = new javax.swing.JLabel();
         FSNSS = new javax.swing.JLabel();
-        jSeparator6 = new javax.swing.JSeparator();
-        MedecinLabel1 = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
-        ActeLabel1 = new javax.swing.JLabel();
+        MedecinLabel1 = new javax.swing.JLabel();
+        FSNomM = new javax.swing.JLabel();
+        FSPrenomM = new javax.swing.JLabel();
+        FSSpeM = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        ActeLabel1 = new javax.swing.JLabel();
+        ListeActes = new javax.swing.JScrollPane();
         jList5 = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        FermerFS = new javax.swing.JButton();
+        ModifFSButton = new javax.swing.JButton();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jTextField17 = new javax.swing.JTextField();
@@ -135,9 +148,7 @@ public class IU extends javax.swing.JFrame {
 
         FPrincipale.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         FPrincipale.setTitle("NomDuLogiciel");
-        FPrincipale.setMaximumSize(new java.awt.Dimension(900, 600));
         FPrincipale.setMinimumSize(new java.awt.Dimension(900, 600));
-        FPrincipale.setPreferredSize(new java.awt.Dimension(900, 600));
 
         FPFichedeSoins.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -164,7 +175,7 @@ public class IU extends javax.swing.JFrame {
             .addGroup(FPFichesBareLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel25)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 430, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 426, Short.MAX_VALUE)
                 .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton14)
@@ -186,6 +197,11 @@ public class IU extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jList3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList3MouseClicked(evt);
+            }
+        });
         ListeFiches.setViewportView(jList3);
 
         javax.swing.GroupLayout FPFichedeSoinsLayout = new javax.swing.GroupLayout(FPFichedeSoins);
@@ -203,8 +219,7 @@ public class IU extends javax.swing.JFrame {
             .addGroup(FPFichedeSoinsLayout.createSequentialGroup()
                 .addComponent(FPFichesBare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ListeFiches)
-                .addContainerGap())
+                .addComponent(ListeFiches))
         );
 
         OptTri.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -332,34 +347,48 @@ public class IU extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setMinimumSize(new java.awt.Dimension(200, 200));
+        jLabel1.setPreferredSize(new java.awt.Dimension(200, 200));
+
         javax.swing.GroupLayout LogoLayout = new javax.swing.GroupLayout(Logo);
         Logo.setLayout(LogoLayout);
         LogoLayout.setHorizontalGroup(
             LogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(LogoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                .addContainerGap())
         );
         LogoLayout.setVerticalGroup(
             LogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 134, Short.MAX_VALUE)
+            .addGroup(LogoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jMenuBar.setToolTipText("");
 
         File.setText("File");
 
-        jMenu7.setText("jMenu3");
-        File.add(jMenu7);
-
-        jMenu8.setText("jMenu4");
-        File.add(jMenu8);
-
-        jMenu9.setText("jMenu5");
-        File.add(jMenu9);
+        jMenuItem1.setText("Imprimer");
+        File.add(jMenuItem1);
 
         jMenuBar.add(File);
 
         Edit.setText("Edit");
+
+        jMenu1.setText("Ajouter...");
+
+        jMenuItem2.setText("Spécialité");
+        jMenu1.add(jMenuItem2);
+
+        Edit.add(jMenu1);
+
         jMenuBar.add(Edit);
+
+        jMenu2.setText("Paramètres");
+        jMenuBar.add(jMenu2);
 
         FPrincipale.setJMenuBar(jMenuBar);
 
@@ -369,12 +398,12 @@ public class IU extends javax.swing.JFrame {
             FPrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FPrincipaleLayout.createSequentialGroup()
                 .addComponent(FPFichedeSoins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(FPrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(Cout, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(OptTri, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Recherche)
-                    .addComponent(Id, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(FPrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Id, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Recherche, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Cout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(OptTri, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         FPrincipaleLayout.setVerticalGroup(
@@ -392,14 +421,12 @@ public class IU extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Cout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(Logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         NewFicheSoins.setTitle("Nouvelle Fiche de Soin");
         NewFicheSoins.setFocusableWindowState(false);
         NewFicheSoins.setMinimumSize(new java.awt.Dimension(750, 550));
-        NewFicheSoins.setPreferredSize(new java.awt.Dimension(750, 550));
 
         DateLabel.setText("Date :");
 
@@ -437,7 +464,11 @@ public class IU extends javax.swing.JFrame {
 
         SpecialiteM.setText("Spécialité :");
 
-        ChoixSpe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ChoixSpe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChoixSpeActionPerformed(evt);
+            }
+        });
 
         AddActeButton.setText("+");
         AddActeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -596,7 +627,6 @@ public class IU extends javax.swing.JFrame {
         );
 
         TriPatient.setTitle("Patient");
-        TriPatient.setMaximumSize(new java.awt.Dimension(450, 340));
         TriPatient.setMinimumSize(new java.awt.Dimension(450, 340));
 
         SelectP.setText("Sélectionner un patient :");
@@ -716,9 +746,7 @@ public class IU extends javax.swing.JFrame {
         TriMédecin.getAccessibleContext().setAccessibleDescription("");
 
         TriDate.setTitle("Date");
-        TriDate.setMaximumSize(new java.awt.Dimension(400, 300));
         TriDate.setMinimumSize(new java.awt.Dimension(400, 300));
-        TriDate.setPreferredSize(new java.awt.Dimension(400, 300));
 
         AfficherListeDate.setText("Afficher");
         AfficherListeDate.addActionListener(new java.awt.event.ActionListener() {
@@ -773,9 +801,7 @@ public class IU extends javax.swing.JFrame {
         );
 
         TriNbActes.setTitle("Date");
-        TriNbActes.setMaximumSize(new java.awt.Dimension(400, 250));
         TriNbActes.setMinimumSize(new java.awt.Dimension(400, 250));
-        TriNbActes.setPreferredSize(new java.awt.Dimension(400, 250));
 
         AfficherListeNbActes.setText("Afficher");
         AfficherListeNbActes.addActionListener(new java.awt.event.ActionListener() {
@@ -817,7 +843,6 @@ public class IU extends javax.swing.JFrame {
 
         NewActe.setTitle("Acte de soin");
         NewActe.setMinimumSize(new java.awt.Dimension(430, 430));
-        NewActe.setPreferredSize(new java.awt.Dimension(430, 430));
 
         TypeActe.setText("Type :");
 
@@ -900,7 +925,6 @@ public class IU extends javax.swing.JFrame {
 
         Deconnect.setTitle("Déconnexion");
         Deconnect.setMinimumSize(new java.awt.Dimension(400, 200));
-        Deconnect.setPreferredSize(new java.awt.Dimension(400, 200));
 
         MsgDec.setText("Etes vous sûrs de vouloir vous déconnecter ?");
 
@@ -947,11 +971,8 @@ public class IU extends javax.swing.JFrame {
 
         FichedeSoins.setTitle("Fiche de soins");
         FichedeSoins.setMinimumSize(new java.awt.Dimension(500, 600));
-        FichedeSoins.setPreferredSize(new java.awt.Dimension(500, 600));
 
         FSDate.setText("Date :");
-
-        DateXML.setText("jLabel1");
 
         PatientLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         PatientLabel1.setText("Patient");
@@ -967,6 +988,12 @@ public class IU extends javax.swing.JFrame {
         MedecinLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         MedecinLabel1.setText("Médecin");
 
+        FSNomM.setText("Nom :");
+
+        FSPrenomM.setText("Prénom :");
+
+        FSSpeM.setText("Spécialité :");
+
         ActeLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ActeLabel1.setText("Actes");
 
@@ -975,15 +1002,12 @@ public class IU extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList5);
+        ListeActes.setViewportView(jList5);
 
-        jButton1.setText("Fermer");
+        FermerFS.setText("Fermer");
 
-        jLabel8.setText("Nom :");
-
-        jLabel9.setText("Prénom :");
-
-        jLabel10.setText("Spécialité :");
+        ModifFSButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edit.png"))); // NOI18N
+        ModifFSButton.setText("jButton1");
 
         javax.swing.GroupLayout FichedeSoinsLayout = new javax.swing.GroupLayout(FichedeSoins.getContentPane());
         FichedeSoins.getContentPane().setLayout(FichedeSoinsLayout);
@@ -993,7 +1017,7 @@ public class IU extends javax.swing.JFrame {
                 .addGroup(FichedeSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FichedeSoinsLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(FermerFS))
                     .addGroup(FichedeSoinsLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(FichedeSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1009,19 +1033,19 @@ public class IU extends javax.swing.JFrame {
                                                     .addComponent(FSNomP, javax.swing.GroupLayout.Alignment.TRAILING)
                                                     .addComponent(FSSexe, javax.swing.GroupLayout.Alignment.TRAILING)))
                                             .addGroup(FichedeSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                                .addComponent(FSPrenomM, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(FSNomM, javax.swing.GroupLayout.Alignment.TRAILING)))
                                         .addGap(154, 154, 154)
                                         .addGroup(FichedeSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(FSNSS, javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(FSPrenomP, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                            .addComponent(FSSpeM, javax.swing.GroupLayout.Alignment.TRAILING)))
                                     .addComponent(jSeparator7)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FichedeSoinsLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(FSDate)
-                                .addGap(18, 18, 18)
-                                .addComponent(DateXML))
+                                .addGap(45, 45, 45)
+                                .addComponent(ModifFSButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(FichedeSoinsLayout.createSequentialGroup()
                                 .addComponent(PatientLabel1)
                                 .addGap(18, 18, 18)
@@ -1032,8 +1056,8 @@ public class IU extends javax.swing.JFrame {
                 .addGroup(FichedeSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(FichedeSoinsLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(48, Short.MAX_VALUE))
+                        .addComponent(ListeActes, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(116, Short.MAX_VALUE))
                     .addGroup(FichedeSoinsLayout.createSequentialGroup()
                         .addComponent(ActeLabel1)
                         .addGap(18, 18, 18)
@@ -1044,10 +1068,10 @@ public class IU extends javax.swing.JFrame {
             FichedeSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FichedeSoinsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(FichedeSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(FichedeSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(FSDate)
-                    .addComponent(DateXML))
-                .addGap(14, 14, 14)
+                    .addComponent(ModifFSButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(FichedeSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(PatientLabel1)
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1067,11 +1091,11 @@ public class IU extends javax.swing.JFrame {
                     .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(FichedeSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
+                    .addComponent(FSSpeM)
                     .addGroup(FichedeSoinsLayout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                        .addComponent(FSNomM)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel9)))
+                        .addComponent(FSPrenomM)))
                 .addGap(27, 27, 27)
                 .addGroup(FichedeSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ActeLabel1)
@@ -1079,17 +1103,15 @@ public class IU extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ListeActes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
-                .addComponent(jButton1)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addComponent(FermerFS)
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Connexion");
-        setMaximumSize(new java.awt.Dimension(380, 250));
-        setMinimumSize(new java.awt.Dimension(380, 250));
-        setPreferredSize(new java.awt.Dimension(380, 250));
+        setMinimumSize(new java.awt.Dimension(380, 280));
 
         jLabel29.setText("Identifiant :");
 
@@ -1258,37 +1280,28 @@ public class IU extends javax.swing.JFrame {
         Deconnect.dispose();
     }                                          
 
-//    Afficher une fiche de soin en double cliquant dessus
-//    
-//    public void addActionListener(final ActionListener al) {
-//        jList3().addMouseListener(new MouseAdapter() {
-//            public void mouseClicked(MouseEvent e) {
-//                if (e.getClickCount() == 2) {
-//                    String selectedItem = (String) jList3.getSelectedValue();
-//                    jFrame1.setVisible(true);
-//                }
-//            }
-//        }
-//    }
+    
+    private void jList3MouseClicked(java.awt.event.MouseEvent evt) {                                    
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 2) {
+//            adapter la fiche à la ligne demandee
+//            String selectedItem = (String) jList3.getSelectedValue();
+            FichedeSoins.setVisible(true);
+        }
+    }                                   
+
+    private void ChoixSpeActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+    }                                        
+
+
 
     public static void main(String args[]) {
-//        mettre le logo :
-//        ImageIcon icone = new ImageIcon("Users/Julie/Desktop/COURS/Polytech/Projet/logo.png");
-//        JLabel image = new JLabel(icone);
-//        jPanel1.add(image);
-//        jPanel1.repaint();
-//        jFrame2.add(jPanel1);
-//        pack();
-//        setDefaultCloseOperation(EXIT_ON_CLOSE);
-//        jFrame2.setVisible(true);
-
-
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -1347,7 +1360,6 @@ public class IU extends javax.swing.JFrame {
     private javax.swing.JLabel DateLabel;
     private javax.swing.JLabel DateNais;
     private javax.swing.JTextField DateNaisField;
-    private javax.swing.JLabel DateXML;
     private javax.swing.JDialog Deconnect;
     private javax.swing.JButton DeconnexionButton;
     private javax.swing.JMenu Edit;
@@ -1356,14 +1368,19 @@ public class IU extends javax.swing.JFrame {
     private javax.swing.JFrame FPrincipale;
     private javax.swing.JLabel FSDate;
     private javax.swing.JLabel FSNSS;
+    private javax.swing.JLabel FSNomM;
     private javax.swing.JLabel FSNomP;
+    private javax.swing.JLabel FSPrenomM;
     private javax.swing.JLabel FSPrenomP;
     private javax.swing.JLabel FSSexe;
+    private javax.swing.JLabel FSSpeM;
+    private javax.swing.JButton FermerFS;
     private javax.swing.JButton FicheSoinsValiderButton;
     private javax.swing.JFrame FichedeSoins;
     private javax.swing.JMenu File;
     private javax.swing.JPanel Id;
     private javax.swing.JLabel Identifiant;
+    private javax.swing.JScrollPane ListeActes;
     private javax.swing.JScrollPane ListeActesFiche;
     private javax.swing.JScrollPane ListeFiches;
     private javax.swing.JScrollPane ListeM;
@@ -1372,6 +1389,7 @@ public class IU extends javax.swing.JFrame {
     private javax.swing.JButton MedecinButton;
     private javax.swing.JLabel MedecinLabel;
     private javax.swing.JLabel MedecinLabel1;
+    private javax.swing.JButton ModifFSButton;
     private javax.swing.JLabel MsgDec;
     private javax.swing.JLabel NSecuSoc;
     private javax.swing.JTextField NSecuSocField;
@@ -1410,30 +1428,27 @@ public class IU extends javax.swing.JFrame {
     private javax.swing.JLabel TypeActe;
     private javax.swing.JTextField TypeActeField;
     private javax.swing.JButton ValiderActeButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton20;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JList<String> jList3;
     private javax.swing.JList<String> jList4;
     private javax.swing.JList<String> jList5;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenu jMenu9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
@@ -1443,13 +1458,10 @@ public class IU extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextPane jTextPane1;
     // End of variables declaration                   
-
-
-
+    ImageIcon img=new ImageIcon("/logo.png");
+    ImageIcon icon= new ImageIcon(img.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
+    
 //    private javax.swing.JLabel jLabelA1;
 //    private javax.swing.JLabel jLabelA2;
-//    private Object jList3() {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
-    
+
 }
