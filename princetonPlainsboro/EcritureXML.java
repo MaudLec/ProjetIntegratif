@@ -159,12 +159,20 @@ public class EcritureXML {
                 writer.writeCharacters(dm.getPatients().get(i).getNumSecu() + "");
                 writer.writeEndElement();
 
-                writer.writeStartElement("adresse");
-                writer.writeCharacters(dm.getPatients().get(i).getAdresse());
+                writer.writeStartElement("rue");
+                writer.writeCharacters(dm.getPatients().get(i).getAdresse().getRue());
+                writer.writeEndElement();
+
+                writer.writeStartElement("codePostal");
+                writer.writeCharacters(dm.getPatients().get(i).getAdresse().getCodePostal());
+                writer.writeEndElement();
+
+                writer.writeStartElement("ville");
+                writer.writeCharacters(dm.getPatients().get(i).getAdresse().getVille());
                 writer.writeEndElement();
 
                 writer.writeStartElement("naissance");
-                writer.writeCharacters(dm.getPatients().get(i).getNaissance() + "");
+                writer.writeCharacters(dm.getPatients().get(i).getNaissance().ecritureXML());
                 writer.writeEndElement();
 
                 writer.writeEndElement();
@@ -230,12 +238,20 @@ public class EcritureXML {
                 writer.writeCharacters(dm.getFiches(i).getPatient().getNumSecu() + "");
                 writer.writeEndElement();
 
-                writer.writeStartElement("adresse");
-                writer.writeCharacters(dm.getFiches(i).getPatient().getAdresse());
+                writer.writeStartElement("rue");
+                writer.writeCharacters(dm.getPatients().get(i).getAdresse().getRue());
+                writer.writeEndElement();
+
+                writer.writeStartElement("codePostal");
+                writer.writeCharacters(dm.getPatients().get(i).getAdresse().getCodePostal());
+                writer.writeEndElement();
+
+                writer.writeStartElement("ville");
+                writer.writeCharacters(dm.getPatients().get(i).getAdresse().getVille());
                 writer.writeEndElement();
 
                 writer.writeStartElement("naissance");
-                writer.writeCharacters(dm.getFiches(i).getPatient().getNaissance() + "");
+                writer.writeCharacters(dm.getFiches(i).getPatient().getNaissance().ecritureXML());
                 writer.writeEndElement();
 
                 writer.writeStartElement("sexe");

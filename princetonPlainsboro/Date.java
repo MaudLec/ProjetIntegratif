@@ -23,6 +23,10 @@ class Date implements Comparable {
         this.minute=0;
         }
     
+    public String ecritureXML() {
+        return jour+"-"+mois+"-"+annee;
+    }
+    
     public String afficherDate() {
         return jour+ "/" + mois+ "/" + annee;
     }

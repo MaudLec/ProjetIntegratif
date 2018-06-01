@@ -49,7 +49,7 @@ public class LectureXML {
         TypeActe type = null;
         String numtel = "";
         NumSecu numsecu = null;
-        String adresse = null;
+        Adresse adresse = null;
         Sexe sexe = null;
         String obs = "";
 
