@@ -29,7 +29,7 @@ public class NumSecu {
         this.numero = reg*1L + comm*1000L + dep*1000000L + mois*100000000L + annee*10000000000L + sexe*1000000000000L;
     }
     
-    public long toString() { 
+    public String toString() { 
         return numero + " " + cle;
     }
 
