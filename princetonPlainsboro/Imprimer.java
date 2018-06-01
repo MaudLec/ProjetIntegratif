@@ -44,13 +44,16 @@ public class Imprimer implements Printable {
      * Affiche la fenêtre pour le choix de l'imprimante
      */
     public void doPrint() {
-        PrinterJob printJob = PrinterJob.getPrinterJob();
-        printJob.setPrintable(this);
-        if (printJob.printDialog()) {
+        PrinterJob job = PrinterJob.getPrinterJob();
+        /* On définit le contenu à imprimer */
+        job.setPrintable(this);
+        /* Affichage de la boite de dialogue d'impression */
+        if (job.printDialog()) {
             try {
-                printJob.print();
+                /* Lancement de l'impression */
+                job.print();
             } catch (PrinterException pe) {
-                System.out.println("Error printing: " + pe);
+                pe.printStackTrace();
             }
         }
     }
@@ -64,14 +67,14 @@ public class Imprimer implements Printable {
      */
     @Override
     public int print(Graphics g, PageFormat pageFormat, int pageIndex) throws PrinterException {
+        /* NO_SUCH_PAGE si la page n'existe pas & on ne fait rien sinon on imprime PAGE_EXISTS */
         if (pageIndex > 0) {
             return NO_SUCH_PAGE;
         } else {
+            /* Définition du contenu à imprimer */
             Graphics2D g2d = (Graphics2D) g;
 
-            /**
-             * Coordonnées des bords de page
-             */
+            /* Coordonnées des bords de page */
             int x = (int) pageFormat.getImageableX();
             int y = (int) pageFormat.getImageableY();
 
