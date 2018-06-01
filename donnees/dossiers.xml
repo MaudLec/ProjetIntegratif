@@ -11,7 +11,15 @@
     <patient>
         <nom>Track</nom>
         <prenom>Pat</prenom>
-        <numsecu>vzrvrz</numsecu>
+        	<numsecu>
+		<sexe>1</sexe>
+		<annee>49</annee>
+		<mois>8</mois>
+		<dep>45</dep>
+		<comm>695</comm>
+		<reg>205</reg>
+		<cle>45</<cle>
+	</numsecu>
         <sexe>M</sexe>
     </patient>
     <acte>
@@ -38,7 +46,15 @@
     <patient>
         <nom>Bole</nom>
         <prenom>Pat</prenom>
-        <numsecu>vzrvrz</numsecu>
+                	<numsecu>
+		<sexe>1</sexe>
+		<annee>49</annee>
+		<mois>8</mois>
+		<dep>45</dep>
+		<comm>695</comm>
+		<reg>205</reg>
+		<cle>45</<cle>
+	</numsecu>
         <sexe>M</sexe>
     </patient>
     <acte>
@@ -61,8 +77,16 @@
     <patient>
         <nom>Bole</nom>
         <prenom>Maggy</prenom>
-        <numsecu>vzrvrz</numsecu>
-        <sexe>F</sexe>
+                	<numsecu>
+		<sexe>1</sexe>
+		<annee>49</annee>
+		<mois>8</mois>
+		<dep>45</dep>
+		<comm>695</comm>
+		<reg>205</reg>
+		<cle>45</<cle>
+	</numsecu>
+        <sexe>M</sexe>
     </patient>
     <acte>
         <code>CSC</code>
@@ -80,8 +104,16 @@
     <patient>
         <nom>Bole</nom>
         <prenom>Maggy</prenom>
-        <numsecu>vzrvrz</numsecu>
-        <sexe>F</sexe>
+                	<numsecu>
+		<sexe>1</sexe>
+		<annee>49</annee>
+		<mois>8</mois>
+		<dep>45</dep>
+		<comm>695</comm>
+		<reg>205</reg>
+		<cle>45</<cle>
+	</numsecu>
+        <sexe>M</sexe>
     </patient>
     <acte>
         <code>KE</code>
@@ -99,8 +131,16 @@
     <patient>
         <nom>Epi</nom>
         <prenom>Fanie</prenom>
-        <numsecu>vzrvrz</numsecu>
-        <sexe>F</sexe>
+                	<numsecu>
+		<sexe>1</sexe>
+		<annee>49</annee>
+		<mois>8</mois>
+		<dep>45</dep>
+		<comm>695</comm>
+		<reg>205</reg>
+		<cle>45</<cle>
+	</numsecu>
+        <sexe>M</sexe>
     </patient>
     <acte>
         <code>CS</code>
@@ -122,8 +162,16 @@
     <patient>
         <nom>Henfayitte</nom>
         <prenom>Melusine</prenom>
-        <numsecu>vzrvrz</numsecu>
-        <sexe>F</sexe>
+                	<numsecu>
+		<sexe>1</sexe>
+		<annee>49</annee>
+		<mois>8</mois>
+		<dep>45</dep>
+		<comm>695</comm>
+		<reg>205</reg>
+		<cle>45</<cle>
+	</numsecu>
+        <sexe>M</sexe>
     </patient>
     <acte>
         <code>CS</code>
