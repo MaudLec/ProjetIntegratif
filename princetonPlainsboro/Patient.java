@@ -4,11 +4,11 @@ class Patient {
     private String nom;
     private String prenom;
     private NumSecu numSecu; 
-    private String adresse; 
+    private Adresse adresse; 
     private Date naissance;
     private Sexe sexe;
     
-    public Patient(String nom, String prenom, NumSecu numSecu, String adresse, Date naissance, Sexe sexe) {
+    public Patient(String nom, String prenom, NumSecu numSecu, Adresse adresse, Date naissance, Sexe sexe) {
         this.nom = nom;
         this.prenom = prenom;
         this.numSecu = numSecu;
@@ -29,7 +29,7 @@ class Patient {
         return sexe;
     }
 
-    public String getAdresse() {
+    public Adresse getAdresse() {
         return adresse;
     }
 
@@ -52,7 +52,7 @@ class Patient {
         this.numSecu = numSecu;
     }
 
-    public void setAdresse(String adresse) {
+    public void setAdresse(Adresse adresse) {
         this.adresse = adresse;
     }
 
@@ -64,6 +64,7 @@ class Patient {
         this.sexe = sexe;
     }
     
+    @Override
     public String toString() {
         String s = "";
         if (sexe == Sexe.F) {
@@ -78,6 +79,7 @@ class Patient {
         return s;
     }
     
+    @Override
     public boolean equals(Object o) {
         if (o instanceof Patient) {
             Patient p = (Patient)o;
