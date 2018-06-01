@@ -8,7 +8,7 @@
 		<dep>45</dep>
 		<comm>695</comm>
 		<reg>205</reg>
-		<cle>45</<cle>
+		<cle>45</cle>
 	</numsecu>
 	<adresse>
 		<rue>3 impasse des Lilas</rue>
@@ -31,7 +31,7 @@
 		<dep>1</dep>
 		<comm>56</comm>
 		<reg>196</reg>
-		<cle>7</<cle>
+		<cle>7</cle>
 	</numsecu>
 	<adresse>
 		<rue>201 Portobello Road</rue>
@@ -53,7 +53,7 @@
 		<dep>56</dep>
 		<comm>265</comm>
 		<reg>124</reg>
-		<cle>51</<cle>
+		<cle>51</cle>
 	</numsecu>
 	<adresse>
 		<rue>Tatooine</rue>
@@ -75,7 +75,7 @@
 		<dep>33</dep>
 		<comm>123</comm>
 		<reg>456</reg>
-		<cle>2</<cle>
+		<cle>2</cle>
 	</numsecu>
 	<adresse>
 		<rue>4 privet drive</rue>
@@ -98,7 +98,7 @@
 		<dep>1</dep>
 		<comm>1</comm>
 		<reg>1</reg>
-		<cle>52</<cle>
+		<cle>52</cle>
 	</numsecu>
 	<adresse>
 		<rue>8 rue salomon de caus</rue>
@@ -121,7 +121,7 @@
 		<dep>22</dep>
 		<comm>12</comm>
 		<reg>21</reg>
-		<cle>41</<cle>
+		<cle>41</cle>
 	</numsecu>
 	<adresse>
 		<rue>Font de Se</rue>
