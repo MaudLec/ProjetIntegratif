@@ -7,19 +7,14 @@
  */
 package princetonPlainsboro;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.FileInputStream;
+import java.io.*;
 import java.util.ArrayList;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamConstants;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
+import javax.xml.stream.*;
 
 /**
  * Lecture d'un document XML et transformation en instances Java.
  *
- * @author promayon
+ * 
  */
 public class LectureXML {
 
@@ -32,6 +27,7 @@ public class LectureXML {
         this.nomFichier = nomFichier;
     }
 
+    
     public DossierMedical getDossier() {
         DossierMedical dossierCourant = null;
         Date date = null;
@@ -43,14 +39,14 @@ public class LectureXML {
         String donneesCourantes = "";
         String nomCourant = "";
         String prenomCourant = "";
-        Specialite specialiteCourante = Specialite.Autre;
+        Specialite specialiteCourante = null;
         Code codeCourant = null;
         int coefCourant = 0;
         TypeActe type = null;
         String numtel = "";
         NumSecu numsecu = null;
         Adresse adresse = null;
-        Sexe sexe = null;
+        Sexe sexe =null;
         String obs = "";
 
         String id = "";
