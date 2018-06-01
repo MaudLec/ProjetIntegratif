@@ -46,4 +46,8 @@ public enum Specialite {
     Traumatologie,
     Urologie,
     Virologie;
+    
+    public  int getNombreSpe(){
+        return this.values().length;
+    }
 }
