@@ -39,6 +39,30 @@ class Patient {
     public Date getNaissance() {
         return naissance;
     }   
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public void setNumSecu(NumSecu numSecu) {
+        this.numSecu = numSecu;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public void setNaissance(Date naissance) {
+        this.naissance = naissance;
+    }
+
+    public void setSexe(Sexe sexe) {
+        this.sexe = sexe;
+    }
     
     public String toString() {
         String s = "";

@@ -29,23 +29,35 @@ class Acte {
     public String getObs() {
         return obs;
     }
-    
+
+    public void setCode(Code code) {
+        this.code = code;
+    }
+
+    public void setCoef(int coef) {
+        this.coef = coef;
+    }
+
+    public void setType(TypeActe type) {
+        this.type = type;
+    }
+
     public void setObs(String observation) {
-        this.obs=observation;
+        this.obs = observation;
     }
 
     public String toString() {
         return code.toString() + ", coefficient : " + coef;
     }
-    
+
     public String afficherActe() {
         String s = "Nom : " + this.toString();
-        if (!obs.isEmpty())
-            s+="Observations : "+obs;
-        
+        if (!obs.isEmpty()) {
+            s += "Observations : " + obs;
+        }
+
         return s;
     }
-       
 
     public double cout() {
         return code.calculerCout(coef);
