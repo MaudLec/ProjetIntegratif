@@ -55,6 +55,7 @@ public class LectureXML {
 
         String id = "";
         String mdp = "";
+        
         // analyser le fichier par StAX
         try {
             // instanciation du parser
@@ -275,4 +276,62 @@ public class LectureXML {
         }
         return null;
     }
+    
+    private static TypeActe getType (String type)  {
+        if (type.equals("therapeutique")) {
+            return TypeActe.therapeutique;
+        }
+        if (type.equals("diagnostique")) {
+            return TypeActe.diagnostique;
+        }
+        return null;
+    }
+    
+        private static Specialite getSpecialite(String specialite) {
+        if (specialite.equals("anesthesie")) {
+            return Specialite.ANESTHESIOLOGIE;
+        }
+        if (specialite.equals("CARDIOLOGIE")) {
+            return Specialite.CARDIOLOGIE;
+        }
+        if (specialite.equals("DERMATOLOGIE")) {
+            return Specialite.DERMATOLOGIE;
+        }
+        if (specialite.equals("ENDOSCOPIE_DIGESTIVE")) {
+            return Specialite.ENDOSCOPIE_DIGESTIVE;
+        }
+        if (specialite.equals("GASTROENTEROLOGIE")) {
+            return Specialite.GASTROENTEROLOGIE;
+        }
+        if (specialite.equals("GERONTOLOGIE")) {
+            return Specialite.GERONTOLOGIE;
+        }
+        if (specialite.equals("GYNECOLOGIE")) {
+            return Specialite.GYNECOLOGIE;
+        }
+        if (specialite.equals("HEMATOLOGIE")) {
+            return Specialite.HEMATOLOGIE;
+        }
+        if (specialite.equals("NEUROLOGIE")) {
+            return Specialite.NEUROLOGIE;
+        }
+        if (specialite.equals("PEDIATRIE")) {
+            return Specialite.PEDIATRIE;
+        }
+        if (specialite.equals("PNEUMOLOGIE")) {
+            return Specialite.PNEUMOLOGIE;
+        }
+        if (specialite.equals("RADIOLOGIE")) {
+            return Specialite.RADIOLOGIE;
+        }
+        if (specialite.equals("UROLOGIE")) {
+            return Specialite.UROLOGIE;
+        }
+        if (specialite.equals("ONCOLOGIE")) {
+            return Specialite.ONCOLOGIE;
+        }
+        return null;
+
+    }
+      
 }

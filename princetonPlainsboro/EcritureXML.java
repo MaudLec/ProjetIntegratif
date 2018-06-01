@@ -139,7 +139,6 @@ public class EcritureXML {
 //        }
 //    }
 //Editer la liste des patients
-
     public void editerPatients() {
         XMLOutputFactory factory = XMLOutputFactory.newInstance();
         try {
@@ -157,7 +156,7 @@ public class EcritureXML {
                 writer.writeEndElement();
 
                 writer.writeStartElement("numsecu");
-                writer.writeCharacters(dm.getPatients().get(i).getNumSecu()+"");
+                writer.writeCharacters(dm.getPatients().get(i).getNumSecu() + "");
                 writer.writeEndElement();
 
                 writer.writeStartElement("adresse");
@@ -165,7 +164,7 @@ public class EcritureXML {
                 writer.writeEndElement();
 
                 writer.writeStartElement("naissance");
-                writer.writeCharacters(dm.getPatients().get(i).getNaissance()+"");
+                writer.writeCharacters(dm.getPatients().get(i).getNaissance() + "");
                 writer.writeEndElement();
 
                 writer.writeEndElement();
@@ -228,7 +227,7 @@ public class EcritureXML {
                 writer.writeEndElement();
 
                 writer.writeStartElement("numsecu");
-                writer.writeCharacters(dm.getFiches(i).getPatient().getNumSecu()+"");
+                writer.writeCharacters(dm.getFiches(i).getPatient().getNumSecu() + "");
                 writer.writeEndElement();
 
                 writer.writeStartElement("adresse");
@@ -236,40 +235,43 @@ public class EcritureXML {
                 writer.writeEndElement();
 
                 writer.writeStartElement("naissance");
-                writer.writeCharacters(dm.getFiches(i).getPatient().getNaissance()+"");
+                writer.writeCharacters(dm.getFiches(i).getPatient().getNaissance() + "");
+                writer.writeEndElement();
+
+                writer.writeStartElement("sexe");
+                writer.writeCharacters(dm.getFiches(i).getPatient().getSexe().toString());
                 writer.writeEndElement();
 
                 writer.writeEndElement();
 
                 //actes
                 for (int j = 0; j < dm.getFiches(i).getActes().size(); j++) {
-                writer.writeStartElement("acte");
-                writer.writeStartElement("code");
-                writer.writeCharacters(dm.getFiches(i).getActe(j).getCode()+"");
-                writer.writeEndElement();
+                    writer.writeStartElement("acte");
+                    writer.writeStartElement("code");
+                    writer.writeCharacters(dm.getFiches(i).getActe(j).getCode() + "");
+                    writer.writeEndElement();
 
-                writer.writeStartElement("coef");
-                writer.writeCharacters(dm.getFiches(i).getActe(j).getCoef()+"");
-                writer.writeEndElement();
-                
-                writer.writeStartElement("cout");
-                writer.writeCharacters(dm.getFiches(i).getActe(j).cout()+"");
-                writer.writeEndElement();
-                    
-                writer.writeStartElement("observation");
-                writer.writeCharacters(dm.getFiches(i).getActe(j).getObs());
-                writer.writeEndElement();
-                    
-                writer.writeEndElement();
-                
+                    writer.writeStartElement("coef");
+                    writer.writeCharacters(dm.getFiches(i).getActe(j).getCoef() + "");
+                    writer.writeEndElement();
+
+                    writer.writeStartElement("cout");
+                    writer.writeCharacters(dm.getFiches(i).getActe(j).cout() + "");
+                    writer.writeEndElement();
+
+                    writer.writeStartElement("observation");
+                    writer.writeCharacters(dm.getFiches(i).getActe(j).getObs());
+                    writer.writeEndElement();
+
+                    writer.writeEndElement();
+
                 }
-                
+
                 //cout
                 writer.writeStartElement("cout");
-                writer.writeCharacters(dm.getFiches(i).coutTotal()+"");
+                writer.writeCharacters(dm.getFiches(i).coutTotal() + "");
                 writer.writeEndElement();
-                
-                
+
                 writer.writeEndElement();
             }
             writer.writeEndElement();
