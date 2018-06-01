@@ -5,11 +5,17 @@ class Test {
     public static void main(String[] args) {
         LectureXML test = new LectureXML("dossiers.xml");
         DossierMedical dm = test.getDossier();
-        dm.afficher();
+        dm.afficherToutesFiches();
+
+
 
         System.out.println("\n********\n");
 
-        Patient p1 = new Patient("Bole", "Pat");
+        Adresse adr = new Adresse ("fecun", "vjij", "juvih");
+        NumSecu ns = new NumSecu (1,2,3,4,5,6,7);
+        Sexe sexe = Sexe.F;
+        Date date = new Date(10,05,1996);
+        Patient p1 = new Patient("Bole", "Pat",ns, adr, date, sexe);
         System.out.println("> cout de " + p1.toString() + " : " + dm.coutPatient(p1));
 
         System.out.println("\n********\n");
@@ -19,7 +25,7 @@ class Test {
 
         System.out.println("\n********\n");
 
-        Medecin m1 = new Medecin("Deblouze", "Agathe", "Cardiologue");
+        Medecin m1 = new Medecin("Deblouze", "Agathe", Specialite.Cardiologie, "05384", "veu", "vnu");
         dm.afficherListePatients(m1);
 
         System.out.println("\n********\n");
