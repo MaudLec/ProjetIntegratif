@@ -364,6 +364,15 @@ class DossierMedical {
         }
         return s;
     }
+    
+    public String toXML(){
+        String s = "<dossier>";
+        for(int i = 0; i<fiches.size(); i++){
+            s+=fiches.get(i).toXML();
+        }
+        s+="</dossier>";
+        return s;
+    }
 
 }
 
