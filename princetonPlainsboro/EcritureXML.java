@@ -46,9 +46,9 @@ public class EcritureXML {
             osw.write(s);
             osw.close();
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Ecriture2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EcritureXML.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Ecriture2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EcritureXML.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -68,9 +68,9 @@ public class EcritureXML {
             osw.write(s);
             osw.close();
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Ecriture2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EcritureXML.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Ecriture2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EcritureXML.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -90,9 +90,9 @@ public class EcritureXML {
             osw.write(s);
             osw.close();
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Ecriture2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EcritureXML.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Ecriture2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EcritureXML.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
