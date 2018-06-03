@@ -201,25 +201,25 @@ public class EcritureXML {
 
                 //date
                 writer.writeStartElement("date");
-                writer.writeCharacters(dm.getFiches(i).getDate().toString());
+                writer.writeCharacters(dm.getFiches().get(i).getDate().toString());
                 writer.writeEndElement();
 
                 //medecin
                 writer.writeStartElement("medecin");
                 writer.writeStartElement("nom");
-                writer.writeCharacters(dm.getFiches(i).getMedecin().getNom());
+                writer.writeCharacters(dm.getFiches().get(i).getMedecin().getNom());
                 writer.writeEndElement();
 
                 writer.writeStartElement("prenom");
-                writer.writeCharacters(dm.getFiches(i).getMedecin().getPrenom());
+                writer.writeCharacters(dm.getFiches().get(i).getMedecin().getPrenom());
                 writer.writeEndElement();
 
                 writer.writeStartElement("specialite");
-                writer.writeCharacters(dm.getFiches(i).getMedecin().getSpecialite().toString());
+                writer.writeCharacters(dm.getFiches().get(i).getMedecin().getSpecialite().toString());
                 writer.writeEndElement();
 
                 writer.writeStartElement("numtel");
-                writer.writeCharacters(dm.getFiches(i).getMedecin().getTelephone());
+                writer.writeCharacters(dm.getFiches().get(i).getMedecin().getTelephone());
                 writer.writeEndElement();
 
                 writer.writeEndElement();
@@ -227,15 +227,15 @@ public class EcritureXML {
                 //patient
                 writer.writeStartElement("patient");
                 writer.writeStartElement("nom");
-                writer.writeCharacters(dm.getFiches(i).getPatient().getNom());
+                writer.writeCharacters(dm.getFiches().get(i).getPatient().getNom());
                 writer.writeEndElement();
 
                 writer.writeStartElement("prenom");
-                writer.writeCharacters(dm.getFiches(i).getPatient().getPrenom());
+                writer.writeCharacters(dm.getFiches().get(i).getPatient().getPrenom());
                 writer.writeEndElement();
 
                 writer.writeStartElement("numsecu");
-                writer.writeCharacters(dm.getFiches(i).getPatient().getNumSecu() + "");
+                writer.writeCharacters(dm.getFiches().get(i).getPatient().getNumSecu() + "");
                 writer.writeEndElement();
 
                 writer.writeStartElement("rue");
@@ -251,32 +251,32 @@ public class EcritureXML {
                 writer.writeEndElement();
 
                 writer.writeStartElement("naissance");
-                writer.writeCharacters(dm.getFiches(i).getPatient().getNaissance().ecritureXML());
+                writer.writeCharacters(dm.getFiches().get(i).getPatient().getNaissance().toXML());
                 writer.writeEndElement();
 
                 writer.writeStartElement("sexe");
-                writer.writeCharacters(dm.getFiches(i).getPatient().getSexe().toString());
+                writer.writeCharacters(dm.getFiches().get(i).getPatient().getSexe().toString());
                 writer.writeEndElement();
 
                 writer.writeEndElement();
 
                 //actes
-                for (int j = 0; j < dm.getFiches(i).getActes().size(); j++) {
+                for (int j = 0; j < dm.getFiches().get(i).getActes().size(); j++) {
                     writer.writeStartElement("acte");
                     writer.writeStartElement("code");
-                    writer.writeCharacters(dm.getFiches(i).getActe(j).getCode() + "");
+                    writer.writeCharacters(dm.getFiches().get(i).getActe(j).getCode() + "");
                     writer.writeEndElement();
 
                     writer.writeStartElement("coef");
-                    writer.writeCharacters(dm.getFiches(i).getActe(j).getCoef() + "");
+                    writer.writeCharacters(dm.getFiches().get(i).getActe(j).getCoef() + "");
                     writer.writeEndElement();
 
                     writer.writeStartElement("cout");
-                    writer.writeCharacters(dm.getFiches(i).getActe(j).cout() + "");
+                    writer.writeCharacters(dm.getFiches().get(i).getActe(j).cout() + "");
                     writer.writeEndElement();
 
                     writer.writeStartElement("observation");
-                    writer.writeCharacters(dm.getFiches(i).getActe(j).getObs());
+                    writer.writeCharacters(dm.getFiches().get(i).getActe(j).getObs());
                     writer.writeEndElement();
 
                     writer.writeEndElement();
@@ -285,7 +285,7 @@ public class EcritureXML {
 
                 //cout
                 writer.writeStartElement("cout");
-                writer.writeCharacters(dm.getFiches(i).coutTotal() + "");
+                writer.writeCharacters(dm.getFiches().get(i).coutTotal() + "");
                 writer.writeEndElement();
 
                 writer.writeEndElement();
