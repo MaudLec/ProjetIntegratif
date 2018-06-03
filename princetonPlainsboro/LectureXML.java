@@ -156,14 +156,10 @@ public class LectureXML {
 
                         //lecture des infos patients
                         if (parser.getLocalName().equals("sexe")) {
-                            if (Integer.parseInt(donneesCourantes) ==1 || Integer.parseInt(donneesCourantes) ==2) {
-                                sexeSecu = Integer.parseInt(donneesCourantes);
-                            } else {
                                 sexe = getSexe(donneesCourantes);
                                 if (sexe == null) {
                                     throw new XMLStreamException("Impossible de trouver le sexe :" + donneesCourantes);
-                                }
-                            }
+                                                            }
                         }
                         if (parser.getLocalName().equals("naissance")) {
                             int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
@@ -187,9 +183,12 @@ public class LectureXML {
                             ville = donneesCourantes;
                         }
 
-                        //lecture des infos numero de secu . Cf plus haut, dans lecture des infos patients pour le sexe
+                        //lecture des infos numero de secu .
                         if (parser.getLocalName().equals("numsecu")) {
                             numSecu = new NumSecu(sexeSecu, anneeSecu, moisSecu, dep, comm, reg, cle);
+                        }
+                        if (parser.getLocalName().equals("sexesecu")) {
+                            sexeSecu = Integer.parseInt(donneesCourantes);
                         }
                         if (parser.getLocalName().equals("annee")) {
                             anneeSecu = Integer.parseInt(donneesCourantes);
@@ -232,7 +231,7 @@ public class LectureXML {
                         if (parser.getLocalName().equals("observation")) {
                             obs = donneesCourantes;
                         }
-                        //ajouter méthode pour l'observation et ajouter observation dans le fichier XML
+
 
                         break;
                     case XMLStreamConstants.CHARACTERS:
