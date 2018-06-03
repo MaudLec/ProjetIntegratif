@@ -389,10 +389,11 @@ class DossierMedical {
     public String toXML(){
         String s = "<dossiers>";
         for(int i = 0; i<fiches.size(); i++){
-            s+=fiches.get(i).toXML();
+            s+=getFiche(i).toXML();
         }
         s+="</dossiers>";
         return s;
     }
+
 
 }
