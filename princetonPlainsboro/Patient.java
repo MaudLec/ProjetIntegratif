@@ -88,7 +88,9 @@ class Patient {
         else
             return false;
         }    
-
+ public String toXML(){
+        return("<patient>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + numSecu.toXML() + adresse.toXML() + naissance.toXML() + sexe.toXML() + "</patient>");
+    }
   
     }
 
