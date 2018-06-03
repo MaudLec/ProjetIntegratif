@@ -68,14 +68,15 @@ class Patient {
     public String toString() {
         String s = "";
         if (sexe == Sexe.F) {
-            s += "Mme ";
+            s += " Mme ";
         } else {
             if (sexe == Sexe.M) {
-                s += "M.";
+                s += " M.";
             }
         }
 
-        s += nom.toUpperCase() + " " + prenom + " , Numéro SS " + numSecu.toString();
+        s += nom.toUpperCase() + " " + prenom ;
+        s += ", Numéro SS " + numSecu.toString();
         return s;
     }
     
@@ -93,4 +94,3 @@ class Patient {
     }
   
     }
-
