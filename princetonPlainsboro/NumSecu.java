@@ -29,9 +29,15 @@ public class NumSecu {
         this.numero = reg*1L + comm*1000L + dep*1000000L + mois*100000000L + annee*10000000000L + sexe*1000000000000L;
     }
     
-    public String toString() { 
-        return numero + " " + cle;
+       
+    public String toString() {
+        String c = ""+ this.cle;
+        if (c.length()==1){
+            c = "0" +this.cle;
+        }
+        return numero + " " + c;
     }
+
 
     public boolean equals(Object o) {
                 if (o instanceof NumSecu) {
