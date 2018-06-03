@@ -13,6 +13,13 @@ class Acte {
         this.type = type;
         this.obs = obs;
     }
+    
+    public Acte (Code code, int coef) {
+        this.code=code;
+        this.coef=coef;
+        type= null;
+        obs=null;
+    }
 
     public Code getCode() {
         return code;
