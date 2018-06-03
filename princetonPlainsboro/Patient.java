@@ -75,7 +75,7 @@ class Patient {
             }
         }
 
-        s += nom.toUpperCase() + " " + prenom + " Numéro SS : " + numSecu.toString();
+        s += nom.toUpperCase() + " " + prenom + " , Numéro SS " + numSecu.toString();
         return s;
     }
     
