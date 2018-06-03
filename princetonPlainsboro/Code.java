@@ -72,4 +72,9 @@ enum Code {
     public double calculerCout(int coefficient) {
         return coefficient * cout;
         }
+     
+       public String toXML(){
+        return ("<code><nom>" + this.name() + "</nom><libelle>" +this.libelle + "</libelle><cout>" + this.cout + "</cout></code>") ;
+    }
+     
     }
