@@ -14,9 +14,9 @@ import princetonPlainsboro.Acte;
 import princetonPlainsboro.DossierMedical;
 
 
-public class IU extends javax.swing.JFrame {
+public class IU2 extends javax.swing.JFrame {
 
-    public IU() {
+    public IU2() {
         initComponents();
     }
 
