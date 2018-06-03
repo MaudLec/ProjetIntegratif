@@ -16,12 +16,12 @@ class Test {
         Sexe sexe = Sexe.F;
         Date date = new Date(10,05,1996);
         Patient p1 = new Patient("Bole", "Pat",ns, adr, date, sexe);
-        System.out.println("> cout de " + p1.toString() + " : " + dm.coutPatient(p1));
+        System.out.println("> cout de : " + "\n   " + p1.toString() + "\n    = " + dm.coutPatient(p1) + "€");
 
         System.out.println("\n********\n");
 
         String spe = "Cardiologue";
-        System.out.println("> cout de la specialite '" + spe + "' : " + dm.coutSpecialite(spe));
+        System.out.println("> cout de la specialite '" + spe + "' = " + dm.coutSpecialite(spe) + "€");
 
         System.out.println("\n********\n");
 
@@ -30,9 +30,10 @@ class Test {
 
         System.out.println("\n********\n");
 
-        Date d1 = new Date(01, 11, 2005);
-        Date d2 = new Date(05, 01, 2006);
-        System.out.println("> nombre de fiches entre " + d1 + " et " + d2 + " : " + dm.nombreFichesIntervalle(d1, d2));
+        Date d1 = new Date(01, 11, 2005);        Date d2 = new Date(05, 01, 2006);
+        System.out.println("> nombre de fiches entre : " + "\n   " + d1 + "\n   et " + "\n   "+ d2 + "\n     = " + dm.nombreFichesIntervalle(d1, d2));
+
+        System.out.println("\n********\n");
 
         System.out.println("\n********\n");
 
