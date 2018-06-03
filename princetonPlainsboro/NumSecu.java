@@ -67,4 +67,8 @@ public class NumSecu {
         System.out.println("ok");
         return true;
             }
+    
+    public String toXML(){
+        return ("<numsecu>" + "<sexe>" + sexe + "</sexe>" + "<annee>" + annee + "</annee>" + "<mois>" + mois + "</mois>" + "<dep>" + dep + "</dep>" + "<comm>" + comm + "</comm>" + "<reg>" + reg + "</reg>" + "<cle>" + cle + "</cle>" + "</numsecu>");
+    }
 }
