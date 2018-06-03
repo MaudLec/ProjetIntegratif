@@ -42,13 +42,15 @@ public class SecretaireMed {
         this.mdp = mdp;
     }
 
+    /* Création d'un médecin */
     public void creerMedecin(String nom, String prenom, Specialite spe, String tel, String mdp) {
         String id = "";
         Medecin med = new Medecin(nom, prenom, spe, tel, id, mdp);
 
     }
-    
-    public String toXML(){
-        return("<secretaireMed>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + "<id>" + id + "</id> "+ "<mdp>" + mdp + "</mdp>" + "</secretaireMed>");
+
+    /* Affichage des informations de la secrétaire médicale avec les valises XML  */
+    public String toXML() {
+        return ("<secretaireMed>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + "<id>" + id + "</id> " + "<mdp>" + mdp + "</mdp>" + "</secretaireMed>");
     }
 }

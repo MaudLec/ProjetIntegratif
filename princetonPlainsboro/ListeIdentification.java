@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author GSuz-
+ * Liste de tous les identifiants & leur mot de passe
  */
 public class ListeIdentification {
 

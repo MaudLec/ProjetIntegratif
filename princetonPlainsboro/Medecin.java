@@ -62,10 +62,12 @@ class Medecin {
         return mdp;
     }
 
+    /* Affichage du nom, prénom et spécialité du médecin */
     public String toString() {
         return "Dr " + prenom + " " + nom + ", " + specialite.toString();
     }
 
+    /* Renvoie vraie si les médecins sont les même, faux sinon */
     public boolean equals(Object o) {
         if (o instanceof Medecin) {
             Medecin p = (Medecin) o;
@@ -74,11 +76,14 @@ class Medecin {
             return false;
         }
     }
-    
-     public String toXML(){
-        return("<medecin>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + specialite.toXML() + "<telephone>" + telephone + "</telephone>" + "<id>" + id + "</id> "+ "<mdp>" + mdp + "</mdp>" + "</medecin>");
+
+    /* Affichage des infos du médecin avec les balises XML */
+    public String toXML() {
+        return ("<medecin>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + specialite.toXML() + "<telephone>" + telephone + "</telephone>" + "<id>" + id + "</id> " + "<mdp>" + mdp + "</mdp>" + "</medecin>");
     }
-     public String toXMLCensure(){
-        return("<medecin>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + specialite.toXML() + "<telephone>" + telephone + "</telephone>" + "</medecin>");
+
+    /* Affichage des infos du médecin sans le mot de passe avec les balises XML */
+    public String toXMLCensure() {
+        return ("<medecin>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + specialite.toXML() + "<telephone>" + telephone + "</telephone>" + "</medecin>");
     }
 }

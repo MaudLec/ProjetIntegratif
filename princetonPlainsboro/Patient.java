@@ -1,13 +1,14 @@
 package princetonPlainsboro;
 
 class Patient {
+
     private String nom;
     private String prenom;
-    private NumSecu numSecu; 
-    private Adresse adresse; 
+    private NumSecu numSecu;
+    private Adresse adresse;
     private Date naissance;
     private Sexe sexe;
-    
+
     public Patient(String nom, String prenom, NumSecu numSecu, Adresse adresse, Date naissance, Sexe sexe) {
         this.nom = nom;
         this.prenom = prenom;
@@ -15,12 +16,12 @@ class Patient {
         this.adresse = adresse;
         this.naissance = naissance;
         this.sexe = sexe;
-        }
-    
-   public String getNom() {
+    }
+
+    public String getNom() {
         return nom;
-    } 
-   
+    }
+
     public String getPrenom() {
         return prenom;
     }
@@ -33,12 +34,13 @@ class Patient {
         return adresse;
     }
 
-    public NumSecu getNumSecu(){
+    public NumSecu getNumSecu() {
         return numSecu;
     }
+
     public Date getNaissance() {
         return naissance;
-    }   
+    }
 
     public void setNom(String nom) {
         this.nom = nom;
@@ -63,34 +65,37 @@ class Patient {
     public void setSexe(Sexe sexe) {
         this.sexe = sexe;
     }
-    
+
+    /* Affichage du sexe avec le nom, prénom & numéro SS du patient */
     @Override
     public String toString() {
         String s = "";
         if (sexe == Sexe.F) {
-            s += " Mme ";
+            s += "Mme ";
         } else {
             if (sexe == Sexe.M) {
-                s += " M.";
+                s += "M.";
             }
         }
 
-        s += nom.toUpperCase() + " " + prenom ;
-        s += ", Numéro SS " + numSecu.toString();
+        s += nom.toUpperCase() + " " + prenom + " Numéro SS : " + numSecu.toString();
         return s;
     }
-    
+
+    /* Renvoie vraie ou faux si les deux patients sont les même ou non */
     @Override
     public boolean equals(Object o) {
         if (o instanceof Patient) {
-            Patient p = (Patient)o;
+            Patient p = (Patient) o;
             return getNumSecu().equals(p.getNumSecu());
-            }
-        else
+        } else {
             return false;
-        }    
- public String toXML(){
-        return("<patient>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + numSecu.toXML() + adresse.toXML() + naissance.toXML() + sexe.toXML() + "</patient>");
+        }
     }
-  
+
+    /* Affichage des informations du patient avec les balises XML  */
+    public String toXML() {
+        return ("<patient>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + numSecu.toXML() + adresse.toXML() + naissance.toXML() + sexe.toXML() + "</patient>");
     }
+
+}

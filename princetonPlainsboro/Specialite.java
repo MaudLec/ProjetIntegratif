@@ -46,12 +46,14 @@ public enum Specialite {
     Traumatologie,
     Urologie,
     Virologie;
-    
-    public  int getNombreSpe(){
+
+    /* Renvoie le nombre de spécialité */
+    public int getNombreSpe() {
         return this.values().length;
     }
-    
-     public String toXML(){
-        return("<specialite>" + this.name() + "</specialite>");
+
+    /* Affichage de la spécialité avec les balises XML */
+    public String toXML() {
+        return ("<specialite>" + this.name() + "</specialite>");
     }
 }

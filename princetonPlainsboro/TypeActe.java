@@ -4,10 +4,11 @@
  */
 package princetonPlainsboro;
 
-
 public enum TypeActe {
-        diagnostique, therapeutique;
-            public String toXML(){
-            return("<type>" + this.name() + "</type>" );
-        }
+    diagnostique, therapeutique;
+
+    /* Affichage du type d'acte avec les balises XML */
+    public String toXML() {
+        return ("<type>" + this.name() + "</type>");
+    }
 }

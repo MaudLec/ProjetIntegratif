@@ -29,16 +29,11 @@ public class NumSecu {
         this.numero = reg*1L + comm*1000L + dep*1000000L + mois*100000000L + annee*10000000000L + sexe*1000000000000L;
     }
     
-       
-    public String toString() {
-        String c = ""+ this.cle;
-        if (c.length()==1){
-            c = "0" +this.cle;
-        }
-        return numero + " " + c;
+    /* Affichage du numéro SS avec sa clé */
+    public String toString() { 
+        return numero + " " + cle;
     }
-
-
+    /* Renvoie vrai si les deux numéros de SS avec la clé sont égaux, renvoie faux sinon */
     public boolean equals(Object o) {
                 if (o instanceof NumSecu) {
             NumSecu ns = (NumSecu)o;
@@ -48,6 +43,7 @@ public class NumSecu {
             return false;
     }
         
+        /* Vérifie si le numéro de SS est valide, ainsi que la clé */
     public boolean numCorrect(){
         if(this.sexe<1 || this.sexe>2){ //le sexe doit etre egal a 1 ou 2
             System.out.println("sexe");
@@ -73,7 +69,7 @@ public class NumSecu {
         System.out.println("ok");
         return true;
             }
-    
+        /* Affichage du numéro SS avec sa clé avec les balises XML */
     public String toXML(){
         return ("<numsecu>" + "<sexe>" + sexe + "</sexe>" + "<annee>" + annee + "</annee>" + "<mois>" + mois + "</mois>" + "<dep>" + dep + "</dep>" + "<comm>" + comm + "</comm>" + "<reg>" + reg + "</reg>" + "<cle>" + cle + "</cle>" + "</numsecu>");
     }

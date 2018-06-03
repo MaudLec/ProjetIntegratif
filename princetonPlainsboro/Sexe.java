@@ -1,11 +1,12 @@
 package princetonPlainsboro;
 
+enum Sexe {
+    M,
+    F,
+    Autre;
 
-enum Sexe{
-        M,
-        F,
-        Autre;
-               public String toXML(){
-            return("<sexe>" + this.name() + "</sexe>");
-        }
+    /* Affichage du sexe avec la balise XML */
+    public String toXML() {
+        return ("<sexe>" + this.name() + "</sexe>");
+    }
 }

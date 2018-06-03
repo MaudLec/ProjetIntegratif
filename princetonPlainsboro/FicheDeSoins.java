@@ -35,24 +35,28 @@ class FicheDeSoins {
     public Acte getActe(int i) {
         return actes.get(i);
     }
-
+    
+    /* Ajouter un acte à la fiche de soins */
     public void ajouterActe(Acte acte) {
         actes.add(acte);
     }
 
+    /* Ajouter un acte à la fiche de soins */
     public void ajouterActe(Code code, int coef, TypeActe typeacte, String obs) {
         Acte acte = new Acte(code, coef, typeacte, obs);
         actes.add(acte);
     }
-
+    
+    /* Affichage de toutes les fiches de soins */
     public void ajouterListeActe(ArrayList<Acte> listeActe) {
         for (int i = 0; i < listeActe.size(); i++) {
             this.actes.add(listeActe.get(i));
         }
     }
 
+    /* Affichage de la fiche de soins */
     public String afficher() {
-        String s = "\nFiche de soins du " + date.toString() + "\n\n"
+        String s = "Fiche de soins du " + date.toString() + "\n"
                 + "- medecin : " + medecin.toString() + "\n"
                 + "- patient : " + patient.toString() + "\n"
                 + "- actes medicaux :" + "\n";
@@ -63,6 +67,7 @@ class FicheDeSoins {
         return s;
     }
 
+    /* Affichage de la fiche de soin avec son cout */
     public String afficherCout() {
         String s = "Fiche de soin de : " + patient.toString()
                 + ", fait par : " + medecin.toString()
@@ -71,12 +76,13 @@ class FicheDeSoins {
         for (int i = 0; i < actes.size(); i++) {
             s += actes.get(i).afficherActe() + "/n";
         }
-        
-        s+="Cout total : "+this.coutTotal();
+
+        s += "Cout total : " + this.coutTotal();
 
         return s;
     }
 
+    /* Cout total de la fiche de soin */
     public double coutTotal() {
         double total = 0;
         for (int i = 0; i < actes.size(); i++) {
@@ -85,13 +91,14 @@ class FicheDeSoins {
         }
         return total;
     }
-    
-    public String toXML(){
-        String s = "<ficheDeSoins>" + date.toXML() + medecin.toXMLCensure()+ patient.toXML();
-        for(int i = 0; i<actes.size(); i++) {
-            s+=getActe(i).toXML();
+
+    /* Affichage toutes les fiches avec les balises XML */
+    public String toXML() {
+        String s = "<ficheDeSoins>" + date.toXML() + medecin.toXMLCensure() + patient.toXML();
+        for (int i = 0; i < actes.size(); i++) {
+            s += actes.get(i).toXML();
         }
-        s+="</ficheDeSoins>";
+        s += "</ficheDeSoins>";
         return s;
     }
 }
