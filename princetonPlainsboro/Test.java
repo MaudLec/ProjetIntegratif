@@ -12,7 +12,7 @@ class Test {
         System.out.println("\n********\n");
 
         Adresse adr = new Adresse ("fecun", "vjij", "juvih");
-        NumSecu ns = new NumSecu (1,2,3,4,5,6,7);
+        NumSecu ns = new NumSecu (1,49,8,45,695,205,45);
         Sexe sexe = Sexe.F;
         Date date = new Date(10,05,1996);
         Patient p1 = new Patient("Bole", "Pat",ns, adr, date, sexe);
@@ -30,8 +30,8 @@ class Test {
 
         System.out.println("\n********\n");
 
-        Date d1 = new Date(1, 11, 2005);
-        Date d2 = new Date(5, 1, 2006);
+        Date d1 = new Date(01, 11, 2005);
+        Date d2 = new Date(05, 01, 2006);
         System.out.println("> nombre de fiches entre " + d1 + " et " + d2 + " : " + dm.nombreFichesIntervalle(d1, d2));
 
         System.out.println("\n********\n");

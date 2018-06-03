@@ -172,7 +172,7 @@ public class EcritureXML {
                 writer.writeEndElement();
 
                 writer.writeStartElement("naissance");
-                writer.writeCharacters(dm.getPatients().get(i).getNaissance().ecritureXML());
+                writer.writeCharacters(dm.getPatients().get(i).getNaissance().datePourEcritureXML());
                 writer.writeEndElement();
 
                 writer.writeEndElement();
