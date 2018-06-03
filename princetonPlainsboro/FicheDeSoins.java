@@ -85,6 +85,13 @@ class FicheDeSoins {
         }
         return total;
     }
-    
+    public String toXML(){
+        String s = "<ficheDeSoins>" + date.toXML() + medecin.toXMLCensure()+ patient.toXML();
+        for(int i = 0; i<actes.size(); i++) {
+            s+=actes.get(i).toXML();
+        }
+        s+="</ficheDeSoins>";
+        return s;
+    }
 }
 
