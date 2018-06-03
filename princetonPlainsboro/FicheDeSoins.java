@@ -52,7 +52,7 @@ class FicheDeSoins {
     }
 
     public String afficher() {
-        String s = "Fiche de soins du " + date.toString() + "\n"
+        String s = "\nFiche de soins du " + date.toString() + "\n\n"
                 + "- medecin : " + medecin.toString() + "\n"
                 + "- patient : " + patient.toString() + "\n"
                 + "- actes medicaux :" + "\n";
