@@ -131,5 +131,33 @@ class Date implements Comparable {
         return 0;
 
     }
+    public String toXML() {
+        String s = "<date>" + annee;
+        if (mois < 10) {
+            s += "-0" + mois;
+        } else {
+            s += "-" + mois;
+        }
+        if (jour < 10) {
+            s += "-0" + jour;
+        } else {
+            s += "-" + jour;
+        }
+        if (minute != 0 && heure != 0) {
+            s+="T";
+            if (heure < 10) {
+                s += "0" + heure;
+            } else {
+                s += heure;
+            }
+             if (minute < 10) {
+                s += ":0" + minute;
+            } else {
+                s += ":" + minute;
+            }
+        }
+        s += "</date>";
+        return s;
+    }
 
 }
