@@ -74,4 +74,11 @@ class Medecin {
             return false;
         }
     }
+    
+     public String toXML(){
+        return("<medecin>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + specialite.toXML() + "<telephone>" + telephone + "</telephone>" + "<id>" + id + "</id> "+ "<mdp>" + mdp + "</mdp>" + "</medecin>");
+    }
+     public String toXMLCensure(){
+        return("<medecin>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + specialite.toXML() + "<telephone>" + telephone + "</telephone>" + "</medecin>");
+    }
 }
