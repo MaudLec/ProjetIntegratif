@@ -60,7 +60,6 @@ public class LectureXML {
                             listeIdentificationCourante.getListeMdp().add(motDePasseCourant);
                         }
 
-
                         //---------------------------------------------
                         break;
                     case XMLStreamConstants.CHARACTERS:
@@ -112,7 +111,6 @@ public class LectureXML {
         int coefCourant = 0;
         String observationCourante = "";
         Sexe sexeCourant = null;
-        
 
         // analyser le fichier par StAX
         try {
@@ -181,9 +179,20 @@ public class LectureXML {
                             nomCourant = donneesCourantes;
                         }
                         //--------------------------------------------------------------------
+                        if (parser.getLocalName().equals("rue")) {
+                            rue = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("codepostal")) {
+                            codepostal = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("ville")) {
+                            ville = donneesCourantes;
+                        }
+
                         if (parser.getLocalName().equals("adresse")) {
                             adresseCourante = new Adresse(rue, codepostal, ville);
                         }
+
                         //---------------------------------------------------------------------
                         if (parser.getLocalName().equals("patient")) {
                             patientCourant = new Patient(nomCourant, prenomCourant, numSecuCourant, adresseCourante, dateDeNaissanceCourante, sexeCourant);
@@ -267,7 +276,7 @@ public class LectureXML {
 
         return dossierCourant;
     }
-    
+
     private static Code getCode(String code) {
         if (code.equals("C")) {
             return Code.C;
@@ -410,11 +419,17 @@ public class LectureXML {
         }
         return null;
     }
-    
+
     private static Sexe getSexe(String sexe) {
-        if (sexe.equals("F")) { return Sexe.F; }
-        if (sexe.equals("M")) { return Sexe.M; }
-        if (sexe.equals("Autre")) { return Sexe.Autre; }
+        if (sexe.equals("F")) {
+            return Sexe.F;
+        }
+        if (sexe.equals("M")) {
+            return Sexe.M;
+        }
+        if (sexe.equals("Autre")) {
+            return Sexe.Autre;
+        }
         return null;
     }
 
