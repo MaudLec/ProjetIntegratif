@@ -37,11 +37,14 @@ class Date implements Comparable {
         } else {
             s += mois + "/";
         }
-        s += annee + " à " + heure + "h";
-        if (minute < 10) {
-            s += "0" + minute;
-        } else {
-            s += minute;
+         s += annee;
+        if (heure != 0 && minute != 0) {
+            s += " à " + heure + "h";
+            if (minute < 10) {
+                s += "0" + minute;
+            } else {
+                s += minute;
+            }
         }
         return s;
     }
