@@ -7,5 +7,7 @@ package princetonPlainsboro;
 
 public enum TypeActe {
         diagnostique, therapeutique;
-    
+            public String toXML(){
+            return("<type>" + this.name() + "</type>" );
+        }
 }
