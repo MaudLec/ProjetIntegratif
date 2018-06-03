@@ -27,90 +27,53 @@ public class LectureXML {
         this.nomFichier = nomFichier;
     }
 
-    public ListeIdentification getListeIdentification() {
-        //-------mot de passe---------------
-        ListeIdentification listeIdentificationCourante = null;
-        String identifiantCourant = "";
-        String motDePasseCourant = "";
-        String donneesCourantes = "";
-
-        //--------------------------------
-        try {
-            // instanciation du parser
-            InputStream in = new FileInputStream(repBase + nomFichier);
-            XMLInputFactory factory = XMLInputFactory.newInstance();
-            XMLStreamReader parser = factory.createXMLStreamReader(in);
-            // lecture des evenements
-            for (int event = parser.next(); event != XMLStreamConstants.END_DOCUMENT; event = parser.next()) {
-                // traitement selon l'evenement
-                switch (event) {
-                    case XMLStreamConstants.START_ELEMENT:
-                        if (parser.getLocalName().equals("identification")) {
-                            listeIdentificationCourante = new ListeIdentification();
-                        }
-                        break;
-                    case XMLStreamConstants.END_ELEMENT:
-                        //-----------identification--------------------
-                        if (parser.getLocalName().equals("identifiant")) {
-                            identifiantCourant = donneesCourantes;
-                            listeIdentificationCourante.getListeId().add(identifiantCourant);
-                        }
-                        if (parser.getLocalName().equals("motdepasse")) {
-                            motDePasseCourant = donneesCourantes;
-                            listeIdentificationCourante.getListeMdp().add(motDePasseCourant);
-                        }
-
-                        //---------------------------------------------
-                        break;
-                    case XMLStreamConstants.CHARACTERS:
-                        donneesCourantes = parser.getText();
-                        break;
-                } // end switch
-            } // end while
-            parser.close();
-        } catch (XMLStreamException ex) {
-            System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier);
-            System.out.println("Details :");
-            System.out.println(ex);
-        } catch (IOException ex) {
-            System.out.println("Exception de type 'IOException' lors de la lecture du fichier : " + nomFichier);
-            System.out.println("Verifier le chemin.");
-            System.out.println(ex.getMessage());
-        }
-        return listeIdentificationCourante;
-    }
-
-    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public DossierMedical getDossier() {
-        DossierMedical dossierCourant = null;
-        Date date = null;
-        Medecin medecinCourant = null;
-        Patient patientCourant = null;
-        ArrayList<Acte> actes = new ArrayList<Acte>();
         String donneesCourantes = "";
-        String nomCourant = "";
-        String prenomCourant = "";
-        String idCourant = "";
-        String mdpCourant = "";
-        Adresse adresseCourante = null;
+        DossierMedical dossier = null;
+        Date date = null;
+
+        //personnes
+        Medecin medecin = null;
+        Patient patient = null;
+        SecretaireMed secretaireMed = null;
+        SecretaireAdmin secretaireAdmin = null;
+
+        //infos des personnes
+        String nom = "";
+        String prenom = "";
+        String id = "";
+        String mdp = "";
+
+        //infos medecin
+        Specialite specialite = null;
+        String numTel = "";
+
+        //infos patient
+        Sexe sexe = null;
+        Date naissance = null;
+
+        //infos de l'adresse patient
+        Adresse adresse = null;
         String rue = "";
-        String codepostal = "";
+        String codePostal = "";
         String ville = "";
-        String telephoneCourant = "";
-        Date dateDeNaissanceCourante = null;
-        NumSecu numSecuCourant = null;
-        TypeActe typeCourant = null;
-        int anneeCourante = 0;
-        int moisCourant = 0;
-        int departementNaissanceCourant = 0;
-        int numCommuneCourant = 0;
-        int ordreRegistreNaissanceCourant = 0;
-        int cleCourante = 0;
-        Specialite specialiteCourante = null;
-        Code codeCourant = null;
-        int coefCourant = 0;
-        String observationCourante = "";
-        Sexe sexeCourant = null;
+
+        //infos du Numero de Securite Sociale
+        NumSecu numSecu = null;
+        int sexeSecu = 0;
+        int anneeSecu = 0;
+        int moisSecu = 0;
+        int dep = 0;
+        int comm = 0;
+        int reg = 0;
+        int cle = 0;
+
+        //infos acte
+        ArrayList<Acte> actes = new ArrayList<Acte>();
+        int coef = 0;
+        TypeActe typeActe = null;
+        Code code = null;
+        String obs = "";
 
         // analyser le fichier par StAX
         try {
@@ -125,34 +88,13 @@ public class LectureXML {
                 switch (event) {
                     case XMLStreamConstants.START_ELEMENT:
                         if (parser.getLocalName().equals("dossiers")) {
-                            dossierCourant = new DossierMedical();
+                            dossier = new DossierMedical();
                         }
                         break;
                     case XMLStreamConstants.END_ELEMENT:
-                        if (parser.getLocalName().equals("acte")) {
-                            actes.add(new Acte(codeCourant, coefCourant, typeCourant, observationCourante));
-                        }
-                        if (parser.getLocalName().equals("code")) {
-                            codeCourant = getCode(donneesCourantes);
-                            if (codeCourant == null) {
-                                throw new XMLStreamException("Impossible de trouver le code d'acte = " + donneesCourantes);
-                            }
-                        }
-
-                        if (parser.getLocalName().equals("coef")) {
-                            coefCourant = Integer.parseInt(donneesCourantes);
-                        }
-                        if (parser.getLocalName().equals("date")) {
-                            int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
-                            int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-') + 1, donneesCourantes.lastIndexOf('-')));
-                            int jour = Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-') + 1, donneesCourantes.indexOf('_')));
-
-                            int heure = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('_') + 1, donneesCourantes.indexOf(':')));
-                            int minute = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf(':') + 1, donneesCourantes.length()));
-                            date = new Date(jour, mois, annee, heure, minute);
-                        }
+                        //lecture d une fiche de soins
                         if (parser.getLocalName().equals("ficheDeSoins")) {
-                            FicheDeSoins f = new FicheDeSoins(patientCourant, medecinCourant, date);
+                            FicheDeSoins f = new FicheDeSoins(patient, medecin, date);
                             // ajout des actes
                             for (int i = 0; i < actes.size(); i++) {
                                 Acte a = (Acte) actes.get(i);
@@ -161,102 +103,137 @@ public class LectureXML {
                             // effacer tous les actes de la liste
                             actes.clear();
                             // ajouter la fiche de soin au dossiers
-                            dossierCourant.ajouterFiche(f);
+                            dossier.ajouterFiche(f);
                         }
+
+                        //lecture d une date --> il faudra la mettre à jour pour inclure les minutes
+                        if (parser.getLocalName().equals("date")) {
+                            int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
+                            int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-') + 1, donneesCourantes.lastIndexOf('-')));
+                            int jour = Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-') + 1, donneesCourantes.length()));
+
+                            date = new Date(jour, mois, annee);
+                        }
+
+                        //lecture des personnes
                         if (parser.getLocalName().equals("medecin")) {
-                            medecinCourant = new Medecin(nomCourant, prenomCourant, specialiteCourante, telephoneCourant, idCourant, mdpCourant);
-                            int i = 0;
-                            while (i < dossierCourant.getMedecins().size() && !(dossierCourant.getMedecins().get(i).getId().equals(idCourant))) {
-                                i++;
-                            }
-                            if (i == dossierCourant.getMedecins().size()) {
-                                dossierCourant.getMedecins().add(medecinCourant);
-                            } else {
-                                medecinCourant = dossierCourant.getMedecins().get(i);
-                            }
+                            medecin = new Medecin(nom, prenom, specialite, numTel, id, mdp);
                         }
+                        if (parser.getLocalName().equals("patient")) {
+                            patient = new Patient(nom, prenom, numSecu, adresse, naissance, sexe);
+                        }
+                        if (parser.getLocalName().equals("secretairemed")) {
+                            secretaireMed = new SecretaireMed(nom, prenom, id, mdp);
+                        }
+                        if (parser.getLocalName().equals("secretaireadmin")) {
+                            secretaireAdmin = new SecretaireAdmin(nom, prenom, id, mdp);
+                        }
+
+                        //lecture des infos des personnes
                         if (parser.getLocalName().equals("nom")) {
-                            nomCourant = donneesCourantes;
+                            nom = donneesCourantes;
                         }
-                        //--------------------------------------------------------------------
+                        if (parser.getLocalName().equals("prenom")) {
+                            prenom = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("id")) {
+                            id = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("mdp")) {
+                            mdp = donneesCourantes;
+                        }
+
+                        //lecture des infos medecin
+                        if (parser.getLocalName().equals("numtel")) {
+                            numTel = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("specialite")) {
+                            specialite = getSpecialite(donneesCourantes);
+                            if (specialite == null) {
+                                throw new XMLStreamException("Impossible de trouver la specialite : " + donneesCourantes);
+                            }
+                        }
+
+                        //lecture des infos patients
+                        if (parser.getLocalName().equals("sexe")) {
+                            if (Integer.parseInt(donneesCourantes) ==1 || Integer.parseInt(donneesCourantes) ==2) {
+                                sexeSecu = Integer.parseInt(donneesCourantes);
+                            } else {
+                                sexe = getSexe(donneesCourantes);
+                                if (sexe == null) {
+                                    throw new XMLStreamException("Impossible de trouver le sexe :" + donneesCourantes);
+                                }
+                            }
+                        }
+                        if (parser.getLocalName().equals("naissance")) {
+                            int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
+                            int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-') + 1, donneesCourantes.lastIndexOf('-')));
+                            int jour = Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-') + 1, donneesCourantes.length()));
+
+                            naissance = new Date(jour, mois, annee);
+                        }
+
+                        //lecture des infos de l adresse patient
+                        if (parser.getLocalName().equals("adresse")) {
+                            adresse = new Adresse(rue, codePostal, ville);
+                        }
                         if (parser.getLocalName().equals("rue")) {
                             rue = donneesCourantes;
                         }
                         if (parser.getLocalName().equals("codepostal")) {
-                            codepostal = donneesCourantes;
+                            codePostal = donneesCourantes;
                         }
                         if (parser.getLocalName().equals("ville")) {
                             ville = donneesCourantes;
                         }
 
-                        if (parser.getLocalName().equals("adresse")) {
-                            adresseCourante = new Adresse(rue, codepostal, ville);
-                        }
-
-                        //---------------------------------------------------------------------
-                        if (parser.getLocalName().equals("patient")) {
-                            patientCourant = new Patient(nomCourant, prenomCourant, numSecuCourant, adresseCourante, dateDeNaissanceCourante, sexeCourant);
-                            int i = 0;
-                            while (i < dossierCourant.getPatients().size() && !(dossierCourant.getPatients().get(i).getNumSecu().equals(numSecuCourant))) {
-                                i++;
-                            }
-                            if (i == dossierCourant.getPatients().size()) {
-                                dossierCourant.getPatients().add(patientCourant);
-                            } else {
-                                patientCourant = dossierCourant.getPatients().get(i);
-                            }
-                        }
-
-                        if (parser.getLocalName().equals("prenom")) {
-                            prenomCourant = donneesCourantes;
-                        }
-                        if (parser.getLocalName().equals("specialite")) {
-                            specialiteCourante = getSpecialite(donneesCourantes);
-                        }
-                        if (parser.getLocalName().equals("id")) {
-                            idCourant = donneesCourantes;
-                        }
-                        if (parser.getLocalName().equals("telephone")) {
-                            telephoneCourant = donneesCourantes;
-                        }
-                        if (parser.getLocalName().equals("dateDeNaissance")) {
-
-                            int jour = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
-                            int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-') + 1, donneesCourantes.lastIndexOf('-')));
-                            int annee = Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-') + 1, donneesCourantes.length()));
-                            dateDeNaissanceCourante = new Date(jour, mois, annee);
-                        }
-                        if (parser.getLocalName().equals("sexe")) {
-                            sexeCourant = getSexe(donneesCourantes);
+                        //lecture des infos numero de secu . Cf plus haut, dans lecture des infos patients pour le sexe
+                        if (parser.getLocalName().equals("numsecu")) {
+                            numSecu = new NumSecu(sexeSecu, anneeSecu, moisSecu, dep, comm, reg, cle);
                         }
                         if (parser.getLocalName().equals("annee")) {
-                            anneeCourante = Integer.parseInt(donneesCourantes);
+                            anneeSecu = Integer.parseInt(donneesCourantes);
                         }
                         if (parser.getLocalName().equals("mois")) {
-                            moisCourant = Integer.parseInt(donneesCourantes);
+                            moisSecu = Integer.parseInt(donneesCourantes);
                         }
-                        if (parser.getLocalName().equals("departementNaissance")) {
-                            departementNaissanceCourant = Integer.parseInt(donneesCourantes);
+                        if (parser.getLocalName().equals("dep")) {
+                            dep = Integer.parseInt(donneesCourantes);
                         }
-                        if (parser.getLocalName().equals("numCommune")) {
-                            numCommuneCourant = Integer.parseInt(donneesCourantes);
+                        if (parser.getLocalName().equals("comm")) {
+                            comm = Integer.parseInt(donneesCourantes);
                         }
-                        if (parser.getLocalName().equals("ordreRegistreNaissance")) {
-                            ordreRegistreNaissanceCourant = Integer.parseInt(donneesCourantes);
+                        if (parser.getLocalName().equals("reg")) {
+                            reg = Integer.parseInt(donneesCourantes);
                         }
                         if (parser.getLocalName().equals("cle")) {
-                            cleCourante = Integer.parseInt(donneesCourantes);
+                            cle = Integer.parseInt(donneesCourantes);
                         }
-                        if (parser.getLocalName().equals("numSecu")) {
-                            numSecuCourant = new NumSecu(sexeCourant.ordinal(), anneeCourante, moisCourant,
-                                    departementNaissanceCourant, numCommuneCourant, ordreRegistreNaissanceCourant, cleCourante);
+
+                        //Lecture d un acte
+                        if (parser.getLocalName().equals("acte")) {
+                            actes.add(new Acte(code, coef, typeActe, obs));
+                        }
+                        if (parser.getLocalName().equals("code")) {
+                            code = getCode(donneesCourantes);
+                            if (code == null) {
+                                throw new XMLStreamException("Impossible de trouver le code d'acte = " + donneesCourantes);
+                            }
+                        }
+                        if (parser.getLocalName().equals("coef")) {
+                            coef = Integer.parseInt(donneesCourantes);
                         }
                         if (parser.getLocalName().equals("type")) {
-                            typeCourant = getType(donneesCourantes);
+                            typeActe = getType(donneesCourantes);
+                            if (typeActe == null) {
+                                throw new XMLStreamException("Impossible de trouver le type d'acte = " + donneesCourantes);
+                            }
                         }
-                        if (parser.getLocalName().equals("observationMed")) {
-                            observationCourante = donneesCourantes;
+                        if (parser.getLocalName().equals("observation")) {
+                            obs = donneesCourantes;
                         }
+                        //ajouter méthode pour l'observation et ajouter observation dans le fichier XML
+
                         break;
                     case XMLStreamConstants.CHARACTERS:
                         donneesCourantes = parser.getText();
@@ -274,7 +251,7 @@ public class LectureXML {
             System.out.println(ex.getMessage());
         }
 
-        return dossierCourant;
+        return dossier;
     }
 
     private static Code getCode(String code) {
@@ -411,21 +388,21 @@ public class LectureXML {
     }
 
     private static TypeActe getType(String type) {
-        if (type.equals("therapeutique")) {
+        if (type.equals("Teerapeutique")) {
             return TypeActe.therapeutique;
         }
-        if (type.equals("diagnostique")) {
+        if (type.equals("Diagnostique")) {
             return TypeActe.diagnostique;
         }
         return null;
     }
 
     private static Sexe getSexe(String sexe) {
-        if (sexe.equals("F")) {
-            return Sexe.F;
-        }
         if (sexe.equals("M")) {
             return Sexe.M;
+        }
+        if (sexe.equals("F")) {
+            return Sexe.F;
         }
         if (sexe.equals("Autre")) {
             return Sexe.Autre;
