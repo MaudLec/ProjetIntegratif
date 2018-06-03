@@ -15,7 +15,7 @@
             <nom>Track</nom>
             <prenom>Pat</prenom>
             <numsecu>
-                <sexe>1</sexe>
+                <sexesecu>1</sexesecu>
                 <annee>49</annee>
                 <mois>8</mois>
                 <dep>45</dep>
@@ -29,6 +29,7 @@
                 <ville>Ville Fleurie</ville>
             </adresse>
             <naissance>1949-08-10</naissance>
+            <sexe>M</sexe>
         </patient>
         <acte>
             <code>CS</code>
@@ -64,7 +65,7 @@
             <nom>Bole</nom>
             <prenom>Pat</prenom>
             <numsecu>
-                <sexe>1</sexe>
+                <sexesecu>1</sexesecu>
                 <annee>53</annee>
                 <mois>12</mois>
                 <dep>1</dep>
@@ -78,6 +79,7 @@
                 <ville>Notting Hill</ville>
             </adresse>
             <naissance>1953-12-06</naissance>
+            <sexe>M</sexe>
         </patient>
         <acte>
             <code>CSC</code>
@@ -107,7 +109,7 @@
             <nom>Bole</nom>
             <prenom>Maggy</prenom>
             <numsecu>
-                <sexe>2</sexe>
+                <sexesecu>1</sexesecu>
                 <annee>87</annee>
                 <mois>2</mois>
                 <dep>56</dep>
@@ -121,6 +123,7 @@
                 <ville>Bordure Extérieure</ville>
             </adresse>
             <naissance>1987-02-23</naissance>
+            <sexe>M</sexe>
         </patient>
         <acte>
             <code>CSC</code>
@@ -144,7 +147,7 @@
             <nom>Bole</nom>
             <prenom>Maggy</prenom>
             <numsecu>
-                <sexe>2</sexe>
+                <sexesecu>1</sexesecu>
                 <annee>87</annee>
                 <mois>2</mois>
                 <dep>56</dep>
@@ -158,6 +161,7 @@
                 <ville>Bordure Extérieure</ville>
             </adresse>
             <naissance>1987-02-23</naissance>
+            <sexe>M</sexe>
         </patient>
         <acte>
             <code>KE</code>
@@ -181,7 +185,7 @@
             <nom>Epi</nom>
             <prenom>Fanie</prenom>
             <numsecu>
-                <sexe>2</sexe>
+                <sexesecu>1</sexesecu>
                 <annee>0</annee>
                 <mois>1</mois>
                 <dep>1</dep>
@@ -195,6 +199,8 @@
                 <ville>Paris</ville>
             </adresse>
             <naissance>2000-01-01</naissance>
+            <sexe>M</sexe>
+
         </patient>
         <acte>
             <code>CS</code>
@@ -224,7 +230,7 @@
             <nom>Henfayitte</nom>
             <prenom>Melusine</prenom>
             <numsecu>
-                <sexe>2</sexe>
+                <sexesecu>1</sexesecu>
                 <annee>28</annee>
                 <mois>10</mois>
                 <dep>22</dep>
@@ -238,6 +244,7 @@
                 <ville>Brumblerio</ville>
             </adresse>
             <naissance>1928-10-03</naissance>
+            <sexe>M</sexe>
         </patient>
         <acte>
             <code>CS</code>
