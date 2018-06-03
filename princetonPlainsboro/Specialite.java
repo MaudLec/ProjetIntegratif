@@ -50,4 +50,8 @@ public enum Specialite {
     public  int getNombreSpe(){
         return this.values().length;
     }
+    
+     public String toXML(){
+        return("<specialite>" + this.name() + "</specialite>");
+    }
 }
