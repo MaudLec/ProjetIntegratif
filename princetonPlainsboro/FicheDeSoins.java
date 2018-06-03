@@ -66,7 +66,7 @@ class FicheDeSoins {
     public String afficherCout() {
         String s = "Fiche de soin de : " + patient.toString()
                 + ", fait par : " + medecin.toString()
-                + ", le : " + date.afficherDate() + "/n";
+                + ", le : " + date.toString() + "/n";
         s += "Liste des actes : " + "/n";
         for (int i = 0; i < actes.size(); i++) {
             s += actes.get(i).afficherActe() + "/n";
