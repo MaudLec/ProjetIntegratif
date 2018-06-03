@@ -47,4 +47,8 @@ public class SecretaireMed {
         Medecin med = new Medecin(nom, prenom, spe, tel, id, mdp);
 
     }
+    
+    public String toXML(){
+        return("<secretaireMed>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + "<id>" + id + "</id> "+ "<mdp>" + mdp + "</mdp>" + "</secretaireMed>");
+    }
 }
