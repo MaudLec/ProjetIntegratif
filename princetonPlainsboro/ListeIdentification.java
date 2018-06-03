@@ -13,21 +13,21 @@ import java.util.ArrayList;
  */
 public class ListeIdentification {
 
-    private ArrayList<String> id;
-    private ArrayList<String> mdp;
+    private ArrayList<String> listeId;
+    private ArrayList<String> listeMdp;
 
     public ListeIdentification() {
-        id = new ArrayList<String>();
-        mdp = new ArrayList<String>();
+        listeId = new ArrayList<String>();
+        listeMdp = new ArrayList<String>();
 
     }
 
-    public ArrayList<String> getId() {
-        return id;
+    public ArrayList<String> getListeId() {
+        return listeId;
     }
 
-    public ArrayList<String> getMdp() {
-        return mdp;
+    public ArrayList<String> getListeMdp() {
+        return listeMdp;
     }
 
 }
