@@ -24,7 +24,7 @@ class Date implements Comparable {
         this.minute = 0;
     }
 
-
+    /* Affiche la date complète sous forme de String */
     public String toString() {
         String s = "";
         if (jour < 10) {
@@ -46,6 +46,7 @@ class Date implements Comparable {
         return s;
     }
 
+    /* Affiche la date sous forme de String */
     public String afficherDatedeNaissance() {
         if (mois < 10 && jour < 10) {
             return "0" + jour + " / 0" + mois + " / " + annee;
@@ -60,14 +61,17 @@ class Date implements Comparable {
         }
     }
 
+    /* Affiche la date pour le fichier XML */
     public String dateDeNaissancePourEcritureXML() {
         return jour + "-" + mois + "-" + annee;
     }
 
+    /* Affiche la date complète pour le fichier XML  */
     public String datePourEcritureXML() {
         return annee + "-" + mois + "-" + jour + "/" + heure + ":" + minute;
     }
 
+    /* Renvoie vraie si les dates sont égales, faux sinon */
     @Override
     public boolean equals(Object o) {
         if (o instanceof Date) {
@@ -78,6 +82,7 @@ class Date implements Comparable {
         }
     }
 
+    /* Renvoie vraie si les dates sont égales, faux sinon */
     public boolean equalsDateDeNaissance(Object o) {
         if (o instanceof Date) {
             Date d = (Date) o;
@@ -86,7 +91,7 @@ class Date implements Comparable {
             return false;
         }
     }
-    
+
     // precondition : 'o' est une instance de 'Date' :
     @Override
     public int compareTo(Object o) {
@@ -113,6 +118,7 @@ class Date implements Comparable {
         }
     }
 
+    /* Comparaison de deux dates, +1 si plus grand, -1 si plus petit, 0 si égaux */
     public int compareToTrie(Object o) {
         if (o instanceof Date) {
             Date d = (Date) o;
@@ -131,6 +137,8 @@ class Date implements Comparable {
         return 0;
 
     }
+
+    /* Affichage du code avec les balises XML */
     public String toXML() {
         String s = "<date>" + annee;
         if (mois < 10) {
@@ -144,13 +152,13 @@ class Date implements Comparable {
             s += "-" + jour;
         }
         if (minute != 0 && heure != 0) {
-            s+="T";
+            s += "T";
             if (heure < 10) {
                 s += "0" + heure;
             } else {
                 s += heure;
             }
-             if (minute < 10) {
+            if (minute < 10) {
                 s += ":0" + minute;
             } else {
                 s += ":" + minute;

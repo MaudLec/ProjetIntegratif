@@ -15,6 +15,7 @@ public class Adresse {
         this.ville = ville;
     }
     
+    /* Affiche les informations de l'adresse */
     public String toString(){
         return(this.getRue() +" "+ this.getCodePostal() +" "+ this.getVille());
     }
@@ -35,6 +36,7 @@ public class Adresse {
         return ville;
     }
     
+    /* Affichage de l'adresse avec les balises XML pour la classe EcritureXML */
     public String toXML(){
         return("<adresse>" +"<rue>" + rue + "</rue>" + "<codepostal>" + codePostal + "</codepostal>" + "<ville>" + ville + "</ville>" + "</adresse>");
     }

@@ -73,7 +73,8 @@ enum Code {
         return coefficient * cout;
         }
      
-       public String toXML(){
+    /* Affichage du code avec les balises XML */
+    public String toXML(){
         return ("<code><nom>" + this.name() + "</nom><libelle>" +this.libelle + "</libelle><cout>" + this.cout + "</cout></code>") ;
     }
      

@@ -13,12 +13,12 @@ class Acte {
         this.type = type;
         this.obs = obs;
     }
-    
-    public Acte (Code code, int coef) {
-        this.code=code;
-        this.coef=coef;
-        type= null;
-        obs=null;
+
+    public Acte(Code code, int coef) {
+        this.code = code;
+        this.coef = coef;
+        type = null;
+        obs = null;
     }
 
     public Code getCode() {
@@ -53,12 +53,14 @@ class Acte {
         this.obs = observation;
     }
 
+    /* Affichage du code et du coef de l'acte */
     public String toString() {
         return code.toString() + ", coefficient : " + coef;
     }
 
+    /* Affichage de l'acte & des oservations s'il y en a */
     public String afficherActe() {
-        String s = "Nom : " + this.toString() + ", Type : "+type;
+        String s = "Nom : " + this.toString() + ", Type : " + type;
         if (!obs.isEmpty()) {
             s += "Observations : " + obs;
         }
@@ -66,12 +68,14 @@ class Acte {
         return s;
     }
 
+    /* Calcul du coup de l'acte */
     public double cout() {
         return code.calculerCout(coef);
     }
-    
-     public String toXML(){
-        return("<acte>" + code.toXML() + "<coef>" + coef + "</coeff>" + type.toXML() + "<cout>" + this.cout() + "</cout><observation>" + obs + "</observation></acte>" );
+
+    /* Affichage pour la classe Ecriture XML */
+    public String toXML() {
+        return ("<acte>" + code.toXML() + "<coef>" + coef + "</coeff>" + type.toXML() + "<cout>" + this.cout() + "</cout><observation>" + obs + "</observation></acte>");
     }
 
 //    public String imprimerActe() {

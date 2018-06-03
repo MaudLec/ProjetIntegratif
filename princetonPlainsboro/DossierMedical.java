@@ -2,7 +2,6 @@ package princetonPlainsboro;
 
 import java.util.ArrayList;
 
-
 class DossierMedical {
 
     private ArrayList<FicheDeSoins> fiches; // contient des objets de classe 'FicheDeSoins'
@@ -15,7 +14,6 @@ class DossierMedical {
         fiches = new ArrayList<FicheDeSoins>();  // liste vide
         medecins = new ArrayList<Medecin>();
         patients = new ArrayList<Patient>();
-        // dossierPatient = new ArrayList<FicheDeSoins>();
         lect = new LectureXML("dossiers.xml");
     }
 
@@ -26,15 +24,17 @@ class DossierMedical {
     public ArrayList<Patient> getPatients() {
         return patients;
     }
-    
+
     public ArrayList<FicheDeSoins> getFiches() {
         return fiches;
     }
 
+/* Ajout d'une fiche de soins */
     public void ajouterFiche(FicheDeSoins fiche) {
         fiches.add(fiche);
     }
 
+    /* Ajout d'un patient */
     public String ajouterPatient(Patient p) {
         String s = "";
         if (patients.contains(p)) {
@@ -46,7 +46,7 @@ class DossierMedical {
         }
         return s;
     }
-
+/* Ajout d'un médecin */
     public String ajouterMedecin(Medecin m) {
         String s = "";
         if (medecins.contains(m)) {
@@ -59,6 +59,7 @@ class DossierMedical {
         return s;
     }
 
+    /* Affichage de toutes les fiches de soins */
     public String afficherToutesFiches() {
         String s = "Dossier medical informatise :" + "/n"
                 + "-----------------------------" + "/n";
@@ -71,6 +72,7 @@ class DossierMedical {
         return s;
     }
 
+        /* Affichage de toutes les fiches de soins pour un patient */
     public String afficherDossierPatient(Patient p) {
         String s = "Dossier medical informatise :" + "/n"
                 + "-----------------------------" + "/n";
@@ -85,7 +87,7 @@ class DossierMedical {
         return s;
 
     }
-
+    /* Cout total pour un patient */
     public double coutPatient(Patient p) {
         double cout = 0;
         for (int i = 0; i < fiches.size(); i++) {
@@ -96,7 +98,7 @@ class DossierMedical {
         }
         return cout;
     }
-
+    /* Cout total pour un médecin  */
     public double coutMedecin(Medecin m) {
         double cout = 0;
         for (int i = 0; i < fiches.size(); i++) {
@@ -107,7 +109,8 @@ class DossierMedical {
         }
         return cout;
     }
-
+    
+    /* Cout total pour une spécialité */
     public double coutSpecialite(String specialite) {
         double cout = 0;
         for (int i = 0; i < fiches.size(); i++) {
@@ -119,6 +122,7 @@ class DossierMedical {
         return cout;
     }
 
+        /* Cout total de toutes les fiches de soins confondues */
     public double coutTotal() {
         double cout = 0;
         for (int i = 0; i < fiches.size(); i++) {
@@ -131,6 +135,7 @@ class DossierMedical {
 
     }
 
+        /* Affichage de tous les patients pour un médecin */
     public String afficherListePatients(Medecin m) {
         String s = "> liste des patients du " + m.toString() + " :" + "/n";
         ArrayList<Patient> liste = new ArrayList<Patient>();
@@ -148,7 +153,7 @@ class DossierMedical {
         }
         return s;
     }
-
+    /* Affichage de tous les patients */
     public String afficherTousPatients() {
         String s = "> liste de tous les patients : " + "/n";
         for (int i = 0; i < fiches.size(); i++) {
@@ -162,6 +167,7 @@ class DossierMedical {
         return s;
     }
 
+        /* Affichage de tous les médecins pour un patient (numéro ss) */
     public String afficherListeMedecins(NumSecu ns) {
         String s = "> liste des médecins de " + ns.toString() + " :" + "/n";
         ArrayList<Medecin> liste = new ArrayList<Medecin>();
@@ -177,7 +183,7 @@ class DossierMedical {
         }
         return s;
     }
-
+    /* Affichage de tous les médecins pour un patient */
     public String afficherListeMedecins(Patient p) {
         String s = "> liste des médecins de " + p.toString() + " :" + "/n";
         ArrayList<Medecin> liste = new ArrayList<Medecin>();
@@ -196,6 +202,7 @@ class DossierMedical {
         return s;
     }
 
+        /* Affichage de tous les médecins pour une spécialité */
     public String afficherListeMedecinsSpe(Specialite spe) {
         String s = "> liste des médecins de spécialité " + spe.toString() + " :" + "/n";
         ArrayList<Medecin> liste = new ArrayList<Medecin>();
@@ -214,6 +221,7 @@ class DossierMedical {
         return s;
     }
 
+        /* Affichage de tous les médecins */
     public String afficherTousMedecins() {
         String s = "> liste de tous les médecins : " + "/n";
         for (int i = 0; i < fiches.size(); i++) {
@@ -227,6 +235,7 @@ class DossierMedical {
         return s;
     }
 
+        /* Donne le nombre de fiches entre un intervalle de dates */
     public int nombreFichesIntervalle(Date d1, Date d2) {
         int n = 0;
         for (int i = 0; i < fiches.size(); i++) {
@@ -239,6 +248,7 @@ class DossierMedical {
         return n;
     }
 
+        /* Affichage des fiches de soins trier par date */
     public String trierDates() {
         ArrayList<FicheDeSoins> copieFiches = new ArrayList<FicheDeSoins>(fiches);
         String s = "";
@@ -263,6 +273,7 @@ class DossierMedical {
         return s;
     }
 
+        /* Affichage des fiches de soins trier par patient */
     public String trierPatient(Patient p) {
         ArrayList<FicheDeSoins> copieFiches = new ArrayList<FicheDeSoins>(fiches);
         String s = "";
@@ -282,6 +293,7 @@ class DossierMedical {
         return s;
     }
 
+        /* Affichage des fiches de soins trier par cout */
     public String trierCout() {
         ArrayList<FicheDeSoins> copieFiches = new ArrayList<FicheDeSoins>(fiches);
         String s = "";
@@ -331,13 +343,14 @@ class DossierMedical {
         return s;
     }
 
+        /* Affichage les fiches de soins entre deux dates */
     public String afficherFichesDates(Date d1, Date d2, ComparaisonFiches c) {
         String s = "";
         ArrayList<FicheDeSoins> fichesParIntervalle = new ArrayList<FicheDeSoins>();
         for (int i = 0; i < fiches.size(); i++) {
             FicheDeSoins f = fiches.get(i);
             Date d = f.getDate();
-            if (d.compareTo(d1)>=0 && d.compareTo(d2)<=0) {
+            if (d.compareTo(d1) >= 0 && d.compareTo(d2) <= 0) {
                 fichesParIntervalle.add(f);
             }
         }
@@ -360,16 +373,15 @@ class DossierMedical {
         }
         return s;
     }
-    
-    public String toXML(){
+
+        /* Affichage toutes les fiches avec les balises XML */
+    public String toXML() {
         String s = "<dossiers>";
-        for(int i = 0; i<fiches.size(); i++){
-            s+=fiches.get(i).toXML();
+        for (int i = 0; i < fiches.size(); i++) {
+            s += fiches.get(i).toXML();
         }
-        s+="</dossiers>";
+        s += "</dossiers>";
         return s;
     }
 
 }
-
-
