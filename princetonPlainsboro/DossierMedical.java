@@ -30,10 +30,6 @@ class DossierMedical {
     public ArrayList<FicheDeSoins> getFiches() {
         return fiches;
     }
-    
-    public FicheDeSoins getFiches(int i) {
-        return fiches.get(i);
-    }
 
     public void ajouterFiche(FicheDeSoins fiche) {
         fiches.add(fiche);
