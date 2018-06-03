@@ -46,5 +46,16 @@ class Test {
         System.out.println();
         System.out.println("Dossier trie selon les couts :");
         dm.trier(new ComparaisonFichesCouts());
+        
+        
+        //// pour tester l'écriture en XML, commenter tout ce qu'il y a au-dessus et décommenter les lignes suivantes:  
+//        LectureXML test = new LectureXML("dossiers.xml");
+//        DossierMedical dm = test.getDossier();
+//        EcritureXML e1 = new EcritureXML(dm, "medecins.xml");
+//        e1.editerMedecins();
+//        EcritureXML e2 = new EcritureXML(dm, "patients.xml");
+//        e2.editerPatients();
+//        EcritureXML e3 = new EcritureXML(dm, "dossiersoverride.xml");
+//        e3.editerDossier();
     }
 }
