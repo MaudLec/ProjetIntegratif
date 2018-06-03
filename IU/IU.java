@@ -2214,7 +2214,5 @@ public class IU extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextPane2;
     // End of variables declaration                   
     private DossierMedical dm = new DossierMedical();  
-    
-    private javax.swing.JTextField ModifPPrenom;
-    private javax.swing.JTextField ModifPNom;
+
 }
