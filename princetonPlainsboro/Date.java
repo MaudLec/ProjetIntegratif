@@ -24,7 +24,6 @@ class Date implements Comparable {
         this.minute = 0;
     }
 
-    /* Affiche la date complète sous forme de String */
     public String toString() {
         String s = "";
         if (jour < 10) {
@@ -37,16 +36,18 @@ class Date implements Comparable {
         } else {
             s += mois + "/";
         }
-        s += annee + " à " + heure + "h";
-        if (minute < 10) {
-            s += "0" + minute;
-        } else {
-            s += minute;
+        s += annee;
+        if (heure != 0 && minute != 0) {
+            s += " à " + heure + "h";
+            if (minute < 10) {
+                s += "0" + minute;
+            } else {
+                s += minute;
+            }
         }
         return s;
     }
 
-    /* Affiche la date sous forme de String */
     public String afficherDatedeNaissance() {
         if (mois < 10 && jour < 10) {
             return "0" + jour + " / 0" + mois + " / " + annee;
@@ -61,17 +62,14 @@ class Date implements Comparable {
         }
     }
 
-    /* Affiche la date pour le fichier XML */
     public String dateDeNaissancePourEcritureXML() {
         return jour + "-" + mois + "-" + annee;
     }
 
-    /* Affiche la date complète pour le fichier XML  */
     public String datePourEcritureXML() {
         return annee + "-" + mois + "-" + jour + "/" + heure + ":" + minute;
     }
 
-    /* Renvoie vraie si les dates sont égales, faux sinon */
     @Override
     public boolean equals(Object o) {
         if (o instanceof Date) {
@@ -82,7 +80,6 @@ class Date implements Comparable {
         }
     }
 
-    /* Renvoie vraie si les dates sont égales, faux sinon */
     public boolean equalsDateDeNaissance(Object o) {
         if (o instanceof Date) {
             Date d = (Date) o;
@@ -118,7 +115,6 @@ class Date implements Comparable {
         }
     }
 
-    /* Comparaison de deux dates, +1 si plus grand, -1 si plus petit, 0 si égaux */
     public int compareToTrie(Object o) {
         if (o instanceof Date) {
             Date d = (Date) o;
@@ -138,7 +134,6 @@ class Date implements Comparable {
 
     }
 
-    /* Affichage du code avec les balises XML */
     public String toXML() {
         String s = "<date>" + annee;
         if (mois < 10) {
