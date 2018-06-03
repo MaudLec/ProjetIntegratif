@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<medecins>
+<medecin><nom>Bono</nom><prenom>Jean</prenom><specialite>ORL</specialite><telephone>0123456789></telephone><id>1234</id><mdp>4567</mdp></medecin><medecin><nom>Deblouze</nom><prenom>Agathe</prenom><specialite>Cardiologie</specialite><telephone>0123456789></telephone><id>1234</id><mdp>4567</mdp></medecin><medecin><nom>Heget</nom><prenom>Yves</prenom><specialite>Gynécologie</specialite><telephone>0123456789></telephone><id>1234</id><mdp>4567</mdp></medecin><medecin><nom>Covert</nom><prenom>Harry</prenom><specialite>ORL</specialite><telephone>0123456789></telephone><id>1234</id><mdp>4567</mdp></medecin><medecin><nom>Foupasune</nom><prenom>Jean</prenom><specialite>ORL</specialite><telephone>0123456789></telephone><id>1234</id><mdp>4567</mdp></medecin>
+</medecins>
