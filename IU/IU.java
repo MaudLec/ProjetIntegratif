@@ -1,3 +1,5 @@
+package IU;
+
 import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
