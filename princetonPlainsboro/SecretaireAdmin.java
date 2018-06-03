@@ -72,5 +72,7 @@ public class SecretaireAdmin {
         String mdp = this.generate(8);
         SecretaireAdmin med = new SecretaireAdmin(nom, prenom, id, mdp);
     }
-            
+            public String toXML() {
+        return ("<secretaireAdmin>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + "<id>" + id + "</id> " + "<mdp>" + mdp + "</mdp>" + "</secretaireAdmin>");
+    }
 }
