@@ -58,7 +58,7 @@ class Acte {
     }
 
     public String afficherActe() {
-        String s = "Nom : " + this.toString();
+        String s = "Nom : " + this.toString() + ", Type : "+type;
         if (!obs.isEmpty()) {
             s += "Observations : " + obs;
         }
@@ -68,10 +68,6 @@ class Acte {
 
     public double cout() {
         return code.calculerCout(coef);
-    }
-
-    public String coutActe() {
-        return "" + code.calculerCout(coef);
     }
     
      public String toXML(){
