@@ -74,8 +74,8 @@ class Acte {
     }
 
     /* Affichage pour la classe Ecriture XML */
-    public String toXML() {
-        return ("<acte>" + code.toXML() + "<coef>" + coef + "</coeff>" + type.toXML() + "<cout>" + this.cout() + "</cout><observation>" + obs + "</observation></acte>");
+     public String toXML(){
+        return("<acte>" + code.toXML() + "<coef>" + coef + "</coef>" + type.toXML() + "<cout>" + this.cout() + "</cout><observation>" + obs + "</observation></acte>" );
     }
 
 //    public String imprimerActe() {
