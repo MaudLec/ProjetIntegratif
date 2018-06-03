@@ -66,6 +66,10 @@ class Acte {
     public String coutActe() {
         return "" + code.calculerCout(coef);
     }
+    
+     public String toXML(){
+        return("<acte>" + code.toXML() + "<coef>" + coef + "</coeff>" + type.toXML() + "<cout>" + this.cout() + "</cout><observation>" + obs + "</observation></acte>" );
+    }
 
 //    public String imprimerActe() {
 //    }
