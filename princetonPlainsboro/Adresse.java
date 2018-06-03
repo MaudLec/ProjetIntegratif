@@ -35,5 +35,8 @@ public class Adresse {
         return ville;
     }
     
+    public String toXML(){
+        return("<adresse>" +"<rue>" + rue + "</rue>" + "<codepostal>" + codePostal + "</codepostal>" + "<ville>" + ville + "</ville>" + "</adresse>");
+    }
     
 }
