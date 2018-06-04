@@ -353,6 +353,25 @@ public class IU extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jTextField17 = new javax.swing.JTextField();
+        
+        //Julie
+        //testid = jTextField17.getText().charAt(0);
+        //if (testid == "1".charAt(0)){
+            //    bmed = true;
+            //    bsmed = false;
+            //    bsad = false;
+            //}
+        //if (testid == "2".charAt(0)){
+            //    bsmed = true;
+            //    bmed = false;
+            //    bsad = false;
+            //}
+        //if (testid == "3".charAt(0)){
+            //    bsad = true;
+            //    bsmed = false;
+            //    bmed = false;
+            //}
+        
         jPasswordField2 = new javax.swing.JPasswordField();
         jButton20 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -2134,6 +2153,16 @@ public class IU extends javax.swing.JFrame {
     //maud
     private void jList3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList3MouseClicked
         // TODO add your handling code here:
+        
+//        //Julie
+//        if (bsad){
+//            ModifFSButton.setVisible(false);
+//            FSNomP.setVisible(false);
+//            FSPrenomP.setVisible(false);
+//            FSNSS.setVisible(false);
+//        }
+        
+        
         //maud
         if (evt.getClickCount() == 1) {
             jLabel3.setText("Coût de la FS sélectionnée : " + dossier.getFiche(jList3.getSelectedIndex()).coutTotal());
@@ -2542,5 +2571,10 @@ public class IU extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private int index;
     DefaultListModel dlm = new DefaultListModel();
-
+    
+    //Julie
+    private boolean bmed = false;
+    private boolean bsmed = false;
+    private boolean bsad = false;
+    private char testid ;
 }
