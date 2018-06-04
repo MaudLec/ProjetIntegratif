@@ -1996,24 +1996,33 @@ public class IU extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField17ActionPerformed
 
-    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-//        String idd = jTextField17.getText();
-//        char[] mdpp = jPasswordField2.getPassword();
-//        int v = 0;
-//        boolean b = false;
-//        while (v < listeid.getListeId().size() && !b) {
-//            if (idd.equals(listeid.getListeId().get(v)) && mdpp.equals(listeid.getListeMdp().get(v))) {
-        this.setVisible(false);
-        FPrincipale.setVisible(true);
-//                b=true;
-//            }
-//            else {
-//               jLabel4.setVisible(true); 
-//            }
-//        }
-//        jLabel4.setVisible(true);
-    }//GEN-LAST:event_jButton20ActionPerformed
+        String idd = jTextField17.getText();
+        char[] mdpp = jPasswordField2.getPassword();
+        String mdppp = "";
+        for (int i = 0; i<mdpp.length; i++){
+            mdppp+=mdpp[i];
+        }
+        int v = 0;
+        boolean b = false;
+        while (v < listeidentifiants.getListeId().size() && !b) {
+            System.out.println("------------------");
+            System.out.println(listeidentifiants.getListeId().get(v));
+            System.out.println(listeidentifiants.getListeMdp().get(v));
+            if (idd.equals(listeidentifiants.getListeId().get(v)) && mdppp.equals(listeidentifiants.getListeMdp().get(v))) {
+                System.out.println("ok");
+                this.setVisible(false);
+                FPrincipale.setVisible(true);
+                b = true;
+            } else {
+                v++;
+                //jLabel4.setVisible(true); 
+            }
+
+        }
+        //jLabel4.setVisible(true);
+    }
 
     private void ChoixCodeActeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoixCodeActeActionPerformed
         // TODO add your handling code here:
