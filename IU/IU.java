@@ -21,7 +21,7 @@ public class IU extends javax.swing.JFrame {
     Date date = null;
      ListeIdentification listeidentifiants = test.getListeIdentification();
     
-    //maud2
+    //maud
     FicheDeSoins ficheCourante = null;
 
     //personnes
