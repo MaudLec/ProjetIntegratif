@@ -2041,13 +2041,15 @@ public class IU extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField17ActionPerformed
 
+    
+    //maud
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         String idd = jTextField17.getText();
         char[] mdpp = jPasswordField2.getPassword();
         String mdppp = "";
-        for (int i = 0; i<mdpp.length; i++){
-            mdppp+=mdpp[i];
+        for (int i = 0; i < mdpp.length; i++) {
+            mdppp += mdpp[i];
         }
         int v = 0;
         boolean b = false;
@@ -2060,11 +2062,27 @@ public class IU extends javax.swing.JFrame {
                 b = true;
             } else {
                 v++;
-                jLabel4.setVisible(true); 
+                jLabel4.setVisible(true);
             }
 
         }
+        // Affichage du nom du Médecin / Secrétaire
+        boolean bbb= false;
+        for (int iii = 0; iii < dossier.getMedecins().size(); iii++) {
+            if (dossier.getMedecins().get(iii).getId().toString().equals(idd) && !bbb) { // la récup de l'id se fait pas
+                Identifiant.setText(dossier.getMedecins().get(iii).toString());
+                System.out.println("Nom changé");
+                bbb= true;
+                iii = dossier.getMedecins().size();
+            }
+            if (iii == dossier.getMedecins().size()&&!bbb) {
+                Identifiant.setText("session inconnue");
+                System.out.println("Nom non changé");
+            }
+        }
+
         jLabel4.setVisible(true);
+
     }
 
     private void ChoixCodeActeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoixCodeActeActionPerformed
