@@ -2,7 +2,6 @@ package princetonPlainsboro;
 
 import java.util.ArrayList;
 
-
 public class DossierMedical {
 
     private ArrayList<FicheDeSoins> fiches; // contient des objets de classe 'FicheDeSoins'
@@ -26,11 +25,11 @@ public class DossierMedical {
     public ArrayList<Patient> getPatients() {
         return patients;
     }
-    
+
     public ArrayList<FicheDeSoins> getFiches() {
         return fiches;
     }
-    
+
     public FicheDeSoins getFiche(int i) {
         return fiches.get(i);
     }
@@ -69,7 +68,7 @@ public class DossierMedical {
     /* Affichage de toutes les fiches de soins */
     public String afficherToutesFiches() {
         String s = "Dossier medical informatise :" + "\n"
-                + "-----------------------------" ;
+                + "-----------------------------";
         for (int i = 0; i < fiches.size(); i++) {
             FicheDeSoins f = fiches.get(i);
             s += f.afficher();
@@ -79,7 +78,7 @@ public class DossierMedical {
         return s;
     }
 
-     /* Affichage de toutes les fiches de soins pour un patient */
+    /* Affichage de toutes les fiches de soins pour un patient */
     public String afficherDossierPatient(Patient p) {
         String s = "Dossier medical informatise :" + "\n"
                 + "-----------------------------" + "\n";
@@ -93,18 +92,18 @@ public class DossierMedical {
         }
         return s;
     }
-    
-    /* Renvoi d'une liste contennant toutes les fiches de soins d'un patient*/ 
-     public ArrayList<FicheDeSoins> listeDossierPatient(Patient p){
-           ArrayList<FicheDeSoins> listeFichesDeSoins = new ArrayList<FicheDeSoins>();
-             for (int i = 0; i < fiches.size(); i++) {
-                if (fiches.get(i).getPatient().equals(p)){
-                    listeFichesDeSoins.add(fiches.get(i));
-                 }
-             }
-             return listeFichesDeSoins;
+
+    /* Renvoi d'une liste contennant toutes les fiches de soins d'un patient*/
+    public ArrayList<FicheDeSoins> listeDossierPatient(Patient p) {
+        ArrayList<FicheDeSoins> listeFichesDeSoins = new ArrayList<FicheDeSoins>();
+        for (int i = 0; i < fiches.size(); i++) {
+            if (fiches.get(i).getPatient().equals(p)) {
+                listeFichesDeSoins.add(fiches.get(i));
+            }
+        }
+        return listeFichesDeSoins;
     }
-    
+
 
     /* Cout total pour un patient */
     public double coutPatient(Patient p) {
@@ -173,8 +172,9 @@ public class DossierMedical {
         }
         return s;
     }
+
     /*recuperer la liste des patients d un medecin*/
-            public  ArrayList<Patient> recupererListePatients(Medecin m) {
+    public ArrayList<Patient> recupererListePatients(Medecin m) {
         ArrayList<Patient> liste = new ArrayList<Patient>();
         for (int i = 0; i < fiches.size(); i++) {
             FicheDeSoins f = fiches.get(i);
@@ -220,6 +220,16 @@ public class DossierMedical {
         return s;
     }
 
+    public ArrayList<Medecin> listeMedecinsParPatientNs(NumSecu ns) {
+        ArrayList<Medecin> listeMedecins = new ArrayList<Medecin>();
+        for (int i = 0; i < fiches.size(); i++) {
+            if (ns.equals(fiches.get(i).getPatient().getNumSecu())) {
+                listeMedecins.add(fiches.get(i).getMedecin());
+            }
+        }
+        return listeMedecins;
+    }
+
     /* Affichage de tous les médecins pour un patient */
     public String afficherListeMedecins(Patient p) {
         String s = "> liste des médecins de " + p.toString() + " :" + "\n";
@@ -239,6 +249,16 @@ public class DossierMedical {
         return s;
     }
 
+    public ArrayList<Medecin> listeMedecinsParPatient(Patient p) {
+        ArrayList<Medecin> listeMedecinsPatient = new ArrayList<Medecin>();
+        for (int i = 0; i < fiches.size(); i++) {
+            if (fiches.get(i).getPatient().equals(p)) {
+                listeMedecinsPatient.add(fiches.get(i).getMedecin());
+            }
+        }
+        return listeMedecinsPatient;
+    }
+
     /* Affichage de tous les médecins pour une spécialité */
     public String afficherListeMedecinsSpe(Specialite spe) {
         String s = "> liste des médecins de spécialité " + spe.toString() + " :" + "\n";
@@ -256,6 +276,16 @@ public class DossierMedical {
             }
         }
         return s;
+    }
+
+    public ArrayList<Medecin> listeMedecinsSpe(Specialite spe) {
+        ArrayList<Medecin> listeMedecinsSpe = new ArrayList<Medecin>();
+        for (int i = 0; i < medecins.size(); i++) {
+            if (medecins.get(i).getSpecialite().equals(spe)) {
+                listeMedecinsSpe.add(medecins.get(i));
+            }
+        }
+        return listeMedecinsSpe;
     }
 
     /* Affichage de tous les médecins */
@@ -309,31 +339,31 @@ public class DossierMedical {
         }
         return s;
     }
-    
+
     /*tri des fiches selon la date croissante*/
-    public void trierDatesCroissantes(){  
-        for (int k = 0; k<fiches.size(); k++){
-            for (int j=k+1; j<fiches.size(); j++){
-                if(fiches.get(k).getDate().compareTo(fiches.get(j).getDate())<0){
+    public void trierDatesCroissantes() {
+        for (int k = 0; k < fiches.size(); k++) {
+            for (int j = k + 1; j < fiches.size(); j++) {
+                if (fiches.get(k).getDate().compareTo(fiches.get(j).getDate()) < 0) {
                     FicheDeSoins copy = fiches.get(j);
-                    fiches.set(j, fiches.get(k)); 
+                    fiches.set(j, fiches.get(k));
                     fiches.set(k, copy);
-                }              
+                }
             }
-        }    
+        }
     }
-    
-     /*tri des fiches selon la date décroissante*/
-    public void trierDatesDecroissantes(){  
-        for (int k = 0; k<fiches.size(); k++){
-            for (int j=k+1; j<fiches.size(); j++){
-                if(fiches.get(k).getDate().compareTo(fiches.get(j).getDate())>0){
+
+    /*tri des fiches selon la date décroissante*/
+    public void trierDatesDecroissantes() {
+        for (int k = 0; k < fiches.size(); k++) {
+            for (int j = k + 1; j < fiches.size(); j++) {
+                if (fiches.get(k).getDate().compareTo(fiches.get(j).getDate()) > 0) {
                     FicheDeSoins copy = fiches.get(j);
-                    fiches.set(j, fiches.get(k)); 
+                    fiches.set(j, fiches.get(k));
                     fiches.set(k, copy);
-                }              
+                }
             }
-        }    
+        }
     }
 
     /* Affichage des fiches de soins triées par patient */
@@ -355,6 +385,68 @@ public class DossierMedical {
         }
         return s;
     }
+
+    public ArrayList listeFichesParPatient(Patient p) {
+        ArrayList<FicheDeSoins> listeFichesParPatient = new ArrayList<FicheDeSoins>();
+        for (int i = 0; i < fiches.size(); i++) {
+            if (fiches.get(i).getPatient().equals(p)) {
+                listeFichesParPatient.add(fiches.get(i));
+            }
+        }
+        return listeFichesParPatient;
+    }
+
+    /* tri des fiches par ordre alphbétique croissant des patients*/
+    public void triFichesAlphabetiquePatientCroissant() {
+        for (int k = 0; k < fiches.size(); k++) {
+            for (int j = k + 1; j < fiches.size(); j++) {
+                if (fiches.get(k).getPatient().getNom().compareTo(fiches.get(j).getPatient().getNom()) < 0) {
+                    FicheDeSoins copy = fiches.get(j);
+                    fiches.set(j, fiches.get(k));
+                    fiches.set(k, copy);
+                }
+            }
+        }
+    }
+
+    /* tri des fiches par ordre alphbétique décroissant des patients*/
+    public void triFichesAlphabetiquePatientDeroissant() {
+        for (int k = 0; k < fiches.size(); k++) {
+            for (int j = k + 1; j < fiches.size(); j++) {
+                if (fiches.get(k).getPatient().getNom().compareTo(fiches.get(j).getPatient().getNom()) > 0) {
+                    FicheDeSoins copy = fiches.get(j);
+                    fiches.set(j, fiches.get(k));
+                    fiches.set(k, copy);
+                }
+            }
+        }
+    }
+
+    public void triFichesAlphabetiqueMedecinCroissant() {
+        for (int k = 0; k < fiches.size(); k++) {
+            for (int j = k + 1; j < fiches.size(); j++) {
+                if (fiches.get(k).getMedecin().getNom().compareTo(fiches.get(j).getMedecin().getNom()) < 0) {
+                    FicheDeSoins copy = fiches.get(j);
+                    fiches.set(j, fiches.get(k));
+                    fiches.set(k, copy);
+                }
+            }
+        }
+    }
+    
+    public void triFichesAlphabetiqueMedecinDeroissant() {
+        for (int k = 0; k < fiches.size(); k++) {
+            for (int j = k + 1; j < fiches.size(); j++) {
+                if (fiches.get(k).getMedecin().getNom().compareTo(fiches.get(j).getMedecin().getNom()) > 0) {
+                    FicheDeSoins copy = fiches.get(j);
+                    fiches.set(j, fiches.get(k));
+                    fiches.set(k, copy);
+                }
+            }
+        }
+    }
+    
+
 
     /* Affichage des fiches de soins triées par cout */
     public String trierCout() {
@@ -379,6 +471,30 @@ public class DossierMedical {
             copieFiches.remove(imin);
         }
         return s;
+    }
+
+    public void triCoutsOrdreCroissant() {
+        for (int k = 0; k < fiches.size(); k++) {
+            for (int j = k + 1; j < fiches.size(); j++) {
+                if (fiches.get(k).coutTotal() > fiches.get(j).coutTotal()) {
+                    FicheDeSoins copy = fiches.get(j);
+                    fiches.set(j, fiches.get(k));
+                    fiches.set(k, copy);
+                }
+            }
+        }
+    }
+
+    public void triCoutsOrdreDeroissant() {
+        for (int k = 0; k < fiches.size(); k++) {
+            for (int j = k + 1; j < fiches.size(); j++) {
+                if (fiches.get(k).coutTotal() < fiches.get(j).coutTotal()) {
+                    FicheDeSoins copy = fiches.get(j);
+                    fiches.set(j, fiches.get(k));
+                    fiches.set(k, copy);
+                }
+            }
+        }
     }
 
     // tri generique :
@@ -413,7 +529,7 @@ public class DossierMedical {
         for (int i = 0; i < fiches.size(); i++) {
             FicheDeSoins f = fiches.get(i);
             Date d = f.getDate();
-            if (d.compareTo(d1)>=0 && d.compareTo(d2)<=0) {
+            if (d.compareTo(d1) >= 0 && d.compareTo(d2) <= 0) {
                 fichesParIntervalle.add(f);
             }
         }
@@ -436,16 +552,57 @@ public class DossierMedical {
         }
         return s;
     }
-    
-     /* Affichage toutes les fiches avec les balises XML */
-    public String toXML(){
-        String s = "<dossiers>";
-        for(int i = 0; i<fiches.size(); i++){
-            s+=getFiche(i).toXML();
+
+    public ArrayList listeFichesEntreDeuxDatesTriesOrdreCroissant(Date d1, Date d2) {
+        ArrayList<FicheDeSoins> fichesEntreDeuxDates = new ArrayList<FicheDeSoins>();
+        for (int i = 0; i < fiches.size(); i++) {
+            FicheDeSoins f = fiches.get(i);
+            Date d = f.getDate();
+            if (d.compareTo(d1) >= 0 && d.compareTo(d2) <= 0) {
+                fichesEntreDeuxDates.add(f);
+            }
         }
-        s+="</dossiers>";
-        return s;
+        for (int k = 0; k < fichesEntreDeuxDates.size(); k++) {
+            for (int j = k + 1; j < fichesEntreDeuxDates.size(); j++) {
+                if (fiches.get(k).getDate().compareTo(fichesEntreDeuxDates.get(j).getDate()) < 0) {
+                    FicheDeSoins copy = fichesEntreDeuxDates.get(j);
+                    fichesEntreDeuxDates.set(j, fichesEntreDeuxDates.get(k));
+                    fichesEntreDeuxDates.set(k, copy);
+                }
+            }
+        }
+        return fichesEntreDeuxDates;
     }
 
+    public ArrayList listeFichesEntreDeuxDatesTriesOrdreDeroissant(Date d1, Date d2) {
+        ArrayList<FicheDeSoins> fichesEntreDeuxDates = new ArrayList<FicheDeSoins>();
+        for (int i = 0; i < fiches.size(); i++) {
+            FicheDeSoins f = fiches.get(i);
+            Date d = f.getDate();
+            if (d.compareTo(d1) >= 0 && d.compareTo(d2) <= 0) {
+                fichesEntreDeuxDates.add(f);
+            }
+        }
+        for (int k = 0; k < fichesEntreDeuxDates.size(); k++) {
+            for (int j = k + 1; j < fichesEntreDeuxDates.size(); j++) {
+                if (fiches.get(k).getDate().compareTo(fichesEntreDeuxDates.get(j).getDate()) > 0) {
+                    FicheDeSoins copy = fichesEntreDeuxDates.get(j);
+                    fichesEntreDeuxDates.set(j, fichesEntreDeuxDates.get(k));
+                    fichesEntreDeuxDates.set(k, copy);
+                }
+            }
+        }
+        return fichesEntreDeuxDates;
+    }
+
+    /* Affichage toutes les fiches avec les balises XML */
+    public String toXML() {
+        String s = "<dossiers>";
+        for (int i = 0; i < fiches.size(); i++) {
+            s += getFiche(i).toXML();
+        }
+        s += "</dossiers>";
+        return s;
+    }
 
 }
