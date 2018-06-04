@@ -18,6 +18,7 @@ public class IU extends javax.swing.JFrame {
     private LectureXML test = new LectureXML("dossiers.xml");
     DossierMedical dossier = test.getDossier();
     Date date = null;
+     ListeIdentification listeidentifiants = test.getListeIdentification();
 
     //personnes
     Medecin medecin = null;
