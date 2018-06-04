@@ -1,6 +1,6 @@
 package princetonPlainsboro;
 
-class Test {
+public class Test {
 
     public static void main(String[] args) {
         LectureXML test = new LectureXML("dossiers.xml");
