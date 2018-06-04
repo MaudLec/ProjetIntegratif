@@ -3,7 +3,7 @@ package princetonPlainsboro;
 import java.util.ArrayList;
 
 
-class DossierMedical {
+public class DossierMedical {
 
     private ArrayList<FicheDeSoins> fiches; // contient des objets de classe 'FicheDeSoins'
     private ArrayList<Medecin> medecins;
