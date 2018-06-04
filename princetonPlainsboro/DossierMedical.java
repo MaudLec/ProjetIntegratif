@@ -172,7 +172,17 @@ public class DossierMedical {
         }
         return s;
     }
-
+/*renvoie toutes les fiches de soins d'une spécialité*/
+     public ArrayList<FicheDeSoins> listeFichesSpe(Specialite spe) {
+        ArrayList<FicheDeSoins> listeFichesSpe = new ArrayList<FicheDeSoins>();
+        for (int i = 0; i < fiches.size(); i++) {
+            if (fiches.get(i).getMedecin().getSpecialite().equals(spe)) {
+                listeFichesSpe.add(fiches.get(i));
+            }
+        }
+        return listeFichesSpe;
+    }
+    
     /*recuperer la liste des patients d un medecin*/
     public ArrayList<Patient> recupererListePatients(Medecin m) {
         ArrayList<Patient> liste = new ArrayList<Patient>();
