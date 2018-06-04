@@ -1952,10 +1952,20 @@ public class IU extends javax.swing.JFrame {
     }//GEN-LAST:event_AfficherListeDateActionPerformed
 
     private void AfficherListeNbActesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeNbActesActionPerformed
-        // TODO add your handling code here:
+        DefaultListModel dlps = new DefaultListModel();
+        Code code = Code.values()[(ChoixCodeActe2.getSelectedIndex())];
+        Acte acte = new Acte(code, 0, typeActe, "");
+        if(dossier.listeFichesActe(acte).size()==0){
+            dlps.addElement("Pas de fiches pour cet acte");
+        }
+        for (int index = 0; index <dossier.listeFichesActe(acte).size(); index++) {
+            dlps.addElement(dossier.listeFichesActe(acte).get(index));
+        }
+        jList3.setModel(dlps);
+
+        ListeFiches.repaint();
         TriActes.dispose();
     }//GEN-LAST:event_AfficherListeNbActesActionPerformed
-
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
         NewFicheSoins.setVisible(true);
