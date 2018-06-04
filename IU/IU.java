@@ -1865,7 +1865,6 @@ public class IU extends javax.swing.JFrame {
     }//GEN-LAST:event_RecherchePActionPerformed
 
        private void AfficherListePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListePActionPerformed
-        // TODO add your handling code here:
         Patient patientselectionne = dossier.getPatients().get(jList2.getSelectedIndex());
         DefaultListModel dlpt = new DefaultListModel();
         for (int index = 0; index < dossier.listeDossierPatient(patientselectionne).size(); index++) {
@@ -1880,16 +1879,16 @@ public class IU extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RechercheMActionPerformed
 
-    private void AfficherListePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListePActionPerformed
-        Patient patientselectionne = dossier.getPatients().get(jList2.getSelectedIndex());
-        DefaultListModel dlpt = new DefaultListModel();
-        for (int index = 0; index < dossier.listeDossierPatient(patientselectionne).size(); index++) {
-            dlpt.addElement(dossier.listeDossierPatient(patientselectionne).get(index).toString());
+        private void AfficherListeMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeMActionPerformed
+        Medecin medecinselectionne = dossier.getMedecins().get(jList4.getSelectedIndex());
+        DefaultListModel dlpm = new DefaultListModel();
+        for (int index = 0; index < dossier.recupererListePatients(medecinselectionne).size(); index++) {
+            dlpm.addElement(dossier.recupererListePatients(medecinselectionne).get(index).toString());
         }
-        jList3.setModel(dlpt);
+        jList3.setModel(dlpm);
         ListeFiches.repaint();
-        TriPatient.dispose();
-    }//GEN-LAST:event_AfficherListePActionPerformed
+        TriMédecin.dispose();
+    }//GEN-LAST:event_AfficherListeMActionPerformed
     
     private void AfficherListeDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeDateActionPerformed
         // TODO add your handling code here:
