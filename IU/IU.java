@@ -1,4 +1,3 @@
-package IU;
 
 import java.awt.Image;
 import java.awt.event.ActionListener;
@@ -11,7 +10,6 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import princetonPlainsboro.*;
-
 
 public class IU extends javax.swing.JFrame {
 
@@ -83,14 +81,12 @@ public class IU extends javax.swing.JFrame {
         jComboBox4 = new javax.swing.JComboBox<>();
         ListeFiches = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList<>();
-
         DefaultListModel dlm = new DefaultListModel();
-        for(int index=0; index<dossier.getFiches().size(); index++)
+        for(index=0; index<dossier.getFiches().size(); index++)
         {
-            dlm.addElement(dossier.getFiches().get(index).toString());
+            dlm.addElement(dossier.getFiches().get(index).afficher());
         }
         jList3.setModel(dlm);
-
         ;
         OptTri = new javax.swing.JPanel();
         TriLabel = new javax.swing.JLabel();
@@ -197,6 +193,15 @@ public class IU extends javax.swing.JFrame {
         FSSexe = new javax.swing.JLabel();
         ListeActes = new javax.swing.JScrollPane();
         jList5 = new javax.swing.JList<>();
+        //DefaultListModel dlma = new DefaultListModel();
+        //for(int ind=0;ind<dossier.getFiches().size();ind++){
+            //    for(int index=0; index<dossier.getFiche(ind).getActes().size(); index++)
+            //    {
+                //        dlma.addElement(dossier.getFiche(ind).getActe(index).toString());
+                //    }
+            //}
+        //jList5.setModel(dlma)
+        ;
         FSNomP = new javax.swing.JLabel();
         FSPrenomP = new javax.swing.JLabel();
         FSNSS = new javax.swing.JLabel();
@@ -223,14 +228,12 @@ public class IU extends javax.swing.JFrame {
         ActeLabel3 = new javax.swing.JLabel();
         ListeActesFiche1 = new javax.swing.JScrollPane();
         jList7 = new javax.swing.JList<>();
-
-        DefaultListModel dlma = new DefaultListModel();
-        for(int index=0; index<dossier.getFiche(0).getActes().size(); index++)
-        {
-            dlma.addElement(dossier.getFiche(0).getActes().get(index));
-        }
-        jList7.setModel(dlma);
-
+        //DefaultListModel dlma2 = new DefaultListModel();
+        //for(int ii=0; ii<1+dossier.getFiche(index).getActes().size(); ii++)
+        //{
+            //    dlma2.addElement(1+dossier.getFiche(index).getActe(ii).toString());
+            //}
+        //jList7.setModel(dlma2)
         ;
         jSeparator14 = new javax.swing.JSeparator();
         MedecinLabel3 = new javax.swing.JLabel();
@@ -320,7 +323,7 @@ public class IU extends javax.swing.JFrame {
             }
         });
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Ordre", "Croissant", "Décroissant"}));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ordre", "Croissant", "Décroissant" }));
         jComboBox4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox4ActionPerformed(evt);
@@ -508,7 +511,7 @@ public class IU extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("hostologo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hostologo.png"))); // NOI18N
 
         javax.swing.GroupLayout LogoLayout = new javax.swing.GroupLayout(Logo);
         Logo.setLayout(LogoLayout);
@@ -746,12 +749,12 @@ public class IU extends javax.swing.JFrame {
         TriPatient.setMinimumSize(new java.awt.Dimension(450, 340));
 
         SelectP.setText("Sélectionner un patient :");
-        DefaultListModel dlpatients = new DefaultListModel();
-        for (int index = 0; index < dossier.getPatients().size(); index++) {
-            dlpatients.addElement(dossier.getPatients().get(index).toString());
-        }
-        jList2.setModel(dlpatients);
 
+        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
         ListeP.setViewportView(jList2);
 
         RechercheP.setForeground(new java.awt.Color(204, 204, 204));
@@ -806,13 +809,12 @@ public class IU extends javax.swing.JFrame {
         TriMédecin.setPreferredSize(new java.awt.Dimension(450, 340));
 
         SelectM.setText("Sélectionner un médecin :");
-        
-        DefaultListModel dlmedecins = new DefaultListModel();
-        for (int index = 0; index < dossier.getMedecins().size(); index++) {
-            dlmedecins.addElement(dossier.getMedecins().get(index).toString());
-        }
-        jList4.setModel(dlmedecins);
 
+        jList4.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
         ListeM.setViewportView(jList4);
 
         RechercheM.setForeground(new java.awt.Color(204, 204, 204));
@@ -1121,7 +1123,7 @@ public class IU extends javax.swing.JFrame {
 
         FSDate.setText("Date :");
 
-        ModifFSButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("rsz_1rsz_1rsz_edit.png"))); // NOI18N
+        ModifFSButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsz_1rsz_1rsz_edit.png"))); // NOI18N
         ModifFSButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ModifFSButtonActionPerformed(evt);
@@ -1136,11 +1138,6 @@ public class IU extends javax.swing.JFrame {
 
         FSSexe.setText("Sexe :");
 
-        jList5.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jList5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jList5MouseClicked(evt);
@@ -1280,11 +1277,6 @@ public class IU extends javax.swing.JFrame {
         ActeLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ActeLabel3.setText("Actes");
 
-        jList7.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jList7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jList7MouseClicked(evt);
@@ -1308,10 +1300,6 @@ public class IU extends javax.swing.JFrame {
         FSPrenomM2.setText("Prénom :");
 
         FSNomM2.setText("Nom :");
-
-        jTextField1.setText("jTextField1");
-
-        jTextField2.setText("jTextField2");
 
         PrenomP2.setText("Prénom : ");
 
@@ -1618,7 +1606,7 @@ public class IU extends javax.swing.JFrame {
 
         Observation1.setText("Observations : ");
 
-        ModifFSButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("rsz_1rsz_1rsz_edit.png"))); // NOI18N
+        ModifFSButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsz_1rsz_1rsz_edit.png"))); // NOI18N
         ModifFSButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ModifFSButton1ActionPerformed(evt);
@@ -1781,7 +1769,7 @@ public class IU extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("hostologo.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hostologo.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1873,7 +1861,6 @@ public class IU extends javax.swing.JFrame {
 
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
         // TODO add your handling code here:
-        
     }//GEN-LAST:event_jComboBox4ActionPerformed
 
     private void PatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientButtonActionPerformed
@@ -1973,7 +1960,8 @@ public class IU extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (evt.getClickCount() == 2) {
             //            adapter la fiche à la ligne demandee
-            //            String selectedItem = (String) jList3.getSelectedValue();
+//            String selectedItem = (String) jList3.getSelectedValue();
+
             FicheDeSoins.setVisible(true);
             jPanel1.setVisible(true);
             jPanel2.setVisible(false);
@@ -2262,8 +2250,7 @@ public class IU extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
     // End of variables declaration//GEN-END:variables
-  //  private DossierMedical dm = dossier;
-    
+    private int index;
     
 
 }
