@@ -1864,8 +1864,15 @@ public class IU extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RecherchePActionPerformed
 
-    private void AfficherListePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListePActionPerformed
+       private void AfficherListePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListePActionPerformed
         // TODO add your handling code here:
+        Patient patientselectionne = dossier.getPatients().get(jList2.getSelectedIndex());
+        DefaultListModel dlpt = new DefaultListModel();
+        for (int index = 0; index < dossier.listeDossierPatient(patientselectionne).size(); index++) {
+            dlpt.addElement(dossier.listeDossierPatient(patientselectionne).get(index).toString());
+        }
+        jList3.setModel(dlpt);
+        ListeFiches.repaint();
         TriPatient.dispose();
     }//GEN-LAST:event_AfficherListePActionPerformed
 
