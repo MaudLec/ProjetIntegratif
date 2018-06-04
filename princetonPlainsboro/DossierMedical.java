@@ -173,6 +173,21 @@ public class DossierMedical {
         }
         return s;
     }
+    /*recuperer la liste des patients d un medecin*/
+            public  ArrayList<Patient> recupererListePatients(Medecin m) {
+        ArrayList<Patient> liste = new ArrayList<Patient>();
+        for (int i = 0; i < fiches.size(); i++) {
+            FicheDeSoins f = fiches.get(i);
+            if (m.equals(f.getMedecin())) {
+                Patient p = f.getPatient();
+                if (!liste.contains(p)) {
+                    liste.add(p);
+                }
+            }
+        }
+        return liste;
+    }
+
 
     /* Affichage de tous les patients */
     public String afficherTousPatients() {
