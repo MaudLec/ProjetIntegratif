@@ -84,12 +84,12 @@ public class IU extends javax.swing.JFrame {
         jList3 = new javax.swing.JList<>();
 
         DefaultListModel dlm = new DefaultListModel();
-        for(int index=0; index<dm.getFiches().size(); index++)
+        for(int index=0; index<dossier.getFiches().size(); index++)
         {
-            dlm.addElement(dm.getFiches().get(index));
+            dlm.addElement(dossier.getFiches().get(index));
         }
         jList3.setModel(dlm);
-        jList3.updateUI();
+
         ;
         OptTri = new javax.swing.JPanel();
         TriLabel = new javax.swing.JLabel();
@@ -222,6 +222,15 @@ public class IU extends javax.swing.JFrame {
         ActeLabel3 = new javax.swing.JLabel();
         ListeActesFiche1 = new javax.swing.JScrollPane();
         jList7 = new javax.swing.JList<>();
+
+        DefaultListModel dlma = new DefaultListModel();
+        for(int index=0; index<dossier.getFiche(0).getActes().size(); index++)
+        {
+            dlma.addElement(dossier.getFiche(0).getActes().get(index));
+        }
+        jList7.setModel(dlma);
+
+        ;
         jSeparator14 = new javax.swing.JSeparator();
         MedecinLabel3 = new javax.swing.JLabel();
         PatientLabel3 = new javax.swing.JLabel();
