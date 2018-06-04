@@ -283,6 +283,45 @@ public class DossierMedical {
         }
         return s;
     }
+    
+    
+        public void trierDatesCroissantes() {
+        ArrayList<FicheDeSoins> copieFiches = new ArrayList<FicheDeSoins>(fiches);
+        while (!copieFiches.isEmpty()) {
+            // on cherche la fiche de soins de date minimale :
+            int imin = 0;
+            FicheDeSoins f1 = copieFiches.get(imin);
+            for (int i = 1; i < copieFiches.size(); i++) {
+                FicheDeSoins f2 = copieFiches.get(i);
+                if (f2.getDate().compareTo(f1.getDate()) < 0) {
+                    imin = i;
+                    f1 = f2;
+                }
+            }
+            fiches = copieFiches;
+            //on la supprime de la liste :
+            copieFiches.remove(imin);
+        }
+    }
+
+    public void trierDatesDecroissantes() {
+        ArrayList<FicheDeSoins> copieFiches = new ArrayList<FicheDeSoins>(fiches);
+        while (!copieFiches.isEmpty()) {
+            // on cherche la fiche de soins de date minimale :
+            int imin = 0;
+            FicheDeSoins f1 = copieFiches.get(imin);
+            for (int i = 1; i < copieFiches.size(); i++) {
+                FicheDeSoins f2 = copieFiches.get(i);
+                if (f2.getDate().compareTo(f1.getDate()) > 0) {
+                    imin = i;
+                    f1 = f2;
+                }
+            }
+            fiches = copieFiches;
+            copieFiches.remove(imin);
+        }
+    }
+
 
     /* Affichage des fiches de soins triées par patient */
     public String trierPatient(Patient p) {
