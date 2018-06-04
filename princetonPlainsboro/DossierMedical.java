@@ -1,5 +1,5 @@
 package princetonPlainsboro;
-
+//maud
 import java.util.ArrayList;
 
 public class DossierMedical {
@@ -93,6 +93,31 @@ public class DossierMedical {
         return s;
     }
 
+     public ArrayList<FicheDeSoins> listeFichesSpe(Specialite spe) {
+        ArrayList<FicheDeSoins> listeFichesSpe = new ArrayList<FicheDeSoins>();
+        for (int i = 0; i < fiches.size(); i++) {
+            if (fiches.get(i).getMedecin().getSpecialite().equals(spe)) {
+                listeFichesSpe.add(fiches.get(i));
+            }
+        }
+        return listeFichesSpe;
+    }
+     
+
+         public ArrayList<FicheDeSoins> listeFichesActe(Acte acte) {
+        ArrayList<FicheDeSoins> listeFichesActe = new ArrayList<FicheDeSoins>();
+        for (int i = 0; i < fiches.size(); i++) {
+            for (int j = 0; j < fiches.get(i).getActes().size(); j++) {
+                if (fiches.get(i).getActe(j).equals(acte)) {
+                    listeFichesActe.add(fiches.get(i));
+                    j = fiches.get(i).getActes().size();
+                }
+            }
+
+        }
+        return listeFichesActe;
+    }
+     
     /* Renvoi d'une liste contennant toutes les fiches de soins d'un patient*/
     public ArrayList<FicheDeSoins> listeDossierPatient(Patient p) {
         ArrayList<FicheDeSoins> listeFichesDeSoins = new ArrayList<FicheDeSoins>();
@@ -172,31 +197,7 @@ public class DossierMedical {
         }
         return s;
     }
-/*renvoie toutes les fiches de soins d'une spécialité*/
-     public ArrayList<FicheDeSoins> listeFichesSpe(Specialite spe) {
-        ArrayList<FicheDeSoins> listeFichesSpe = new ArrayList<FicheDeSoins>();
-        for (int i = 0; i < fiches.size(); i++) {
-            if (fiches.get(i).getMedecin().getSpecialite().equals(spe)) {
-                listeFichesSpe.add(fiches.get(i));
-            }
-        }
-        return listeFichesSpe;
-    }
-    /*renvoie toutes les fiches contenant au moins une fois cet acte*/
-      public ArrayList<FicheDeSoins> listeFichesActe(Acte acte) {
-        ArrayList<FicheDeSoins> listeFichesActe = new ArrayList<FicheDeSoins>();
-        for (int i = 0; i < fiches.size(); i++) {
-            for (int j = 0; j < fiches.get(i).getActes().size(); j++) {
-                if (fiches.get(i).getActe(j).equals(acte)) {
-                    listeFichesActe.add(fiches.get(i));
-                    j = fiches.get(i).getActes().size();
-                }
-            }
 
-        }
-        return listeFichesActe;
-    }
-    
     /*recuperer la liste des patients d un medecin*/
     public ArrayList<Patient> recupererListePatients(Medecin m) {
         ArrayList<Patient> liste = new ArrayList<Patient>();
@@ -364,8 +365,8 @@ public class DossierMedical {
         return s;
     }
 
-    /*tri des fiches selon la date croissante*/
-    public void trierDatesCroissantes() {
+    /*tri des fiches selon la date décroissante*/
+    public void trierDatesDecroissantes() {
         for (int k = 0; k < fiches.size(); k++) {
             for (int j = k + 1; j < fiches.size(); j++) {
                 if (fiches.get(k).getDate().compareTo(fiches.get(j).getDate()) < 0) {
@@ -377,8 +378,8 @@ public class DossierMedical {
         }
     }
 
-    /*tri des fiches selon la date décroissante*/
-    public void trierDatesDecroissantes() {
+    /*tri des fiches selon la date croissante*/
+    public void trierDatesCroissantes() {
         for (int k = 0; k < fiches.size(); k++) {
             for (int j = k + 1; j < fiches.size(); j++) {
                 if (fiches.get(k).getDate().compareTo(fiches.get(j).getDate()) > 0) {
@@ -424,7 +425,7 @@ public class DossierMedical {
     public void triFichesAlphabetiquePatientCroissant() {
         for (int k = 0; k < fiches.size(); k++) {
             for (int j = k + 1; j < fiches.size(); j++) {
-                if (fiches.get(k).getPatient().getNom().compareTo(fiches.get(j).getPatient().getNom()) < 0) {
+                if (fiches.get(k).getPatient().getNom().compareTo(fiches.get(j).getPatient().getNom()) >= 0) {
                     FicheDeSoins copy = fiches.get(j);
                     fiches.set(j, fiches.get(k));
                     fiches.set(k, copy);
@@ -434,10 +435,10 @@ public class DossierMedical {
     }
 
     /* tri des fiches par ordre alphbétique décroissant des patients*/
-    public void triFichesAlphabetiquePatientDeroissant() {
+    public void triFichesAlphabetiquePatientDecroissant() {
         for (int k = 0; k < fiches.size(); k++) {
             for (int j = k + 1; j < fiches.size(); j++) {
-                if (fiches.get(k).getPatient().getNom().compareTo(fiches.get(j).getPatient().getNom()) > 0) {
+                if (fiches.get(k).getPatient().getNom().compareTo(fiches.get(j).getPatient().getNom()) <= 0) {
                     FicheDeSoins copy = fiches.get(j);
                     fiches.set(j, fiches.get(k));
                     fiches.set(k, copy);
@@ -449,7 +450,7 @@ public class DossierMedical {
     public void triFichesAlphabetiqueMedecinCroissant() {
         for (int k = 0; k < fiches.size(); k++) {
             for (int j = k + 1; j < fiches.size(); j++) {
-                if (fiches.get(k).getMedecin().getNom().compareTo(fiches.get(j).getMedecin().getNom()) < 0) {
+                if (fiches.get(k).getMedecin().getNom().compareTo(fiches.get(j).getMedecin().getNom()) >= 0) {
                     FicheDeSoins copy = fiches.get(j);
                     fiches.set(j, fiches.get(k));
                     fiches.set(k, copy);
@@ -461,7 +462,7 @@ public class DossierMedical {
     public void triFichesAlphabetiqueMedecinDeroissant() {
         for (int k = 0; k < fiches.size(); k++) {
             for (int j = k + 1; j < fiches.size(); j++) {
-                if (fiches.get(k).getMedecin().getNom().compareTo(fiches.get(j).getMedecin().getNom()) > 0) {
+                if (fiches.get(k).getMedecin().getNom().compareTo(fiches.get(j).getMedecin().getNom()) <= 0) {
                     FicheDeSoins copy = fiches.get(j);
                     fiches.set(j, fiches.get(k));
                     fiches.set(k, copy);
