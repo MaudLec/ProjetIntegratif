@@ -182,6 +182,20 @@ public class DossierMedical {
         }
         return listeFichesSpe;
     }
+    /*renvoie toutes les fiches contenant au moins une fois cet acte*/
+      public ArrayList<FicheDeSoins> listeFichesActe(Acte acte) {
+        ArrayList<FicheDeSoins> listeFichesActe = new ArrayList<FicheDeSoins>();
+        for (int i = 0; i < fiches.size(); i++) {
+            for (int j = 0; j < fiches.get(i).getActes().size(); j++) {
+                if (fiches.get(i).getActe(j).equals(acte)) {
+                    listeFichesActe.add(fiches.get(i));
+                    j = fiches.get(i).getActes().size();
+                }
+            }
+
+        }
+        return listeFichesActe;
+    }
     
     /*recuperer la liste des patients d un medecin*/
     public ArrayList<Patient> recupererListePatients(Medecin m) {
