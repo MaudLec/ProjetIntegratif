@@ -46,21 +46,20 @@ public class LectureXML {
                 // traitement selon l'evenement
                 switch (event) {
                     case XMLStreamConstants.START_ELEMENT:
-                        if (parser.getLocalName().equals("identification")) {
+                        if (parser.getLocalName().equals("dossiers")) {
                             listeIdentificationCourante = new ListeIdentification();
                         }
                         break;
                     case XMLStreamConstants.END_ELEMENT:
                         //-----------identification--------------------
-                        if (parser.getLocalName().equals("identifiant")) {
+                        if (parser.getLocalName().equals("id")) {
                             identifiantCourant = donneesCourantes;
                             listeIdentificationCourante.getListeId().add(identifiantCourant);
                         }
-                        if (parser.getLocalName().equals("motdepasse")) {
+                        if (parser.getLocalName().equals("mdp")) {
                             motDePasseCourant = donneesCourantes;
                             listeIdentificationCourante.getListeMdp().add(motDePasseCourant);
                         }
-
 
                         //---------------------------------------------
                         break;
@@ -81,7 +80,7 @@ public class LectureXML {
         }
         return listeIdentificationCourante;
     }
-    
+
     public DossierMedical getDossier() {
         String donneesCourantes = "";
         DossierMedical dossier = null;
@@ -213,10 +212,10 @@ public class LectureXML {
 
                         //lecture des infos patients
                         if (parser.getLocalName().equals("sexe")) {
-                                sexe = getSexe(donneesCourantes);
-                                if (sexe == null) {
-                                    throw new XMLStreamException("Impossible de trouver le sexe :" + donneesCourantes);
-                                                            }
+                            sexe = getSexe(donneesCourantes);
+                            if (sexe == null) {
+                                throw new XMLStreamException("Impossible de trouver le sexe :" + donneesCourantes);
+                            }
                         }
                         if (parser.getLocalName().equals("naissance")) {
                             int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
@@ -288,7 +287,6 @@ public class LectureXML {
                         if (parser.getLocalName().equals("observation")) {
                             obs = donneesCourantes;
                         }
-
 
                         break;
                     case XMLStreamConstants.CHARACTERS:
