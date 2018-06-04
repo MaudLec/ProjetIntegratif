@@ -1905,19 +1905,27 @@ public class IU extends javax.swing.JFrame {
         NewFicheSoins.setVisible(true);
     }//GEN-LAST:event_jButton14ActionPerformed
 
-    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
-        // TODO add your handling code here:
-        //en attente du code de vaea
+        private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
         if (jComboBox4.getSelectedItem() == "Croissant") {
-            System.out.println("ok");
             dossier.trierDatesCroissantes();
-            jList3.revalidate();
+            DefaultListModel dlft = new DefaultListModel();
+            for (int index = 0; index < dossier.getFiches().size(); index++) {
+                dlft.addElement(dossier.getFiches().get(index).toString());
+            }
+            jList3.setModel(dlft);
+            ListeFiches.repaint();
         }
         if (jComboBox4.getSelectedItem() == "Décroissant") {
             dossier.trierDatesDecroissantes();
-            jList3.revalidate();
+            DefaultListModel dlft = new DefaultListModel();
+            for (int index = 0; index < dossier.getFiches().size(); index++) {
+                dlft.addElement(dossier.getFiches().get(index).toString());
+            }
+            jList3.setModel(dlft);
+            ListeFiches.repaint();
         }
     }//GEN-LAST:event_jComboBox4ActionPerformed
+
 
     private void PatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientButtonActionPerformed
         // TODO add your handling code here:
