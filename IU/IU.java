@@ -806,12 +806,13 @@ public class IU extends javax.swing.JFrame {
         TriMédecin.setPreferredSize(new java.awt.Dimension(450, 340));
 
         SelectM.setText("Sélectionner un médecin :");
+        
+        DefaultListModel dlmedecins = new DefaultListModel();
+        for (int index = 0; index < dossier.getMedecins().size(); index++) {
+            dlmedecins.addElement(dossier.getMedecins().get(index).toString());
+        }
+        jList4.setModel(dlmedecins);
 
-        jList4.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         ListeM.setViewportView(jList4);
 
         RechercheM.setForeground(new java.awt.Color(204, 204, 204));
