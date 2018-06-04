@@ -2173,22 +2173,22 @@ public class IU extends javax.swing.JFrame {
             //            adapter la fiche à la ligne demandee
 //            String selectedItem = (String) jList3.getSelectedValue();
 //ici mettre en mémoire toutes les variables
-            //maud
+            //maud + Julie (j'ai juste changé les labels qui étaient tous en "Nom :" et le num du méd)
             ficheCourante = dossier.getFiche(jList3.getSelectedIndex());
             FSDate.setText("Date :" + ficheCourante.getDate());
             FSSexe.setText("Sexe :" + ficheCourante.getPatient().getSexe());
             FSNomP.setText("Nom :" +ficheCourante.getPatient().getNom());
-            FSPrenomP.setText("Nom :" +ficheCourante.getPatient().getPrenom());
-            FSNSS.setText("Nom :" +ficheCourante.getPatient().getNumSecu());
+            FSPrenomP.setText("Prénom :" +ficheCourante.getPatient().getPrenom());
+            FSNSS.setText("N° de Sécurité Sociale :" +ficheCourante.getPatient().getNumSecu());
             FSNomM.setText("Nom :" +ficheCourante.getMedecin().getNom());
-            FSPrenomM.setText("Nom :" +ficheCourante.getMedecin().getPrenom());
-            FSSpeM.setText("Nom :" +ficheCourante.getMedecin().getSpecialite());
+            FSPrenomM.setText("Prénom :" +ficheCourante.getMedecin().getPrenom());
+            FSSpeM.setText("Spécialité :" +ficheCourante.getMedecin().getSpecialite());
             //dateChooserCombo4.setText(ficheCourante.getDate().toString());
             jComboBox3.setSelectedItem(ficheCourante.getPatient().getSexe().toString());
             //dateChooserCombo6.setText(ficheCourante.getPatient().getNaissance());
             NomPField1.setText(ficheCourante.getPatient().getNom());
             PrenomPField2.setText(ficheCourante.getPatient().getPrenom());
-            PrenomPField3.setText("on a pas de numTelPatient");
+            PrenomPField3.setText(ficheCourante.getMedecin().getTelephone());
             DateNaisField3.setText(ficheCourante.getPatient().getAdresse().toString());
             //jFormattedTextField7FSNSS.setText(ficheCourante.getPatient().getNumSecu().toString());
             jTextField1.setText(ficheCourante.getMedecin().getNom());
