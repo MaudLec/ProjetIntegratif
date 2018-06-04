@@ -2017,11 +2017,11 @@ public class IU extends javax.swing.JFrame {
                 b = true;
             } else {
                 v++;
-                //jLabel4.setVisible(true); 
+                jLabel4.setVisible(true); 
             }
 
         }
-        //jLabel4.setVisible(true);
+        jLabel4.setVisible(true);
     }
 
     private void ChoixCodeActeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoixCodeActeActionPerformed
@@ -2141,10 +2141,30 @@ public class IU extends javax.swing.JFrame {
 
     private void jPasswordField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField2KeyPressed
         // TODO add your handling code here:
-//        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-//            this.setVisible(false);
-//            FPrincipale.setVisible(true);
-//        }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        String idd = jTextField17.getText();
+        char[] mdpp = jPasswordField2.getPassword();
+        String mdppp = "";
+        for (int i = 0; i<mdpp.length; i++){
+            mdppp+=mdpp[i];
+        }
+        int v = 0;
+        boolean b = false;
+        while (v < listeidentifiants.getListeId().size() && !b) {
+
+            if (idd.equals(listeidentifiants.getListeId().get(v)) && mdppp.equals(listeidentifiants.getListeMdp().get(v))) {
+                System.out.println("ok");
+                this.setVisible(false);
+                FPrincipale.setVisible(true);
+                b = true;
+            } else {
+                v++;
+                jLabel4.setVisible(true); 
+            }
+
+        }
+        jLabel4.setVisible(true);
+        }
     }//GEN-LAST:event_jPasswordField2KeyPressed
 
     private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
