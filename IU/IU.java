@@ -746,12 +746,12 @@ public class IU extends javax.swing.JFrame {
         TriPatient.setMinimumSize(new java.awt.Dimension(450, 340));
 
         SelectP.setText("Sélectionner un patient :");
+        DefaultListModel dlpatients = new DefaultListModel();
+        for (int index = 0; index < dossier.getPatients().size(); index++) {
+            dlpatients.addElement(dossier.getPatients().get(index).toString());
+        }
+        jList2.setModel(dlpatients);
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         ListeP.setViewportView(jList2);
 
         RechercheP.setForeground(new java.awt.Color(204, 204, 204));
