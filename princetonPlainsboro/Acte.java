@@ -78,6 +78,13 @@ public class Acte {
         return("<acte>" + code.toXML() + "<coef>" + coef + "</coef>" + type.toXML() + "<cout>" + this.cout() + "</cout><observation>" + obs + "</observation></acte>" );
     }
 
+         public boolean equals(Object o){
+         Acte a = (Acte)o;
+         if(a.getCode().equals(this.getCode())){
+             return true;
+         }
+         return false;
+     }
 //    public String imprimerActe() {
 //    }
 //
