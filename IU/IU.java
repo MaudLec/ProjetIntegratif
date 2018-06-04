@@ -20,6 +20,9 @@ public class IU extends javax.swing.JFrame {
     DossierMedical dossier = test.getDossier();
     Date date = null;
      ListeIdentification listeidentifiants = test.getListeIdentification();
+    
+    //maud2
+    FicheDeSoins ficheCourante = null;
 
     //personnes
     Medecin medecin = null;
@@ -2110,6 +2113,7 @@ public class IU extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RechPActionPerformed
 
+    //maud
     private void jList3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList3MouseClicked
         // TODO add your handling code here:
         //maud
@@ -2118,17 +2122,37 @@ public class IU extends javax.swing.JFrame {
             Cout.setText("Coût total du patient : " + dossier.coutPatient(dossier.getFiche(jList3.getSelectedIndex()).getPatient()));
 
         }
-        
         if (evt.getClickCount() == 2) {
             //            adapter la fiche à la ligne demandee
 //            String selectedItem = (String) jList3.getSelectedValue();
+//ici mettre en mémoire toutes les variables
+            //maud
+            ficheCourante = dossier.getFiche(jList3.getSelectedIndex());
+            FSDate.setText("Date :" + ficheCourante.getDate());
+            FSSexe.setText("Sexe :" + ficheCourante.getPatient().getSexe());
+            FSNomP.setText("Nom :" +ficheCourante.getPatient().getNom());
+            FSPrenomP.setText("Nom :" +ficheCourante.getPatient().getPrenom());
+            FSNSS.setText("Nom :" +ficheCourante.getPatient().getNumSecu());
+            FSNomM.setText("Nom :" +ficheCourante.getMedecin().getNom());
+            FSPrenomM.setText("Nom :" +ficheCourante.getMedecin().getPrenom());
+            FSSpeM.setText("Nom :" +ficheCourante.getMedecin().getSpecialite());
+            //dateChooserCombo4.setText(ficheCourante.getDate().toString());
+            jComboBox3.setSelectedItem(ficheCourante.getPatient().getSexe().toString());
+            //dateChooserCombo6.setText(ficheCourante.getPatient().getNaissance());
+            NomPField1.setText(ficheCourante.getPatient().getNom());
+            PrenomPField2.setText(ficheCourante.getPatient().getPrenom());
+            PrenomPField3.setText("on a pas de numTelPatient");
+            DateNaisField3.setText(ficheCourante.getPatient().getAdresse().toString());
+            //jFormattedTextField7FSNSS.setText(ficheCourante.getPatient().getNumSecu().toString());
+            jTextField1.setText(ficheCourante.getMedecin().getNom());
+            jTextField2.setText(ficheCourante.getMedecin().getPrenom());
+            ChoixSpe1.setSelectedItem(ficheCourante.getMedecin().getSpecialite().toString());
 
             FicheDeSoins.setVisible(true);
             jPanel1.setVisible(true);
             jPanel2.setVisible(false);
         }
     }//GEN-LAST:event_jList3MouseClicked
-
     private void ModifFSButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifFSButtonActionPerformed
         // TODO add your handling code here:
         jPanel1.setVisible(false);
