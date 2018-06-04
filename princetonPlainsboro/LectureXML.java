@@ -32,7 +32,7 @@ public class LectureXML {
         ListeIdentification listeIdentificationCourante = null;
         String identifiantCourant = "";
         String motDePasseCourant = "";
-        String typeCourant = "";
+
         String donneesCourantes = "";
 
         //--------------------------------
@@ -54,16 +54,13 @@ public class LectureXML {
                         //-----------identification--------------------
                         if (parser.getLocalName().equals("identifiant")) {
                             identifiantCourant = donneesCourantes;
-                            listeIdentificationCourante.getListeIdentifiant().add(identifiantCourant);
+                            listeIdentificationCourante.getListeId().add(identifiantCourant);
                         }
                         if (parser.getLocalName().equals("motdepasse")) {
                             motDePasseCourant = donneesCourantes;
-                            listeIdentificationCourante.getListeMotDePasse().add(motDePasseCourant);
+                            listeIdentificationCourante.getListeMdp().add(motDePasseCourant);
                         }
-                        if (parser.getLocalName().equals("type")) {
-                            typeCourant = donneesCourantes;
-                            listeIdentificationCourante.getListeType().add(typeCourant);
-                        }
+
 
                         //---------------------------------------------
                         break;
