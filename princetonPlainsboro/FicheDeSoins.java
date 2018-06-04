@@ -36,6 +36,11 @@ public class FicheDeSoins {
         return actes.get(i);
     }
     
+    /* Affichage des informations principales de la fiche de soins */
+    public String toString () {
+        return "Patient :" + this.getPatient().getNumSecu() + ", Médecin : " + this.getMedecin().toString() + ", date : " + this.getDate().toString();
+    }
+    
     /* Ajouter un acte à la fiche de soins */
     public void ajouterActe(Acte acte) {
         actes.add(acte);
