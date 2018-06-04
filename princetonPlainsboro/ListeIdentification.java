@@ -22,6 +22,12 @@ public class ListeIdentification {
 
     }
 
+    public ListeIdentification(ArrayList<String> listeId, ArrayList<String> listeMdp) {
+        this.listeId = listeId;
+        this.listeMdp = listeMdp;
+    }
+    
+
     public ArrayList<String> getListeId() {
         return listeId;
     }
@@ -31,8 +37,17 @@ public class ListeIdentification {
     }
 
     public void ajouterId(String id) {
-
-        listeId.add(id);
+        boolean b = true;
+        for (int i = 0; i < listeId.size(); i++) {
+            if (id.equals(listeId.get(i))) {
+                b = false;
+                //System.out.println("L'id existe déjà");
+            }
+        }
+        if (b) {
+            listeId.add(id);
+            //System.out.println("L'id a bien été ajouté");
+        }
 
     }
 
