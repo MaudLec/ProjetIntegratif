@@ -309,7 +309,7 @@ public class DossierMedical {
     }
     
      /*tri des fiches selon la date décroissante*/
-    public void trierDatesDeroissantes(){  
+    public void trierDatesDecroissantes(){  
         for (int k = 0; k<fiches.size(); k++){
             for (int j=k+1; j<fiches.size(); j++){
                 if(fiches.get(k).getDate().compareTo(fiches.get(j).getDate())>0){
