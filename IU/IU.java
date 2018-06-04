@@ -2200,16 +2200,19 @@ public class IU extends javax.swing.JFrame {
     }//GEN-LAST:event_ChoixSpe2ActionPerformed
 
     private void AfficherListeNbActes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeNbActes1ActionPerformed
-        // TODO add your handling code here:
-//        Julie
-//        Specialite 
-//        DefaultListModel dlps = new DefaultListModel();
-//        for (int index = 0; index < dossier.recupererListePatients(/**/).size(); index++) {
-//            dlps.addElement(dossier.afficherListeMedecinsSpe(/**/).get(index).toString());
-//        }
-//        jList3.setModel(dlps);
+        DefaultListModel dlps = new DefaultListModel();
+        Specialite spe = Specialite.getSpe(ChoixSpe2.getSelectedItem().toString());
+        if(dossier.listeFichesSpe(spe).size()==0){
+            dlps.addElement("Pas de fiches pour cette spécialité");
+        }
+        for (int index = 0; index <dossier.listeFichesSpe(spe).size(); index++) {
+            dlps.addElement(dossier.listeFichesSpe(spe).get(index));
+        }
+        jList3.setModel(dlps);
+
         ListeFiches.repaint();
         TriSpecialite.dispose();
+
     }//GEN-LAST:event_AfficherListeNbActes1ActionPerformed
 
     private void ChoixCodeActe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoixCodeActe2ActionPerformed
