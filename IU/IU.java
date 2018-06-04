@@ -87,13 +87,14 @@ public class IU extends javax.swing.JFrame {
         jComboBox4 = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
         ListeFiches = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList<>();
-
-        for(index=0; index<dossier.getFiches().size(); index++)
-        {
-            dlm.addElement(dossier.getFiches().get(index).afficher());
+        
+        //maud
+        for (index = 0; index < dossier.getFiches().size(); index++) {
+            dlm.addElement(dossier.getFiches().get(index).toString());
         }
         jList3.setModel(dlm);
+        
+        
         ;
         OptTri = new javax.swing.JPanel();
         TriLabel = new javax.swing.JLabel();
@@ -371,7 +372,9 @@ public class IU extends javax.swing.JFrame {
             }
         });
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ordre", "Croissant", "Décroissant" }));
+        //maud
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Trier par", "Date croissante", "Date décroissante", "Ordre alphabétique patient", "Ordre alphabétique médecin", "Coût croissant"}));
+
         jComboBox4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox4ActionPerformed(evt);
@@ -504,10 +507,11 @@ public class IU extends javax.swing.JFrame {
 
         CoutPannel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        Cout.setText("Coût");
-
-        jLabel3.setText("Coût de la FS sélectionnée : " /**+ jList3.getSelectedValue().coutTotal()*/);
-
+        //maud
+        Cout.setText("Coût total du patient : ");
+        jLabel3.setText("Coût de la FS sélectionnée : " );
+        
+        
         javax.swing.GroupLayout CoutPannelLayout = new javax.swing.GroupLayout(CoutPannel);
         CoutPannel.setLayout(CoutPannelLayout);
         CoutPannelLayout.setHorizontalGroup(
@@ -1971,11 +1975,10 @@ public class IU extends javax.swing.JFrame {
         NewFicheSoins.setVisible(true);
     }//GEN-LAST:event_jButton14ActionPerformed
 
-    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
-        if (jComboBox4.getSelectedItem() == "Croissant") {
-            System.out.println("ok");
+    //maud
+  private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+        if (jComboBox4.getSelectedItem() == "Date croissante") {
             dossier.trierDatesCroissantes();
-            jList3.revalidate();
             DefaultListModel dlft = new DefaultListModel();
             for (int index = 0; index < dossier.getFiches().size(); index++) {
                 dlft.addElement(dossier.getFiches().get(index).toString());
@@ -1983,9 +1986,35 @@ public class IU extends javax.swing.JFrame {
             jList3.setModel(dlft);
             ListeFiches.repaint();
         }
-        if (jComboBox4.getSelectedItem() == "Décroissant") {
+        if (jComboBox4.getSelectedItem() == "Date décroissante") {
             dossier.trierDatesDecroissantes();
-            jList3.revalidate();
+            DefaultListModel dlft = new DefaultListModel();
+            for (int index = 0; index < dossier.getFiches().size(); index++) {
+                dlft.addElement(dossier.getFiches().get(index).toString());
+            }
+            jList3.setModel(dlft);
+            ListeFiches.repaint();
+        }
+        if (jComboBox4.getSelectedItem() == "Ordre alphabétique patient") {
+            dossier.triFichesAlphabetiquePatientCroissant();
+            DefaultListModel dlft = new DefaultListModel();
+            for (int index = 0; index < dossier.getFiches().size(); index++) {
+                dlft.addElement(dossier.getFiches().get(index).toString());
+            }
+            jList3.setModel(dlft);
+            ListeFiches.repaint();
+        }
+        if (jComboBox4.getSelectedItem() == "Ordre alphabétique médecin") {
+            dossier.triFichesAlphabetiqueMedecinCroissant();
+            DefaultListModel dlft = new DefaultListModel();
+            for (int index = 0; index < dossier.getFiches().size(); index++) {
+                dlft.addElement(dossier.getFiches().get(index).toString());
+            }
+            jList3.setModel(dlft);
+            ListeFiches.repaint();
+        }
+        if (jComboBox4.getSelectedItem() == "Coût croissant") {
+            dossier.triCoutsOrdreCroissant();
             DefaultListModel dlft = new DefaultListModel();
             for (int index = 0; index < dossier.getFiches().size(); index++) {
                 dlft.addElement(dossier.getFiches().get(index).toString());
@@ -1994,6 +2023,7 @@ public class IU extends javax.swing.JFrame {
             ListeFiches.repaint();
         }
     }//GEN-LAST:event_jComboBox4ActionPerformed
+
 
     private void DeconnexionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeconnexionButtonActionPerformed
         // TODO add your handling code here:
@@ -2082,6 +2112,13 @@ public class IU extends javax.swing.JFrame {
 
     private void jList3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList3MouseClicked
         // TODO add your handling code here:
+        //maud
+        if (evt.getClickCount() == 1) {
+            jLabel3.setText("Coût de la FS sélectionnée : " + dossier.getFiche(jList3.getSelectedIndex()).coutTotal());
+            Cout.setText("Coût total du patient : " + dossier.coutPatient(dossier.getFiche(jList3.getSelectedIndex()).getPatient()));
+
+        }
+        
         if (evt.getClickCount() == 2) {
             //            adapter la fiche à la ligne demandee
 //            String selectedItem = (String) jList3.getSelectedValue();
