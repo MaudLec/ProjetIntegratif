@@ -1,6 +1,6 @@
 package princetonPlainsboro;
 
-class Patient {
+public class Patient {
 
     private String nom;
     private String prenom;
