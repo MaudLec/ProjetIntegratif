@@ -1,6 +1,6 @@
 package princetonPlainsboro;
 
-enum Sexe {
+public enum Sexe {
     M,
     F,
     Autre;
