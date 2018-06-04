@@ -295,44 +295,31 @@ public class DossierMedical {
         return s;
     }
     
+    /*tri des fiches selon la date croissante*/
+    public void trierDatesCroissantes(){  
+        for (int k = 0; k<fiches.size(); k++){
+            for (int j=k+1; j<fiches.size(); j++){
+                if(fiches.get(k).getDate().compareTo(fiches.get(j).getDate())<0){
+                    FicheDeSoins copy = fiches.get(j);
+                    fiches.set(j, fiches.get(k)); 
+                    fiches.set(k, copy);
+                }              
+            }
+        }    
+    }
     
-        public void trierDatesCroissantes() {
-        ArrayList<FicheDeSoins> copieFiches = new ArrayList<FicheDeSoins>(fiches);
-        while (!copieFiches.isEmpty()) {
-            // on cherche la fiche de soins de date minimale :
-            int imin = 0;
-            FicheDeSoins f1 = copieFiches.get(imin);
-            for (int i = 1; i < copieFiches.size(); i++) {
-                FicheDeSoins f2 = copieFiches.get(i);
-                if (f2.getDate().compareTo(f1.getDate()) < 0) {
-                    imin = i;
-                    f1 = f2;
-                }
+     /*tri des fiches selon la date décroissante*/
+    public void trierDatesDeroissantes(){  
+        for (int k = 0; k<fiches.size(); k++){
+            for (int j=k+1; j<fiches.size(); j++){
+                if(fiches.get(k).getDate().compareTo(fiches.get(j).getDate())>0){
+                    FicheDeSoins copy = fiches.get(j);
+                    fiches.set(j, fiches.get(k)); 
+                    fiches.set(k, copy);
+                }              
             }
-            fiches = copieFiches;
-            //on la supprime de la liste :
-            copieFiches.remove(imin);
-        }
+        }    
     }
-
-    public void trierDatesDecroissantes() {
-        ArrayList<FicheDeSoins> copieFiches = new ArrayList<FicheDeSoins>(fiches);
-        while (!copieFiches.isEmpty()) {
-            // on cherche la fiche de soins de date minimale :
-            int imin = 0;
-            FicheDeSoins f1 = copieFiches.get(imin);
-            for (int i = 1; i < copieFiches.size(); i++) {
-                FicheDeSoins f2 = copieFiches.get(i);
-                if (f2.getDate().compareTo(f1.getDate()) > 0) {
-                    imin = i;
-                    f1 = f2;
-                }
-            }
-            fiches = copieFiches;
-            copieFiches.remove(imin);
-        }
-    }
-
 
     /* Affichage des fiches de soins triées par patient */
     public String trierPatient(Patient p) {
