@@ -30,4 +30,16 @@ public class ListeIdentification {
         return listeMdp;
     }
 
+    public void ajouterId(String id) {
+
+        listeId.add(id);
+
+    }
+
+    public void ajouterMdp(String mdp) {
+        if (listeId.size() > listeMdp.size()) {
+            listeMdp.add(mdp);
+        }
+    }
+
 }
