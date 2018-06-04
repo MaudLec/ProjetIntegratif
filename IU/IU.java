@@ -1,22 +1,77 @@
+
 import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import princetonPlainsboro.*;
 
+
 public class IU extends javax.swing.JFrame {
+
+    private LectureXML test = new LectureXML("dossiers.xml");
+    DossierMedical dossier = null;
+    Date date = null;
+
+    //personnes
+    Medecin medecin = null;
+    Patient patient = null;
+    SecretaireMed secretaireMed = null;
+    SecretaireAdmin secretaireAdmin = null;
+
+    //infos des personnes
+    String nom = "";
+    String prenom = "";
+    String id = "";
+    String mdp = "";
+
+    //infos medecin
+    Specialite specialite = null;
+    String numTel = "";
+
+    //infos patient
+    Sexe sexe = null;
+    Date naissance = null;
+
+    //infos de l'adresse patient
+    Adresse adresse = null;
+    String rue = "";
+    String codePostal = "";
+    String ville = "";
+
+    //infos du Numero de Securite Sociale
+    NumSecu numSecu = null;
+    int sexeSecu = 0;
+    int anneeSecu = 0;
+    int moisSecu = 0;
+    int dep = 0;
+    int comm = 0;
+    int reg = 0;
+    int cle = 0;
+
+    //infos acte
+    ArrayList<Acte> actes = new ArrayList<Acte>();
+    int coef = 0;
+    TypeActe typeActe = null;
+    Code code = null;
+    String obs = "";
 
     public IU() {
         initComponents();
     }
 
+    public IU(DossierMedical dm) {
+//        this.dm ;
+        initComponents();
+    }
 
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         FPrincipale = new javax.swing.JFrame();
@@ -27,12 +82,14 @@ public class IU extends javax.swing.JFrame {
         jComboBox4 = new javax.swing.JComboBox<>();
         ListeFiches = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList<>();
-        //DefaultListModel dlm = new DefaultListModel();
-        //for(int index=0; index<dm.getFiches().size(); index++)
-        //{
-            //    dlm.addElement(dm.getFiches().get(index));
-            //}
-        //jList3.setModel(dlm);
+
+        DefaultListModel dlm = new DefaultListModel();
+        for(int index=0; index<dm.getFiches().size(); index++)
+        {
+            dlm.addElement(dm.getFiches().get(index));
+        }
+        jList3.setModel(dlm);
+        jList3.updateUI();
         ;
         OptTri = new javax.swing.JPanel();
         TriLabel = new javax.swing.JLabel();
@@ -194,21 +251,18 @@ public class IU extends javax.swing.JFrame {
         PrenomP = new javax.swing.JLabel();
         PrenomPField = new javax.swing.JTextField();
         DateNais = new javax.swing.JLabel();
-        DateNaisField = new javax.swing.JTextField();
         NSecuSoc = new javax.swing.JLabel();
-        NSecuSocField = new javax.swing.JTextField();
         NomP = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         NomPField = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
-        NSecuSocField1 = new javax.swing.JTextField();
-        NSecuSocField2 = new javax.swing.JTextField();
-        NSecuSocField3 = new javax.swing.JTextField();
         DateNais1 = new javax.swing.JLabel();
         DateNaisField1 = new javax.swing.JTextField();
         PrenomP1 = new javax.swing.JLabel();
         PrenomPField1 = new javax.swing.JTextField();
         AfficherListeM1 = new javax.swing.JButton();
+        jFormattedTextField5 = new javax.swing.JFormattedTextField();
+        jFormattedTextField6 = new javax.swing.JFormattedTextField();
         DescrActe = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
         CodeActe1 = new javax.swing.JLabel();
@@ -287,11 +341,6 @@ public class IU extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jList3.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jList3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jList3MouseClicked(evt);
@@ -526,7 +575,6 @@ public class IU extends javax.swing.JFrame {
         NewFicheSoins.setTitle("Nouvelle Fiche de Soin");
         NewFicheSoins.setFocusableWindowState(false);
         NewFicheSoins.setMinimumSize(new java.awt.Dimension(650, 550));
-        NewFicheSoins.setPreferredSize(new java.awt.Dimension(650, 550));
 
         DateLabel.setText("Date :");
 
@@ -929,7 +977,6 @@ public class IU extends javax.swing.JFrame {
 
         NewActe.setTitle("Acte de soin");
         NewActe.setMinimumSize(new java.awt.Dimension(600, 450));
-        NewActe.setPreferredSize(new java.awt.Dimension(600, 450));
 
         TypeActe.setText("Type :");
 
@@ -1060,7 +1107,6 @@ public class IU extends javax.swing.JFrame {
 
         FicheDeSoins.setTitle("Fiche de soins");
         FicheDeSoins.setMinimumSize(new java.awt.Dimension(530, 570));
-        FicheDeSoins.setPreferredSize(new java.awt.Dimension(530, 570));
 
         FSDate.setText("Date :");
 
@@ -1445,7 +1491,6 @@ public class IU extends javax.swing.JFrame {
 
         NewPatient.setTitle("Nouveau Patient");
         NewPatient.setMinimumSize(new java.awt.Dimension(700, 330));
-        NewPatient.setPreferredSize(new java.awt.Dimension(700, 330));
 
         PrenomP.setText("Prénom : ");
 
@@ -1470,17 +1515,27 @@ public class IU extends javax.swing.JFrame {
             }
         });
 
+        try {
+            jFormattedTextField5.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#-##-##-##-###-###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jFormattedTextField6.setForeground(new java.awt.Color(153, 153, 153));
+        jFormattedTextField6.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        jFormattedTextField6.setText("jj/mm/aa");
+
         javax.swing.GroupLayout NewPatientLayout = new javax.swing.GroupLayout(NewPatient.getContentPane());
         NewPatient.getContentPane().setLayout(NewPatientLayout);
         NewPatientLayout.setHorizontalGroup(
             NewPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NewPatientLayout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addGroup(NewPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(NewPatientLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(NewPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NewPatientLayout.createSequentialGroup()
+                        .addGap(539, 539, 539)
                         .addComponent(AfficherListeM1))
-                    .addGroup(NewPatientLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NewPatientLayout.createSequentialGroup()
+                        .addGap(68, 68, 68)
                         .addGroup(NewPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(PrenomP)
                             .addComponent(NomP)
@@ -1497,24 +1552,17 @@ public class IU extends javax.swing.JFrame {
                             .addComponent(NSecuSoc, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(DateNais, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(DateNais1, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addGroup(NewPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(NewPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(DateNaisField1)
-                            .addGroup(NewPatientLayout.createSequentialGroup()
-                                .addComponent(NSecuSocField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(NSecuSocField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(NSecuSocField2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(NSecuSocField3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(DateNaisField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jFormattedTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                            .addComponent(jFormattedTextField6))))
                 .addGap(96, 96, 96))
         );
         NewPatientLayout.setVerticalGroup(
             NewPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NewPatientLayout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addGap(60, 60, 60)
                 .addGroup(NewPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(NewPatientLayout.createSequentialGroup()
                         .addGroup(NewPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1531,7 +1579,7 @@ public class IU extends javax.swing.JFrame {
                     .addGroup(NewPatientLayout.createSequentialGroup()
                         .addGroup(NewPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(DateNais)
-                            .addComponent(DateNaisField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jFormattedTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(NewPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(DateNais1)
@@ -1540,20 +1588,16 @@ public class IU extends javax.swing.JFrame {
                 .addGroup(NewPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(NewPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(NSecuSoc)
-                        .addComponent(NSecuSocField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(NSecuSocField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(NSecuSocField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(NSecuSocField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(NewPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(PrenomP1)
                         .addComponent(PrenomPField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(32, 32, 32)
                 .addComponent(AfficherListeM1)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         DescrActe.setMinimumSize(new java.awt.Dimension(450, 350));
-        DescrActe.setPreferredSize(new java.awt.Dimension(450, 350));
 
         CodeActe1.setText("Code :");
 
@@ -1581,12 +1625,10 @@ public class IU extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(CoefActe1)
-                            .addComponent(TypeActe1)
-                            .addComponent(CodeActe1))
-                        .addGap(42, 42, 42))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(CoefActe1)
+                        .addComponent(TypeActe1)
+                        .addComponent(CodeActe1))
                     .addComponent(Observation1))
                 .addContainerGap(473, Short.MAX_VALUE))
         );
@@ -1772,150 +1814,150 @@ public class IU extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>                        
+    }// </editor-fold>//GEN-END:initComponents
 
 
-    private void FSValiderButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                
+    private void FSValiderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FSValiderButtonActionPerformed
         // TODO add your handling code here:
         NewFicheSoins.dispose();
-    }                                               
+    }//GEN-LAST:event_FSValiderButtonActionPerformed
 
-    private void AddActeButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void AddActeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActeButtonActionPerformed
         // TODO add your handling code here:
         NewActe.setVisible(true);
-    }                                             
+    }//GEN-LAST:event_AddActeButtonActionPerformed
 
-    private void RecherchePActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void RecherchePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecherchePActionPerformed
         // TODO add your handling code here:
-    }                                          
+    }//GEN-LAST:event_RecherchePActionPerformed
 
-    private void AfficherListePActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void AfficherListePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListePActionPerformed
         // TODO add your handling code here:
         TriPatient.dispose();
-    }                                              
+    }//GEN-LAST:event_AfficherListePActionPerformed
 
-    private void RechercheMActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void RechercheMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechercheMActionPerformed
         // TODO add your handling code here:
-    }                                          
+    }//GEN-LAST:event_RechercheMActionPerformed
 
-    private void AfficherListeMActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void AfficherListeMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeMActionPerformed
         // TODO add your handling code here:
         TriMédecin.dispose();
-    }                                              
+    }//GEN-LAST:event_AfficherListeMActionPerformed
 
-    private void AfficherListeDateActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+    private void AfficherListeDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeDateActionPerformed
         // TODO add your handling code here:
         TriDate.dispose();
-    }                                                 
+    }//GEN-LAST:event_AfficherListeDateActionPerformed
 
-    private void AfficherListeNbActesActionPerformed(java.awt.event.ActionEvent evt) {                                                     
+    private void AfficherListeNbActesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeNbActesActionPerformed
         // TODO add your handling code here:
         TriNbActes.dispose();
-    }                                                    
+    }//GEN-LAST:event_AfficherListeNbActesActionPerformed
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
         NewFicheSoins.setVisible(true);
-    }                                         
+    }//GEN-LAST:event_jButton14ActionPerformed
 
-    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
         // TODO add your handling code here:
-    }                                          
+    }//GEN-LAST:event_jComboBox4ActionPerformed
 
-    private void PatientButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void PatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientButtonActionPerformed
         // TODO add your handling code here:
         TriPatient.setVisible(true);
-    }                                             
+    }//GEN-LAST:event_PatientButtonActionPerformed
 
-    private void MedecinButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void MedecinButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedecinButtonActionPerformed
         // TODO add your handling code here:
         TriMédecin.setVisible(true);
-    }                                             
+    }//GEN-LAST:event_MedecinButtonActionPerformed
 
-    private void NbActesButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void NbActesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NbActesButtonActionPerformed
         // TODO add your handling code here:
         TriNbActes.setVisible(true);
-    }                                             
+    }//GEN-LAST:event_NbActesButtonActionPerformed
 
-    private void DateButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void DateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DateButtonActionPerformed
         // TODO add your handling code here:
         TriDate.setVisible(true);
-        TriDate.setSize(350,300);
+        TriDate.setSize(350, 300);
         jCal1.setVisible(false);
-    }                                          
+    }//GEN-LAST:event_DateButtonActionPerformed
 
-    private void DeconnexionButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+    private void DeconnexionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeconnexionButtonActionPerformed
         // TODO add your handling code here:
         Deconnect.setVisible(true);
-    }                                                 
+    }//GEN-LAST:event_DeconnexionButtonActionPerformed
 
-    private void RechercheActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void RechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechercheActionPerformed
         // TODO add your handling code here:
-    }                                         
+    }//GEN-LAST:event_RechercheActionPerformed
 
-    private void jTextField17ActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void jTextField17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField17ActionPerformed
         // TODO add your handling code here:
-    }                                            
+    }//GEN-LAST:event_jTextField17ActionPerformed
 
-    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         FPrincipale.setVisible(true);
-    }                                         
+    }//GEN-LAST:event_jButton20ActionPerformed
 
-    private void ChoixCodeActeActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void ChoixCodeActeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoixCodeActeActionPerformed
         // TODO add your handling code here:
-    }                                             
+    }//GEN-LAST:event_ChoixCodeActeActionPerformed
 
-    private void ValiderActeButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+    private void ValiderActeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValiderActeButtonActionPerformed
         // TODO add your handling code here:
         NewActe.dispose();
         NewFicheSoins.setVisible(true);
-    }                                                 
+    }//GEN-LAST:event_ValiderActeButtonActionPerformed
 
-    private void OuiButtonDActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void OuiButtonDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OuiButtonDActionPerformed
         // TODO add your handling code here:
         Deconnect.dispose();
         FPrincipale.dispose();
         this.setVisible(true);
-    }                                          
+    }//GEN-LAST:event_OuiButtonDActionPerformed
 
-    private void NonButtonDActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void NonButtonDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NonButtonDActionPerformed
         // TODO add your handling code here:
         Deconnect.dispose();
-    }                                          
+    }//GEN-LAST:event_NonButtonDActionPerformed
 
-    
-    private void ChoixSpeActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-    }                                        
 
-    private void CalButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void ChoixSpeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoixSpeActionPerformed
         // TODO add your handling code here:
-        TriDate.setSize(700,340);
+    }//GEN-LAST:event_ChoixSpeActionPerformed
+
+    private void CalButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalButton1ActionPerformed
+        // TODO add your handling code here:
+        TriDate.setSize(700, 340);
         jCal1.setVisible(true);
-    }                                          
+    }//GEN-LAST:event_CalButton1ActionPerformed
 
-    private void AddActeButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void AddActeButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActeButton1ActionPerformed
         // TODO add your handling code here:
         NewPatient.setVisible(true);
-    }                                              
+    }//GEN-LAST:event_AddActeButton1ActionPerformed
 
-    private void AfficherListeM1ActionPerformed(java.awt.event.ActionEvent evt) {                                                
+    private void AfficherListeM1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeM1ActionPerformed
         // TODO add your handling code here:
         NewPatient.dispose();
         NewFicheSoins.setVisible(true);
-    }                                               
+    }//GEN-LAST:event_AfficherListeM1ActionPerformed
 
-    private void RechMActionPerformed(java.awt.event.ActionEvent evt) {                                      
+    private void RechMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechMActionPerformed
         // TODO add your handling code here:
-    }                                     
+    }//GEN-LAST:event_RechMActionPerformed
 
-    private void RechPActionPerformed(java.awt.event.ActionEvent evt) {                                      
+    private void RechPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechPActionPerformed
         // TODO add your handling code here:
-    }                                     
+    }//GEN-LAST:event_RechPActionPerformed
 
-    private void jList3MouseClicked(java.awt.event.MouseEvent evt) {                                    
+    private void jList3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList3MouseClicked
         // TODO add your handling code here:
         if (evt.getClickCount() == 2) {
             //            adapter la fiche à la ligne demandee
@@ -1924,66 +1966,64 @@ public class IU extends javax.swing.JFrame {
             jPanel1.setVisible(true);
             jPanel2.setVisible(false);
         }
-    }                                   
+    }//GEN-LAST:event_jList3MouseClicked
 
-    private void ModifFSButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void ModifFSButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifFSButtonActionPerformed
         // TODO add your handling code here:
         jPanel1.setVisible(false);
-        FicheDeSoins.setSize(600,600);
+        FicheDeSoins.setSize(600, 600);
         jPanel2.setVisible(true);
-    }                                             
+    }//GEN-LAST:event_ModifFSButtonActionPerformed
 
-    private void ChoixSpe1ActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void ChoixSpe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoixSpe1ActionPerformed
         // TODO add your handling code here:
-    }                                         
+    }//GEN-LAST:event_ChoixSpe1ActionPerformed
 
-    private void AddActeButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void AddActeButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActeButton2ActionPerformed
         // TODO add your handling code here:
-    }                                              
+    }//GEN-LAST:event_AddActeButton2ActionPerformed
 
-    private void FSValiderButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+    private void FSValiderButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FSValiderButton1ActionPerformed
         // TODO add your handling code here:
         jPanel2.setVisible(false);
         jPanel1.setVisible(true);
-        FicheDeSoins.setSize(530,570);
-    }                                                
+        FicheDeSoins.setSize(530, 570);
+    }//GEN-LAST:event_FSValiderButton1ActionPerformed
 
-    private void jList5MouseClicked(java.awt.event.MouseEvent evt) {                                    
+    private void jList5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList5MouseClicked
         // TODO add your handling code here:
         if (evt.getClickCount() == 2) {
             //            adapter l'acte à la ligne demandee
             //            String selectedItem = (String) jList5.getSelectedValue();
             DescrActe.setVisible(true);
-            DescrActe.setSize(450,350);
+            DescrActe.setSize(450, 350);
             jPanel3.setVisible(true);
             jPanel4.setVisible(false);
         }
-    }                                   
+    }//GEN-LAST:event_jList5MouseClicked
 
-    private void jList7MouseClicked(java.awt.event.MouseEvent evt) {                                    
+    private void jList7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList7MouseClicked
         // TODO add your handling code here:
         jList5MouseClicked(evt);
-    }                                   
+    }//GEN-LAST:event_jList7MouseClicked
 
-    private void ModifFSButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void ModifFSButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifFSButton1ActionPerformed
         // TODO add your handling code here:
-        DescrActe.setSize(600,450);
+        DescrActe.setSize(600, 450);
         jPanel3.setVisible(false);
         jPanel4.setVisible(true);
-    }                                              
+    }//GEN-LAST:event_ModifFSButton1ActionPerformed
 
-    private void ValiderActeButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                                   
+    private void ValiderActeButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValiderActeButton1ActionPerformed
         // TODO add your handling code here:
-        DescrActe.setSize(450,350);
+        DescrActe.setSize(450, 350);
         jPanel3.setVisible(true);
         jPanel4.setVisible(false);
-    }                                                  
+    }//GEN-LAST:event_ValiderActeButton1ActionPerformed
 
-    private void ChoixCodeActe1ActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void ChoixCodeActe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoixCodeActe1ActionPerformed
         // TODO add your handling code here:
-    }                                              
-
-
+    }//GEN-LAST:event_ChoixCodeActe1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -2026,7 +2066,7 @@ public class IU extends javax.swing.JFrame {
 
     }
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ActeLabel;
     private javax.swing.JLabel ActeLabel1;
     private javax.swing.JLabel ActeLabel3;
@@ -2062,7 +2102,6 @@ public class IU extends javax.swing.JFrame {
     private javax.swing.JLabel DateNais1;
     private javax.swing.JLabel DateNais2;
     private javax.swing.JLabel DateNais3;
-    private javax.swing.JTextField DateNaisField;
     private javax.swing.JTextField DateNaisField1;
     private javax.swing.JTextField DateNaisField2;
     private javax.swing.JTextField DateNaisField3;
@@ -2105,10 +2144,6 @@ public class IU extends javax.swing.JFrame {
     private javax.swing.JLabel MsgDec;
     private javax.swing.JLabel NSecuSoc;
     private javax.swing.JLabel NSecuSoc1;
-    private javax.swing.JTextField NSecuSocField;
-    private javax.swing.JTextField NSecuSocField1;
-    private javax.swing.JTextField NSecuSocField2;
-    private javax.swing.JTextField NSecuSocField3;
     private javax.swing.JTextField NSecuSocField4;
     private javax.swing.JTextField NSecuSocField5;
     private javax.swing.JTextField NSecuSocField6;
@@ -2174,6 +2209,8 @@ public class IU extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JFormattedTextField jFormattedTextField3;
     private javax.swing.JFormattedTextField jFormattedTextField4;
+    private javax.swing.JFormattedTextField jFormattedTextField5;
+    private javax.swing.JFormattedTextField jFormattedTextField6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel25;
@@ -2212,7 +2249,8 @@ public class IU extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
-    // End of variables declaration                   
-    private DossierMedical dm = new DossierMedical();  
+    // End of variables declaration//GEN-END:variables
+    private DossierMedical dm = new DossierMedical();
+    
 
 }
