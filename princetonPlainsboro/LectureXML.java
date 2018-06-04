@@ -27,6 +27,64 @@ public class LectureXML {
         this.nomFichier = nomFichier;
     }
 
+    public ListeIdentification getListeIdentification() {
+        //-------mot de passe---------------
+        ListeIdentification listeIdentificationCourante = null;
+        String identifiantCourant = "";
+        String motDePasseCourant = "";
+        String typeCourant = "";
+        String donneesCourantes = "";
+
+        //--------------------------------
+        try {
+            // instanciation du parser
+            InputStream in = new FileInputStream(repBase + nomFichier);
+            XMLInputFactory factory = XMLInputFactory.newInstance();
+            XMLStreamReader parser = factory.createXMLStreamReader(in);
+            // lecture des evenements
+            for (int event = parser.next(); event != XMLStreamConstants.END_DOCUMENT; event = parser.next()) {
+                // traitement selon l'evenement
+                switch (event) {
+                    case XMLStreamConstants.START_ELEMENT:
+                        if (parser.getLocalName().equals("identification")) {
+                            listeIdentificationCourante = new ListeIdentification();
+                        }
+                        break;
+                    case XMLStreamConstants.END_ELEMENT:
+                        //-----------identification--------------------
+                        if (parser.getLocalName().equals("identifiant")) {
+                            identifiantCourant = donneesCourantes;
+                            listeIdentificationCourante.getListeIdentifiant().add(identifiantCourant);
+                        }
+                        if (parser.getLocalName().equals("motdepasse")) {
+                            motDePasseCourant = donneesCourantes;
+                            listeIdentificationCourante.getListeMotDePasse().add(motDePasseCourant);
+                        }
+                        if (parser.getLocalName().equals("type")) {
+                            typeCourant = donneesCourantes;
+                            listeIdentificationCourante.getListeType().add(typeCourant);
+                        }
+
+                        //---------------------------------------------
+                        break;
+                    case XMLStreamConstants.CHARACTERS:
+                        donneesCourantes = parser.getText();
+                        break;
+                } // end switch
+            } // end while
+            parser.close();
+        } catch (XMLStreamException ex) {
+            System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier);
+            System.out.println("Details :");
+            System.out.println(ex);
+        } catch (IOException ex) {
+            System.out.println("Exception de type 'IOException' lors de la lecture du fichier : " + nomFichier);
+            System.out.println("Verifier le chemin.");
+            System.out.println(ex.getMessage());
+        }
+        return listeIdentificationCourante;
+    }
+    
     public DossierMedical getDossier() {
         String donneesCourantes = "";
         DossierMedical dossier = null;
