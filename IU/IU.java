@@ -16,7 +16,7 @@ import princetonPlainsboro.*;
 public class IU extends javax.swing.JFrame {
 
     private LectureXML test = new LectureXML("dossiers.xml");
-    DossierMedical dossier = null;
+    DossierMedical dossier = test.getDossier();
     Date date = null;
 
     //personnes
@@ -87,7 +87,7 @@ public class IU extends javax.swing.JFrame {
         DefaultListModel dlm = new DefaultListModel();
         for(int index=0; index<dossier.getFiches().size(); index++)
         {
-            dlm.addElement(dossier.getFiches().get(index));
+            dlm.addElement(dossier.getFiches().get(index).toString());
         }
         jList3.setModel(dlm);
 
@@ -508,7 +508,7 @@ public class IU extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hostologo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("hostologo.png"))); // NOI18N
 
         javax.swing.GroupLayout LogoLayout = new javax.swing.GroupLayout(Logo);
         Logo.setLayout(LogoLayout);
@@ -1120,7 +1120,7 @@ public class IU extends javax.swing.JFrame {
 
         FSDate.setText("Date :");
 
-        ModifFSButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsz_1rsz_1rsz_edit.png"))); // NOI18N
+        ModifFSButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("rsz_1rsz_1rsz_edit.png"))); // NOI18N
         ModifFSButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ModifFSButtonActionPerformed(evt);
@@ -1617,7 +1617,7 @@ public class IU extends javax.swing.JFrame {
 
         Observation1.setText("Observations : ");
 
-        ModifFSButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsz_1rsz_1rsz_edit.png"))); // NOI18N
+        ModifFSButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("rsz_1rsz_1rsz_edit.png"))); // NOI18N
         ModifFSButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ModifFSButton1ActionPerformed(evt);
@@ -1780,7 +1780,7 @@ public class IU extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hostologo.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("hostologo.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1872,6 +1872,7 @@ public class IU extends javax.swing.JFrame {
 
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jComboBox4ActionPerformed
 
     private void PatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientButtonActionPerformed
@@ -2260,7 +2261,8 @@ public class IU extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
     // End of variables declaration//GEN-END:variables
-    private DossierMedical dm = new DossierMedical();
+  //  private DossierMedical dm = dossier;
+    
     
 
 }
