@@ -96,7 +96,7 @@ public class DossierMedical {
     
     /* Renvoi d'une liste contennant toutes les fiches de soins d'un patient*/ 
      public ArrayList<FicheDeSoins> listeDossierPatient(Patient p){
-           ArrayList<FicheDeSoins> listeFichesDeSoins = new ArrayList<FicheDeSoins>(fiches);
+           ArrayList<FicheDeSoins> listeFichesDeSoins = new ArrayList<FicheDeSoins>();
              for (int i = 0; i < fiches.size(); i++) {
                 if (fiches.get(i).getPatient().equals(p)){
                     listeFichesDeSoins.add(fiches.get(i));
