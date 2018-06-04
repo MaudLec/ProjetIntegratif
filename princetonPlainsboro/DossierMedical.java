@@ -124,7 +124,7 @@ public class DossierMedical {
         double cout = 0;
         for (int i = 0; i < fiches.size(); i++) {
             FicheDeSoins f = fiches.get(i);
-            if (specialite.equals(f.getMedecin().getSpecialite())) {
+            if (specialite.equals(f.getMedecin().getSpecialite().toString())) {
                 cout += f.coutTotal();
             }
         }
