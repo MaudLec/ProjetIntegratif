@@ -1,6 +1,6 @@
 package princetonPlainsboro;
 
-class Acte {
+public class Acte {
 
     private Code code;
     private int coef;
