@@ -3,7 +3,7 @@ package princetonPlainsboro;
 public class Test {
 
     public static void main(String[] args) {
-        LectureXML test = new LectureXML("dossiers.xml");
+       LectureXML test = new LectureXML("dossiers.xml");
         DossierMedical dm = test.getDossier();
         dm.afficherToutesFiches();
 
@@ -20,13 +20,13 @@ public class Test {
 
         System.out.println("\n********\n");
 
-        String spe = "Cardiologue";
+        String spe = "Cardiologie";
         System.out.println("> cout de la specialite '" + spe + "' = " + dm.coutSpecialite(spe) + "€");
 
         System.out.println("\n********\n");
 
         Medecin m1 = new Medecin("Deblouze", "Agathe", Specialite.Cardiologie, "05384", "veu", "vnu");
-        dm.afficherListePatients(m1);
+        System.out.println(dm.afficherListePatients(m1));
 
         System.out.println("\n********\n");
 
@@ -35,17 +35,17 @@ public class Test {
 
         System.out.println("\n********\n");
 
-        System.out.println("\n********\n");
-
         System.out.println();
         System.out.println("Dossier trie selon les dates :");
-        dm.trierDates();
+        System.out.println(dm.trierDates());
 
         System.out.println("\n********\n");
 
         System.out.println();
         System.out.println("Dossier trie selon les couts :");
-        dm.trier(new ComparaisonFichesCouts());
+        System.out.println(dm.trier(new ComparaisonFichesCouts()));
+        
+        
         
         
         //// pour tester l'écriture en XML, commenter tout ce qu'il y a au-dessus et décommenter les lignes suivantes:  
