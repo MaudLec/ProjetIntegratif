@@ -92,8 +92,19 @@ public class DossierMedical {
             }
         }
         return s;
-
     }
+    
+    /* Renvoi d'une liste contennant toutes les fiches de soins d'un patient*/ 
+     public ArrayList<FicheDeSoins> ListeDossierPatient(Patient p){
+           ArrayList<FicheDeSoins> listeFichesDeSoins = new ArrayList<FicheDeSoins>(fiches);
+             for (int i = 0; i < fiches.size(); i++) {
+                if (fiches.get(i).getPatient().equals(p)){
+                    listeFichesDeSoins.add(fiches.get(i));
+                 }
+             }
+             return listeFichesDeSoins;
+    }
+    
 
     /* Cout total pour un patient */
     public double coutPatient(Patient p) {
