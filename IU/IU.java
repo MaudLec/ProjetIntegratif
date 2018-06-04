@@ -2009,9 +2009,7 @@ public class IU extends javax.swing.JFrame {
         int v = 0;
         boolean b = false;
         while (v < listeidentifiants.getListeId().size() && !b) {
-            System.out.println("------------------");
-            System.out.println(listeidentifiants.getListeId().get(v));
-            System.out.println(listeidentifiants.getListeMdp().get(v));
+
             if (idd.equals(listeidentifiants.getListeId().get(v)) && mdppp.equals(listeidentifiants.getListeMdp().get(v))) {
                 System.out.println("ok");
                 this.setVisible(false);
