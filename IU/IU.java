@@ -2195,6 +2195,14 @@ public class IU extends javax.swing.JFrame {
             jTextField1.setText(ficheCourante.getMedecin().getNom());
             jTextField2.setText(ficheCourante.getMedecin().getPrenom());
             ChoixSpe1.setSelectedItem(ficheCourante.getMedecin().getSpecialite().toString());
+            //pour afficher les actes d'un patient
+            //maud
+            DefaultListModel dlma = new DefaultListModel();
+            for (int ind = 0; ind < ficheCourante.getActes().size(); ind++) {
+                dlma.addElement(dossier.getFiche(ind).getActe(ind).toString());
+            }
+            jList5.setModel(dlma);
+            jList7.setModel(dlma);
 
             FicheDeSoins.setVisible(true);
             jPanel1.setVisible(true);
