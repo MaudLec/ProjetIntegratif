@@ -2179,7 +2179,7 @@ public class IU extends javax.swing.JFrame {
         NewPatient.setVisible(true);
  //       Suz : peut pas text car pas de JComboBox5 dans mon code
 //        NumSecu secu = new NumSecu(jFormattedTextField5.getText());
-//        Adresse adr = new Adresse(DateNaisField1.getText());
+//        Adresse adr = new Adresse (jTextField3.getText(), jTextField3.getText(), jTextField3.getText());
 //        Date naissance = new Date(dateChooserCombo5.getText());
 //        Patient p = new Patient(PrenomPField.getText(), NomPField.getText(), secu, adr, naissance, Sexe.valueOf(jComboBox1.toString()));
 //        dossier.ajouterPatient(p);
