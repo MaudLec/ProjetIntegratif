@@ -599,7 +599,7 @@ public class DossierMedical {
         return fichesEntreDeuxDates;
     }
 
-    public ArrayList listeFichesEntreDeuxDatesTriesOrdreDeroissant(Date d1, Date d2) {
+    public ArrayList listeFichesEntreDeuxDatesTriesOrdreDecroissant(Date d1, Date d2) {
         ArrayList<FicheDeSoins> fichesEntreDeuxDates = new ArrayList<FicheDeSoins>();
         for (int i = 0; i < fiches.size(); i++) {
             FicheDeSoins f = fiches.get(i);
