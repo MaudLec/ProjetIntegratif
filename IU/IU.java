@@ -2176,14 +2176,14 @@ public class IU extends javax.swing.JFrame {
 //ici mettre en mémoire toutes les variables
             //maud + Julie (j'ai juste changé les labels qui étaient tous en "Nom :" et le num du méd)
             ficheCourante = dossier.getFiche(jList3.getSelectedIndex());
-            FSDate.setText("Date :" + ficheCourante.getDate());
-            FSSexe.setText("Sexe :" + ficheCourante.getPatient().getSexe());
-            FSNomP.setText("Nom :" +ficheCourante.getPatient().getNom());
-            FSPrenomP.setText("Prénom :" +ficheCourante.getPatient().getPrenom());
-            FSNSS.setText("N° de Sécurité Sociale :" +ficheCourante.getPatient().getNumSecu());
-            FSNomM.setText("Nom :" +ficheCourante.getMedecin().getNom());
-            FSPrenomM.setText("Prénom :" +ficheCourante.getMedecin().getPrenom());
-            FSSpeM.setText("Spécialité :" +ficheCourante.getMedecin().getSpecialite());
+            FSDate.setText("Date : " + ficheCourante.getDate());
+            FSSexe.setText("Sexe : " + ficheCourante.getPatient().getSexe());
+            FSNomP.setText("Nom : " +ficheCourante.getPatient().getNom());
+            FSPrenomP.setText("Prénom : " +ficheCourante.getPatient().getPrenom());
+            FSNSS.setText("N° de Sécurité Sociale : " +ficheCourante.getPatient().getNumSecu());
+            FSNomM.setText("Nom : " +ficheCourante.getMedecin().getNom());
+            FSPrenomM.setText("Prénom : " +ficheCourante.getMedecin().getPrenom());
+            FSSpeM.setText("Spécialité : " +ficheCourante.getMedecin().getSpecialite());
             //dateChooserCombo4.setText(ficheCourante.getDate().toString());
             jComboBox3.setSelectedItem(ficheCourante.getPatient().getSexe().toString());
             //dateChooserCombo6.setText(ficheCourante.getPatient().getNaissance());
