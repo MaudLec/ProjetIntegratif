@@ -78,8 +78,8 @@ public class SecretaireAdmin {
         SecretaireAdmin med = new SecretaireAdmin(nom, prenom, id, mdp);
     }
 
-    /* Affichage des informations de la secrétaire administrative avec les balises XML */
+    /* Affichage des informations de la secrétaire médicale avec les valises XML  */
     public String toXML() {
-        return ("<secretaireAdmin>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + "<id>" + id + "</id> " + "<mdp>" + mdp + "</mdp>" + "</secretaireAdmin>");
+        return ("<secretairemed>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + "<id>" + id + "</id>" + "<mdp>" + mdp + "</mdp>" + "</secretairemed>");
     }
 }
