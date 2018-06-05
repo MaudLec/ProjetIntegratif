@@ -7,15 +7,18 @@ public class DossierMedical {
     private ArrayList<FicheDeSoins> fiches; // contient des objets de classe 'FicheDeSoins'
     private ArrayList<Medecin> medecins;
     private ArrayList<Patient> patients;
+     private ArrayList<FicheDeSoins> fichesArchivees;
     //private ArrayList<FicheDeSoins> dossierPatient;
     private LectureXML lect;
+    private LectureXML lectArchives;
 
     public DossierMedical() {
         fiches = new ArrayList<FicheDeSoins>();  // liste vide
         medecins = new ArrayList<Medecin>();
         patients = new ArrayList<Patient>();
-        // dossierPatient = new ArrayList<FicheDeSoins>();
         lect = new LectureXML("dossiers.xml");
+        fichesArchivees = new ArrayList<FicheDeSoins>();
+        lectArchives = new LectureXML("archives.xml");
     }
 
     public ArrayList<Medecin> getMedecins() {
@@ -34,6 +37,11 @@ public class DossierMedical {
         return fiches.get(i);
     }
 
+    public ArrayList<FicheDeSoins> getFichesArchivees() {
+        return fichesArchivees;
+    }
+    
+    
     /* Ajout d'une fiche de soins */
     public void ajouterFiche(FicheDeSoins fiche) {
         fiches.add(fiche);
@@ -628,6 +636,12 @@ public class DossierMedical {
         }
         s += "</dossiers>";
         return s;
+    }
+    
+    /*Archivage d une fiche de soins*/
+    public void archiver(FicheDeSoins fiche){
+        fichesArchivees.add(fiche);
+        fiches.remove(fiche);
     }
 
 }
