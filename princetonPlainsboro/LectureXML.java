@@ -87,7 +87,7 @@ public class LectureXML {
                 switch (event) {
                     case XMLStreamConstants.START_ELEMENT:
                         if (parser.getLocalName().equals("archives")) {
-                            fichesArchivees = new ArrayList<>();
+                            fichesArchivees = new ArrayList<FicheDeSoins>();
                         }
                         break;
                     case XMLStreamConstants.END_ELEMENT:
@@ -117,11 +117,9 @@ public class LectureXML {
                         //lecture des personnes
                         if (parser.getLocalName().equals("medecin")) {
                             medecin = new Medecin(nom, prenom, specialite, numTel, id, mdp);
-                            dossier.ajouterMedecin(medecin);
                         }
                         if (parser.getLocalName().equals("patient")) {
                             patient = new Patient(nom, prenom, numSecu, adresse, naissance, sexe);
-                            dossier.ajouterPatient(patient);
                         }
 
                         //lecture des infos des personnes
@@ -400,9 +398,11 @@ public class LectureXML {
                         }
                         if (parser.getLocalName().equals("secretairemed")) {
                             secretaireMed = new SecretaireMed(nom, prenom, id, mdp);
+                            dossier.ajouterSecretaireMed(secretaireMed);
                         }
                         if (parser.getLocalName().equals("secretaireadmin")) {
                             secretaireAdmin = new SecretaireAdmin(nom, prenom, id, mdp);
+                            dossier.ajouterSecretaireAdmin(secretaireAdmin);
                         }
 
                         //lecture des infos des personnes
@@ -662,10 +662,10 @@ public class LectureXML {
     }
 
     private static TypeActe getType(String type) {
-        if (type.equals("Teerapeutique")) {
+        if (type.equals("therapeutique")) {
             return TypeActe.therapeutique;
         }
-        if (type.equals("Diagnostique")) {
+        if (type.equals("diagnostique")) {
             return TypeActe.diagnostique;
         }
         return null;
