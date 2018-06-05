@@ -29,6 +29,18 @@ public class NumSecu {
         this.numero = reg*1L + comm*1000L + dep*1000000L + mois*100000000L + annee*10000000000L + sexe*1000000000000L;
     }
     
+        public NumSecu(String s) {
+this.sexe = s.charAt(1);
+this.annee = s.charAt(2) * 10 + s.charAt(3) * 1;
+this.mois = s.charAt(4) * 10 + s.charAt(5) * 1;
+this.dep  = s.charAt(6) * 10 + s.charAt(7) * 1;
+this.comm = s.charAt(8) * 100 + s.charAt(9) * 10 + s.charAt(10) * 1;
+this.reg  = s.charAt(11) * 100 + s.charAt(12) * 10 + s.charAt(13) * 1;
+this.cle = s.charAt(14) * 10 + s.charAt(15) * 1;
+
+    }
+
+    
     /* Affichage du numéro SS avec sa clé avec des O quand nb < 10*/
     public String toString() {
         String s = "" + sexe;
