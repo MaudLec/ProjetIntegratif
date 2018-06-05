@@ -34,19 +34,19 @@
         <acte>
             <code>CS</code>
             <coef>1</coef>
-            <type>Diagnostique</type>
+            <type>diagnostique</type>
             <observation>blablabla</observation>
         </acte>
         <acte>
             <code>ORT</code>
             <coef>50</coef>
-            <type>Diagnostique</type>
+            <type>diagnostique</type>
             <observation>blablabla</observation>
         </acte>
         <acte>
             <code>PRO</code>
             <coef>150</coef>
-            <type>Diagnostique</type>
+            <type>diagnostique</type>
             <observation>blablabla</observation>
         </acte>
     </ficheDeSoins>
@@ -84,13 +84,13 @@
         <acte>
             <code>CSC</code>
             <coef>1</coef>
-            <type>Diagnostique</type>
+            <type>diagnostique</type>
             <observation>blablabla</observation>
         </acte>
         <acte>
             <code>KC</code>
             <coef>120</coef>
-            <type>Diagnostique</type>
+            <type>diagnostique</type>
             <observation>blablabla</observation>
         </acte>
     </ficheDeSoins>
@@ -128,7 +128,7 @@
         <acte>
             <code>CSC</code>
             <coef>2</coef>
-            <type>Diagnostique</type>
+            <type>diagnostique</type>
             <observation>blablabla</observation>
         </acte>
     </ficheDeSoins>
@@ -166,9 +166,16 @@
         <acte>
             <code>KE</code>
             <coef>1</coef>
-            <type>Diagnostique</type>
+            <type>diagnostique</type>
             <observation>blablabla</observation>
         </acte>
+        <secretaireadmin>
+            <nom>AUSTRA</nom>
+            <prenom>Lia</prenom>
+            <telephone>0123456789></telephone>
+            <id>3456</id>
+            <mdp>6789</mdp>
+        </secretaireadmin>
     </ficheDeSoins>
 
     <ficheDeSoins>
@@ -205,15 +212,22 @@
         <acte>
             <code>CS</code>
             <coef>1</coef>
-            <type>Diagnostique</type>
+            <type>diagnostique</type>
             <observation>blablabla</observation>
         </acte>
         <acte>
             <code>KFA</code>
             <coef>72</coef>
-            <type>Diagnostique</type>
+            <type>diagnostique</type>
             <observation>blablabla</observation>
         </acte>
+        <secretairemed>
+            <nom>TECH</nom>
+            <prenom>Mili</prenom>
+            <telephone>0123456789></telephone>
+            <id>2345</id>
+            <mdp>5678</mdp>
+        </secretairemed>
     </ficheDeSoins>
     
     <ficheDeSoins>
@@ -249,37 +263,37 @@
         <acte>
             <code>CS</code>
             <coef>1</coef>
-            <type>Diagnostique</type>
+            <type>diagnostique</type>
             <observation>blablabla</observation>
         </acte>
         <acte>
             <code>KFA</code>
             <coef>72</coef>
-            <type>Diagnostique</type>
+            <type>diagnostique</type>
             <observation>blablabla</observation>
         </acte>
         <acte>
             <code>K</code>
             <coef>1000</coef>
-            <type>Diagnostique</type>
+            <type>diagnostique</type>
             <observation>blablabla</observation>
         </acte>
         <acte>
             <code>KE</code>
             <coef>60</coef>
-            <type>Diagnostique</type>
+            <type>diagnostique</type>
             <observation>blablabla</observation>
         </acte>
         <acte>
             <code>ORT</code>
             <coef>85</coef>
-            <type>Diagnostique</type>
+            <type>diagnostique</type>
             <observation>blablabla</observation>
         </acte>
         <acte>
             <code>PRO</code>
             <coef>850</coef>
-            <type>Diagnostique</type>
+            <type>diagnostique</type>
             <observation>blablabla</observation>
         </acte>
     </ficheDeSoins>
