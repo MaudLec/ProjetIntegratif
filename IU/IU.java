@@ -133,15 +133,6 @@ public class IU extends javax.swing.JFrame {
         PatientLabel = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         MedecinLabel = new javax.swing.JLabel();
-        SpecialiteM = new javax.swing.JLabel();
-        ChoixSpe = new javax.swing.JComboBox<>();
-        int i = 0;
-        Specialite[] spe = Specialite.values();
-        while (i < spe.length) {
-            ChoixSpe.addItem(spe[i].toString());
-            i++;
-        }
-        ;
         jSeparator5 = new javax.swing.JSeparator();
         AddActeButton = new javax.swing.JButton();
         ActeLabel = new javax.swing.JLabel();
@@ -242,6 +233,7 @@ public class IU extends javax.swing.JFrame {
         SpecialiteM1 = new javax.swing.JLabel();
         ChoixSpe1 = new javax.swing.JComboBox<>();
         int l = 0;
+        Specialite[] spe= Specialite.values();
         while (l < spe.length) {
             ChoixSpe1.addItem(spe[l].toString());
             l++;
@@ -690,13 +682,6 @@ public class IU extends javax.swing.JFrame {
         MedecinLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         MedecinLabel.setText("Médecin");
 
-        SpecialiteM.setText("Spécialité :");
-
-        ChoixSpe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChoixSpeActionPerformed(evt);
-            }
-        });
 
         AddActeButton.setText("+");
         AddActeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -775,17 +760,17 @@ public class IU extends javax.swing.JFrame {
                             .addGroup(NewFicheSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(NewFicheSoinsLayout.createSequentialGroup()
                                     .addGroup(NewFicheSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(RechP)
-                                        .addComponent(RechM)
-                                        .addComponent(jScrollPane2))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(NewFicheSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(RechP, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                                        .addComponent(RechM))
+                                    .addGroup(NewFicheSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addGroup(NewFicheSoinsLayout.createSequentialGroup()
-                                            .addComponent(SpecialiteM)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(ChoixSpe, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(AddActeButton)))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(NewFicheSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(AddActeButton)))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NewFicheSoinsLayout.createSequentialGroup()
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addComponent(jSeparator4)
                                 .addComponent(ListeActesFiche, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, NewFicheSoinsLayout.createSequentialGroup()
@@ -816,19 +801,16 @@ public class IU extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(NewFicheSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(RechP, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(NewFicheSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MedecinLabel))
                 .addGap(18, 18, 18)
-                .addGroup(NewFicheSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SpecialiteM)
-                    .addComponent(ChoixSpe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(RechM, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(NewFicheSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(RechM, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(NewFicheSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(NewFicheSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(AddActeButton)
@@ -838,7 +820,7 @@ public class IU extends javax.swing.JFrame {
                 .addComponent(ListeActesFiche, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(FSValiderButton)
-                .addGap(41, 41, 41))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         
         TriPatient.setTitle("Patient");
@@ -2462,10 +2444,6 @@ public class IU extends javax.swing.JFrame {
         Deconnect.dispose();
     }//GEN-LAST:event_NonButtonDActionPerformed
 
-    private void ChoixSpeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoixSpeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ChoixSpeActionPerformed
-
     private void AddActeButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActeButton1ActionPerformed
         // TODO add your handling code here:
         NewPatient.setVisible(true);
@@ -2853,7 +2831,6 @@ public class IU extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ChoixCodeActe;
     private javax.swing.JComboBox<String> ChoixCodeActe1;
     private javax.swing.JComboBox<String> ChoixCodeActe2;
-    private javax.swing.JComboBox<String> ChoixSpe;
     private javax.swing.JComboBox<String> ChoixSpe1;
     private javax.swing.JComboBox<String> ChoixSpe2;
     private javax.swing.JLabel CodeActe;
@@ -2943,7 +2920,6 @@ public class IU extends javax.swing.JFrame {
     private javax.swing.JTextField RechercheP;
     private javax.swing.JLabel SelectM;
     private javax.swing.JLabel SelectP;
-    private javax.swing.JLabel SpecialiteM;
     private javax.swing.JLabel SpecialiteM1;
     private javax.swing.JLabel SpecialiteM2;
     private javax.swing.JDialog TriActes;
