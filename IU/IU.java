@@ -19,8 +19,10 @@ import princetonPlainsboro.*;
 public class IU extends javax.swing.JFrame {
 
     private LectureXML test = new LectureXML("dossiers.xml");
-
+    private LectureXML atest = new LectureXML("archives.xml");
     DossierMedical dossier = test.getDossier();
+    
+    
     Date date = null;
     ListeIdentification listeidentifiants = test.getListeIdentification();
     private EcritureXML ecriture = new EcritureXML(dossier, "dossiers.xml");
@@ -86,7 +88,8 @@ public class IU extends javax.swing.JFrame {
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        
+        dossier.setArchives(atest.getFichesArchivees());
         FPrincipale = new javax.swing.JFrame();
         FPFichedeSoins = new javax.swing.JPanel();
         FPFichesBare = new javax.swing.JPanel();
@@ -2453,8 +2456,8 @@ public class IU extends javax.swing.JFrame {
         Date na = new Date(dateChooserCombo5.getText());
         Patient p = new Patient(PrenomPField.getText(), NomPField.getText(), secu, adr, na, Sexe.getSexe(jComboBox1.toString()));
         dossier.ajouterPatient(p);
-        ecriture.editerPatients();
-        ecriture.editerDossier();
+        ecriturePatients.editerPatients();
+        ecritureDossier.editerDossier();
 
     }//GEN-LAST:event_AddActeButton1ActionPerformed
 
