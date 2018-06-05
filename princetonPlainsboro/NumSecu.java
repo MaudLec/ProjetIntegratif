@@ -35,8 +35,8 @@ public class NumSecu {
         if (annee < 10) { s += "0" + annee; } else { s += annee; }
         if (mois < 10) { s += "0" + mois; } else { s += mois; }
         if (dep < 10) { s += "0" + dep; } else { s += dep; }
-        if (comm < 10) { s += "0" + comm; } else { s += comm; }
-        if (reg < 10) { s += "0" + reg; } else { s += reg; }
+        if (comm < 100 && comm > 10) { s += "0" + comm; } else { if (comm < 10) { s+= "00" + comm ; } else { s += comm; }}
+        if (reg < 100 && reg > 10) { s += "0" + reg; } else { if (reg < 10) { s+= "00" + reg; }else { s += reg ; }}
         if (cle < 10) { s += " 0" + cle; } else { s += " " + cle; }
 
         return s;
