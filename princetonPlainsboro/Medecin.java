@@ -64,7 +64,7 @@ public class Medecin {
 
     /* Affichage du nom, prénom et spécialité du médecin */
     public String toString() {
-        return "Dr " + prenom + " " + nom + ", " + specialite.toString();
+        return "Dr " + nom.toUpperCase() + " " + prenom + ", " + specialite.toString();
     }
 
     /* Renvoie vraie si les médecins sont les même, faux sinon */
