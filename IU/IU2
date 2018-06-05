@@ -11,6 +11,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import princetonPlainsboro.*;
+import java.util.Calendar;
 
 public class IU extends javax.swing.JFrame {
 
@@ -20,7 +21,8 @@ public class IU extends javax.swing.JFrame {
 
     ListeIdentification listeidentifiants = test.getListeIdentification();
     FicheDeSoins ficheCourante = null;
-    
+    Boolean listenonvide = true;
+
 //personnes
     Medecin medecin = null;
     Patient patient = null;
@@ -74,7 +76,7 @@ public class IU extends javax.swing.JFrame {
     }
 
 
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         FPrincipale = new javax.swing.JFrame();
@@ -86,13 +88,6 @@ public class IU extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         ListeFiches = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList<>();
-
-        for(index=0; index<dossier.getFiches().size(); index++)
-        {
-            dlm.addElement(dossier.getFiches().get(index).toString());
-        }
-        jList3.setModel(dlm);
-        ;
         OptTri = new javax.swing.JPanel();
         TriLabel = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
@@ -236,6 +231,8 @@ public class IU extends javax.swing.JFrame {
         FSPrenomM = new javax.swing.JLabel();
         FSSpeM = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         SpecialiteM1 = new javax.swing.JLabel();
         ChoixSpe1 = new javax.swing.JComboBox<>();
@@ -265,7 +262,6 @@ public class IU extends javax.swing.JFrame {
         jSeparator14 = new javax.swing.JSeparator();
         MedecinLabel3 = new javax.swing.JLabel();
         PatientLabel3 = new javax.swing.JLabel();
-        FSValiderButton1 = new javax.swing.JButton();
         FSPrenomM2 = new javax.swing.JLabel();
         FSNomM2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -275,16 +271,21 @@ public class IU extends javax.swing.JFrame {
         DateNais2 = new javax.swing.JLabel();
         NSecuSoc1 = new javax.swing.JLabel();
         DateNais3 = new javax.swing.JLabel();
-        DateNaisField3 = new javax.swing.JTextField();
         PrenomP3 = new javax.swing.JLabel();
         PrenomPField3 = new javax.swing.JTextField();
         NomP1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         NomPField1 = new javax.swing.JTextField();
         jComboBox3 = new javax.swing.JComboBox<>();
-        dateChooserCombo4 = new datechooser.beans.DateChooserCombo();
         jFormattedTextField7 = new javax.swing.JFormattedTextField();
         dateChooserCombo6 = new datechooser.beans.DateChooserCombo();
+        dateChooserCombo4 = new datechooser.beans.DateChooserCombo();
+        FSValiderButon = new javax.swing.JButton();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         NewPatient = new javax.swing.JDialog();
         PrenomP = new javax.swing.JLabel();
         PrenomPField = new javax.swing.JTextField();
@@ -345,24 +346,6 @@ public class IU extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jTextField17 = new javax.swing.JTextField();
-        //Julie
-        //testid = jTextField17.getText().charAt(0);
-        //if (testid == "1".charAt(0)){
-            //    bmed = true;
-            //    bsmed = false;
-            //    bsad = false;
-            //}
-        //if (testid == "2".charAt(0)){
-            //    bsmed = true;
-            //    bmed = false;
-            //    bsad = false;
-            //}
-        //if (testid == "3".charAt(0)){
-            //    bsad = true;
-            //    bsmed = false;
-            //    bmed = false;
-            //}
-        ;
         jPasswordField2 = new javax.swing.JPasswordField();
         jButton20 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -372,13 +355,14 @@ public class IU extends javax.swing.JFrame {
 
         FPrincipale.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         FPrincipale.setTitle("NomDuLogiciel");
-        FPrincipale.setMinimumSize(new java.awt.Dimension(900, 680));
+        FPrincipale.setMinimumSize(new java.awt.Dimension(1000, 680));
+        FPrincipale.setPreferredSize(new java.awt.Dimension(1000, 708));
 
         FPFichedeSoins.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel25.setText("Fiches de Soin");
 
-        jButton14.setText("+");
+        jButton14.setText("Créer une fiche de soins");
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);
@@ -406,7 +390,7 @@ public class IU extends javax.swing.JFrame {
             .addGroup(FPFichesBareLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel25)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -457,6 +441,11 @@ public class IU extends javax.swing.JFrame {
         TriLabel.setText("Afficher les fiches pour un(e) :");
 
         jRadioButton1.setText("Patient");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
         jRadioButton2.setText("Médecin");
 
@@ -1156,7 +1145,8 @@ public class IU extends javax.swing.JFrame {
         );
 
         FicheDeSoins.setTitle("Fiche de soins");
-        FicheDeSoins.setMinimumSize(new java.awt.Dimension(530, 570));
+        FicheDeSoins.setMinimumSize(new java.awt.Dimension(560, 570));
+        FicheDeSoins.setPreferredSize(new java.awt.Dimension(560, 570));
 
         FSDate.setText("Date :");
 
@@ -1197,6 +1187,10 @@ public class IU extends javax.swing.JFrame {
 
         FSSpeM.setText("Spécialité :");
 
+        jLabel7.setText("Adresse :");
+
+        jLabel8.setText("Date de naissance :");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -1213,28 +1207,14 @@ public class IU extends javax.swing.JFrame {
                         .addComponent(MedecinLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator7)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(FSNomP, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(FSSexe, javax.swing.GroupLayout.Alignment.TRAILING)))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(FSPrenomM, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(FSNomM, javax.swing.GroupLayout.Alignment.TRAILING)))
-                                .addGap(154, 154, 154)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(FSNSS, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(FSSpeM)
-                                        .addGap(1, 1, 1))
-                                    .addComponent(FSPrenomP)))
-                            .addComponent(jSeparator7)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(PatientLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSeparator6))
+                                    .addComponent(FSPrenomM, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(FSNomM, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(FSSpeM)
+                                .addGap(156, 156, 156))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(ListeActes, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1242,7 +1222,23 @@ public class IU extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(ActeLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jSeparator8)))
+                        .addComponent(jSeparator8))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(PatientLabel1)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator6)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(FSNomP)
+                                    .addComponent(FSSexe)
+                                    .addComponent(FSPrenomP))
+                                .addGap(124, 124, 124)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel7)
+                                    .addComponent(FSNSS))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(33, 33, 33))
         );
         jPanel1Layout.setVerticalGroup(
@@ -1256,17 +1252,19 @@ public class IU extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(PatientLabel1)
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(FSSexe)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(FSNomP))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(FSNSS)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(FSPrenomP)))
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FSSexe)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FSNomP)
+                    .addComponent(FSNSS))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FSPrenomP)
+                    .addComponent(jLabel7))
+                .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(MedecinLabel1)
                     .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1284,11 +1282,11 @@ public class IU extends javax.swing.JFrame {
                         .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ListeActes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
-        jPanel2.setMinimumSize(new java.awt.Dimension(585, 570));
-        jPanel2.setPreferredSize(new java.awt.Dimension(585, 570));
+        jPanel2.setMinimumSize(new java.awt.Dimension(650, 570));
+        jPanel2.setPreferredSize(new java.awt.Dimension(650, 570));
 
         SpecialiteM1.setText("Spécialité :");
 
@@ -1323,13 +1321,6 @@ public class IU extends javax.swing.JFrame {
         PatientLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         PatientLabel3.setText("Patient");
 
-        FSValiderButton1.setText("Valider");
-        FSValiderButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FSValiderButton1ActionPerformed(evt);
-            }
-        });
-
         FSPrenomM2.setText("Prénom :");
 
         FSNomM2.setText("Nom :");
@@ -1340,7 +1331,7 @@ public class IU extends javax.swing.JFrame {
 
         NSecuSoc1.setText("N° de Sécurité Sociale :");
 
-        DateNais3.setText("Adresse : ");
+        DateNais3.setText("Adresse :         rue :");
 
         PrenomP3.setText("N° de tel  : ");
 
@@ -1356,115 +1347,150 @@ public class IU extends javax.swing.JFrame {
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "M", "F", "Autre" }));
 
-        dateChooserCombo4.setCalendarPreferredSize(new java.awt.Dimension(330, 220));
-
         try {
             jFormattedTextField7.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#-##-##-##-###-###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
+        dateChooserCombo4.setCalendarPreferredSize(new java.awt.Dimension(330, 220));
+
+        FSValiderButon.setText("Valider");
+        FSValiderButon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FSValiderButonActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("code postal :");
+
+        jLabel10.setText("ville :");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FSPrenomM2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(FSNomM2, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                    .addComponent(jTextField2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(SpecialiteM1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ChoixSpe1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(PrenomP3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PrenomPField3, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(53, 53, 53))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(DateLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(dateChooserCombo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(PatientLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(NSecuSoc1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jFormattedTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(PrenomP2)
-                                    .addComponent(NomP1)
-                                    .addComponent(jLabel6))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(NomPField1, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                                    .addComponent(PrenomPField2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(DateNais2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(DateNais3, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(DateNaisField3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(dateChooserCombo6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(23, 23, 23))))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(MedecinLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator13)
-                .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(FSValiderButton1)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(ActeLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ListeActesFiche1, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(AddActeButton2)))))
-                .addContainerGap(12, Short.MAX_VALUE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(FSPrenomM2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(FSNomM2, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField1)
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(121, 121, 121)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(SpecialiteM1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(ChoixSpe1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(PrenomP3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(PrenomPField3, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(AddActeButton2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(NSecuSoc1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jFormattedTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(25, 25, 25)
+                                        .addComponent(jLabel10))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(NomP1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(PrenomP2, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(NomPField1, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                                            .addComponent(PrenomPField2)
+                                            .addComponent(jComboBox3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(DateNais2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(DateNais3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(dateChooserCombo6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextField3)
+                                    .addComponent(jTextField4)
+                                    .addComponent(jTextField5)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(MedecinLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(DateLabel1)
+                                                .addGap(10, 10, 10)
+                                                .addComponent(dateChooserCombo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(PatientLabel3)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(FSValiderButon)
+                                    .addComponent(ListeActesFiche1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(516, 516, 516)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(dateChooserCombo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DateLabel1))
-                .addGap(13, 13, 13)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PatientLabel3))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(PatientLabel3))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(DateLabel1)
+                            .addComponent(dateChooserCombo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(dateChooserCombo6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DateNais2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DateNais3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1475,56 +1501,57 @@ public class IU extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(PrenomP2)
-                            .addComponent(PrenomPField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(DateNais2)
-                            .addComponent(dateChooserCombo6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(DateNais3)
-                            .addComponent(DateNaisField3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NSecuSoc1)
-                    .addComponent(jFormattedTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                            .addComponent(PrenomPField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(NSecuSoc1)
+                            .addComponent(jFormattedTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(MedecinLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FSNomM2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SpecialiteM1)
-                    .addComponent(ChoixSpe1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FSPrenomM2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PrenomP3)
-                    .addComponent(PrenomPField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(FSNomM2)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(FSPrenomM2)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(SpecialiteM1)
+                            .addComponent(ChoixSpe1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PrenomP3)
+                            .addComponent(PrenomPField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(24, 24, 24)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(AddActeButton2)
                         .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(ActeLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ListeActesFiche1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(FSValiderButton1)
-                .addGap(35, 35, 35))
+                .addGap(18, 18, 18)
+                .addComponent(FSValiderButon)
+                .addGap(65, 65, 65))
         );
 
         javax.swing.GroupLayout FicheDeSoinsLayout = new javax.swing.GroupLayout(FicheDeSoins.getContentPane());
         FicheDeSoins.getContentPane().setLayout(FicheDeSoinsLayout);
         FicheDeSoinsLayout.setHorizontalGroup(
             FicheDeSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(FicheDeSoinsLayout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(107, Short.MAX_VALUE))
             .addGroup(FicheDeSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(FicheDeSoinsLayout.createSequentialGroup()
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         FicheDeSoinsLayout.setVerticalGroup(
             FicheDeSoinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1626,9 +1653,9 @@ public class IU extends javax.swing.JFrame {
                             .addComponent(PrenomP)
                             .addComponent(PrenomPField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(NewPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(NSecuSoc)
-                            .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(NewPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NSecuSoc))))
                 .addContainerGap(112, Short.MAX_VALUE))
         );
 
@@ -1910,25 +1937,26 @@ public class IU extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
 
-    private void FSValiderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FSValiderButtonActionPerformed
+    private void FSValiderButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                
         // TODO add your handling code here:
         NewFicheSoins.dispose();
-    }//GEN-LAST:event_FSValiderButtonActionPerformed
+    }                                               
 
-    private void AddActeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActeButtonActionPerformed
+    private void AddActeButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
         // TODO add your handling code here:
         NewActe.setVisible(true);
-    }//GEN-LAST:event_AddActeButtonActionPerformed
+    }                                             
 
-    private void RecherchePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecherchePActionPerformed
+    private void RecherchePActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-    }//GEN-LAST:event_RecherchePActionPerformed
+    }                                          
 
-    private void AfficherListePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListePActionPerformed
+    private void AfficherListePActionPerformed(java.awt.event.ActionEvent evt) {                                               
         // TODO add your handling code here:
+        listenonvide = true;
         Patient patientselectionne = dossier.getPatients().get(jList2.getSelectedIndex());
         DefaultListModel dlpt = new DefaultListModel();
         for (int index = 0; index < dossier.listeDossierPatient(patientselectionne).size(); index++) {
@@ -1937,14 +1965,15 @@ public class IU extends javax.swing.JFrame {
         jList3.setModel(dlpt);
         ListeFiches.repaint();
         TriPatient.dispose();
-    }//GEN-LAST:event_AfficherListePActionPerformed
+    }                                              
 
-    private void RechercheMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechercheMActionPerformed
+    private void RechercheMActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-    }//GEN-LAST:event_RechercheMActionPerformed
+    }                                          
 
-    private void AfficherListeMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeMActionPerformed
+    private void AfficherListeMActionPerformed(java.awt.event.ActionEvent evt) {                                               
         // TODO add your handling code here:
+        listenonvide = true;
         Medecin medecinselectionne = dossier.getMedecins().get(jList4.getSelectedIndex());
         DefaultListModel dlpm = new DefaultListModel();
         for (int index = 0; index < dossier.recupererListePatients(medecinselectionne).size(); index++) {
@@ -1953,25 +1982,63 @@ public class IU extends javax.swing.JFrame {
         jList3.setModel(dlpm);
         ListeFiches.repaint();
         TriMedecin.dispose();
-    }//GEN-LAST:event_AfficherListeMActionPerformed
+    }                                              
 
-    private void AfficherListeDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeDateActionPerformed
+    private void AfficherListeDateActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         // TODO add your handling code here:
+        listenonvide = true;
+        Calendar cal1 = dateChooserCombo1.getSelectedDate();
+        Calendar cal2 = dateChooserCombo2.getSelectedDate();
+        Date d1 = new Date(cal1.get(Calendar.DATE), cal1.get(Calendar.MONTH), cal1.get(Calendar.YEAR));
+        Date d2 = new Date(cal2.get(Calendar.DATE), cal2.get(Calendar.MONTH), cal2.get(Calendar.YEAR));
+        System.out.println(d1);
+        System.out.println(d2);
+        ArrayList<FicheDeSoins> fichesEntreDeuxDates = new ArrayList<FicheDeSoins>(dossier.listeFichesEntreDeuxDatesTriesOrdreDecroissant(d1, d2));
+
+        DefaultListModel dldd = new DefaultListModel();
+
+        if (fichesEntreDeuxDates.size() == 0) {
+            dldd.addElement("Pas de fiches entre ces deux dates");
+            listenonvide = false;
+            jLabel3.setText("Coût de la FS sélectionnée : ");
+            Cout.setText("Coût total du patient : ");
+        }
+        for (int index = 0; index < fichesEntreDeuxDates.size(); index++) {
+            dldd.addElement(fichesEntreDeuxDates.get(index).toString());
+        }
+        jList3.setModel(dldd);
         TriDate.dispose();
-    }//GEN-LAST:event_AfficherListeDateActionPerformed
+    }                                                 
 
-    private void AfficherListeNbActesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeNbActesActionPerformed
+    private void AfficherListeNbActesActionPerformed(java.awt.event.ActionEvent evt) {                                                     
         // TODO add your handling code here:
-        TriActes.dispose();
-    }//GEN-LAST:event_AfficherListeNbActesActionPerformed
+        listenonvide = true;
+        DefaultListModel dlps = new DefaultListModel();
+        Code code = Code.values()[(ChoixCodeActe2.getSelectedIndex())];
+        Acte acte = new Acte(code, 0, typeActe, "");
+        if (dossier.listeFichesActe(acte).size() == 0) {
+            dlps.addElement("Pas de fiches pour cet acte");
+            listenonvide = false;
+            jLabel3.setText("Coût de la FS sélectionnée : ");
+            Cout.setText("Coût total du patient : ");
+        }
+        for (int index = 0; index < dossier.listeFichesActe(acte).size(); index++) {
+            dlps.addElement(dossier.listeFichesActe(acte).get(index));
+        }
+        jList3.setModel(dlps);
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        ListeFiches.repaint();
+        TriActes.dispose();
+    }                                                    
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
         NewFicheSoins.setVisible(true);
-    }//GEN-LAST:event_jButton14ActionPerformed
+    }                                         
 
-    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
-         if (jComboBox4.getSelectedItem() == "Date croissante") {
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        listenonvide = true;
+        if (jComboBox4.getSelectedItem() == "Date croissante") {
             dossier.trierDatesCroissantes();
             DefaultListModel dlft = new DefaultListModel();
             for (int index = 0; index < dossier.getFiches().size(); index++) {
@@ -2016,22 +2083,22 @@ public class IU extends javax.swing.JFrame {
             jList3.setModel(dlft);
             ListeFiches.repaint();
         }
-    }//GEN-LAST:event_jComboBox4ActionPerformed
+    }                                          
 
-    private void DeconnexionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeconnexionButtonActionPerformed
+    private void DeconnexionButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         // TODO add your handling code here:
         Deconnect.setVisible(true);
-    }//GEN-LAST:event_DeconnexionButtonActionPerformed
+    }                                                 
 
-    private void RechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechercheActionPerformed
+    private void RechercheActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
-    }//GEN-LAST:event_RechercheActionPerformed
+    }                                         
 
-    private void jTextField17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField17ActionPerformed
+    private void jTextField17ActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField17ActionPerformed
+    }                                            
 
-    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {                                          
         String idd = jTextField17.getText();
         char[] mdpp = jPasswordField2.getPassword();
         String mdppp = "";
@@ -2041,9 +2108,7 @@ public class IU extends javax.swing.JFrame {
         int v = 0;
         boolean b = false;
         while (v < listeidentifiants.getListeId().size() && !b) {
-
             if (idd.equals(listeidentifiants.getListeId().get(v)) && mdppp.equals(listeidentifiants.getListeMdp().get(v))) {
-                System.out.println("ok");
                 this.setVisible(false);
                 FPrincipale.setVisible(true);
                 b = true;
@@ -2051,144 +2116,213 @@ public class IU extends javax.swing.JFrame {
                 v++;
                 jLabel4.setVisible(true);
             }
-
         }
         // Affichage du nom du Médecin / Secrétaire
-        boolean bbb= false;
+        boolean bbb = false;
         for (int iii = 0; iii < dossier.getMedecins().size(); iii++) {
             if (dossier.getMedecins().get(iii).getId().toString().equals(idd) && !bbb) { // la récup de l'id se fait pas
                 Identifiant.setText(dossier.getMedecins().get(iii).toString());
-                System.out.println("Nom changé");
-                bbb= true;
+                bbb = true;
                 iii = dossier.getMedecins().size();
             }
-            if (iii == dossier.getMedecins().size()&&!bbb) {
+            if (iii == dossier.getMedecins().size() && !bbb) {
                 Identifiant.setText("session inconnue");
-                System.out.println("Nom non changé");
             }
         }
-        jLabel4.setVisible(true);
-    }//GEN-LAST:event_jButton20ActionPerformed
 
-    private void ChoixCodeActeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoixCodeActeActionPerformed
+        //Julie
+        char a = idd.charAt(0);
+        if (a == '1') {
+            bmed = true;
+            bsmed = false;
+            bsad = false;
+        }
+        if (a == '2') {
+            bsmed = true;
+            bmed = false;
+            bsad = false;
+        }
+        if (a == '3') {
+            bsad = true;
+            bsmed = false;
+            bmed = false;
+        }
+        
+//        if (bmed) {
+//            String iddd = jTextField17.getText();
+//            System.out.println("id retrouvé");
+//            Medecin meds;
+//            for (int iiii = 0; iiii < dossier.getMedecins().size(); iiii++) {
+//                if (dossier.getMedecins().get(iiii).getId().toString().equals(iddd)) { // la récup de l'id se fait pas
+//                    meds = dossier.getMedecins().get(iiii);
+//                    System.out.println("Medecin retrouvé");
+//                }
+//            }
+//            DefaultListModel dlpm = new DefaultListModel();
+//            for (int index = 0; index < dossier.recupererListePatients(meds).size(); index++) {
+//                dlpm.addElement(dossier.recupererListePatients(meds).get(index).toString());
+//            }
+//            jList3.setModel(dlpm);
+//        } else {
+//            for (index = 0; index < dossier.getFiches().size(); index++) {
+//                dlm.addElement(dossier.getFiches().get(index).toString());
+//            }
+//            jList3.setModel(dlm);
+//        }
+    }                                         
+
+    private void ChoixCodeActeActionPerformed(java.awt.event.ActionEvent evt) {                                              
         // TODO add your handling code here:
-    }//GEN-LAST:event_ChoixCodeActeActionPerformed
+    }                                             
 
-    private void ValiderActeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValiderActeButtonActionPerformed
+    private void ValiderActeButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         // TODO add your handling code here:
         NewActe.dispose();
         NewFicheSoins.setVisible(true);
-    }//GEN-LAST:event_ValiderActeButtonActionPerformed
+    }                                                 
 
-    private void OuiButtonDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OuiButtonDActionPerformed
+    private void OuiButtonDActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         Deconnect.dispose();
         FPrincipale.dispose();
         this.setVisible(true);
         jLabel4.setVisible(false);
-    }//GEN-LAST:event_OuiButtonDActionPerformed
+    }                                          
 
-    private void NonButtonDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NonButtonDActionPerformed
+    private void NonButtonDActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         Deconnect.dispose();
-    }//GEN-LAST:event_NonButtonDActionPerformed
+    }                                          
 
 
-    private void ChoixSpeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoixSpeActionPerformed
+    private void ChoixSpeActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-    }//GEN-LAST:event_ChoixSpeActionPerformed
+    }                                        
 
-    private void AddActeButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActeButton1ActionPerformed
+    private void AddActeButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                               
         // TODO add your handling code here:
         NewPatient.setVisible(true);
-    }//GEN-LAST:event_AddActeButton1ActionPerformed
+    }                                              
 
-    private void AfficherListeM1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeM1ActionPerformed
+    private void AfficherListeM1ActionPerformed(java.awt.event.ActionEvent evt) {                                                
         // TODO add your handling code here:
         NewPatient.dispose();
         NewFicheSoins.setVisible(true);
-    }//GEN-LAST:event_AfficherListeM1ActionPerformed
+    }                                               
 
-    private void RechMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechMActionPerformed
+    private void RechMActionPerformed(java.awt.event.ActionEvent evt) {                                      
         // TODO add your handling code here:
-    }//GEN-LAST:event_RechMActionPerformed
+    }                                     
 
-    private void RechPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechPActionPerformed
+    private void RechPActionPerformed(java.awt.event.ActionEvent evt) {                                      
         // TODO add your handling code here:
-    }//GEN-LAST:event_RechPActionPerformed
+    }                                     
 
-    private void jList3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList3MouseClicked
+    private void jList3MouseClicked(java.awt.event.MouseEvent evt) {                                    
         // TODO add your handling code here:
-        
+
 //        //Julie
-//        if (bsad){
-//            ModifFSButton.setVisible(false);
-//            FSNomP.setVisible(false);
-//            FSPrenomP.setVisible(false);
-//            FSNSS.setVisible(false);
-//        }
-        
-        
-        if (evt.getClickCount() == 1) {
-            jLabel3.setText("Coût de la FS sélectionnée : " + dossier.getFiche(jList3.getSelectedIndex()).coutTotal());
-            Cout.setText("Coût total du patient : " + dossier.coutPatient(dossier.getFiche(jList3.getSelectedIndex()).getPatient()));
+        if (bsad) {
+            if (evt.getClickCount() == 1 && listenonvide) {
+                jLabel3.setText("Coût de la FS sélectionnée : " + dossier.getFiche(jList3.getSelectedIndex()).coutTotal());
+                Cout.setText("Coût total du patient : " + dossier.coutPatient(dossier.getFiche(jList3.getSelectedIndex()).getPatient()));
 
-        }
-        if (evt.getClickCount() == 2) {
+            }
+            if (evt.getClickCount() == 2 && listenonvide) {
 //            adapter la fiche à la ligne demandee
 //            String selectedItem = (String) jList3.getSelectedValue();
 //            ici mettre en mémoire toutes les variables
-            ficheCourante = dossier.getFiche(jList3.getSelectedIndex());
-            FSDate.setText("Date :" + ficheCourante.getDate());
-            FSSexe.setText("Sexe :" + ficheCourante.getPatient().getSexe());
-            FSNomP.setText("Nom :" +ficheCourante.getPatient().getNom());
-            FSPrenomP.setText("Prenom :" +ficheCourante.getPatient().getPrenom());
-            FSNSS.setText("N° de Sécurité Sociale :" +ficheCourante.getPatient().getNumSecu());
-            FSNomM.setText("Nom :" +ficheCourante.getMedecin().getNom());
-            FSPrenomM.setText("Prénom :" +ficheCourante.getMedecin().getPrenom());
-            FSSpeM.setText("Spécialité :" +ficheCourante.getMedecin().getSpecialite());
-            //dateChooserCombo4.setText(ficheCourante.getDate().toString());
-            jComboBox3.setSelectedItem(ficheCourante.getPatient().getSexe().toString());
-            //dateChooserCombo6.setText(ficheCourante.getPatient().getNaissance());
-            NomPField1.setText(ficheCourante.getPatient().getNom());
-            PrenomPField2.setText(ficheCourante.getPatient().getPrenom());
-            PrenomPField3.setText(ficheCourante.getMedecin().getTelephone());
-            DateNaisField3.setText(ficheCourante.getPatient().getAdresse().toString());
-            //jFormattedTextField7FSNSS.setText(ficheCourante.getPatient().getNumSecu().toString());
-            jTextField1.setText(ficheCourante.getMedecin().getNom());
-            jTextField2.setText(ficheCourante.getMedecin().getPrenom());
-            ChoixSpe1.setSelectedItem(ficheCourante.getMedecin().getSpecialite().toString());
+                ficheCourante = dossier.getFiche(jList3.getSelectedIndex());
 
-            
-            FicheDeSoins.setVisible(true);
-            jPanel1.setVisible(true);
-            jPanel2.setVisible(false);
+                ModifFSButton.setVisible(false);
+                FSNomP.setVisible(false);
+                FSPrenomP.setVisible(false);
+                FSNSS.setVisible(false);
+                jLabel7.setVisible(false);
+                jLabel8.setText("Date de naissance : " + ficheCourante.getPatient().getNaissance().getAnnee());
+
+                FSDate.setText("Date : " + ficheCourante.getDate());
+                FSSexe.setText("Sexe : " + ficheCourante.getPatient().getSexe());
+                FSNomM.setText("Nom :" + ficheCourante.getMedecin().getNom());
+                FSPrenomM.setText("Prénom : " + ficheCourante.getMedecin().getPrenom());
+                FSSpeM.setText("Spécialité : " + ficheCourante.getMedecin().getSpecialite());
+                dateChooserCombo4.setText(ficheCourante.getDate().toString());
+                jComboBox3.setSelectedItem(ficheCourante.getPatient().getSexe().toString());
+//            dateChooserCombo6.setText(ficheCourante.getPatient().getNaissance());
+                NomPField1.setText(ficheCourante.getPatient().getNom());
+                PrenomPField2.setText(ficheCourante.getPatient().getPrenom());
+                PrenomPField3.setText(ficheCourante.getMedecin().getTelephone());
+//                jTextArea1.setText(ficheCourante.getPatient().getAdresse().toString());
+//            jFormattedTextField7FSNSS.setText(ficheCourante.getPatient().getNumSecu().toString());
+                jTextField1.setText(ficheCourante.getMedecin().getNom());
+                jTextField2.setText(ficheCourante.getMedecin().getPrenom());
+                ChoixSpe1.setSelectedItem(ficheCourante.getMedecin().getSpecialite().toString());
+
+                FicheDeSoins.setVisible(true);
+                FicheDeSoins.setSize(560, 600);
+                jPanel1.setVisible(true);
+                jPanel2.setVisible(false);
+            }
+        } else {
+
+            // condition : un médecin ne peut voir que ses patients 
+            if (evt.getClickCount() == 1 && listenonvide) {
+                jLabel3.setText("Coût de la FS sélectionnée : " + dossier.getFiche(jList3.getSelectedIndex()).coutTotal());
+                Cout.setText("Coût total du patient : " + dossier.coutPatient(dossier.getFiche(jList3.getSelectedIndex()).getPatient()));
+
+            }
+            if (evt.getClickCount() == 2 && listenonvide) {
+//            adapter la fiche à la ligne demandee
+//            String selectedItem = (String) jList3.getSelectedValue();
+//            ici mettre en mémoire toutes les variables
+                ficheCourante = dossier.getFiche(jList3.getSelectedIndex());
+                FSDate.setText("Date : " + ficheCourante.getDate());
+                FSSexe.setText("Sexe : " + ficheCourante.getPatient().getSexe());
+                FSNomP.setText("Nom : " + ficheCourante.getPatient().getNom());
+                FSPrenomP.setText("Prenom : " + ficheCourante.getPatient().getPrenom());
+                FSNSS.setText("N° de Sécurité Sociale : " + ficheCourante.getPatient().getNumSecu());
+                FSNomM.setText("Nom :" + ficheCourante.getMedecin().getNom());
+                FSPrenomM.setText("Prénom : " + ficheCourante.getMedecin().getPrenom());
+                FSSpeM.setText("Spécialité : " + ficheCourante.getMedecin().getSpecialite());
+                jLabel8.setText("Date de naissance : " + ficheCourante.getPatient().getNaissance().toString());
+                dateChooserCombo4.setText(ficheCourante.getDate().toString());
+                jComboBox3.setSelectedItem(ficheCourante.getPatient().getSexe().toString());
+//            dateChooserCombo6.setText(ficheCourante.getPatient().getNaissance());
+                NomPField1.setText(ficheCourante.getPatient().getNom());
+                PrenomPField2.setText(ficheCourante.getPatient().getPrenom());
+                PrenomPField3.setText(ficheCourante.getMedecin().getTelephone());
+                jLabel7.setText("Adresse : " + ficheCourante.getPatient().getAdresse().toString());
+//                    jTextArea1.setText(ficheCourante.getPatient().getAdresse().toString());
+//            jFormattedTextField7FSNSS.setText(ficheCourante.getPatient().getNumSecu().toString());
+                jTextField1.setText(ficheCourante.getMedecin().getNom());
+                jTextField2.setText(ficheCourante.getMedecin().getPrenom());
+                ChoixSpe1.setSelectedItem(ficheCourante.getMedecin().getSpecialite().toString());
+
+                FicheDeSoins.setVisible(true);
+                FicheDeSoins.setSize(560, 600);
+                jPanel1.setVisible(true);
+                jPanel2.setVisible(false);
+            }
         }
-    }//GEN-LAST:event_jList3MouseClicked
 
-    private void ModifFSButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifFSButtonActionPerformed
+    }                                   
+
+    private void ModifFSButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
         // TODO add your handling code here:
         jPanel1.setVisible(false);
-        FicheDeSoins.setSize(600, 600);
+        FicheDeSoins.setSize(650, 600);
         jPanel2.setVisible(true);
-    }//GEN-LAST:event_ModifFSButtonActionPerformed
+    }                                             
 
-    private void ChoixSpe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoixSpe1ActionPerformed
+    private void ChoixSpe1ActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
-    }//GEN-LAST:event_ChoixSpe1ActionPerformed
+    }                                         
 
-    private void AddActeButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActeButton2ActionPerformed
+    private void AddActeButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                               
         // TODO add your handling code here:
-    }//GEN-LAST:event_AddActeButton2ActionPerformed
+    }                                              
 
-    private void FSValiderButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FSValiderButton1ActionPerformed
-        // TODO add your handling code here:
-        jPanel2.setVisible(false);
-        jPanel1.setVisible(true);
-        FicheDeSoins.setSize(530, 570);
-    }//GEN-LAST:event_FSValiderButton1ActionPerformed
-
-    private void jList5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList5MouseClicked
+    private void jList5MouseClicked(java.awt.event.MouseEvent evt) {                                    
         // TODO add your handling code here:
         if (evt.getClickCount() == 2) {
             //            adapter l'acte à la ligne demandee
@@ -2198,35 +2332,36 @@ public class IU extends javax.swing.JFrame {
             jPanel3.setVisible(true);
             jPanel4.setVisible(false);
         }
-    }//GEN-LAST:event_jList5MouseClicked
+    }                                   
 
-    private void jList7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList7MouseClicked
+    private void jList7MouseClicked(java.awt.event.MouseEvent evt) {                                    
         // TODO add your handling code here:
         jList5MouseClicked(evt);
-    }//GEN-LAST:event_jList7MouseClicked
+    }                                   
 
-    private void ModifFSButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifFSButton1ActionPerformed
+    private void ModifFSButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                               
         // TODO add your handling code here:
         DescrActe.setSize(600, 450);
         jPanel3.setVisible(false);
         jPanel4.setVisible(true);
-    }//GEN-LAST:event_ModifFSButton1ActionPerformed
+    }                                              
 
-    private void ValiderActeButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValiderActeButton1ActionPerformed
+    private void ValiderActeButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                                   
         // TODO add your handling code here:
         DescrActe.setSize(450, 350);
         jPanel3.setVisible(true);
         jPanel4.setVisible(false);
-    }//GEN-LAST:event_ValiderActeButton1ActionPerformed
+    }                                                  
 
-    private void ChoixCodeActe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoixCodeActe1ActionPerformed
+    private void ChoixCodeActe1ActionPerformed(java.awt.event.ActionEvent evt) {                                               
         // TODO add your handling code here:
-    }//GEN-LAST:event_ChoixCodeActe1ActionPerformed
+    }                                              
 
-    private void jPasswordField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField2KeyPressed
+    private void jPasswordField2KeyPressed(java.awt.event.KeyEvent evt) {                                           
         // TODO add your handling code here:
+        String idd = jTextField17.getText();
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            String idd = jTextField17.getText();
+
             char[] mdpp = jPasswordField2.getPassword();
             String mdppp = "";
             for (int i = 0; i < mdpp.length; i++) {
@@ -2235,8 +2370,8 @@ public class IU extends javax.swing.JFrame {
             int v = 0;
             boolean b = false;
             while (v < listeidentifiants.getListeId().size() && !b) {
+
                 if (idd.equals(listeidentifiants.getListeId().get(v)) && mdppp.equals(listeidentifiants.getListeMdp().get(v))) {
-                    System.out.println("ok");
                     this.setVisible(false);
                     FPrincipale.setVisible(true);
                     b = true;
@@ -2244,23 +2379,55 @@ public class IU extends javax.swing.JFrame {
                     v++;
                     jLabel4.setVisible(true);
                 }
-
             }
-            jLabel4.setVisible(true);
+            // Affichage du nom du Médecin / Secrétaire
+            boolean bbb = false;
+            for (int iii = 0; iii < dossier.getMedecins().size(); iii++) {
+                if (dossier.getMedecins().get(iii).getId().toString().equals(idd) && !bbb) { // la récup de l'id se fait pas
+                    Identifiant.setText(dossier.getMedecins().get(iii).toString());
+                    bbb = true;
+                    iii = dossier.getMedecins().size();
+                }
+                if (iii == dossier.getMedecins().size() && !bbb) {
+                    Identifiant.setText("session inconnue");
+                }
+            }
+            //Julie
+            char a = idd.charAt(0);
+            if (a == '1') {
+                bmed = true;
+                bsmed = false;
+                bsad = false;
+            }
+            if (a == '2') {
+                bsmed = true;
+                bmed = false;
+                bsad = false;
+            }
+            if (a == '3') {
+                bsad = true;
+                bsmed = false;
+                bmed = false;
+            }
         }
-    }//GEN-LAST:event_jPasswordField2KeyPressed
 
-    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
+    }                                          
+
+    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {                                                
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField2ActionPerformed
+    }                                               
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         if (jRadioButton1.isSelected()) {
             TriPatient.setVisible(true);
         }
         if (jRadioButton2.isSelected()) {
-            TriMedecin.setVisible(true);
+            if (bmed) {
+                //msg d'erreur
+            } else {
+                TriMedecin.setVisible(true);
+            }
         }
         if (jRadioButton3.isSelected()) {
             TriDate.setVisible(true);
@@ -2271,40 +2438,55 @@ public class IU extends javax.swing.JFrame {
         if (jRadioButton5.isSelected()) {
             TriSpecialite.setVisible(true);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }                                        
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         jList3.setModel(dlm);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }                                        
 
-    private void ChoixSpe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoixSpe2ActionPerformed
+    private void ChoixSpe2ActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
-    }//GEN-LAST:event_ChoixSpe2ActionPerformed
+    }                                         
 
-    private void AfficherListeNbActes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeNbActes1ActionPerformed
+    private void AfficherListeNbActes1ActionPerformed(java.awt.event.ActionEvent evt) {                                                      
         // TODO add your handling code here:
+        listenonvide = true;
         DefaultListModel dlps = new DefaultListModel();
-        Code code = Code.values()[(ChoixCodeActe2.getSelectedIndex())];
-        Acte acte = new Acte(code, 0, typeActe, "");
-        if (dossier.listeFichesActe(acte).size() == 0) {
-            dlps.addElement("Pas de fiches pour cet acte");
+        Specialite spe = Specialite.getSpe(ChoixSpe2.getSelectedItem().toString());
+        if (dossier.listeFichesSpe(spe).size() == 0) {
+            dlps.addElement("Pas de fiches pour cette spécialité");
+            listenonvide = false;
+            jLabel3.setText("Coût de la FS sélectionnée : ");
+            Cout.setText("Coût total du patient : ");
         }
-        for (int index = 0; index < dossier.listeFichesActe(acte).size(); index++) {
-            dlps.addElement(dossier.listeFichesActe(acte).get(index));
+        for (int index = 0; index < dossier.listeFichesSpe(spe).size(); index++) {
+            dlps.addElement(dossier.listeFichesSpe(spe).get(index));
         }
         jList3.setModel(dlps);
 
         ListeFiches.repaint();
-    }//GEN-LAST:event_AfficherListeNbActes1ActionPerformed
+        TriSpecialite.dispose();
+    }                                                     
 
-    private void ChoixCodeActe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoixCodeActe2ActionPerformed
+    private void ChoixCodeActe2ActionPerformed(java.awt.event.ActionEvent evt) {                                               
         // TODO add your handling code here:
-    }//GEN-LAST:event_ChoixCodeActe2ActionPerformed
+    }                                              
 
-    private void NomPField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomPField1ActionPerformed
+    private void NomPField1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-    }//GEN-LAST:event_NomPField1ActionPerformed
+    }                                          
+
+    private void FSValiderButonActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        // TODO add your handling code here:
+        jPanel2.setVisible(false);
+        jPanel1.setVisible(true);
+        FicheDeSoins.setSize(530, 570);
+    }                                              
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+    }                                             
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -2347,7 +2529,7 @@ public class IU extends javax.swing.JFrame {
 
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JLabel ActeLabel;
     private javax.swing.JLabel ActeLabel1;
     private javax.swing.JLabel ActeLabel3;
@@ -2385,7 +2567,6 @@ public class IU extends javax.swing.JFrame {
     private javax.swing.JLabel DateNais2;
     private javax.swing.JLabel DateNais3;
     private javax.swing.JTextField DateNaisField1;
-    private javax.swing.JTextField DateNaisField3;
     private javax.swing.JDialog Deconnect;
     private javax.swing.JButton DeconnexionButton;
     private javax.swing.JDialog DescrActe;
@@ -2403,8 +2584,8 @@ public class IU extends javax.swing.JFrame {
     private javax.swing.JLabel FSPrenomP;
     private javax.swing.JLabel FSSexe;
     private javax.swing.JLabel FSSpeM;
+    private javax.swing.JButton FSValiderButon;
     private javax.swing.JButton FSValiderButton;
-    private javax.swing.JButton FSValiderButton1;
     private javax.swing.JFrame FicheDeSoins;
     private javax.swing.JMenu File;
     private javax.swing.JPanel Id;
@@ -2489,6 +2670,7 @@ public class IU extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFormattedTextField5;
     private javax.swing.JFormattedTextField jFormattedTextField7;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel29;
@@ -2497,6 +2679,9 @@ public class IU extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JList<String> jList3;
@@ -2530,16 +2715,17 @@ public class IU extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
     private int index;
     DefaultListModel dlm = new DefaultListModel();
-
 
     //Julie
     private boolean bmed = false;
     private boolean bsmed = false;
     private boolean bsad = false;
-    private char testid ;
 }
