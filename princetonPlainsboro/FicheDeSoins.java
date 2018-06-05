@@ -76,7 +76,23 @@ public class FicheDeSoins {
         }
         return s;
     }
+    
+    
+    /* Affichage de la fiche de soin pour les secrétaires administratives */ 
+    public String afficherPourSecretaireAdmin() {
+        String s = "Fiche de soins du " + date.toString() + "\n"
+                + "- medecin : " + medecin.toString() + "\n"
+                + "- patient : " + patient.toStringAdmin() + "\n"
+                + "- actes medicaux :" + "\n";
+        for (int i = 0; i < actes.size(); i++) {
+            Acte a = actes.get(i);
+            s += "    > " + a.toString() + "\n";
+        }
+            s += "Cout total : " + this.coutTotal();
+        return s;
+    }
 
+    
     /* Affichage de la fiche de soin avec son cout */
     public String afficherCout() {
         String s = "Fiche de soin de : " + patient.toString()
