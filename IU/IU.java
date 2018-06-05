@@ -90,6 +90,7 @@ public class IU extends javax.swing.JFrame {
         jComboBox4 = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
         ListeFiches = new javax.swing.JScrollPane();
+        jList3 = new javax.swing.JList<>();
         
         //maud
         for (index = 0; index < dossier.getFiches().size(); index++) {
