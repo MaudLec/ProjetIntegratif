@@ -595,7 +595,7 @@ public class IU extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hostologo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("hostologo.png"))); // NOI18N
 
         javax.swing.GroupLayout LogoLayout = new javax.swing.GroupLayout(Logo);
         Logo.setLayout(LogoLayout);
@@ -1175,7 +1175,7 @@ public class IU extends javax.swing.JFrame {
 
         FSDate.setText("Date :");
 
-        ModifFSButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsz_1rsz_1rsz_edit.png"))); // NOI18N
+        ModifFSButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("rsz_1rsz_1rsz_edit.png"))); // NOI18N
         ModifFSButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ModifFSButtonActionPerformed(evt);
@@ -1658,7 +1658,7 @@ public class IU extends javax.swing.JFrame {
 
         Observation1.setText("Observations : ");
 
-        ModifFSButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsz_1rsz_1rsz_edit.png"))); // NOI18N
+        ModifFSButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("rsz_1rsz_1rsz_edit.png"))); // NOI18N
         ModifFSButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ModifFSButton1ActionPerformed(evt);
@@ -1876,7 +1876,7 @@ public class IU extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hostologo.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("hostologo.png"))); // NOI18N
 
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setText("Identifiant ou Mot de passe incorrect");
