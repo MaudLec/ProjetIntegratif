@@ -25,7 +25,10 @@ public class IU extends javax.swing.JFrame {
     
     Date date = null;
     ListeIdentification listeidentifiants = test.getListeIdentification();
-    private EcritureXML ecriture = new EcritureXML(dossier, "dossiers.xml");
+    private EcritureXML ecritureDossier = new EcritureXML(dossier, "dossiers.xml");
+    private EcritureXML ecriturePersonnel = new EcritureXML(dossier, "personnelMedical.xml");
+    private EcritureXML ecriturePatients = new EcritureXML(dossier, "patients.xml");
+    private EcritureXML ecritureArchives = new EcritureXML(dossier, "archives.xml");
 
     //maud
     Boolean listenonvide = true;
