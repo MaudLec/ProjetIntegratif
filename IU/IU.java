@@ -1984,7 +1984,9 @@ public class IU extends javax.swing.JFrame {
         System.out.println(d1);
         System.out.println(d2);
         ArrayList<FicheDeSoins> fichesEntreDeuxDates = new ArrayList<FicheDeSoins>(dossier.listeFichesEntreDeuxDatesTriesOrdreDecroissant(d1, d2));
-        
+        if(fichesEntreDeuxDates.size()==0){
+            dldd.addElement("Pas de fiches entre ces deux dates");
+        }
         DefaultListModel dldd = new DefaultListModel();
         for (int index = 0; index < fichesEntreDeuxDates.size(); index++) {
             dldd.addElement(fichesEntreDeuxDates.get(index).toString());
