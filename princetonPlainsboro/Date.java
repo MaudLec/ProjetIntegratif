@@ -23,27 +23,29 @@ public class Date implements Comparable {
         this.heure = 0;
         this.minute = 0;
     }
+    
+    
 
     /* Affiche la date complète sous forme de String */
     public String toString() {
         String s = "";
-        if (jour < 10) {
-            s += "0" + jour + "/";
+        if (getJour() < 10) {
+            s += "0" + getJour() + "/";
         } else {
-            s += jour + "/";
+            s += getJour() + "/";
         }
-        if (mois < 10) {
-            s += "0" + mois + "/";
+        if (getMois() < 10) {
+            s += "0" + getMois() + "/";
         } else {
-            s += mois + "/";
+            s += getMois() + "/";
         }
-         s += annee;
-        if (heure != 0 && minute != 0) {
-            s += " à " + heure + "h";
-            if (minute < 10) {
-                s += "0" + minute;
+         s += getAnnee();
+        if (getHeure() != 0 && getMinute() != 0) {
+            s += " à " + getHeure() + "h";
+            if (getMinute() < 10) {
+                s += "0" + getMinute();
             } else {
-                s += minute;
+                s += getMinute();
             }
         }
         return s;
@@ -51,27 +53,27 @@ public class Date implements Comparable {
 
     /* Affiche la date sous forme de String */
     public String afficherDatedeNaissance() {
-        if (mois < 10 && jour < 10) {
-            return "0" + jour + " / 0" + mois + " / " + annee;
+        if (getMois() < 10 && getJour() < 10) {
+            return "0" + getJour() + " / 0" + getMois() + " / " + getAnnee();
         }
-        if (mois < 10) {
-            return jour + " / 0" + mois + " / " + annee;
+        if (getMois() < 10) {
+            return getJour() + " / 0" + getMois() + " / " + getAnnee();
         }
-        if (jour < 10) {
-            return "0" + jour + " / " + mois + " / " + annee;
+        if (getJour() < 10) {
+            return "0" + getJour() + " / " + getMois() + " / " + getAnnee();
         } else {
-            return +jour + " / " + mois + " / " + annee;
+            return +getJour() + " / " + getMois() + " / " + getAnnee();
         }
     }
 
     /* Affiche la date pour le fichier XML */
     public String dateDeNaissancePourEcritureXML() {
-        return jour + "-" + mois + "-" + annee;
+        return getJour() + "-" + getMois() + "-" + getAnnee();
     }
 
     /* Affiche la date complète pour le fichier XML  */
     public String datePourEcritureXML() {
-        return annee + "-" + mois + "-" + jour + "/" + heure + ":" + minute;
+        return getAnnee() + "-" + getMois() + "-" + getJour() + "/" + getHeure() + ":" + getMinute();
     }
 
     /* Renvoie vraie si les dates sont égales, faux sinon */
@@ -79,7 +81,7 @@ public class Date implements Comparable {
     public boolean equals(Object o) {
         if (o instanceof Date) {
             Date d = (Date) o;
-            return (annee == d.annee) && (mois == d.mois) && (jour == d.jour) && (heure == d.heure) && (minute == d.minute);
+            return (getAnnee() == d.getAnnee()) && (getMois() == d.getMois()) && (getJour() == d.getJour()) && (getHeure() == d.getHeure()) && (getMinute() == d.getMinute());
         } else {
             return false;
         }
@@ -89,7 +91,7 @@ public class Date implements Comparable {
     public boolean equalsDateDeNaissance(Object o) {
         if (o instanceof Date) {
             Date d = (Date) o;
-            return (annee == d.annee) && (mois == d.mois) && (jour == d.jour);
+            return (getAnnee() == d.getAnnee()) && (getMois() == d.getMois()) && (getJour() == d.getJour());
         } else {
             return false;
         }
@@ -100,21 +102,21 @@ public class Date implements Comparable {
     public int compareTo(Object o) {
         if (o instanceof Date) {
             Date d = (Date) o;
-            if (annee != d.annee) {
-                return annee - d.annee;
+            if (getAnnee() != d.getAnnee()) {
+                return getAnnee() - d.getAnnee();
             }
             // ici on a forcement annee == d.annee :
-            if (mois != d.mois) {
-                return mois - d.mois;
+            if (getMois() != d.getMois()) {
+                return getMois() - d.getMois();
             }
             // ici on a forcement annee == d.annee et mois == d.mois :
-            if (jour != d.jour) {
-                return jour - d.jour;
+            if (getJour() != d.getJour()) {
+                return getJour() - d.getJour();
             }
-            if (heure != d.heure) {
-                return heure - d.heure;
+            if (getHeure() != d.getHeure()) {
+                return getHeure() - d.getHeure();
             } else {
-                return minute - d.minute;
+                return getMinute() - d.getMinute();
             }
         } else {
             return 0;
@@ -125,16 +127,16 @@ public class Date implements Comparable {
     public int compareToTrie(Object o) {
         if (o instanceof Date) {
             Date d = (Date) o;
-            if (annee != d.annee) {
-                return annee - d.annee;
+            if (getAnnee() != d.getAnnee()) {
+                return getAnnee() - d.getAnnee();
             }
             // ici on a forcement annee == d.annee :
-            if (mois != d.mois) {
-                return mois - d.mois;
+            if (getMois() != d.getMois()) {
+                return getMois() - d.getMois();
             }
             // ici on a forcement annee == d.annee et mois == d.mois :
-            if (jour != d.jour) {
-                return jour - d.jour;
+            if (getJour() != d.getJour()) {
+                return getJour() - d.getJour();
             }
         }
         return 0;
@@ -143,32 +145,67 @@ public class Date implements Comparable {
 
     /* Affichage du code avec les balises XML */
     public String toXML() {
-        String s = "<date>" + annee;
-        if (mois < 10) {
-            s += "-0" + mois;
+        String s = "<date>" + getAnnee();
+        if (getMois() < 10) {
+            s += "-0" + getMois();
         } else {
-            s += "-" + mois;
+            s += "-" + getMois();
         }
-        if (jour < 10) {
-            s += "-0" + jour;
+        if (getJour() < 10) {
+            s += "-0" + getJour();
         } else {
-            s += "-" + jour;
+            s += "-" + getJour();
         }
-        if (minute != 0 && heure != 0) {
+        if (getMinute() != 0 && getHeure() != 0) {
             s += "T";
-            if (heure < 10) {
-                s += "0" + heure;
+            if (getHeure() < 10) {
+                s += "0" + getHeure();
             } else {
-                s += heure;
+                s += getHeure();
             }
-            if (minute < 10) {
-                s += ":0" + minute;
+            if (getMinute() < 10) {
+                s += ":0" + getMinute();
             } else {
-                s += ":" + minute;
+                s += ":" + getMinute();
             }
         }
         s += "</date>";
         return s;
+    }
+
+    /**
+     * @return the jour
+     */
+    public int getJour() {
+        return jour;
+    }
+
+    /**
+     * @return the mois
+     */
+    public int getMois() {
+        return mois;
+    }
+
+    /**
+     * @return the annee
+     */
+    public int getAnnee() {
+        return annee;
+    }
+
+    /**
+     * @return the heure
+     */
+    public int getHeure() {
+        return heure;
+    }
+
+    /**
+     * @return the minute
+     */
+    public int getMinute() {
+        return minute;
     }
 
 }
