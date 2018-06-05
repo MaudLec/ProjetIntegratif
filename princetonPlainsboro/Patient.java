@@ -81,6 +81,21 @@ public class Patient {
         s += nom.toUpperCase() + " " + prenom + " Numéro SS : " + numSecu.toString();
         return s;
     }
+    
+    /* Affichage du sexe avec département du patient */
+        public String toStringAdmin(){
+        String s = ""; 
+          if (sexe == Sexe.F) {
+            s += "Mme ";
+        } else {
+            if (sexe == Sexe.M) {
+                s += "M.";
+            }
+        }
+        s+= "Département:" + this.adresse.getDepartement();
+        return s;
+    }
+    
 
     /* Renvoie vraie ou faux si les deux patients sont les même ou non */
     @Override
