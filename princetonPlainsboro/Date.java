@@ -15,6 +15,18 @@ public class Date implements Comparable {
         this.heure = heure;
         this.minute = minute;
     }
+    
+    public Date(String s) {
+        int[] tab = new int[3];
+        tab[0] = s.charAt(0)*10 + s.charAt(1);
+        tab[1] = s.charAt(2)*10 + s.charAt(3);
+        tab[2] = s.charAt(4)*1000 + s.charAt(5)*100 + s.charAt(6)*10 + s.charAt(7);
+
+        this.jour = tab[0];
+        this.mois = tab[1];
+        this.annee = tab[2];
+
+    }
 
     public Date(int jour, int mois, int annee) {
         this.jour = jour;
