@@ -85,6 +85,20 @@ public class DossierMedical {
         }
         return s;
     }
+    
+     /* Affichage de toutes les fiches de soins pur une secrétaire administrative*/
+    public String afficherToutesFichesPourSecretaireAdministrative() {
+        String s = "Dossier medical informatise :" + "\n"
+                + "-----------------------------";
+        for (int i = 0; i < fiches.size(); i++) {
+            FicheDeSoins f = fiches.get(i);
+            s += f.afficherPourSecretaireAdmin();
+            // pour separer les fiches de soins :
+            s += "\n --------------------------------------";
+        }
+        return s;
+    }
+    
 
     /* Affichage de toutes les fiches de soins pour un patient */
     public String afficherDossierPatient(Patient p) {
