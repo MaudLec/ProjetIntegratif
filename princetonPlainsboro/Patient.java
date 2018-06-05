@@ -110,7 +110,6 @@ public class Patient {
 
     /* Affichage des informations du patient avec les balises XML  */
     public String toXML() {
-        return ("<patient>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + numSecu.toXML() + adresse.toXML() + naissance.toXML() + sexe.toXML() + "</patient>");
+        return ("<patient>" + "<nom>" + this.nom + "</nom>" + "<prenom>" + this.prenom + "</prenom>" + this.numSecu.toXML() + this.adresse.toXML() + this.naissance.toXMLNaissance() + this.sexe.toXML() + "</patient>");
     }
-
 }
