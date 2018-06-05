@@ -14,6 +14,15 @@ public class Adresse {
         this.codePostal= codePostal;
         this.ville = ville;
     }
+        public Adresse(String s) {
+        String[] tab = new String[3];
+        tab = s.split(" ");
+
+        this.rue = tab[0];
+        this.codePostal = tab[1];
+        this.ville = tab[2];
+
+    }
     
     /* Affiche les informations de l'adresse */
     public String toString(){
