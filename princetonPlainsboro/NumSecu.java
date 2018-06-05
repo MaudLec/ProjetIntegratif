@@ -29,10 +29,19 @@ public class NumSecu {
         this.numero = reg*1L + comm*1000L + dep*1000000L + mois*100000000L + annee*10000000000L + sexe*1000000000000L;
     }
     
-    /* Affichage du numéro SS avec sa clé */
-    public String toString() { 
-        return numero + " " + cle;
+    /* Affichage du numéro SS avec sa clé avec des O quand nb < 10*/
+    public String toString() {
+        String s = "" + sexe;
+        if (annee < 10) { s += "0" + annee; } else { s += annee; }
+        if (mois < 10) { s += "0" + mois; } else { s += mois; }
+        if (dep < 10) { s += "0" + dep; } else { s += dep; }
+        if (comm < 10) { s += "0" + comm; } else { s += comm; }
+        if (reg < 10) { s += "0" + reg; } else { s += reg; }
+        if (cle < 10) { s += " 0" + cle; } else { s += " " + cle; }
+
+        return s;
     }
+    
     /* Renvoie vrai si les deux numéros de SS avec la clé sont égaux, renvoie faux sinon */
     public boolean equals(Object o) {
                 if (o instanceof NumSecu) {
