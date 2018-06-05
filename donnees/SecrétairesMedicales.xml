@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SecretaireMedicale>
+<SecretaireMedicale>
+    <nom>TECH</nom>
+    <prenom>Mili</prenom>
+    <telephone>0123456789></telephone>
+    <id>2345</id>
+    <mdp>5678</mdp>
+</SecretaireMedicale>
+<SecretaireMedicale>
+    <nom>UNIVER</nom>
+    <prenom>Syté</prenom>
+    <telephone>0123456789></telephone>    
+    <id>2345</id>
+    <mdp>5678</mdp>
+</SecretaireMedicale>
+<SecretaireMedicale>
+    <nom>PO</nom>
+    <prenom>Lili</prenom>
+    <telephone>0123456789></telephone>
+    <id>2345</id>
+    <mdp>5678</mdp>
+</SecretaireMedicale>
+<SecretaireMedicale>
+    <nom>BELLE</nom>
+    <prenom>Anna</prenom>
+    <telephone>0123456789></telephone>
+    <id>2345</id>
+    <mdp>5678</mdp>
+</SecretaireMedicale>
+<SecretaireMedicale>
+    <nom>GANESHAMOORTY</nom>
+    <prenom>Gaïa</prenom>
+    <telephone>0123456789></telephone>
+    <id>2345</id>
+    <mdp>5678</mdp>
+</SecretaireMedicale>
+</SecretaireMedicale>
