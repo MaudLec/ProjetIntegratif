@@ -53,18 +53,30 @@ public class EcritureXML {
     }
 
     //Editer la liste de médecins
-    public void editerMedecins() {
+    public void editerPersonnelMedical() {
         OutputStream os;
         Writer osw;
         try {
             os = new FileOutputStream("src/donnees/" + nomFichier);
             osw = new OutputStreamWriter(os);
             String s = ("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n");
+            s += "<personnelmedical>\n";
             s += "<medecins>\n";
             for (int i = 0; i < dm.getMedecins().size(); i++) {
                 s += dm.getMedecins().get(i).toXML();
             }
             s += "\n</medecins>";
+             s += "<secretairesmed>\n";
+            for (int i = 0; i < dm.getSecretairesMed().size(); i++) {
+                s += dm.getSecretairesMed().get(i).toXML();
+            }
+            s += "\n</secretairesmed>";
+             s += "<secretairesadmin>\n";
+            for (int i = 0; i < dm.getSecretairesAdmin().size(); i++) {
+                s += dm.getSecretairesAdmin().get(i).toXML();
+            }
+            s += "\n</secretairesadmin>";
+            s += "\n</personnelmedical>";
             osw.write(s);
             osw.close();
         } catch (FileNotFoundException ex) {
@@ -95,8 +107,9 @@ public class EcritureXML {
             Logger.getLogger(EcritureXML.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    //Editer les archives
+
+
+//Editer les archives
 public void editerArchives(){
  OutputStream os;
         Writer osw;
@@ -117,4 +130,6 @@ public void editerArchives(){
             Logger.getLogger(EcritureXML.class.getName()).log(Level.SEVERE, null, ex);
         }
 }
+
+
 }
