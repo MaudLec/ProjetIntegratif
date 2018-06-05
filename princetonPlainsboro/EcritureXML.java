@@ -95,4 +95,26 @@ public class EcritureXML {
             Logger.getLogger(EcritureXML.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    //Editer les archives
+public void editerArchives(){
+ OutputStream os;
+        Writer osw;
+        try {
+            os = new FileOutputStream("src/donnees/" + nomFichier);
+            osw = new OutputStreamWriter(os);
+            String s = ("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n");
+            s += "<archives>\n";
+            for (int i = 0; i < dm.getFichesArchivees().size(); i++) {
+                s += dm.getFichesArchivees().get(i).toXML();
+            }
+            s += "\n</archives>";
+            osw.write(s);
+            osw.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(EcritureXML.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(EcritureXML.class.getName()).log(Level.SEVERE, null, ex);
+        }
+}
 }
