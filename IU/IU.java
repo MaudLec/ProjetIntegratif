@@ -17,11 +17,16 @@ import java.util.Calendar;
 
 
 public class IU extends javax.swing.JFrame {
+    
+    
 
     private LectureXML test = new LectureXML("dossiers.xml");
     DossierMedical dossier = test.getDossier();
     Date date = null;
      ListeIdentification listeidentifiants = test.getListeIdentification();
+    
+    private EcritureXML ecriture = new EcritureXML(dossier, "dossiers.xml");
+    
     //maud
     Boolean listenonvide = true;
     //maud
@@ -2172,6 +2177,14 @@ public class IU extends javax.swing.JFrame {
     private void AddActeButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActeButton1ActionPerformed
         // TODO add your handling code here:
         NewPatient.setVisible(true);
+ //       Suz : peut pas text car pas de JComboBox5 dans mon code
+//        NumSecu secu = new NumSecu(jFormattedTextField5.getText());
+//        Adresse adr = new Adresse(DateNaisField1.getText());
+//        Date naissance = new Date(dateChooserCombo5.getText());
+//        Patient p = new Patient(PrenomPField.getText(), NomPField.getText(), secu, adr, naissance, Sexe.valueOf(jComboBox1.toString()));
+//        dossier.ajouterPatient(p);
+//        ecriture.editerPatients();
+//        ecriture.editerDossier();
     }//GEN-LAST:event_AddActeButton1ActionPerformed
 
     private void AfficherListeM1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeM1ActionPerformed
