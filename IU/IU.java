@@ -2451,7 +2451,7 @@ public class IU extends javax.swing.JFrame {
         NumSecu secu = new NumSecu(jFormattedTextField5.getText());
         Adresse adr = new Adresse(jTextField3.getText(), jTextField4.getText(), jTextField5.getText());
         Date na = new Date(dateChooserCombo5.getText());
-        Patient p = new Patient(PrenomPField.getText(), NomPField.getText(), secu, adr, na, Sexe.valueOf(jComboBox1.toString()));
+        Patient p = new Patient(PrenomPField.getText(), NomPField.getText(), secu, adr, na, Sexe.getSexe(jComboBox1.toString()));
         dossier.ajouterPatient(p);
         ecriture.editerPatients();
         ecriture.editerDossier();
