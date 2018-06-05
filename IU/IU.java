@@ -22,7 +22,8 @@ public class IU extends javax.swing.JFrame {
     DossierMedical dossier = test.getDossier();
     Date date = null;
      ListeIdentification listeidentifiants = test.getListeIdentification();
-    
+    //maud
+    Boolean listenonvide = true;
     //maud
     FicheDeSoins ficheCourante = null;
 
@@ -1947,8 +1948,10 @@ public class IU extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RecherchePActionPerformed
 
-    private void AfficherListePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListePActionPerformed
+    //maud
+       private void AfficherListePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListePActionPerformed
         // TODO add your handling code here:
+        listenonvide=true;
         Patient patientselectionne = dossier.getPatients().get(jList2.getSelectedIndex());
         DefaultListModel dlpt = new DefaultListModel();
         for (int index = 0; index < dossier.listeDossierPatient(patientselectionne).size(); index++) {
@@ -1963,8 +1966,10 @@ public class IU extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RechercheMActionPerformed
 
-    private void AfficherListeMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeMActionPerformed
+    //maud
+   private void AfficherListeMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeMActionPerformed
         // TODO add your handling code here:
+        listenonvide=true;
         Medecin medecinselectionne = dossier.getMedecins().get(jList4.getSelectedIndex());
         DefaultListModel dlpm = new DefaultListModel();
         for (int index = 0; index < dossier.recupererListePatients(medecinselectionne).size(); index++) {
@@ -1977,6 +1982,7 @@ public class IU extends javax.swing.JFrame {
 
    //maud
     private void AfficherListeDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeDateActionPerformed
+        listenonvide=true;
         Calendar cal1 = dateChooserCombo1.getSelectedDate();
         Calendar cal2 = dateChooserCombo2.getSelectedDate();
         Date d1 = new Date(cal1.get(Calendar.DATE), cal1.get(Calendar.MONTH), cal1.get(Calendar.YEAR));
@@ -1984,26 +1990,35 @@ public class IU extends javax.swing.JFrame {
         System.out.println(d1);
         System.out.println(d2);
         ArrayList<FicheDeSoins> fichesEntreDeuxDates = new ArrayList<FicheDeSoins>(dossier.listeFichesEntreDeuxDatesTriesOrdreDecroissant(d1, d2));
+        
+        DefaultListModel dldd = new DefaultListModel();
+        
         if(fichesEntreDeuxDates.size()==0){
             dldd.addElement("Pas de fiches entre ces deux dates");
+            listenonvide = false;
+            jLabel3.setText("Coût de la FS sélectionnée : ");
+            Cout.setText("Coût total du patient : ");
         }
-        DefaultListModel dldd = new DefaultListModel();
         for (int index = 0; index < fichesEntreDeuxDates.size(); index++) {
             dldd.addElement(fichesEntreDeuxDates.get(index).toString());
         }
         jList3.setModel(dldd);
-
         TriDate.dispose();
     }//GEN-LAST:event_AfficherListeDateActionPerformed
 
-    private void AfficherListeNbActesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeNbActesActionPerformed
+    //maud
+   private void AfficherListeNbActesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeNbActesActionPerformed
+        listenonvide=true;
         DefaultListModel dlps = new DefaultListModel();
         Code code = Code.values()[(ChoixCodeActe2.getSelectedIndex())];
         Acte acte = new Acte(code, 0, typeActe, "");
-        if(dossier.listeFichesActe(acte).size()==0){
+        if (dossier.listeFichesActe(acte).size() == 0) {
             dlps.addElement("Pas de fiches pour cet acte");
+            listenonvide=false;
+             jLabel3.setText("Coût de la FS sélectionnée : ");
+            Cout.setText("Coût total du patient : ");
         }
-        for (int index = 0; index <dossier.listeFichesActe(acte).size(); index++) {
+        for (int index = 0; index < dossier.listeFichesActe(acte).size(); index++) {
             dlps.addElement(dossier.listeFichesActe(acte).get(index));
         }
         jList3.setModel(dlps);
@@ -2011,13 +2026,17 @@ public class IU extends javax.swing.JFrame {
         ListeFiches.repaint();
         TriActes.dispose();
     }//GEN-LAST:event_AfficherListeNbActesActionPerformed
+    
+    
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
         NewFicheSoins.setVisible(true);
     }//GEN-LAST:event_jButton14ActionPerformed
 
-    //maud
-  private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+
+ //maud
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+        listenonvide=true;
         if (jComboBox4.getSelectedItem() == "Date croissante") {
             dossier.trierDatesCroissantes();
             DefaultListModel dlft = new DefaultListModel();
@@ -2065,7 +2084,7 @@ public class IU extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jComboBox4ActionPerformed
 
-
+    
     private void DeconnexionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeconnexionButtonActionPerformed
         // TODO add your handling code here:
         Deconnect.setVisible(true);
@@ -2183,12 +2202,12 @@ public class IU extends javax.swing.JFrame {
         
         
         //maud
-        if (evt.getClickCount() == 1) {
+        if (evt.getClickCount() == 1 && listenonvide) {
             jLabel3.setText("Coût de la FS sélectionnée : " + dossier.getFiche(jList3.getSelectedIndex()).coutTotal());
             Cout.setText("Coût total du patient : " + dossier.coutPatient(dossier.getFiche(jList3.getSelectedIndex()).getPatient()));
 
         }
-        if (evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 2 && listenonvide) {
             //            adapter la fiche à la ligne demandee
 //            String selectedItem = (String) jList3.getSelectedValue();
 //ici mettre en mémoire toutes les variables
@@ -2344,13 +2363,19 @@ public class IU extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ChoixSpe2ActionPerformed
 
-    private void AfficherListeNbActes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeNbActes1ActionPerformed
+    
+    //maud
+     private void AfficherListeNbActes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeNbActes1ActionPerformed
+        listenonvide=true;
         DefaultListModel dlps = new DefaultListModel();
         Specialite spe = Specialite.getSpe(ChoixSpe2.getSelectedItem().toString());
-        if(dossier.listeFichesSpe(spe).size()==0){
+        if (dossier.listeFichesSpe(spe).size() == 0) {
             dlps.addElement("Pas de fiches pour cette spécialité");
+            listenonvide = false;
+            jLabel3.setText("Coût de la FS sélectionnée : ");
+            Cout.setText("Coût total du patient : ");
         }
-        for (int index = 0; index <dossier.listeFichesSpe(spe).size(); index++) {
+        for (int index = 0; index < dossier.listeFichesSpe(spe).size(); index++) {
             dlps.addElement(dossier.listeFichesSpe(spe).get(index));
         }
         jList3.setModel(dlps);
@@ -2359,7 +2384,9 @@ public class IU extends javax.swing.JFrame {
         TriSpecialite.dispose();
 
     }//GEN-LAST:event_AfficherListeNbActes1ActionPerformed
-
+    
+    
+    
     private void ChoixCodeActe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoixCodeActe2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ChoixCodeActe2ActionPerformed
