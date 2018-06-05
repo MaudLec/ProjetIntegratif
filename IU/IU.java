@@ -37,8 +37,8 @@ public class IU extends javax.swing.JFrame {
     FicheDeSoins ficheCourante = null;
 
     //personnes
-    Medecin medecin = null;
-    Patient patient = null;
+    Medecin medecinCourant = null;
+    Patient patientCourant = null;
     SecretaireMed secretaireMed = null;
     SecretaireAdmin secretaireAdmin = null;
 
@@ -677,7 +677,7 @@ public class IU extends javax.swing.JFrame {
         );
 
         NewFicheSoins.setTitle("Nouvelle Fiche de Soin");
-        NewFicheSoins.setFocusableWindowState(false);
+        NewFicheSoins.setFocusableWindowState(true);
         NewFicheSoins.setMinimumSize(new java.awt.Dimension(650, 550));
 
         DateLabel.setText("Date :");
