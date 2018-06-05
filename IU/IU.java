@@ -558,7 +558,7 @@ public class IU extends javax.swing.JFrame {
         Identifiant.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Identifiant.setText("Identifiant");
 
-        DeconnexionButton.setText("Déconexion");
+        DeconnexionButton.setText("Déconnexion");
         DeconnexionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DeconnexionButtonActionPerformed(evt);
