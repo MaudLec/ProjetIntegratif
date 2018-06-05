@@ -12,6 +12,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import princetonPlainsboro.*;
+//maud
+import java.util.Calendar;
 
 
 public class IU extends javax.swing.JFrame {
@@ -1973,8 +1975,22 @@ public class IU extends javax.swing.JFrame {
         TriMedecin.dispose();
     }//GEN-LAST:event_AfficherListeMActionPerformed
 
+   //maud
     private void AfficherListeDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeDateActionPerformed
-        // TODO add your handling code here:
+        Calendar cal1 = dateChooserCombo1.getSelectedDate();
+        Calendar cal2 = dateChooserCombo2.getSelectedDate();
+        Date d1 = new Date(cal1.get(Calendar.DATE), cal1.get(Calendar.MONTH), cal1.get(Calendar.YEAR));
+        Date d2 = new Date(cal2.get(Calendar.DATE), cal2.get(Calendar.MONTH), cal2.get(Calendar.YEAR));
+        System.out.println(d1);
+        System.out.println(d2);
+        ArrayList<FicheDeSoins> fichesEntreDeuxDates = new ArrayList<FicheDeSoins>(dossier.listeFichesEntreDeuxDatesTriesOrdreDecroissant(d1, d2));
+        
+        DefaultListModel dldd = new DefaultListModel();
+        for (int index = 0; index < fichesEntreDeuxDates.size(); index++) {
+            dldd.addElement(fichesEntreDeuxDates.get(index).toString());
+        }
+        jList3.setModel(dldd);
+
         TriDate.dispose();
     }//GEN-LAST:event_AfficherListeDateActionPerformed
 
