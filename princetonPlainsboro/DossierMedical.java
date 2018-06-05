@@ -7,15 +7,17 @@ public class DossierMedical {
     private ArrayList<FicheDeSoins> fiches; // contient des objets de classe 'FicheDeSoins'
     private ArrayList<Medecin> medecins;
     private ArrayList<Patient> patients;
-     private ArrayList<FicheDeSoins> fichesArchivees;
-    //private ArrayList<FicheDeSoins> dossierPatient;
+    private ArrayList<FicheDeSoins> fichesArchivees;
+    private ArrayList<SecretaireMed> secretairesMed;
+    private ArrayList<SecretaireAdmin> secretairesAdmin;
     private LectureXML lect;
     private LectureXML lectArchives;
 
-    public DossierMedical() {
-        fiches = new ArrayList<FicheDeSoins>();  // liste vide
+     fiches = new ArrayList<FicheDeSoins>();  // liste vide
         medecins = new ArrayList<Medecin>();
         patients = new ArrayList<Patient>();
+        secretairesMed = new ArrayList<SecretaireMed>();
+        secretairesAdmin = new ArrayList<SecretaireAdmin>();
         lect = new LectureXML("dossiers.xml");
         fichesArchivees = new ArrayList<FicheDeSoins>();
         lectArchives = new LectureXML("archives.xml");
@@ -40,7 +42,36 @@ public class DossierMedical {
     public ArrayList<FicheDeSoins> getFichesArchivees() {
         return fichesArchivees;
     }
+       public ArrayList<FicheDeSoins> getFichesArchivees() {
+        return fichesArchivees;
+    }
     
+    public ArrayList<SecretaireMed> getSecretairesMed(){
+        return secretairesMed;
+    }
+    
+    public ArrayList<SecretaireAdmin> getSecretairesAdmin(){
+        return secretairesAdmin;
+    }
+    
+    public void ajouterSecretaireMed(SecretaireMed sm){
+        secretairesMed.add(sm);
+    }
+    
+     public void ajouterSecretaireAdmin(SecretaireAdmin sa){
+        secretairesAdmin.add(sa);
+    }
+     
+     public void setArchives(ArrayList<FicheDeSoins> archives){
+         fichesArchivees = new ArrayList<FicheDeSoins>(archives);
+     }
+
+    /*Archivage d une fiche de soins*/
+    public void archiver(FicheDeSoins fiche) {
+        fichesArchivees.add(fiche);
+        fiches.remove(fiche);
+    }
+
     
     /* Ajout d'une fiche de soins */
     public void ajouterFiche(FicheDeSoins fiche) {
