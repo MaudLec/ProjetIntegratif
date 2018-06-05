@@ -80,6 +80,6 @@ public class SecretaireAdmin {
 
     /* Affichage des informations de la secrétaire médicale avec les valises XML  */
     public String toXML() {
-        return ("<secretairemed>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + "<id>" + id + "</id>" + "<mdp>" + mdp + "</mdp>" + "</secretairemed>");
+        return ("<secretaireadmin>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + "<id>" + id + "</id>" + "<mdp>" + mdp + "</mdp>" + "</secretaireadmin>");
     }
 }
