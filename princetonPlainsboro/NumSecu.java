@@ -91,7 +91,8 @@ this.cle = s.charAt(14) * 10 + s.charAt(15) * 1;
         return true;
             }
         /* Affichage du numéro SS avec sa clé avec les balises XML */
+     /* Affichage du numéro SS avec sa clé avec les balises XML */
     public String toXML(){
-        return ("<numsecu>" + "<sexe>" + sexe + "</sexe>" + "<annee>" + annee + "</annee>" + "<mois>" + mois + "</mois>" + "<dep>" + dep + "</dep>" + "<comm>" + comm + "</comm>" + "<reg>" + reg + "</reg>" + "<cle>" + cle + "</cle>" + "</numsecu>");
+        return ("<numsecu>" + "<sexesecu>" + sexe + "</sexesecu>" + "<annee>" + annee + "</annee>" + "<mois>" + mois + "</mois>" + "<dep>" + dep + "</dep>" + "<comm>" + comm + "</comm>" + "<reg>" + reg + "</reg>" + "<cle>" + cle + "</cle>" + "</numsecu>");
     }
 }
