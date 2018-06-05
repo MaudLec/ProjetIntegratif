@@ -155,7 +155,7 @@ public class Date implements Comparable {
 
     }
 
-    /* Affichage du code avec les balises XML */
+   /* Affichage du code avec les balises XML */
     public String toXML() {
         String s = "<date>" + getAnnee();
         if (getMois() < 10) {
@@ -182,6 +182,23 @@ public class Date implements Comparable {
             }
         }
         s += "</date>";
+        return s;
+    }
+    
+    public String toXMLNaissance() {
+        String s = "<naissance>" + getAnnee();
+        if (getMois() < 10) {
+            s += "-0" + getMois();
+        } else {
+            s += "-" + getMois();
+        }
+        if (getJour() < 10) {
+            s += "-0" + getJour();
+        } else {
+            s += "-" + getJour();
+        }
+
+        s += "</naissance>";
         return s;
     }
 
