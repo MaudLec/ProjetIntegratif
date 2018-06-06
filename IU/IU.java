@@ -3346,6 +3346,13 @@ public class IU extends javax.swing.JFrame {
     private javax.swing.JButton ArchiverButton;
     private javax.swing.JButton AideButton;
     private javax.swing.JButton ModifFSAddActe;
+    private javax.swing.JFrame AideFrame;
+    private javax.swing.JButton FermerAide;
+    private javax.swing.JScrollPane jScrollPaneAide;
+    private javax.swing.JButton AnnulerArch;
+    private javax.swing.JLabel MsgArchivage;
+    private javax.swing.JButton OuiArch;
+    private javax.swing.JDialog jDialog1;
 //End of variable declaration
 
 }
