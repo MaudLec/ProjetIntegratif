@@ -373,6 +373,14 @@ public class IU extends javax.swing.JFrame {
                 RechercheP.setForeground(new java.awt.Color(204, 204, 204));
                 RechercheM.setText("Recherche...");
                 RechercheM.setForeground(new java.awt.Color(204, 204, 204));
+                RechP.setText("Recherche...");
+                RechP.setForeground(new java.awt.Color(204, 204, 204));
+                jList6.removeAll();
+                jList8.removeAll();
+                jScrollPane1.repaint();
+                jScrollPane2.repaint();
+                RechM.setText("Recherche...");
+                RechM.setForeground(new java.awt.Color(204, 204, 204));
                 jLabel3.setText("Coût de la FS sélectionnée : ");
                 Cout.setText("Coût total du patient : ");
             }
@@ -599,6 +607,45 @@ public class IU extends javax.swing.JFrame {
         Recherche.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 RechercheKeyPressed(evt);
+            }
+        });
+        
+          RechM.setForeground(new java.awt.Color(204, 204, 204));
+        RechM.setText("Recherche...");
+        RechM.setToolTipText("");
+        RechM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RechMActionPerformed(evt);
+            }
+        });
+        RechM.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RechMMouseClicked(evt);
+            }
+        });
+
+        RechM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RechMKeyPressed(evt);
+            }
+        });
+
+        RechP.setForeground(new java.awt.Color(204, 204, 204));
+        RechP.setText("Recherche... ");
+        RechP.setToolTipText("");
+        RechP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RechPActionPerformed(evt);
+            }
+        });
+        RechP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RechPMouseClicked(evt);
+            }
+        });
+        RechP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RechPKeyPressed(evt);
             }
         });
 
@@ -2466,6 +2513,117 @@ public class IU extends javax.swing.JFrame {
         NewPatient.dispose();
         NewFicheSoins.setVisible(true);
     }//GEN-LAST:event_AfficherListeM1ActionPerformed
+    
+     private void RechMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechMActionPerformed
+        String s = RechM.getText();
+        DefaultListModel dlrm = new DefaultListModel();
+        for (int index = 0; index < dossier.getFiches().size(); index++) {
+            if (dossier.getFiche(index).getMedecin().toString().toUpperCase().contains(s.toUpperCase())) {
+                dlrm.addElement(dossier.getFiche(index).getMedecin().toString());
+            }
+        }
+        if (dlrm.isEmpty()) {
+            dlrm.addElement("Aucun résultat");
+        }
+        jList8.setModel(dlrm);
+        jScrollPane2.repaint();
+
+    }//GEN-LAST:event_RechercheMActionPerformed
+
+    //maud
+    private void RechMMouseClicked(java.awt.event.MouseEvent evt) {
+        if (RechM.getText().equals("Recherche...")) {
+            RechM.setText("");
+            RechM.setForeground(new java.awt.Color(0, 0, 0));
+        } else {
+            String s = RechM.getText();
+            DefaultListModel dlrm = new DefaultListModel();
+            for (int index = 0; index < dossier.getFiches().size(); index++) {
+                if (dossier.getFiche(index).getMedecin().toString().toUpperCase().contains(s.toUpperCase())) {
+                    dlrm.addElement(dossier.getFiche(index).getMedecin().toString());
+                }
+            }
+            if (dlrm.isEmpty()) {
+                dlrm.addElement("Aucun résultat");
+            }
+            jList8.setModel(dlrm);
+            jScrollPane2.repaint();
+
+        }
+    }
+
+    //maud
+    private void RechMKeyPressed(java.awt.event.KeyEvent evt) {
+        String s = RechM.getText();
+        DefaultListModel dlrm = new DefaultListModel();
+        for (int index = 0; index < dossier.getFiches().size(); index++) {
+            if (dossier.getFiche(index).getMedecin().toString().toUpperCase().contains(s.toUpperCase())) {
+                dlrm.addElement(dossier.getFiche(index).getMedecin().toString());
+            }
+        }
+        if (dlrm.isEmpty()) {
+            dlrm.addElement("Aucun résultat");
+        }
+        jList8.setModel(dlrm);
+        jScrollPane2.repaint();
+
+    }
+
+    private void RechPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechPActionPerformed
+         if (RechP.getText().equals("Recherche...")) {
+            RechP.setText("");
+            RechP.setForeground(new java.awt.Color(0, 0, 0));}
+        String s = RechP.getText();
+        DefaultListModel dlrp = new DefaultListModel();
+        for (int index = 0; index < dossier.getFiches().size(); index++) {
+            if (dossier.getFiche(index).getPatient().toString().toUpperCase().contains(s.toUpperCase())) {
+                dlrp.addElement(dossier.getFiche(index).getPatient().toString());
+            }
+        }
+        if (dlrp.isEmpty()) {
+            dlrp.addElement("Aucun résultat");
+        }
+        jList6.setModel(dlrp);
+        jScrollPane1.repaint();
+
+    }//GEN-LAST:event_RecherchePActionPerformed
+
+    private void RechPMouseClicked(java.awt.event.MouseEvent evt) {
+          if (RechP.getText().equals("Recherche...")) {
+            RechP.setText("");
+            RechP.setForeground(new java.awt.Color(0, 0, 0));
+        } else {
+            String s = RechP.getText();
+            DefaultListModel dlrp = new DefaultListModel();
+            for (int index = 0; index < dossier.getFiches().size(); index++) {
+                if (dossier.getFiche(index).getPatient().toString().toUpperCase().contains(s.toUpperCase())) {
+                    dlrp.addElement(dossier.getFiche(index).getPatient().toString());
+                }
+            }
+            if (dlrp.isEmpty()) {
+                dlrp.addElement("Aucun résultat");
+            }
+            jList6.setModel(dlrp);
+            jScrollPane1.repaint();
+
+        }
+    }
+
+    private void RechPKeyPressed(java.awt.event.KeyEvent evt) {
+        String s = RechP.getText();
+        DefaultListModel dlrp = new DefaultListModel();
+        for (int index = 0; index < dossier.getFiches().size(); index++) {
+            if (dossier.getFiche(index).getPatient().toString().toUpperCase().contains(s.toUpperCase())) {
+                dlrp.addElement(dossier.getFiche(index).getPatient().toString());
+            }
+        }
+        if (dlrp.isEmpty()) {
+            dlrp.addElement("Aucun résultat");
+        }
+        jList6.setModel(dlrp);
+        jScrollPane1.repaint();
+
+    }
 
     private void RechMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechMActionPerformed
         // TODO add your handling code here:
