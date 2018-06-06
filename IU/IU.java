@@ -1579,6 +1579,11 @@ public class IU extends javax.swing.JFrame {
         jLabel10.setText("ville :");
 
         ModifFSAddActe.setText("+");
+        ModifFSAddActe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModifFSAddActeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -2975,6 +2980,11 @@ public class IU extends javax.swing.JFrame {
         jPanel3.setVisible(false);
         jPanel4.setVisible(true);
     }//GEN-LAST:event_ModifFSButton1ActionPerformed
+    
+    private void ModifFSAddActeActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        NewActe.setVisible(true);
+    }
 
     private void ValiderActeButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValiderActeButton1ActionPerformed
         // TODO add your handling code here:
