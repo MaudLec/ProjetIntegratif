@@ -124,7 +124,7 @@ public class FicheDeSoins {
 
     /* Affichage toutes les fiches avec les balises XML */
     public String toXML() {
-        String s = "<ficheDeSoins>" + date.toXML() + medecin.toXMLCensure() + patient.toXML();
+        String s = "<ficheDeSoins>" + date.toXML() + medecin.toXML() + patient.toXML();
         for (int i = 0; i < actes.size(); i++) {
             s += actes.get(i).toXML();
         }
