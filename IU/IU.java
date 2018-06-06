@@ -36,7 +36,7 @@ public class IU extends javax.swing.JFrame {
 
     //maud
     FicheDeSoins ficheCourante = null;
-    ArrayList<Acte> actesCourants = new ArrayList<Acte>();
+        ArrayList<Acte> actesCourants = new ArrayList<Acte>();
 
     //personnes
     Medecin medecinCourant = null;
@@ -185,7 +185,7 @@ public class IU extends javax.swing.JFrame {
         }
         ;
         NewActe = new javax.swing.JDialog();
-        TypeActe = new javax.swing.JLabel();
+        TypeActe3 = new javax.swing.JLabel();
         ChoixCodeActe = new javax.swing.JComboBox<>();
 
         int j = 0;
@@ -1212,7 +1212,7 @@ public class IU extends javax.swing.JFrame {
         NewActe.setTitle("Acte de soin");
         NewActe.setMinimumSize(new java.awt.Dimension(600, 450));
 
-        TypeActe.setText("Type :");
+        TypeActe3.setText("Type :");
 
         ChoixCodeActe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1246,7 +1246,7 @@ public class IU extends javax.swing.JFrame {
                                 .addGap(22, 22, 22)
                                 .addGroup(NewActeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(CoefActe)
-                                        .addComponent(TypeActe)
+                                        .addComponent(TypeActe3)
                                         .addComponent(CodeActe))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(NewActeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1282,7 +1282,7 @@ public class IU extends javax.swing.JFrame {
                                         .addComponent(CoefActe))
                                 .addGap(24, 24, 24)
                                 .addGroup(NewActeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(TypeActe)
+                                        .addComponent(TypeActe3)
                                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(25, 25, 25)
                                 .addComponent(Observation)
@@ -2630,6 +2630,7 @@ public class IU extends javax.swing.JFrame {
     }//GEN-LAST:event_AfficherListeM1ActionPerformed
     
 
+
     private void RechMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechMActionPerformed
         String s = RechM.getText();
         DefaultListModel dlrm = new DefaultListModel();
@@ -3285,7 +3286,7 @@ public class IU extends javax.swing.JFrame {
     private javax.swing.JDialog TriMedecin;
     private javax.swing.JDialog TriPatient;
     private javax.swing.JDialog TriSpecialite;
-    private javax.swing.JLabel TypeActe;
+    private javax.swing.JLabel TypeActe3;
     private javax.swing.JLabel TypeActe1;
     private javax.swing.JLabel TypeActe2;
     private javax.swing.JButton ValiderActeButton;
