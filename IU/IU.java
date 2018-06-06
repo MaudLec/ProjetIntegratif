@@ -385,6 +385,7 @@ public class IU extends javax.swing.JFrame {
                 jScrollPane2.repaint();
                 RechM.setText("Recherche...");
                 RechM.setForeground(new java.awt.Color(204, 204, 204));
+                actesCourants.clear();
                 dlm.clear();
                 for (index = 0; index < dossier.getFiches().size(); index++) {
                     dlm.addElement(dossier.getFiches().get(index).toString());
