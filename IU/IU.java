@@ -295,7 +295,7 @@ public class IU extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         ImprimerButton = new javax.swing.JButton();
         ArchiverButton = new javax.swing.JButton();
-        ParametresButton = new javax.swing.JButton();
+        AideButton = new javax.swing.JButton();
         jTextField7 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
@@ -677,10 +677,10 @@ public class IU extends javax.swing.JFrame {
             }
         });
 
-        ParametresButton.setText("Paramètres");
-        ParametresButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        AideButton.setText("Aide");
+        AideButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ParametresButtonMouseClicked(evt);
+                AideButtonMouseClicked(evt);
             }
         });
 
@@ -702,7 +702,7 @@ public class IU extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(ArchiverButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ParametresButton))
+                                .addComponent(AideButton))
         );
         FPrincipaleLayout.setVerticalGroup(
                 FPrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -710,7 +710,7 @@ public class IU extends javax.swing.JFrame {
                                 .addGroup(FPrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(ImprimerButton)
                                         .addComponent(ArchiverButton)
-                                        .addComponent(ParametresButton))
+                                        .addComponent(AideButton))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                                 .addGroup(FPrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(FPFichedeSoins, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2959,7 +2959,7 @@ public class IU extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
-    private void ParametresButtonMouseClicked(java.awt.event.MouseEvent evt) {
+    private void AideButtonMouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
     }
     
@@ -3210,7 +3210,7 @@ public class IU extends javax.swing.JFrame {
     private int index;
     private javax.swing.JButton ImprimerButton;
     private javax.swing.JButton ArchiverButton;
-    private javax.swing.JButton ParametresButton;
+    private javax.swing.JButton AideButton;
     private javax.swing.JButton ModifFSAddActe;
 //End of variable declaration
 
