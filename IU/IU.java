@@ -499,7 +499,7 @@ public class IU extends javax.swing.JFrame {
         });
 
 
-        ImageAide.setIcon(new javax.swing.ImageIcon("C:\\Users\\Julie\\Desktop\\Aide.png")); // NOI18N
+        ImageAide.setIcon(new javax.swing.ImageIcon("Aide.png")); // NOI18N
         jScrollPaneAide.setViewportView(ImageAide);
 
         javax.swing.GroupLayout AideFrameLayout = new javax.swing.GroupLayout(AideFrame.getContentPane());
