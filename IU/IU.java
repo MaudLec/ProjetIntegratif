@@ -2949,35 +2949,9 @@ public class IU extends javax.swing.JFrame {
     
     private void ImprimerButtonMouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
-        System.out.println("ok");
-//        
-//        // Pour imprimer toutes les fiches de soins de la jList3 : 
-//        ficheCourante = dossier.getFiche(jList3.getSelectedIndex());
-//
-//        FSDate.setText("Date : " + ficheCourante.getDate());
-//        FSSexe.setText("Sexe : " + ficheCourante.getPatient().getSexe());
-//        FSNomP.setText("Nom : " + ficheCourante.getPatient().getNom());
-//        FSPrenomP.setText("Prenom : " + ficheCourante.getPatient().getPrenom());
-//        FSNSS.setText("N° de Sécurité Sociale : " + ficheCourante.getPatient().getNumSecu());
-//        FSNomM.setText("Nom :" + ficheCourante.getMedecin().getNom());
-//        FSPrenomM.setText("Prénom : " + ficheCourante.getMedecin().getPrenom());
-//        FSSpeM.setText("Spécialité : " + ficheCourante.getMedecin().getSpecialite());
-//        jLabel8.setText("Date de naissance : " + ficheCourante.getPatient().getNaissance().toString());
-//        dateChooserCombo4.setText(ficheCourante.getDate().toString());
-//        jComboBox3.setSelectedItem(ficheCourante.getPatient().getSexe().toString());
-//        NomPField1.setText(ficheCourante.getPatient().getNom());
-//        PrenomPField2.setText(ficheCourante.getPatient().getPrenom());
-//        PrenomPField3.setText(ficheCourante.getMedecin().getTelephone());
-//        jLabel7.setText("Adresse : " + ficheCourante.getPatient().getAdresse().toString());
-//        jTextField1.setText(ficheCourante.getMedecin().getNom());
-//        jTextField2.setText(ficheCourante.getMedecin().getPrenom());
-//        ChoixSpe1.setSelectedItem(ficheCourante.getMedecin().getSpecialite().toString());
-//
-//        FicheDeSoins.setVisible(true);
-//        
-//        // Mettre un bouton imprimer sur Fiche de Soins
-//        Imprimer imp = new Imprimer(FicheDeSoins);
-//        imp.doPrint();
+              ficheCourante = dossier.getFiche(jList3.getSelectedIndex());
+        Imprimer imp = new Imprimer(FicheDeSoins);
+        imp.doPrint();
     }
 
     private void ArchiverButtonMouseClicked(java.awt.event.MouseEvent evt) {
