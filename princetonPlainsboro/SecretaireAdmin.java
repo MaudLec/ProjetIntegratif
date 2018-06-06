@@ -19,6 +19,10 @@ public class SecretaireAdmin {
         id = "";
         mdp = "";
     }
+        
+    public String toString() { 
+        return nom.toUpperCase() + " " + prenom; 
+    }
 
     public String getNom() {
         return nom;

@@ -87,11 +87,11 @@ public class Medecin {
 
     /* Affichage des infos du médecin avec les balises XML */
     public String toXML() {
-        return ("<medecin>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + specialite.toXML() + "<telephone>" + telephone + "</telephone>" + "<id>" + id + "</id> " + "<mdp>" + mdp + "</mdp>" + "</medecin>");
+        return ("<medecin>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + specialite.toXML() + "<numtel>" + telephone + "</numtel>" + "<id>" + id + "</id> " + "<mdp>" + mdp + "</mdp>" + "</medecin>");
     }
 
     /* Affichage des infos du médecin sans le mot de passe avec les balises XML */
     public String toXMLCensure() {
-        return ("<medecin>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + specialite.toXML() + "<telephone>" + telephone + "</telephone>" + "</medecin>");
+        return ("<medecin>" + "<nom>" + nom + "</nom>" + "<prenom>" + prenom + "</prenom>" + specialite.toXML() + "<numtel>" + telephone + "</numtel>" + "</medecin>");
     }
 }

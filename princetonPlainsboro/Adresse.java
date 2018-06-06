@@ -5,6 +5,18 @@ package princetonPlainsboro;
  * @author leclemau
  */
 public class Adresse {
+
+    public void setRue(String rue) {
+        this.rue = rue;
+    }
+
+    public void setCodePostal(String codePostal) {
+        this.codePostal = codePostal;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
     private String rue;
     private String codePostal;
     private String ville;

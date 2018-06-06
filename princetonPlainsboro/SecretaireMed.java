@@ -19,6 +19,10 @@ public class SecretaireMed {
         id = "";
         mdp = "";
     }
+            
+                public String toString() { 
+        return nom.toUpperCase() + " " + prenom; 
+    }
 
     public String getNom() {
         return nom;
@@ -46,12 +50,6 @@ public class SecretaireMed {
 
     public void setMdp(String mdp) {
         this.mdp = mdp;
-    }
-        public SecretaireMed() {
-        nom = "";
-        prenom = "";
-        id = "";
-        mdp = "";
     }
 
     /* Création d'un médecin */

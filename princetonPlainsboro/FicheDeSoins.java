@@ -20,6 +20,10 @@ public class FicheDeSoins {
         return patient;
     }
 
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     public Medecin getMedecin() {
         return medecin;
     }
