@@ -17,6 +17,14 @@ public class Medecin {
         this.id = id;
         this.mdp = mdp;
     }
+        public Medecin() {
+        nom = "";
+        prenom = "";
+        specialite = null;
+        id = ""; 
+        mdp= "";
+    }
+
 
     public Specialite getSpecialite() {
         return this.specialite;
