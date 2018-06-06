@@ -2625,14 +2625,7 @@ public class IU extends javax.swing.JFrame {
 
     }
 
-    private void RechMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechMActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RechMActionPerformed
-
-    private void RechPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RechPActionPerformed
-
+ 
     private void jList3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList3MouseClicked
         // TODO add your handling code here:
 
