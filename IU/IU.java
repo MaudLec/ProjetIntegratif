@@ -2670,7 +2670,7 @@ public class IU extends javax.swing.JFrame {
                 jTextField4.setText(ficheCourante.getPatient().getAdresse().getCodePostal());
                 jTextField5.setText(ficheCourante.getPatient().getAdresse().getVille());
 
-                jFormattedTextField7.setText(ficheCourante.getPatient().getNumSecu().toString());
+                jFormattedTextField7.setText(ficheCourante.getPatient().getNumSecu().toFormatted());
                 jTextField1.setText(ficheCourante.getMedecin().getNom());
                 jTextField2.setText(ficheCourante.getMedecin().getPrenom());
                 ChoixSpe1.setSelectedItem(ficheCourante.getMedecin().getSpecialite().toString());
@@ -2725,7 +2725,7 @@ public class IU extends javax.swing.JFrame {
                 jTextField4.setText(ficheCourante.getPatient().getAdresse().getCodePostal());
                 jTextField5.setText(ficheCourante.getPatient().getAdresse().getVille());
 
-                jFormattedTextField7.setText(ficheCourante.getPatient().getNumSecu().toString());
+                jFormattedTextField7.setText(ficheCourante.getPatient().getNumSecu().toFormatted());
                 jTextField1.setText(ficheCourante.getMedecin().getNom());
                 jTextField2.setText(ficheCourante.getMedecin().getPrenom());
                 ChoixSpe1.setSelectedItem(ficheCourante.getMedecin().getSpecialite().toString());
