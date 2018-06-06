@@ -2577,18 +2577,6 @@ public class IU extends javax.swing.JFrame {
             }
 
         }
-        // Affichage du nom du Médecin / Secrétaire
-        boolean bbb = false;
-        for (int iii = 0; iii < dossier.getMedecins().size(); iii++) {
-            if (dossier.getMedecins().get(iii).getId().toString().equals(idd) && !bbb) { // la récup de l'id se fait pas
-                Identifiant.setText(dossier.getMedecins().get(iii).toString());
-                bbb = true;
-                iii = dossier.getMedecins().size();
-            }
-            if (iii == dossier.getMedecins().size() && !bbb) {
-                Identifiant.setText("session inconnue");
-            }
-        }
 
         char a = idd.charAt(0);
         if (a == '1') {
@@ -2607,27 +2595,120 @@ public class IU extends javax.swing.JFrame {
             bmed = false;
         }
 
-//        if (bmed) {
-//            String iddd = jTextField17.getText();
-//            System.out.println("id retrouvé");
-//            Medecin meds;
-//            for (int iiii = 0; iiii < dossier.getMedecins().size(); iiii++) {
-//                if (dossier.getMedecins().get(iiii).getId().toString().equals(iddd)) { // la récup de l'id se fait pas
-//                    meds = dossier.getMedecins().get(iiii);
-//                    System.out.println("Medecin retrouvé");
-//                }
-//            }
-//            DefaultListModel dlpm = new DefaultListModel();
-//            for (int index = 0; index < dossier.recupererListePatients(meds).size(); index++) {
-//                dlpm.addElement(dossier.recupererListePatients(meds).get(index).toString());
-//            }
-//            jList3.setModel(dlpm);
-//        } else {
-//            for (index = 0; index < dossier.getFiches().size(); index++) {
-//                dlm.addElement(dossier.getFiches().get(index).toString());
-//            }
-//            jList3.setModel(dlm);
-//        }
+ jButton14.setVisible(true);
+        jComboBox4.setVisible(true);
+        OptTri.setVisible(true);
+        Recherche.setVisible(true);
+
+        boolean bbbb = false;
+        String iddd = jTextField17.getText();
+        System.out.println("id retrouvé");
+
+        // Si c'est un médecin : on affiche son nom & on affiche que ces patients
+        // récupération médecin
+        if (bmed) {
+
+//Boutons bloqués : 
+            jComboBox4.setVisible(false);
+            OptTri.setVisible(false);
+            Recherche.setVisible(false);
+
+            Medecin meds = new Medecin();
+            System.out.println("medecin initialisé");
+            for (int iiii = 0; iiii < dossier.getMedecins().size(); iiii++) {
+                if (dossier.getMedecins().get(iiii).getId().equals(iddd)) { // la récup de l'id se fait pas
+                    meds = dossier.getMedecins().get(iiii);
+                    System.out.println("Medecin retrouvé");
+                }
+            }
+            // affichage patient
+
+            DefaultListModel dlpm = new DefaultListModel();
+            for (int index = 0; index < dossier.recupererListePatients(meds).size(); index++) {
+                dlpm.addElement(dossier.recupererListePatients(meds).get(index).toString());
+            }
+            jList3.setModel(dlpm);
+
+            //affichage nom
+            for (int iii = 0; iii < dossier.getMedecins().size(); iii++) {
+                if (meds.getId().equals(iddd) && !bbbb) { // la récup de l'id se fait pas
+                    Identifiant.setText(meds.toString());
+                    bbbb = true;
+                    iii = dossier.getMedecins().size();
+                }
+                if (iii == dossier.getMedecins().size() && !bbbb) {
+                    Identifiant.setText("session inconnue");
+                }
+            }
+
+        }
+        // Si c'est un secretaire admin : on affiche son nom & on affiche tous les patients anonymisés
+        // récupération secrétaire admin
+        if (bsad) {
+//Boutons bloqués : 
+            jComboBox4.setVisible(false);
+            jButton14.setVisible(false);
+            OptTri.setVisible(false);
+
+            SecretaireAdmin sa = new SecretaireAdmin();
+            System.out.println("Secrétaire admin initialisé");
+            for (int iiii = 0; iiii < dossier.getSecretairesAdmin().size(); iiii++) {
+                if (dossier.getSecretairesAdmin().get(iiii).getId().equals(iddd)) { // la récup de l'id se fait pas
+                    sa = dossier.getSecretairesAdmin().get(iiii);
+                    System.out.println("Secretaire admin retrouvé ");
+                }
+            }
+            // affichage patient
+
+            for (index = 0; index < dossier.getFiches().size(); index++) {
+                dlm.addElement(dossier.getFiches().get(index).afficherPourSecretaireAdmin());
+            }
+            jList3.setModel(dlm);
+
+            //affichage nom
+            for (int iii = 0; iii < dossier.getSecretairesAdmin().size(); iii++) {
+                if (sa.getId().equals(iddd) && !bbbb) { // la récup de l'id se fait pas
+                    Identifiant.setText(sa.toString());
+                    bbbb = true;
+                    iii = dossier.getSecretairesAdmin().size();
+                }
+                if (iii == dossier.getSecretairesAdmin().size() && !bbbb) {
+                    Identifiant.setText("session inconnue");
+                }
+            }
+        }
+
+        // Si c'est un secretaire med : on affiche son nom & tous les patients
+        // récupération secrétaire med
+        if (bsmed) {
+            SecretaireMed sm = new SecretaireMed();
+            System.out.println("Secrétaire med initialisé");
+            for (int iiii = 0; iiii < dossier.getSecretairesMed().size(); iiii++) {
+                if (dossier.getSecretairesMed().get(iiii).getId().equals(iddd)) { // la récup de l'id se fait pas
+                    sm = dossier.getSecretairesMed().get(iiii);
+                    System.out.println("Secretaire med retrouvé ");
+                }
+            }
+            // affichage patient
+
+            for (index = 0; index < dossier.getFiches().size(); index++) {
+                dlm.addElement(dossier.getFiches().get(index).toString());
+            }
+            jList3.setModel(dlm);
+
+            //affichage nom
+            for (int iii = 0; iii < dossier.getSecretairesMed().size(); iii++) {
+                if (sm.getId().equals(iddd) && !bbbb) { // la récup de l'id se fait pas
+                    Identifiant.setText(sm.toString());
+                    bbbb = true;
+                    iii = dossier.getSecretairesMed().size();
+                }
+                if (iii == dossier.getSecretairesMed().size() && !bbbb) {
+                    Identifiant.setText("session inconnue");
+
+                }
+            }
+        }
     }
 
     private void ChoixCodeActeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoixCodeActeActionPerformed
@@ -3051,19 +3132,6 @@ public class IU extends javax.swing.JFrame {
                     jLabel4.setVisible(true);
                 }
             }
-            // Affichage du nom du Médecin / Secrétaire
-            boolean bbb = false;
-            for (int iii = 0; iii < dossier.getMedecins().size(); iii++) {
-                if (dossier.getMedecins().get(iii).getId().toString().equals(idd) && !bbb) { // la récup de l'id se fait pas
-                    Identifiant.setText(dossier.getMedecins().get(iii).toString());
-                    bbb = true;
-                    iii = dossier.getMedecins().size();
-                }
-                if (iii == dossier.getMedecins().size() && !bbb) {
-                    Identifiant.setText("session inconnue");
-                }
-            }
-            //Julie
             char a = idd.charAt(0);
             if (a == '1') {
                 bmed = true;
@@ -3080,6 +3148,122 @@ public class IU extends javax.swing.JFrame {
                 bsmed = false;
                 bmed = false;
             }
+        }
+                    jButton14.setVisible(true);
+            jComboBox4.setVisible(true);
+            OptTri.setVisible(true);
+            Recherche.setVisible(true);
+
+            boolean bbb = false;
+            String iddd = jTextField17.getText();
+            System.out.println("id retrouvé");
+
+            // Si c'est un médecin : on affiche son nom & on affiche que ces patients
+            // récupération médecin
+            if (bmed) {
+
+//Boutons bloqués : 
+                jComboBox4.setVisible(false);
+                OptTri.setVisible(false);
+                Recherche.setVisible(false);
+
+                Medecin meds = new Medecin();
+                System.out.println("medecin initialisé");
+                for (int iiii = 0; iiii < dossier.getMedecins().size(); iiii++) {
+                    if (dossier.getMedecins().get(iiii).getId().equals(iddd)) { // la récup de l'id se fait pas
+                        meds = dossier.getMedecins().get(iiii);
+                        System.out.println("Medecin retrouvé");
+                    }
+                }
+                // affichage patient
+
+                DefaultListModel dlpm = new DefaultListModel();
+                for (int index = 0; index < dossier.recupererListePatients(meds).size(); index++) {
+                    dlpm.addElement(dossier.recupererListePatients(meds).get(index).toString());
+                }
+                jList3.setModel(dlpm);
+
+                //affichage nom
+                for (int iii = 0; iii < dossier.getMedecins().size(); iii++) {
+                    if (meds.getId().equals(iddd) && !bbb) { // la récup de l'id se fait pas
+                        Identifiant.setText(meds.toString());
+                        bbb = true;
+                        iii = dossier.getMedecins().size();
+                    }
+                    if (iii == dossier.getMedecins().size() && !bbb) {
+                        Identifiant.setText("session inconnue");
+                    }
+                }
+
+            }
+            // Si c'est un secretaire admin : on affiche son nom & on affiche tous les patients anonymisés
+            // récupération secrétaire admin
+            if (bsad) {
+//Boutons bloqués : 
+                jComboBox4.setVisible(false);
+                jButton14.setVisible(false);
+                OptTri.setVisible(false);
+
+                SecretaireAdmin sa = new SecretaireAdmin();
+                System.out.println("Secrétaire admin initialisé");
+                for (int iiii = 0; iiii < dossier.getSecretairesAdmin().size(); iiii++) {
+                    if (dossier.getSecretairesAdmin().get(iiii).getId().equals(iddd)) { // la récup de l'id se fait pas
+                        sa = dossier.getSecretairesAdmin().get(iiii);
+                        System.out.println("Secretaire admin retrouvé ");
+                    }
+                }
+                // affichage patient
+
+                for (index = 0; index < dossier.getFiches().size(); index++) {
+                    dlm.addElement(dossier.getFiches().get(index).afficherPourSecretaireAdmin());
+                }
+                jList3.setModel(dlm);
+
+                //affichage nom
+                for (int iii = 0; iii < dossier.getSecretairesAdmin().size(); iii++) {
+                    if (sa.getId().equals(iddd) && !bbb) { // la récup de l'id se fait pas
+                        Identifiant.setText(sa.toString());
+                        bbb = true;
+                        iii = dossier.getSecretairesAdmin().size();
+                    }
+                    if (iii == dossier.getSecretairesAdmin().size() && !bbb) {
+                        Identifiant.setText("session inconnue");
+                    }
+                }
+            }
+
+            // Si c'est un secretaire med : on affiche son nom & tous les patients
+            // récupération secrétaire med
+            if (bsmed) {
+                SecretaireMed sm = new SecretaireMed();
+                System.out.println("Secrétaire med initialisé");
+                for (int iiii = 0; iiii < dossier.getSecretairesMed().size(); iiii++) {
+                    if (dossier.getSecretairesMed().get(iiii).getId().equals(iddd)) { // la récup de l'id se fait pas
+                        sm = dossier.getSecretairesMed().get(iiii);
+                        System.out.println("Secretaire med retrouvé ");
+                    }
+                }
+                // affichage patient
+
+                for (index = 0; index < dossier.getFiches().size(); index++) {
+                    dlm.addElement(dossier.getFiches().get(index).toString());
+                }
+                jList3.setModel(dlm);
+
+                //affichage nom
+                for (int iii = 0; iii < dossier.getSecretairesMed().size(); iii++) {
+                    if (sm.getId().equals(iddd) && !bbb) { // la récup de l'id se fait pas
+                        Identifiant.setText(sm.toString());
+                        bbb = true;
+                        iii = dossier.getSecretairesMed().size();
+                    }
+                    if (iii == dossier.getSecretairesMed().size() && !bbb) {
+                        Identifiant.setText("session inconnue");
+
+                    }
+                }
+            }
+
         }
 
     }//GEN-LAST:event_jPasswordField2KeyPressed
