@@ -36,6 +36,7 @@ public class IU extends javax.swing.JFrame {
 
     //maud
     FicheDeSoins ficheCourante = null;
+    ArrayList<Acte> actesCourants = new ArrayList<Acte>();
 
     //personnes
     Medecin medecinCourant = null;
@@ -2628,21 +2629,6 @@ public class IU extends javax.swing.JFrame {
         NewFicheSoins.setVisible(true);
     }//GEN-LAST:event_AfficherListeM1ActionPerformed
     
-     private void RechMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechMActionPerformed
-        String s = RechM.getText();
-        DefaultListModel dlrm = new DefaultListModel();
-        for (int index = 0; index < dossier.getFiches().size(); index++) {
-            if (dossier.getFiche(index).getMedecin().toString().toUpperCase().contains(s.toUpperCase())) {
-                dlrm.addElement(dossier.getFiche(index).getMedecin().toString());
-            }
-        }
-        if (dlrm.isEmpty()) {
-            dlrm.addElement("Aucun résultat");
-        }
-        jList8.setModel(dlrm);
-        jScrollPane2.repaint();
-
-    }//GEN-LAST:event_RechercheMActionPerformed
 
     private void RechMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechMActionPerformed
         String s = RechM.getText();
