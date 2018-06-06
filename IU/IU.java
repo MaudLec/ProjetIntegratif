@@ -455,6 +455,20 @@ public class IU extends javax.swing.JFrame {
                 jList3MouseClicked(evt);
             }
         });
+        
+         //maudmaud
+        jList6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList6MouseClicked(evt);
+            }
+        });
+        //maudmaud
+        jList8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList8MouseClicked(evt);
+            }
+        });
+        
         ListeFiches.setViewportView(jList3);
 
         javax.swing.GroupLayout FPFichedeSoinsLayout = new javax.swing.GroupLayout(FPFichedeSoins);
