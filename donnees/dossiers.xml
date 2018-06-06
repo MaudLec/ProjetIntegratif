@@ -8,8 +8,8 @@
             <prenom>Jean</prenom>
             <specialite>ORL</specialite>
             <numtel>0123456789></numtel>
-            <id>1234</id>
-            <mdp>4567</mdp>
+            <id>1034519238</id>
+            <mdp>Eauairelle</mdp>
         </medecin>
         <patient>
             <nom>Track</nom>
@@ -35,19 +35,19 @@
             <code>CS</code>
             <coef>1</coef>
             <type>diagnostique</type>
-            <observation>blablabla</observation>
+            <observation>Vive les fleurs</observation>
         </acte>
         <acte>
             <code>ORT</code>
             <coef>50</coef>
             <type>diagnostique</type>
-            <observation>blablabla</observation>
+            <observation>Pas de Null Pointer Exception!</observation>
         </acte>
         <acte>
             <code>PRO</code>
             <coef>150</coef>
             <type>diagnostique</type>
-            <observation>blablabla</observation>
+            <observation>Nous vivons la préhistoire du futur</observation>
         </acte>
     </ficheDeSoins>
   
@@ -58,8 +58,8 @@
             <prenom>Agathe</prenom>
             <specialite>Cardiologie</specialite>
             <numtel>0123456789></numtel>
-            <id>1234</id>
-            <mdp>4567</mdp>
+            <id>123456789</id>
+            <mdp>Agathe</mdp>
         </medecin>
         <patient>
             <nom>Bole</nom>
@@ -85,13 +85,13 @@
             <code>CSC</code>
             <coef>1</coef>
             <type>diagnostique</type>
-            <observation>blablabla</observation>
+            <observation>L'avenir appartient à ceux qui rêvent trop</observation>
         </acte>
         <acte>
             <code>KC</code>
             <coef>120</coef>
             <type>diagnostique</type>
-            <observation>blablabla</observation>
+            <observation>Cookie : Anciennement petit gâteau sucré, qu'on acceptait avec plaisir. Aujourd'hui : petit fichier informatique drôlement salé, qu'il faut refuser avec véhémence.(Luc Fayard)</observation>
         </acte>
     </ficheDeSoins>
 
@@ -102,8 +102,8 @@
             <prenom>Agathe</prenom>
             <specialite>Cardiologie</specialite>
             <numtel>0123456789></numtel>
-            <id>1234</id>
-            <mdp>4567</mdp>
+            <id>123456789</id>
+            <mdp>Agathe</mdp>
         </medecin>
         <patient>
             <nom>Bole</nom>
@@ -129,7 +129,7 @@
             <code>CSC</code>
             <coef>2</coef>
             <type>diagnostique</type>
-            <observation>blablabla</observation>
+            <observation>Quelle prétention de prétendre que l'informatique est récente : Adam et Eve avaient déjà un Apple</observation>
         </acte>
     </ficheDeSoins>
   
@@ -140,8 +140,8 @@
             <prenom>Yves</prenom>
             <specialite>Gynécologie</specialite>
             <numtel>0123456789></numtel>
-            <id>1234</id>
-            <mdp>4567</mdp>
+            <id>145342345</id>
+            <mdp>IVG</mdp>
         </medecin>
         <patient>
             <nom>Bole</nom>
@@ -167,14 +167,14 @@
             <code>KE</code>
             <coef>1</coef>
             <type>diagnostique</type>
-            <observation>blablabla</observation>
+            <observation>Il n'y a pas d'enfant dans le cybermonde, il n'y a que des copies</observation>
         </acte>
         <secretaireadmin>
             <nom>AUSTRA</nom>
             <prenom>Lia</prenom>
             <telephone>0123456789></telephone>
-            <id>3456</id>
-            <mdp>6789</mdp>
+            <id>3450349585</id>
+            <mdp>Australia</mdp>
         </secretaireadmin>
     </ficheDeSoins>
 
@@ -185,8 +185,8 @@
             <prenom>Harry</prenom>
             <specialite>ORL</specialite>
             <numtel>0123456789></numtel>
-            <id>1234</id>
-            <mdp>4567</mdp>
+            <id>134563482</id>
+            <mdp>HarricotVert89</mdp>
         </medecin>
         <patient>
             <nom>Epi</nom>
@@ -213,20 +213,20 @@
             <code>CS</code>
             <coef>1</coef>
             <type>diagnostique</type>
-            <observation>blablabla</observation>
+            <observation>Il n'y a pas de projets urgents, il y a que des projets en retards.</observation>
         </acte>
         <acte>
             <code>KFA</code>
             <coef>72</coef>
             <type>diagnostique</type>
-            <observation>blablabla</observation>
+            <observation>Dans le monde il y a 10 types de personnes, ceux qui comprennent le binaire, et les autres</observation>
         </acte>
         <secretairemed>
             <nom>TECH</nom>
             <prenom>Mili</prenom>
             <telephone>0123456789></telephone>
-            <id>2345</id>
-            <mdp>5678</mdp>
+            <id>2345869348</id>
+            <mdp>Militech</mdp>
         </secretairemed>
     </ficheDeSoins>
     
@@ -237,8 +237,8 @@
             <prenom>Jean</prenom>
             <specialite>ORL</specialite>
             <numtel>0123456789></numtel>
-            <id>1234</id>
-            <mdp>4567</mdp>
+            <id>13485576023</id>
+            <mdp>Blasedelavie</mdp>
         </medecin>
         <patient>
             <nom>Henfayitte</nom>
@@ -264,37 +264,41 @@
             <code>CS</code>
             <coef>1</coef>
             <type>diagnostique</type>
-            <observation>blablabla</observation>
+            <observation>C'est un miracle ça marche!</observation>
         </acte>
         <acte>
             <code>KFA</code>
             <coef>72</coef>
             <type>diagnostique</type>
-            <observation>blablabla</observation>
+            <observation>Ce sont trois ingénieurs qui roulent dans une voiture.
+A un certain moment, elle s’arrête sans autre forme de procès.
+Le premier ingénieur chimiste, analyse l’essence: elle est parfaite.
+Le deuxième, électricien, révise le système d’allumage, puis rentre dans l’habitacle, bredouille.
+Le troisième, ingénieur chez Microsoft, a une idée : « On va tous sortir de la voiture, puis on va tous y rentrer, et la voiture redémarrera ».</observation>
         </acte>
         <acte>
             <code>K</code>
             <coef>1000</coef>
             <type>diagnostique</type>
-            <observation>blablabla</observation>
+            <observation>Linux y'a moins bien, mais c'est plus cher...</observation>
         </acte>
         <acte>
             <code>KE</code>
             <coef>60</coef>
             <type>diagnostique</type>
-            <observation>blablabla</observation>
+            <observation>Le projet c'est la vie</observation>
         </acte>
         <acte>
             <code>ORT</code>
             <coef>85</coef>
             <type>diagnostique</type>
-            <observation>blablabla</observation>
+            <observation>Coder c'est la vie</observation>
         </acte>
         <acte>
             <code>PRO</code>
             <coef>850</coef>
             <type>diagnostique</type>
-            <observation>blablabla</observation>
+            <observation>Pas de Null Pointer Exception</observation>
         </acte>
     </ficheDeSoins>
   
