@@ -49,6 +49,9 @@ public class FicheDeSoins {
         return s;
     }
 
+    public String afficherPourMedecin(){
+        return patient.toString();
+    }
     
     /* Ajouter un acte à la fiche de soins */
     public void ajouterActe(Acte acte) {
