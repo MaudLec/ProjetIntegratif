@@ -381,7 +381,7 @@ public class IU extends javax.swing.JFrame {
                 RechM.setForeground(new java.awt.Color(204, 204, 204));
                 actesCourants.clear();
                 dlm.clear();
-                for (index = 0; index < dossier.getFiches().size(); index++) {
+                for (int index = 0; index < dossier.getFiches().size(); index++) {
                     dlm.addElement(dossier.getFiches().get(index).toString());
                 }
                 ListeFiches.repaint();
@@ -2170,15 +2170,15 @@ public class IU extends javax.swing.JFrame {
         System.out.println(ficheAEnregistrer);
         dossier.ajouterFiche(ficheAEnregistrer);
         ecritureDossier.editerDossier();
-        
+
         if (bsad || bsmed) {
             dlm.clear();
-            for (index = 0; index < dossier.getFiches().size(); index++) {
+            for (int index = 0; index < dossier.getFiches().size(); index++) {
                 dlm.addElement(dossier.getFiches().get(index).toString());
             }
             jList3.setModel(dlm);
         }
-        
+
         ListeFiches.repaint();
 
         DefaultListModel eee = new DefaultListModel<>();
@@ -2645,8 +2645,8 @@ public class IU extends javax.swing.JFrame {
                 }
             }
             // affichage patient
-
-            for (index = 0; index < dossier.getFiches().size(); index++) {
+            dlm.clear();
+            for (int index = 0; index < dossier.getFiches().size(); index++) {
                 dlm.addElement(dossier.getFiches().get(index).afficherPourSecretaireAdmin());
             }
             jList3.setModel(dlm);
@@ -2676,8 +2676,8 @@ public class IU extends javax.swing.JFrame {
                 }
             }
             // affichage patient
-
-            for (index = 0; index < dossier.getFiches().size(); index++) {
+            dlm.clear();
+            for (int index = 0; index < dossier.getFiches().size(); index++) {
                 dlm.addElement(dossier.getFiches().get(index).toString());
             }
             jList3.setModel(dlm);
@@ -2736,6 +2736,73 @@ public class IU extends javax.swing.JFrame {
         // TODO add your handling code here:
         Deconnect.dispose();
         FPrincipale.dispose();
+
+        medecinCourant = null;
+        patientCourant = null;
+        secretaireMed = null;
+        secretaireAdmin = null;
+        date = null;
+        listenonvide = true;
+        ficheCourante = null;
+        actesCourants.clear();
+        nom = "";
+        prenom = "";
+        id = "";
+        mdp = "";
+        specialite = null;
+        numTel = "";
+        sexe = null;
+        naissance = null;
+        adresse = null;
+        rue = "";
+        codePostal = "";
+        ville = "";
+        numSecu = null;
+        sexeSecu = 0;
+        anneeSecu = 0;
+        moisSecu = 0;
+        dep = 0;
+        comm = 0;
+        reg = 0;
+        cle = 0;
+        actes.clear();
+        coef = 0;
+        typeActe = null;
+        code = null;
+        obs = "";
+        jLabel3.setText("Coût de la FS sélectionnée : ");
+        Cout.setText("Coût total du patient : ");
+
+        Recherche.setForeground(new java.awt.Color(204, 204, 204));
+        Recherche.setText("Recherche...");
+        RechercheP.setText("Recherche...");
+        RechercheP.setForeground(new java.awt.Color(204, 204, 204));
+        RechercheM.setText("Recherche...");
+        RechercheM.setForeground(new java.awt.Color(204, 204, 204));
+        RechM.setForeground(new java.awt.Color(204, 204, 204));
+        RechM.setText("Recherche...");
+        RechP.setForeground(new java.awt.Color(204, 204, 204));
+        RechP.setText("Recherche...");
+
+        jList3.removeAll();
+        ListeFiches.repaint();
+
+        jList1.removeAll();
+        jList2.removeAll();
+        jList4.removeAll();
+        jList6.removeAll();
+        jList8.removeAll();
+
+        ListeM.repaint();
+        ListeP.repaint();
+        jScrollPane1.repaint();
+        jScrollPane2.repaint();
+
+        ListeActesFiche.repaint();
+
+        jTextField17.setText("");
+        jPasswordField2.setText("");
+
         this.setVisible(true);
     }//GEN-LAST:event_OuiButtonDActionPerformed
 
@@ -3036,7 +3103,7 @@ public class IU extends javax.swing.JFrame {
     }
 
     private void ModifFSButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifFSButtonActionPerformed
-       
+
         jPanel1.setVisible(false);
         FicheDeSoins.setSize(600, 600);
         jPanel2.setVisible(true);
@@ -3082,12 +3149,10 @@ public class IU extends javax.swing.JFrame {
         dateChooserCombo4.setText(ficheCourante.getDate().toString());
         jComboBox3.setSelectedItem(ficheCourante.getPatient().getSexe().toString());
 
-
         jPanel2.setVisible(false);
         jPanel1.setVisible(true);
         FicheDeSoins.setSize(530, 570);
     }
-
 
     private void jList5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList5MouseClicked
         if (evt.getClickCount() == 2) {
@@ -3125,7 +3190,6 @@ public class IU extends javax.swing.JFrame {
     private void ChoixCodeActe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoixCodeActe1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ChoixCodeActe1ActionPerformed
-
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
@@ -3239,8 +3303,8 @@ public class IU extends javax.swing.JFrame {
                 }
             }
             // affichage patient
-
-            for (index = 0; index < dossier.getFiches().size(); index++) {
+            dlm.clear();
+            for (int index = 0; index < dossier.getFiches().size(); index++) {
                 dlm.addElement(dossier.getFiches().get(index).afficherPourSecretaireAdmin());
             }
             jList3.setModel(dlm);
@@ -3270,8 +3334,8 @@ public class IU extends javax.swing.JFrame {
                 }
             }
             // affichage patient
-
-            for (index = 0; index < dossier.getFiches().size(); index++) {
+            dlm.clear();
+            for (int index = 0; index < dossier.getFiches().size(); index++) {
                 dlm.addElement(dossier.getFiches().get(index).toString());
             }
             jList3.setModel(dlm);
@@ -3404,9 +3468,9 @@ public class IU extends javax.swing.JFrame {
         dossier.archiver(ficheCourante);
         ecritureDossier.editerDossier();
         ecritureArchives.editerArchives();
-        //ecritureIdentification.
+
         dlm.clear();
-        for (index = 0; index < dossier.getFiches().size(); index++) {
+        for (int index = 0; index < dossier.getFiches().size(); index++) {
             dlm.addElement(dossier.getFiches().get(index).toString());
         }
         jList3.setModel(dlm);
