@@ -2200,6 +2200,17 @@ public class IU extends javax.swing.JFrame {
         }
         jList3.setModel(dlm);
         ListeFiches.repaint();
+        DefaultListModel eee = new DefaultListModel<>();
+        jList6.setModel(eee);
+        jList8.setModel(eee);
+        jList1.setModel(eee);
+        RechM.setForeground(new java.awt.Color(204, 204, 204));
+        RechM.setText("Recherche...");
+        RechP.setForeground(new java.awt.Color(204, 204, 204));
+        RechP.setText("Recherche...");
+        ListeActesFiche.repaint();
+        jScrollPane1.repaint();
+        jScrollPane2.repaint();
         ficheCourante = null;
         actesCourants.clear();
         NewFicheSoins.dispose();
@@ -2634,6 +2645,15 @@ public class IU extends javax.swing.JFrame {
         Acte a = new Acte(code, coef, type, obs);
         actesCourants.add(a);
         System.out.println(a);
+         DefaultListModel dlla = new DefaultListModel();
+        for (int index = 0; index < actesCourants.size(); index++) {
+            dlla.addElement(actesCourants.get(index));
+        }
+        if (dlla.isEmpty()) {
+            dlla.addElement("Aucun résultat");
+        }
+        jList1.setModel(dlla);
+        ListeActesFiche.repaint();
         NewActe.dispose();
         NewFicheSoins.setVisible(true);
 
