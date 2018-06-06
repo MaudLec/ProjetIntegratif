@@ -126,13 +126,6 @@ public class IU extends javax.swing.JFrame {
         Recherche = new javax.swing.JTextField();
         Logo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jMenuBar = new javax.swing.JMenuBar();
-        File = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        Edit = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
         NewFicheSoins = new javax.swing.JDialog();
         DateLabel = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
@@ -300,6 +293,9 @@ public class IU extends javax.swing.JFrame {
         dateChooserCombo5 = new datechooser.beans.DateChooserCombo();
         jTextField6 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
+        ImprimerButton = new javax.swing.JButton();
+        ArchiverButton = new javax.swing.JButton();
+        ParametresButton = new javax.swing.JButton();
         jTextField7 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
@@ -388,7 +384,7 @@ public class IU extends javax.swing.JFrame {
 
         FPFichedeSoins.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel25.setText("Fiches de Soin");
+        jLabel25.setText("Fiches de Soins");
 
         jButton14.setText("Créer une fiche de soins");
         jButton14.addActionListener(new java.awt.event.ActionListener() {
@@ -665,30 +661,27 @@ public class IU extends javax.swing.JFrame {
                         .addComponent(jLabel1)
         );
 
-        jMenuBar.setToolTipText("");
+        
+        ImprimerButton.setText("Imprimer");
+        ImprimerButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ImprimerButtonMouseClicked(evt);
+            }
+        });
 
-        File.setText("File");
+        ArchiverButton.setText("Archiver");
+        ArchiverButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ArchiverButtonMouseClicked(evt);
+            }
+        });
 
-        jMenuItem1.setText("Imprimer");
-        File.add(jMenuItem1);
-
-        jMenuBar.add(File);
-
-        Edit.setText("Edit");
-
-        jMenu1.setText("Ajouter...");
-
-        jMenuItem2.setText("Spécialité");
-        jMenu1.add(jMenuItem2);
-
-        Edit.add(jMenu1);
-
-        jMenuBar.add(Edit);
-
-        jMenu2.setText("Paramètres");
-        jMenuBar.add(jMenu2);
-
-        FPrincipale.setJMenuBar(jMenuBar);
+        ParametresButton.setText("Paramètres");
+        ParametresButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ParametresButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout FPrincipaleLayout = new javax.swing.GroupLayout(FPrincipale.getContentPane());
         FPrincipale.getContentPane().setLayout(FPrincipaleLayout);
@@ -703,11 +696,21 @@ public class IU extends javax.swing.JFrame {
                                         .addComponent(CoutPannel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(Logo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(OptTri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(FPrincipaleLayout.createSequentialGroup()
+                                .addComponent(ImprimerButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ArchiverButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ParametresButton))
         );
         FPrincipaleLayout.setVerticalGroup(
                 FPrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FPrincipaleLayout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(FPrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(ImprimerButton)
+                                        .addComponent(ArchiverButton)
+                                        .addComponent(ParametresButton))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                                 .addGroup(FPrincipaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(FPFichedeSoins, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(FPrincipaleLayout.createSequentialGroup()
@@ -722,6 +725,7 @@ public class IU extends javax.swing.JFrame {
                                                 .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(70, 70, 70))
         );
+        
 
         NewFicheSoins.setTitle("Nouvelle Fiche de Soin");
         NewFicheSoins.setFocusableWindowState(true);
@@ -2940,6 +2944,51 @@ public class IU extends javax.swing.JFrame {
     private void ChoixCodeActe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoixCodeActe2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ChoixCodeActe2ActionPerformed
+    
+    
+    
+    private void ImprimerButtonMouseClicked(java.awt.event.MouseEvent evt) {
+        // TODO add your handling code here:
+        System.out.println("ok");
+//        
+//        // Pour imprimer toutes les fiches de soins de la jList3 : 
+//        ficheCourante = dossier.getFiche(jList3.getSelectedIndex());
+//
+//        FSDate.setText("Date : " + ficheCourante.getDate());
+//        FSSexe.setText("Sexe : " + ficheCourante.getPatient().getSexe());
+//        FSNomP.setText("Nom : " + ficheCourante.getPatient().getNom());
+//        FSPrenomP.setText("Prenom : " + ficheCourante.getPatient().getPrenom());
+//        FSNSS.setText("N° de Sécurité Sociale : " + ficheCourante.getPatient().getNumSecu());
+//        FSNomM.setText("Nom :" + ficheCourante.getMedecin().getNom());
+//        FSPrenomM.setText("Prénom : " + ficheCourante.getMedecin().getPrenom());
+//        FSSpeM.setText("Spécialité : " + ficheCourante.getMedecin().getSpecialite());
+//        jLabel8.setText("Date de naissance : " + ficheCourante.getPatient().getNaissance().toString());
+//        dateChooserCombo4.setText(ficheCourante.getDate().toString());
+//        jComboBox3.setSelectedItem(ficheCourante.getPatient().getSexe().toString());
+//        NomPField1.setText(ficheCourante.getPatient().getNom());
+//        PrenomPField2.setText(ficheCourante.getPatient().getPrenom());
+//        PrenomPField3.setText(ficheCourante.getMedecin().getTelephone());
+//        jLabel7.setText("Adresse : " + ficheCourante.getPatient().getAdresse().toString());
+//        jTextField1.setText(ficheCourante.getMedecin().getNom());
+//        jTextField2.setText(ficheCourante.getMedecin().getPrenom());
+//        ChoixSpe1.setSelectedItem(ficheCourante.getMedecin().getSpecialite().toString());
+//
+//        FicheDeSoins.setVisible(true);
+//        
+//        // Mettre un bouton imprimer sur Fiche de Soins
+//        Imprimer imp = new Imprimer(FicheDeSoins);
+//        imp.doPrint();
+    }
+
+    private void ArchiverButtonMouseClicked(java.awt.event.MouseEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void ParametresButtonMouseClicked(java.awt.event.MouseEvent evt) {
+        // TODO add your handling code here:
+    }
+    
+    
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -3184,6 +3233,9 @@ public class IU extends javax.swing.JFrame {
     private boolean bsmed = false;
     private boolean bsad = false;
     private int index;
+    private javax.swing.JButton ImprimerButton;
+    private javax.swing.JButton ArchiverButton;
+    private javax.swing.JButton ParametresButton;
 //End of variable declaration
 
 }
