@@ -2725,7 +2725,7 @@ public class IU extends javax.swing.JFrame {
         jTextPane1.setText("");
 
         NewActe.dispose();
-        NewFicheSoins.setVisible(true);
+        NewFicheSoins.repaint();
     }//GEN-LAST:event_ValiderActeButtonActionPerformed
 
     private void OuiButtonDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OuiButtonDActionPerformed
