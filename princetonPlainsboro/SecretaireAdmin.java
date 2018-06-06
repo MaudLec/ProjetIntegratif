@@ -13,6 +13,12 @@ public class SecretaireAdmin {
         this.id = id;
         this.mdp = mdp;
     }
+        public SecretaireAdmin() {
+        nom = "";
+        prenom = "";
+        id = "";
+        mdp = "";
+    }
 
     public String getNom() {
         return nom;
