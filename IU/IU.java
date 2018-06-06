@@ -2170,11 +2170,15 @@ public class IU extends javax.swing.JFrame {
         System.out.println(ficheAEnregistrer);
         dossier.ajouterFiche(ficheAEnregistrer);
         ecritureDossier.editerDossier();
-        dlm.clear();
-        for (index = 0; index < dossier.getFiches().size(); index++) {
-            dlm.addElement(dossier.getFiches().get(index).toString());
+        
+        if (bsad || bsmed) {
+            dlm.clear();
+            for (index = 0; index < dossier.getFiches().size(); index++) {
+                dlm.addElement(dossier.getFiches().get(index).toString());
+            }
+            jList3.setModel(dlm);
         }
-        jList3.setModel(dlm);
+        
         ListeFiches.repaint();
 
         DefaultListModel eee = new DefaultListModel<>();
