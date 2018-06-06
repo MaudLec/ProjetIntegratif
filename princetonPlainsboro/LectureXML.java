@@ -264,7 +264,7 @@ public class LectureXML {
                 // traitement selon l'evenement
                 switch (event) {
                     case XMLStreamConstants.START_ELEMENT:
-                        if (parser.getLocalName().equals("dossiers")) {
+                        if (parser.getLocalName().equals("personnelmedical")) {
                             listeIdentificationCourante = new ListeIdentification();
                         }
                         break;
