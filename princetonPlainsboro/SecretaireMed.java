@@ -13,6 +13,12 @@ public class SecretaireMed {
         this.id = id;
         this.mdp = mdp;
     }
+            public SecretaireMed() {
+        nom = "";
+        prenom = "";
+        id = "";
+        mdp = "";
+    }
 
     public String getNom() {
         return nom;
@@ -40,6 +46,12 @@ public class SecretaireMed {
 
     public void setMdp(String mdp) {
         this.mdp = mdp;
+    }
+        public SecretaireMed() {
+        nom = "";
+        prenom = "";
+        id = "";
+        mdp = "";
     }
 
     /* Création d'un médecin */
