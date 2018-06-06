@@ -5,7 +5,7 @@ public enum Sexe {
     F,
     Autre;
     
-        public Sexe getSexe(String s) {
+        public static Sexe getSexe(String s) {
         if (s.equals("F")) {
             return Sexe.F;
         }
