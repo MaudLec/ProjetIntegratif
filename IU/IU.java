@@ -356,6 +356,10 @@ public class IU extends javax.swing.JFrame {
         jList6 = new javax.swing.JList();
         jList8 = new javax.swing.JList();
         ModifFSAddActe = new javax.swing.JButton();
+        jDialog1 = new javax.swing.JDialog();
+        MsgArchivage = new javax.swing.JLabel();
+        OuiArch = new javax.swing.JButton();
+        AnnulerArch = new javax.swing.JButton();
         ;
 
         FPrincipale.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -468,6 +472,95 @@ public class IU extends javax.swing.JFrame {
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        
+        AideFrame = new javax.swing.JFrame();
+        FermerAide = new javax.swing.JButton();
+        jScrollPaneAide = new javax.swing.JScrollPane();
+
+        AideFrame.setMinimumSize(new java.awt.Dimension(500, 700));
+        AideFrame.setPreferredSize(new java.awt.Dimension(500, 700));
+
+        FermerAide.setText("Fermer");
+        FermerAide.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FermerAideMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout AideFrameLayout = new javax.swing.GroupLayout(AideFrame.getContentPane());
+        AideFrame.getContentPane().setLayout(AideFrameLayout);
+        AideFrameLayout.setHorizontalGroup(
+                AideFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(AideFrameLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(AideFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(AideFrameLayout.createSequentialGroup()
+                                                .addGap(0, 513, Short.MAX_VALUE)
+                                                .addComponent(FermerAide))
+                                        .addComponent(jScrollPaneAide))
+                                .addContainerGap())
+        );
+        AideFrameLayout.setVerticalGroup(
+                AideFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AideFrameLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPaneAide, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(FermerAide)
+                                .addContainerGap())
+        );
+
+        jDialog1.setTitle("Confirmer l'archivage");
+        jDialog1.setMinimumSize(new java.awt.Dimension(400, 250));
+        jDialog1.setPreferredSize(new java.awt.Dimension(400, 250));
+
+        MsgArchivage.setText("Etes-vous sûrs de vouloir archiver cette fiche de soins ? ");
+
+        OuiArch.setText("Oui");
+        OuiArch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                OuiArchMouseClicked(evt);
+            }
+        });
+
+        AnnulerArch.setText("Annuler");
+        AnnulerArch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AnnulerArchMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+                jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jDialog1Layout.createSequentialGroup()
+                                .addGap(63, 63, 63)
+                                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(OuiArch)
+                                                .addGap(65, 65, 65)
+                                                .addComponent(AnnulerArch)
+                                                .addGap(30, 30, 30))
+                                        .addComponent(MsgArchivage))
+                                .addContainerGap(67, Short.MAX_VALUE))
+        );
+
+        jDialog1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[]{AnnulerArch, OuiArch});
+
+        jDialog1Layout.setVerticalGroup(
+                jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jDialog1Layout.createSequentialGroup()
+                                .addGap(77, 77, 77)
+                                .addComponent(MsgArchivage)
+                                .addGap(29, 29, 29)
+                                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(OuiArch)
+                                        .addComponent(AnnulerArch))
+                                .addContainerGap(157, Short.MAX_VALUE))
+        );
+        
         OptTri.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         TriLabel.setText("Afficher les fiches pour un(e) :");
@@ -2964,7 +3057,31 @@ public class IU extends javax.swing.JFrame {
         imp.doPrint();
     }
     
-   private void ArchiverButtonMouseClicked(java.awt.event.MouseEvent evt) {
+    private void ArchiverButtonMouseClicked(java.awt.event.MouseEvent evt) {
+        // TODO add your handling code here:
+        jDialog1.setVisible(true);
+    }
+
+    private void AideButtonMouseClicked(java.awt.event.MouseEvent evt) {
+        // TODO add your handling code here:
+        AideFrame.setVisible(true);
+        //afficher les images dans jScrollPaneAide 
+    }
+
+    private void FermerAideMouseClicked(java.awt.event.MouseEvent evt) {
+        // TODO add your handling code here:
+        AideFrame.setVisible(false);
+    }
+
+    private void AnnulerArchMouseClicked(java.awt.event.MouseEvent evt) {
+        // TODO add your handling code here:
+        jDialog1.setVisible(false);
+    }
+
+    private void OuiArchMouseClicked(java.awt.event.MouseEvent evt) {
+        // TODO add your handling code here:
+        jDialog1.setVisible(false);
+        
         dossier.archiver(ficheCourante);
         ecritureDossier.editerDossier();
         ecritureArchives.editerArchives();
@@ -2978,10 +3095,6 @@ public class IU extends javax.swing.JFrame {
         ficheCourante = null;
         jLabel3.setText("Coût de la FS sélectionnée : ");
         Cout.setText("Coût total du patient : ");
-    }
-
-    private void AideButtonMouseClicked(java.awt.event.MouseEvent evt) {
-        // TODO add your handling code here:
     }
     
     
