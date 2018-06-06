@@ -43,9 +43,6 @@ public class DossierMedical {
     public ArrayList<FicheDeSoins> getFichesArchivees() {
         return fichesArchivees;
     }
-       public ArrayList<FicheDeSoins> getFichesArchivees() {
-        return fichesArchivees;
-    }
     
     public ArrayList<SecretaireMed> getSecretairesMed(){
         return secretairesMed;
@@ -684,10 +681,5 @@ public class DossierMedical {
         return s;
     }
     
-    /*Archivage d une fiche de soins*/
-    public void archiver(FicheDeSoins fiche){
-        fichesArchivees.add(fiche);
-        fiches.remove(fiche);
-    }
 
 }
