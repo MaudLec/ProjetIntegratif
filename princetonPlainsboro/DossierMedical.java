@@ -13,6 +13,7 @@ public class DossierMedical {
     private LectureXML lect;
     private LectureXML lectArchives;
 
+    public DossierMedical(){
      fiches = new ArrayList<FicheDeSoins>();  // liste vide
         medecins = new ArrayList<Medecin>();
         patients = new ArrayList<Patient>();
