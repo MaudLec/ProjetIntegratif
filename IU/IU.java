@@ -35,6 +35,7 @@ public class IU extends javax.swing.JFrame {
     Date date = null;
     //maud
     Boolean listenonvide = true;
+    Acte acteCourant = null;
 
     //maud
     FicheDeSoins ficheCourante = null;
@@ -3183,8 +3184,18 @@ if (bmed) {
 
     private void jList5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList5MouseClicked
         if (evt.getClickCount() == 2) {
-            //            adapter l'acte à la ligne demandee
-            //            String selectedItem = (String) jList5.getSelectedValue();
+ acteCourant = null;
+            for (int i = 0; i < ficheCourante.getActes().size(); i++) {
+                if (ficheCourante.getActes().get(i).toString().equals(jList5.getSelectedValue().toString())) {
+                    acteCourant = ficheCourante.getActes().get(i);
+                }
+            }
+
+            CodeActe1.setText("Code :" + acteCourant.getCode().toString());
+            CoefActe1.setText("Coef :" + acteCourant.getCoef());
+            TypeActe1.setText("Type :" + acteCourant.getType().toString());
+            Observation1.setText("Observations : " + acteCourant.getObs().toString());
+
             DescrActe.setVisible(true);
             DescrActe.setSize(450, 350);
             jPanel3.setVisible(true);
