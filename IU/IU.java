@@ -839,8 +839,11 @@ public class IU extends javax.swing.JFrame {
         NewFicheSoins.setTitle("Nouvelle Fiche de Soin");
         NewFicheSoins.setFocusableWindowState(true);
         NewFicheSoins.setMinimumSize(new java.awt.Dimension(650, 550));
+        
+        Calendar caltoday = Calendar.getInstance(Locale.FRANCE);
+        Date dtoday = new Date(caltoday.get(Calendar.DATE), caltoday.get(Calendar.MONTH), caltoday.get(Calendar.YEAR));
+        DateLabel.setText("Date : " + dtoday.toString());
 
-        DateLabel.setText("Date :");
 
         PatientLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         PatientLabel.setText("Patient");
