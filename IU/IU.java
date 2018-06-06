@@ -361,7 +361,7 @@ public class IU extends javax.swing.JFrame {
         ;
 
         FPrincipale.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        FPrincipale.setTitle("NomDuLogiciel");
+        FPrincipale.setTitle("Jëfipatz");
         FPrincipale.setMinimumSize(new java.awt.Dimension(1000, 680));
         FPrincipale.setPreferredSize(new java.awt.Dimension(1000, 708));
         FPrincipale.addMouseListener(new java.awt.event.MouseAdapter() {
