@@ -2730,6 +2730,18 @@ public class IU extends javax.swing.JFrame {
         CoefActeField.setText("");
         jComboBox2.setSelectedIndex(0);
         jTextPane1.setText("");
+   DefaultListModel dmln = new DefaultListModel<>();
+        for (int i = 0; i < ficheCourante.getActes().size(); i++) {
+            dmln.addElement(ficheCourante.getActe(i));
+        }
+        for (int i = 0; i < actesCourants.size(); i++) {
+            dmln.addElement(actesCourants.get(i));
+        }
+        jList5.setModel(dmln);
+        ListeActes.repaint();
+
+        jList7.setModel(dmln);
+        ListeActesFiche1.repaint();
 
         NewActe.dispose();
         NewFicheSoins.repaint();
@@ -3151,7 +3163,19 @@ public class IU extends javax.swing.JFrame {
         jLabel8.setText("Date de naissance : " + ficheCourante.getPatient().getNaissance().toString());
         dateChooserCombo4.setText(ficheCourante.getDate().toString());
         jComboBox3.setSelectedItem(ficheCourante.getPatient().getSexe().toString());
+  for (int i = 0; i < actesCourants.size(); i++) {
+            ficheCourante.ajouterActe(actesCourants.get(i));
+        }
+        ficheCourante = null;
+        actesCourants.clear();
 
+        DefaultListModel dmlm = new DefaultListModel<>();
+
+
+        jList7.setModel(dmlm);
+        ListeActesFiche1.repaint();
+
+        ecritureDossier.editerDossier();
         jPanel2.setVisible(false);
         jPanel1.setVisible(true);
         FicheDeSoins.setSize(530, 570);
