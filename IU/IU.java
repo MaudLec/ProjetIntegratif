@@ -2583,8 +2583,18 @@ public class IU extends javax.swing.JFrame {
 
     private void ValiderActeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValiderActeButtonActionPerformed
         // TODO add your handling code here:
+        String[] tabCode = ChoixCodeActe.getSelectedItem().toString().split(" ");
+        Code code = Code.getCode(tabCode[0]);
+        int coef = Integer.parseInt(CoefActeField.getText());
+        TypeActe type = TypeActe.getType(jComboBox2.getSelectedItem().toString());
+        String obs = jTextPane1.getText();
+        System.out.println(obs);
+        Acte a = new Acte(code, coef, type, obs);
+        actesCourants.add(a);
+        System.out.println(a);
         NewActe.dispose();
         NewFicheSoins.setVisible(true);
+
     }//GEN-LAST:event_ValiderActeButtonActionPerformed
 
     private void OuiButtonDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OuiButtonDActionPerformed
@@ -2601,20 +2611,19 @@ public class IU extends javax.swing.JFrame {
 
     private void AddActeButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActeButton1ActionPerformed
         // TODO add your handling code here:
-        NewPatient.setVisible(true);
-        //   	Suz : peut pas text car pas de JComboBox5 dans mon code
-        NumSecu secu = new NumSecu(jFormattedTextField5.getText());
-        Adresse adr = new Adresse(jTextField3.getText(), jTextField4.getText(), jTextField5.getText());
-        Date na = new Date(dateChooserCombo5.getText());
-        Patient p = new Patient(PrenomPField.getText(), NomPField.getText(), secu, adr, na, Sexe.getSexe(jComboBox1.getSelectedItem().toString()));
-        dossier.ajouterPatient(p);
-        ecriturePatients.editerPatients();
-        ecritureDossier.editerDossier();
+         NewPatient.setVisible(true);
+         }//GEN-LAST:event_AddActeButton1ActionPerformed
 
-    }//GEN-LAST:event_AddActeButton1ActionPerformed
-
-    private void AfficherListeM1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeM1ActionPerformed
+   private void AfficherListeM1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeM1ActionPerformed
         // TODO add your handling code here:
+        NumSecu secu = new NumSecu(jFormattedTextField5.getText());
+        Adresse adr = new Adresse(jTextField8.getText(), jTextField7.getText(), jTextField6.getText());
+        Calendar calna = dateChooserCombo5.getSelectedDate();
+        Date na = new Date(calna.get(Calendar.DATE), calna.get(Calendar.MONTH), calna.get(Calendar.YEAR));
+        Patient p = new Patient(PrenomPField.getText(), NomPField.getText(), secu, adr, na, Sexe.getSexe(jComboBox1.getSelectedItem().toString()));
+        System.out.println(p);
+                dossier.ajouterPatient(p);
+        ecriturePatients.editerPatients();
         NewPatient.dispose();
         NewFicheSoins.setVisible(true);
     }//GEN-LAST:event_AfficherListeM1ActionPerformed
@@ -2635,7 +2644,23 @@ public class IU extends javax.swing.JFrame {
 
     }//GEN-LAST:event_RechercheMActionPerformed
 
-    //maud
+    private void RechMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechMActionPerformed
+        String s = RechM.getText();
+        DefaultListModel dlrm = new DefaultListModel();
+ for (int index = 0; index < dossier.getMedecins().size(); index++) {
+            if (dossier.getMedecins().get(index).toString().toUpperCase().contains(s.toUpperCase())) {
+                dlrm.addElement(dossier.getMedecins().get(index).toString());
+            }
+        }
+        if (dlrm.isEmpty()) {
+            dlrm.addElement("Aucun résultat");
+        }
+        jList8.setModel(dlrm);
+        jScrollPane2.repaint();
+
+    }//GEN-LAST:event_RechercheMActionPerformed
+
+    //maudmaud
     private void RechMMouseClicked(java.awt.event.MouseEvent evt) {
         if (RechM.getText().equals("Recherche...")) {
             RechM.setText("");
@@ -2643,11 +2668,11 @@ public class IU extends javax.swing.JFrame {
         } else {
             String s = RechM.getText();
             DefaultListModel dlrm = new DefaultListModel();
-            for (int index = 0; index < dossier.getFiches().size(); index++) {
-                if (dossier.getFiche(index).getMedecin().toString().toUpperCase().contains(s.toUpperCase())) {
-                    dlrm.addElement(dossier.getFiche(index).getMedecin().toString());
-                }
+ for (int index = 0; index < dossier.getMedecins().size(); index++) {
+            if (dossier.getMedecins().get(index).toString().toUpperCase().contains(s.toUpperCase())) {
+                dlrm.addElement(dossier.getMedecins().get(index).toString());
             }
+        }
             if (dlrm.isEmpty()) {
                 dlrm.addElement("Aucun résultat");
             }
@@ -2657,13 +2682,13 @@ public class IU extends javax.swing.JFrame {
         }
     }
 
-    //maud
+    //maudmaud
     private void RechMKeyPressed(java.awt.event.KeyEvent evt) {
         String s = RechM.getText();
         DefaultListModel dlrm = new DefaultListModel();
-        for (int index = 0; index < dossier.getFiches().size(); index++) {
-            if (dossier.getFiche(index).getMedecin().toString().toUpperCase().contains(s.toUpperCase())) {
-                dlrm.addElement(dossier.getFiche(index).getMedecin().toString());
+       for (int index = 0; index < dossier.getMedecins().size(); index++) {
+            if (dossier.getMedecins().get(index).toString().toUpperCase().contains(s.toUpperCase())) {
+                dlrm.addElement(dossier.getMedecins().get(index).toString());
             }
         }
         if (dlrm.isEmpty()) {
@@ -2673,16 +2698,17 @@ public class IU extends javax.swing.JFrame {
         jScrollPane2.repaint();
 
     }
-
+//maudmaud
     private void RechPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechPActionPerformed
-         if (RechP.getText().equals("Recherche...")) {
+        if (RechP.getText().equals("Recherche...")) {
             RechP.setText("");
-            RechP.setForeground(new java.awt.Color(0, 0, 0));}
+            RechP.setForeground(new java.awt.Color(0, 0, 0));
+        }
         String s = RechP.getText();
         DefaultListModel dlrp = new DefaultListModel();
-        for (int index = 0; index < dossier.getFiches().size(); index++) {
-            if (dossier.getFiche(index).getPatient().toString().toUpperCase().contains(s.toUpperCase())) {
-                dlrp.addElement(dossier.getFiche(index).getPatient().toString());
+        for (int index = 0; index < dossier.getPatients().size(); index++) {
+            if (dossier.getPatients().get(index).toString().toUpperCase().contains(s.toUpperCase())) {
+                dlrp.addElement(dossier.getPatients().get(index).toString());
             }
         }
         if (dlrp.isEmpty()) {
@@ -2692,19 +2718,19 @@ public class IU extends javax.swing.JFrame {
         jScrollPane1.repaint();
 
     }//GEN-LAST:event_RecherchePActionPerformed
-
+//maud
     private void RechPMouseClicked(java.awt.event.MouseEvent evt) {
-          if (RechP.getText().equals("Recherche...")) {
+        if (RechP.getText().equals("Recherche...")) {
             RechP.setText("");
             RechP.setForeground(new java.awt.Color(0, 0, 0));
         } else {
             String s = RechP.getText();
             DefaultListModel dlrp = new DefaultListModel();
-            for (int index = 0; index < dossier.getFiches().size(); index++) {
-                if (dossier.getFiche(index).getPatient().toString().toUpperCase().contains(s.toUpperCase())) {
-                    dlrp.addElement(dossier.getFiche(index).getPatient().toString());
-                }
+           for (int index = 0; index < dossier.getPatients().size(); index++) {
+            if (dossier.getPatients().get(index).toString().toUpperCase().contains(s.toUpperCase())) {
+                 dlrp.addElement(dossier.getPatients().get(index).toString());
             }
+        }
             if (dlrp.isEmpty()) {
                 dlrp.addElement("Aucun résultat");
             }
@@ -2713,13 +2739,13 @@ public class IU extends javax.swing.JFrame {
 
         }
     }
-
+//maudmaud
     private void RechPKeyPressed(java.awt.event.KeyEvent evt) {
         String s = RechP.getText();
         DefaultListModel dlrp = new DefaultListModel();
-        for (int index = 0; index < dossier.getFiches().size(); index++) {
-            if (dossier.getFiche(index).getPatient().toString().toUpperCase().contains(s.toUpperCase())) {
-                dlrp.addElement(dossier.getFiche(index).getPatient().toString());
+        for (int index = 0; index < dossier.getPatients().size(); index++) {
+            if (dossier.getPatients().get(index).toString().toUpperCase().contains(s.toUpperCase())) {
+                dlrp.addElement(dossier.getPatients().get(index).toString());
             }
         }
         if (dlrp.isEmpty()) {
@@ -2851,6 +2877,27 @@ public class IU extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jList3MouseClicked
+    
+     //maudmaud
+    private void jList6MouseClicked(java.awt.event.MouseEvent evt) {
+        for (int i = 0; i < dossier.getPatients().size(); i++) {
+            if (dossier.getPatients().get(i).toString().equals(jList6.getSelectedValue())) {
+                patientCourant = dossier.getPatients().get(i);
+            }
+        }
+        System.out.println(patientCourant);
+    }
+
+    //maudmaud
+    private void jList8MouseClicked(java.awt.event.MouseEvent evt) {
+        for (int i = 0; i < dossier.getMedecins().size(); i++) {
+            if (dossier.getMedecins().get(i).toString().equals(jList8.getSelectedValue())) {
+                medecinCourant = dossier.getMedecins().get(i);
+            }
+        }
+        System.out.println(medecinCourant);
+    }
+    
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
@@ -3021,7 +3068,6 @@ public class IU extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ChoixSpe2ActionPerformed
 
-    //maud
     private void AfficherListeNbActes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeNbActes1ActionPerformed
         listenonvide = true;
         DefaultListModel dlps = new DefaultListModel();
