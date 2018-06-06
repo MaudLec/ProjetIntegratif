@@ -486,6 +486,7 @@ public class IU extends javax.swing.JFrame {
         AideFrame = new javax.swing.JFrame();
         FermerAide = new javax.swing.JButton();
         jScrollPaneAide = new javax.swing.JScrollPane();
+        ImageAide = new javax.swing.JLabel();
 
         AideFrame.setMinimumSize(new java.awt.Dimension(500, 700));
         AideFrame.setPreferredSize(new java.awt.Dimension(500, 700));
@@ -497,27 +498,19 @@ public class IU extends javax.swing.JFrame {
             }
         });
 
+
+        ImageAide.setIcon(new javax.swing.ImageIcon("C:\\Users\\Julie\\Desktop\\Aide.png")); // NOI18N
+        jScrollPaneAide.setViewportView(ImageAide);
+
         javax.swing.GroupLayout AideFrameLayout = new javax.swing.GroupLayout(AideFrame.getContentPane());
         AideFrame.getContentPane().setLayout(AideFrameLayout);
         AideFrameLayout.setHorizontalGroup(
-                AideFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(AideFrameLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(AideFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(AideFrameLayout.createSequentialGroup()
-                                                .addGap(0, 513, Short.MAX_VALUE)
-                                                .addComponent(FermerAide))
-                                        .addComponent(jScrollPaneAide))
-                                .addContainerGap())
+            AideFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPaneAide, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         AideFrameLayout.setVerticalGroup(
-                AideFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AideFrameLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPaneAide, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(FermerAide)
-                                .addContainerGap())
+            AideFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPaneAide, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
 
         jDialog1.setTitle("Confirmer l'archivage");
@@ -3769,6 +3762,7 @@ if (bmed) {
     private javax.swing.JButton OuiArch;
     private javax.swing.JDialog jDialog1;
     private datechooser.beans.DateChooserCombo dernierComboBox;
+    private javax.swing.JLabel ImageAide;
 //End of variable declaration
 
 }
