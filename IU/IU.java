@@ -3035,10 +3035,17 @@ public class IU extends javax.swing.JFrame {
 //            adapter la fiche à la ligne demandee
 //            String selectedItem = (String) jList3.getSelectedValue();
 //            ici mettre en mémoire toutes les variables
-
-                for (int qnt = 0; qnt < dossier.getFiches().size(); qnt++) {
-                    if (dossier.getFiches().get(qnt).toString().equals(jList3.getSelectedValue())) {
-                        ficheCourante = dossier.getFiches().get(qnt);
+if (bmed) {
+                    for (int qnt = 0; qnt < dossier.getFiches().size(); qnt++) {
+                        if (dossier.getFiches().get(qnt).afficherPourMedecin().equals(jList3.getSelectedValue())) {
+                            ficheCourante = dossier.getFiches().get(qnt);
+                        }
+                    }
+                } else {
+                    for (int qnt = 0; qnt < dossier.getFiches().size(); qnt++) {
+                        if (dossier.getFiches().get(qnt).toString().equals(jList3.getSelectedValue())) {
+                            ficheCourante = dossier.getFiches().get(qnt);
+                        }
                     }
                 }
 
