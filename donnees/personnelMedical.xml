@@ -1,10 +1,61 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <personnelmedical>
-<medecins>
-<medecin><nom>Bono</nom><prenom>Jean</prenom><specialite>ORL</specialite><telephone>0123456789></telephone><id>1234</id> <mdp>4567</mdp></medecin><medecin><nom>Deblouze</nom><prenom>Agathe</prenom><specialite>Cardiologie</specialite><telephone>0123456789></telephone><id>1234</id> <mdp>4567</mdp></medecin><medecin><nom>Heget</nom><prenom>Yves</prenom><specialite>Gynécologie</specialite><telephone>0123456789></telephone><id>1234</id> <mdp>4567</mdp></medecin><medecin><nom>Covert</nom><prenom>Harry</prenom><specialite>ORL</specialite><telephone>0123456789></telephone><id>1234</id> <mdp>4567</mdp></medecin><medecin><nom>Foupasune</nom><prenom>Jean</prenom><specialite>ORL</specialite><telephone>0123456789></telephone><id>1234</id> <mdp>4567</mdp></medecin>
-</medecins><secretairesmed>
-<secretairemed><nom>TECH</nom><prenom>Mili</prenom><id>2345</id><mdp>5678</mdp></secretairemed>
-</secretairesmed><secretairesadmin>
-<secretaireadmin><nom>AUSTRA</nom><prenom>Lia</prenom><id>3456</id><mdp>6789</mdp></secretaireadmin>
-</secretairesadmin>
+    <medecins>
+        <medecin>
+            <nom>Bono</nom>
+            <prenom>Jean</prenom>
+            <specialite>ORL</specialite>
+            <telephone>0123456789></telephone>
+            <id>1034519238</id>
+            <mdp>Eauairelle</mdp>
+        </medecin>
+        <medecin>
+            <nom>Deblouze</nom>
+            <prenom>Agathe</prenom>
+            <specialite>Cardiologie</specialite>
+            <telephone>0123456789></telephone>
+            <id>123456789</id>
+            <mdp>Agathe</mdp>
+        </medecin>
+        <medecin>
+            <nom>Heget</nom>
+            <prenom>Yves</prenom>
+            <specialite>Gynécologie</specialite>
+            <telephone>0123456789></telephone>
+            <id>145342345</id>
+            <mdp>IVG</mdp>
+        </medecin>
+        <medecin>
+            <nom>Covert</nom>
+            <prenom>Harry</prenom>
+            <specialite>ORL</specialite>
+            <telephone>0123456789></telephone>
+            <id>134563482</id> 
+            <mdp>HarricotVert89</mdp>
+        </medecin>
+        <medecin>
+            <nom>Foupasune</nom>
+            <prenom>Jean</prenom>
+            <specialite>ORL</specialite>
+            <telephone>0123456789></telephone>
+            <id>13485576023</id>
+            <mdp>Blasedelavie</mdp>
+        </medecin>
+    </medecins>
+    <secretairesmed>
+        <secretairemed>
+            <nom>TECH</nom>
+            <prenom>Mili</prenom>
+            <id>2345869348</id>
+            <mdp>Militech</mdp>
+        </secretairemed>
+    </secretairesmed>
+    <secretairesadmin>
+        <secretaireadmin>
+            <nom>AUSTRA</nom>
+            <prenom>Lia</prenom>
+            <id>3450349585</id>
+            <mdp>Australia</mdp>
+        </secretaireadmin>
+    </secretairesadmin>
 </personnelmedical>
