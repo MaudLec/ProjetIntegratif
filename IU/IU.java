@@ -21,15 +21,16 @@ public class IU extends javax.swing.JFrame {
 
     private LectureXML test = new LectureXML("dossiers.xml");
     private LectureXML atest = new LectureXML("archives.xml");
+    private LectureXML idtest = new LectureXML("personnelMedical.xml");
+    private ListeIdentification listeidentifiants  = idtest.getListeIdentification();
     DossierMedical dossier = test.getDossier();
 
-    Date date = null;
-    ListeIdentification listeidentifiants = test.getListeIdentification();
     private EcritureXML ecritureDossier = new EcritureXML(dossier, "dossiers.xml");
     private EcritureXML ecriturePersonnel = new EcritureXML(dossier, "personnelMedical.xml");
     private EcritureXML ecriturePatients = new EcritureXML(dossier, "patients.xml");
     private EcritureXML ecritureArchives = new EcritureXML(dossier, "archives.xml");
-
+   
+    Date date = null;
     //maud
     Boolean listenonvide = true;
 
@@ -48,7 +49,6 @@ public class IU extends javax.swing.JFrame {
     String id = "";
     String mdp = "";
 
-    ListeIdentification listeid = test.getListeIdentification();
 
     //infos medecin
     Specialite specialite = null;
@@ -378,6 +378,13 @@ public class IU extends javax.swing.JFrame {
                 jScrollPane2.repaint();
                 RechM.setText("Recherche...");
                 RechM.setForeground(new java.awt.Color(204, 204, 204));
+                dlm.clear();
+                for (index = 0; index < dossier.getFiches().size(); index++) {
+                    dlm.addElement(dossier.getFiches().get(index).toString());
+                }
+                jList3.setModel(dlm);
+                ListeFiches.repaint();
+                ficheCourante = null;
                 jLabel3.setText("Coût de la FS sélectionnée : ");
                 Cout.setText("Coût total du patient : ");
             }
@@ -2955,8 +2962,20 @@ public class IU extends javax.swing.JFrame {
         imp.doPrint();
     }
 
-    private void ArchiverButtonMouseClicked(java.awt.event.MouseEvent evt) {
-        // TODO add your handling code here:
+   private void ArchiverButtonMouseClicked(java.awt.event.MouseEvent evt) {
+        dossier.archiver(ficheCourante);
+        ecritureDossier.editerDossier();
+        ecritureArchives.editerArchives();
+        //ecritureIdentification.
+        dlm.clear();
+        for (index = 0; index < dossier.getFiches().size(); index++) {
+            dlm.addElement(dossier.getFiches().get(index).toString());
+        }
+        jList3.setModel(dlm);
+        ListeFiches.repaint();
+        ficheCourante = null;
+        jLabel3.setText("Coût de la FS sélectionnée : ");
+        Cout.setText("Coût total du patient : ");
     }
 
     private void AideButtonMouseClicked(java.awt.event.MouseEvent evt) {
