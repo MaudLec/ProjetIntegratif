@@ -79,4 +79,137 @@ public enum Code {
         return ("<code>" + this.name() + "</code>") ;
     }
      
+      public static Code getCode(String code) {
+        if (code.equals("C")) {
+            return Code.C;
+        }
+        if (code.equals("CS")) {
+            return Code.CS;
+        }
+        if (code.equals("CSC")) {
+            return Code.CSC;
+        }
+        if (code.equals("APC")) {
+            return Code.APC;
+        }
+        if (code.equals("APV")) {
+            return Code.APV;
+        }
+        if (code.equals("APY")) {
+            return Code.APY;
+        }
+        if (code.equals("AVY")) {
+            return Code.AVY;
+        }
+        if (code.equals("APU")) {
+            return Code.APU;
+        }
+        if (code.equals("CCP")) {
+            return Code.CCP;
+        }
+        if (code.equals("U03")) {
+            return Code.U03;
+        }
+        if (code.equals("U45")) {
+            return Code.U45;
+        }
+        if (code.equals("COE")) {
+            return Code.COE;
+        }
+        if (code.equals("CNPSY")) {
+            return Code.CNPSY;
+        }
+        if (code.equals("CDE")) {
+            return Code.CDE;
+        }
+        if (code.equals("V")) {
+            return Code.V;
+        }
+        if (code.equals("VL")) {
+            return Code.VL;
+        }
+        if (code.equals("VS")) {
+            return Code.VS;
+        }
+        if (code.equals("VNPSY")) {
+            return Code.VNPSY;
+        }
+        if (code.equals("K")) {
+            return Code.K;
+        }
+        if (code.equals("KMB")) {
+            return Code.KMB;
+        }
+        if (code.equals("Z")) {
+            return Code.Z;
+        }
+        if (code.equals("ORT")) {
+            return Code.ORT;
+        }
+        if (code.equals("TO")) {
+            return Code.TO;
+        }
+        if (code.equals("SP")) {
+            return Code.SP;
+        }
+        if (code.equals("SF")) {
+            return Code.SF;
+        }
+        if (code.equals("FI")) {
+            return Code.FI;
+        }
+        if (code.equals("AMS")) {
+            return Code.AMS;
+        }
+        if (code.equals("AMK")) {
+            return Code.AMK;
+        }
+        if (code.equals("AMC")) {
+            return Code.AMC;
+        }
+        if (code.equals("AMI")) {
+            return Code.AMI;
+        }
+        if (code.equals("AIS")) {
+            return Code.AIS;
+        }
+        if (code.equals("DI")) {
+            return Code.DI;
+        }
+        if (code.equals("AMP")) {
+            return Code.AMP;
+        }
+        if (code.equals("POD")) {
+            return Code.POD;
+        }
+        if (code.equals("AMO")) {
+            return Code.AMO;
+        }
+        if (code.equals("AMY")) {
+            return Code.AMY;
+        }
+        if (code.equals("VAC")) {
+            return Code.VAC;
+        }
+        if (code.equals("FP")) {
+            return Code.FP;
+        }
+        if (code.equals("KC")) {
+            return Code.KC;
+        }
+        if (code.equals("KE")) {
+            return Code.KE;
+        }
+        if (code.equals("KFA")) {
+            return Code.KFA;
+        }
+        if (code.equals("KFB")) {
+            return Code.KFB;
+        }
+        if (code.equals("PRO")) {
+            return Code.PRO;
+        }
+        return null;
+    }
+     
     }
