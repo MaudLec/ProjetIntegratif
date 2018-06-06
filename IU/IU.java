@@ -2162,6 +2162,26 @@ public class IU extends javax.swing.JFrame {
 
     private void FSValiderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FSValiderButtonActionPerformed
         // TODO add your handling code here:
+        Calendar calbb = Calendar.getInstance(Locale.FRANCE);
+
+        Date bb = new Date(calbb.get(Calendar.DATE), calbb.get(Calendar.MONTH), calbb.get(Calendar.YEAR));
+        System.out.println(patientCourant);
+        System.out.println(medecinCourant);
+        FicheDeSoins ficheAEnregistrer = new FicheDeSoins(patientCourant, medecinCourant, bb);
+        for (int i = 0; i < actesCourants.size(); i++) {
+            ficheAEnregistrer.ajouterActe(actesCourants.get(i));
+        }
+        System.out.println(ficheAEnregistrer);
+        dossier.ajouterFiche(ficheAEnregistrer);
+        ecritureDossier.editerDossier();
+        dlm.clear();
+        for (index = 0; index < dossier.getFiches().size(); index++) {
+            dlm.addElement(dossier.getFiches().get(index).toString());
+        }
+        jList3.setModel(dlm);
+        ListeFiches.repaint();
+        ficheCourante = null;
+        actesCourants.clear();
         NewFicheSoins.dispose();
     }//GEN-LAST:event_FSValiderButtonActionPerformed
 
