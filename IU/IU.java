@@ -858,17 +858,6 @@ public class IU extends javax.swing.JFrame {
         ActeLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ActeLabel.setText("Actes");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5"};
-
-            public int getSize() {
-                return strings.length;
-            }
-
-            public String getElementAt(int i) {
-                return strings[i];
-            }
-        });
         ListeActesFiche.setViewportView(jList1);
 
         FSValiderButton.setText("Valider");
@@ -2171,7 +2160,6 @@ public class IU extends javax.swing.JFrame {
     private void FSValiderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FSValiderButtonActionPerformed
         // TODO add your handling code here:
         Calendar calbb = Calendar.getInstance(Locale.FRANCE);
-
         Date bb = new Date(calbb.get(Calendar.DATE), calbb.get(Calendar.MONTH), calbb.get(Calendar.YEAR));
         System.out.println(patientCourant);
         System.out.println(medecinCourant);
@@ -2188,6 +2176,7 @@ public class IU extends javax.swing.JFrame {
         }
         jList3.setModel(dlm);
         ListeFiches.repaint();
+
         DefaultListModel eee = new DefaultListModel<>();
         jList6.setModel(eee);
         jList8.setModel(eee);
@@ -2208,7 +2197,6 @@ public class IU extends javax.swing.JFrame {
         // TODO add your handling code here:
         NewActe.setVisible(true);
     }//GEN-LAST:event_AddActeButtonActionPerformed
-//maud4
 
     private void RecherchePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecherchePActionPerformed
         String s = RechercheP.getText();
@@ -2413,11 +2401,22 @@ public class IU extends javax.swing.JFrame {
     }//GEN-LAST:event_AfficherListeNbActesActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        // TODO add your handling code here:
+        DefaultListModel eee = new DefaultListModel<>();
+        jList6.setModel(eee);
+        jList8.setModel(eee);
+        jList1.setModel(eee);
+        RechM.setForeground(new java.awt.Color(204, 204, 204));
+        RechM.setText("Recherche...");
+        RechP.setForeground(new java.awt.Color(204, 204, 204));
+        RechP.setText("Recherche...");
+        ListeActesFiche.repaint();
+        jScrollPane1.repaint();
+        jScrollPane2.repaint();
+        ficheCourante = null;
+        actesCourants.clear();
         NewFicheSoins.setVisible(true);
     }//GEN-LAST:event_jButton14ActionPerformed
 
-    //maud
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
         listenonvide = true;
         if (jComboBox4.getSelectedItem() == "Date croissante") {
@@ -2468,14 +2467,11 @@ public class IU extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox4ActionPerformed
 
     private void DeconnexionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeconnexionButtonActionPerformed
-        // TODO add your handling code here:
         Deconnect.setVisible(true);
         jLabel4.setVisible(false);
     }//GEN-LAST:event_DeconnexionButtonActionPerformed
 
-    //maud3
     private void RechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechercheActionPerformed
-        // TODO add your handling code here:
         listenonvide = true;
         String s = Recherche.getText();
         DefaultListModel dlr = new DefaultListModel();
@@ -2494,7 +2490,6 @@ public class IU extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_RechercheActionPerformed
 
-    //maud
     private void RechercheMouseClicked(java.awt.event.MouseEvent evt) {
         if (Recherche.getText().equals("Recherche...")) {
             Recherche.setText("");
@@ -2518,7 +2513,6 @@ public class IU extends javax.swing.JFrame {
             ListeFiches.repaint();
         }
     }
-//maud
 
     private void RechercheKeyPressed(java.awt.event.KeyEvent evt) {
         listenonvide = true;
@@ -2704,7 +2698,7 @@ public class IU extends javax.swing.JFrame {
     }//GEN-LAST:event_ChoixCodeActeActionPerformed
 
     private void ValiderActeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValiderActeButtonActionPerformed
-        // TODO add your handling code here:
+
         String[] tabCode = ChoixCodeActe.getSelectedItem().toString().split(" ");
         Code code = Code.getCode(tabCode[0]);
         int coef = Integer.parseInt(CoefActeField.getText());
@@ -2714,6 +2708,7 @@ public class IU extends javax.swing.JFrame {
         Acte a = new Acte(code, coef, type, obs);
         actesCourants.add(a);
         System.out.println(a);
+        //maud
         DefaultListModel dlla = new DefaultListModel();
         for (int index = 0; index < actesCourants.size(); index++) {
             dlla.addElement(actesCourants.get(index));
@@ -2723,9 +2718,14 @@ public class IU extends javax.swing.JFrame {
         }
         jList1.setModel(dlla);
         ListeActesFiche.repaint();
+
+        ChoixCodeActe.setSelectedIndex(0);
+        CoefActeField.setText("");
+        jComboBox2.setSelectedIndex(0);
+        jTextPane1.setText("");
+
         NewActe.dispose();
         NewFicheSoins.setVisible(true);
-
     }//GEN-LAST:event_ValiderActeButtonActionPerformed
 
     private void OuiButtonDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OuiButtonDActionPerformed
@@ -2746,7 +2746,7 @@ public class IU extends javax.swing.JFrame {
     }//GEN-LAST:event_AddActeButton1ActionPerformed
 
     private void AfficherListeM1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AfficherListeM1ActionPerformed
-        // TODO add your handling code here:
+
         NumSecu secu = new NumSecu(jFormattedTextField5.getText());
         Adresse adr = new Adresse(jTextField8.getText(), jTextField7.getText(), jTextField6.getText());
         Calendar calna = dateChooserCombo5.getSelectedDate();
@@ -2755,6 +2755,15 @@ public class IU extends javax.swing.JFrame {
         System.out.println(p);
         dossier.ajouterPatient(p);
         ecriturePatients.editerPatients();
+        jFormattedTextField5.setText("");
+        jTextField8.setText("");
+        jTextField7.setText("");
+        jTextField6.setText("");
+        dateChooserCombo5.setSelectedDate(Calendar.getInstance(Locale.FRANCE));
+        PrenomPField.setText("");
+        NomPField.setText("");
+        jComboBox1.setSelectedIndex(0);
+
         NewPatient.dispose();
         NewFicheSoins.setVisible(true);
     }//GEN-LAST:event_AfficherListeM1ActionPerformed
@@ -2875,7 +2884,6 @@ public class IU extends javax.swing.JFrame {
     }
 
     private void jList3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList3MouseClicked
-        // TODO add your handling code here:
 
         DecimalFormat f = new DecimalFormat("#0.00");
         if (bsad) {
@@ -2885,9 +2893,6 @@ public class IU extends javax.swing.JFrame {
 
             }
             if (evt.getClickCount() == 2 && listenonvide) {
-//            adapter la fiche à la ligne demandee
-//            String selectedItem = (String) jList3.getSelectedValue();
-//            ici mettre en mémoire toutes les variables
                 ficheCourante = dossier.getFiche(jList3.getSelectedIndex());
 
                 ModifFSButton.setVisible(false);
@@ -2910,14 +2915,17 @@ public class IU extends javax.swing.JFrame {
                 PrenomPField2.setText(ficheCourante.getPatient().getPrenom());
                 PrenomPField3.setText(ficheCourante.getMedecin().getTelephone());
                 jTextField3.setText(ficheCourante.getPatient().getAdresse().getRue());
-                System.out.println(ficheCourante.getPatient().getAdresse().getRue());
+
                 jTextField4.setText(ficheCourante.getPatient().getAdresse().getCodePostal());
                 jTextField5.setText(ficheCourante.getPatient().getAdresse().getVille());
-
+                jLabel7.setText("Adresse :" + ficheCourante.getPatient().getAdresse().toString());
                 jFormattedTextField7.setText(ficheCourante.getPatient().getNumSecu().toFormatted());
                 jTextField1.setText(ficheCourante.getMedecin().getNom());
                 jTextField2.setText(ficheCourante.getMedecin().getPrenom());
                 ChoixSpe1.setSelectedItem(ficheCourante.getMedecin().getSpecialite().toString());
+
+                dateChooserCombo6.setSelectedDate(new GregorianCalendar(ficheCourante.getPatient().getNaissance().getAnnee(), ficheCourante.getPatient().getNaissance().getMois(), ficheCourante.getPatient().getNaissance().getJour()));
+                dateChooserCombo4.setSelectedDate(new GregorianCalendar(ficheCourante.getDate().getAnnee(), ficheCourante.getDate().getMois(), ficheCourante.getDate().getJour()));
 
                 FicheDeSoins.setVisible(true);
                 FicheDeSoins.setSize(560, 600);
@@ -2965,10 +2973,9 @@ public class IU extends javax.swing.JFrame {
                 PrenomPField2.setText(ficheCourante.getPatient().getPrenom());
                 PrenomPField3.setText(ficheCourante.getMedecin().getTelephone());
                 jTextField3.setText(ficheCourante.getPatient().getAdresse().getRue());
-                System.out.println(ficheCourante.getPatient().getAdresse().getRue());
                 jTextField4.setText(ficheCourante.getPatient().getAdresse().getCodePostal());
                 jTextField5.setText(ficheCourante.getPatient().getAdresse().getVille());
-
+                jLabel7.setText("Adresse :" + ficheCourante.getPatient().getAdresse().toString());
                 jFormattedTextField7.setText(ficheCourante.getPatient().getNumSecu().toFormatted());
                 jTextField1.setText(ficheCourante.getMedecin().getNom());
                 jTextField2.setText(ficheCourante.getMedecin().getPrenom());
@@ -2977,6 +2984,9 @@ public class IU extends javax.swing.JFrame {
                 jTextField1.setText(ficheCourante.getMedecin().getNom());
                 jTextField2.setText(ficheCourante.getMedecin().getPrenom());
                 ChoixSpe1.setSelectedItem(ficheCourante.getMedecin().getSpecialite().toString());
+
+                dateChooserCombo6.setSelectedDate(new GregorianCalendar(ficheCourante.getPatient().getNaissance().getAnnee(), ficheCourante.getPatient().getNaissance().getMois(), ficheCourante.getPatient().getNaissance().getJour()));
+                dateChooserCombo4.setSelectedDate(new GregorianCalendar(ficheCourante.getDate().getAnnee(), ficheCourante.getDate().getMois(), ficheCourante.getDate().getJour()));
 
                 //pour afficher les actes d'un patient
                 DefaultListModel dlma = new DefaultListModel();
@@ -2995,7 +3005,6 @@ public class IU extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jList3MouseClicked
 
-    //maudmaud
     private void jList6MouseClicked(java.awt.event.MouseEvent evt) {
         for (int i = 0; i < dossier.getPatients().size(); i++) {
             if (dossier.getPatients().get(i).toString().equals(jList6.getSelectedValue())) {
@@ -3005,7 +3014,6 @@ public class IU extends javax.swing.JFrame {
         System.out.println(patientCourant);
     }
 
-    //maudmaud
     private void jList8MouseClicked(java.awt.event.MouseEvent evt) {
         for (int i = 0; i < dossier.getMedecins().size(); i++) {
             if (dossier.getMedecins().get(i).toString().equals(jList8.getSelectedValue())) {
@@ -3024,7 +3032,7 @@ public class IU extends javax.swing.JFrame {
     }
 
     private void ModifFSButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifFSButtonActionPerformed
-        // TODO add your handling code here:
+       
         jPanel1.setVisible(false);
         FicheDeSoins.setSize(600, 600);
         jPanel2.setVisible(true);
@@ -3038,15 +3046,46 @@ public class IU extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_AddActeButton2ActionPerformed
 
-    private void FSValiderButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FSValiderButton1ActionPerformed
-        // TODO add your handling code here:
+    private void FSValiderButonActionPerformed(java.awt.event.ActionEvent evt) {
+        ficheCourante.getPatient().setNom(NomPField1.getText());
+        ficheCourante.getPatient().setPrenom(PrenomPField2.getText());
+        ficheCourante.getMedecin().setTelephone(PrenomPField3.getText());
+        ficheCourante.getPatient().getAdresse().setRue(jTextField3.getText());
+        ficheCourante.getPatient().getAdresse().setCodePostal(jTextField4.getText());
+        ficheCourante.getPatient().getAdresse().setVille(jTextField5.getText());
+        ficheCourante.getPatient().setNumSecu(new NumSecu(jFormattedTextField7.getText()));
+        ficheCourante.getMedecin().setNom(jTextField1.getText());
+        ficheCourante.getMedecin().setPrenom(jTextField2.getText());
+        ficheCourante.getMedecin().setSpecialite(Specialite.getSpe(ChoixSpe1.getSelectedItem().toString()));
+
+        Calendar cal3 = dateChooserCombo4.getSelectedDate();
+        Date dd3 = new Date(cal3.get(Calendar.DATE), cal3.get(Calendar.MONTH), cal3.get(Calendar.YEAR));
+        Calendar cal6 = dateChooserCombo6.getSelectedDate();
+        Date dd6 = new Date(cal6.get(Calendar.DATE), cal6.get(Calendar.MONTH), cal6.get(Calendar.YEAR));
+
+        ficheCourante.getPatient().setNaissance(dd6);
+        ficheCourante.setDate(dd3);
+        jLabel7.setText("Adresse :" + ficheCourante.getPatient().getAdresse().toString());
+        FSDate.setText("Date : " + ficheCourante.getDate());
+        FSSexe.setText("Sexe : " + ficheCourante.getPatient().getSexe());
+        FSNomP.setText("Nom : " + ficheCourante.getPatient().getNom());
+        FSPrenomP.setText("Prenom : " + ficheCourante.getPatient().getPrenom());
+        FSNSS.setText("N° de Sécurité Sociale : " + ficheCourante.getPatient().getNumSecu());
+        FSNomM.setText("Nom :" + ficheCourante.getMedecin().getNom());
+        FSPrenomM.setText("Prénom : " + ficheCourante.getMedecin().getPrenom());
+        FSSpeM.setText("Spécialité : " + ficheCourante.getMedecin().getSpecialite());
+        jLabel8.setText("Date de naissance : " + ficheCourante.getPatient().getNaissance().toString());
+        dateChooserCombo4.setText(ficheCourante.getDate().toString());
+        jComboBox3.setSelectedItem(ficheCourante.getPatient().getSexe().toString());
+
+
         jPanel2.setVisible(false);
         jPanel1.setVisible(true);
         FicheDeSoins.setSize(530, 570);
-    }//GEN-LAST:event_FSValiderButton1ActionPerformed
+    }
+
 
     private void jList5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList5MouseClicked
-        // TODO add your handling code here:
         if (evt.getClickCount() == 2) {
             //            adapter l'acte à la ligne demandee
             //            String selectedItem = (String) jList5.getSelectedValue();
@@ -3058,12 +3097,10 @@ public class IU extends javax.swing.JFrame {
     }//GEN-LAST:event_jList5MouseClicked
 
     private void jList7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList7MouseClicked
-        // TODO add your handling code here:
         jList5MouseClicked(evt);
     }//GEN-LAST:event_jList7MouseClicked
 
     private void ModifFSButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifFSButton1ActionPerformed
-        // TODO add your handling code here:
         DescrActe.setSize(600, 450);
         jPanel3.setVisible(false);
         jPanel4.setVisible(true);
@@ -3085,12 +3122,6 @@ public class IU extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ChoixCodeActe1ActionPerformed
 
-    private void FSValiderButonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        jPanel2.setVisible(false);
-        jPanel1.setVisible(true);
-        FicheDeSoins.setSize(530, 570);
-    }
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
