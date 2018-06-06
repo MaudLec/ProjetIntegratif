@@ -2957,11 +2957,13 @@ public class IU extends javax.swing.JFrame {
     
     private void ImprimerButtonMouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
-              ficheCourante = dossier.getFiche(jList3.getSelectedIndex());
-        Imprimer imp = new Imprimer(FicheDeSoins);
+        ficheCourante = dossier.getFiche(jList3.getSelectedIndex());
+        JTextField te = new JTextField();
+        te.setText(ficheCourante.toString());
+        Imprimer imp = new Imprimer(te);
         imp.doPrint();
     }
-
+    
    private void ArchiverButtonMouseClicked(java.awt.event.MouseEvent evt) {
         dossier.archiver(ficheCourante);
         ecritureDossier.editerDossier();
